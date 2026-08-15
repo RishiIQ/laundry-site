@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="LaundriX is currently undergoing scheduled maintenance to upgrade our booking and tracking systems. We will be back online shortly."
+    />
+    <meta name="theme-color" content="#059669" />
+    <title>Scheduled Maintenance | LaundriX — Premium Doorstep Laundry</title>
+
+    <!-- ======================================================
+         GOOGLE FONTS (MANROPE & PLUS JAKARTA SANS)
+    ====================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ======================================================
+         ICONS (MATERIAL SYMBOLS & FONT AWESOME)
+    ====================================================== -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <!-- ======================================================
+         SHARED GLOBAL CSS
+    ====================================================== -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+    <!-- ======================================================
+         MAINTENANCE PAGE UNIQUE STYLES (MODERN LUXE EMERALD)
+    ====================================================== -->
+    <style>
+      .maint-page-wrapper {
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: radial-gradient(circle at 50% 15%, rgba(var(--lx-primary-rgb), 0.08) 0%, transparent 65%),
+                    radial-gradient(circle at 85% 85%, rgba(79, 70, 229, 0.04) 0%, transparent 50%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .maint-main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(24px, 4vw, 48px) 16px;
+      }
+
+      .maint-card {
+        width: 100%;
+        max-width: 520px;
+        padding: clamp(32px, 5vw, 52px);
+        border-radius: var(--lx-radius-xl);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-xl);
+        text-align: center;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Top Right Corner Toggles */
+      .maint-corner-toggles {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        z-index: 5;
+      }
+
+      html[dir="rtl"] .maint-corner-toggles {
+        right: auto;
+        left: 20px;
+      }
+
+      .maint-corner-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: var(--lx-radius-pill);
+        display: grid;
+        place-items: center;
+        background: var(--lx-bg-subtle);
+        border: 1px solid var(--lx-border-subtle);
+        color: var(--lx-text-soft);
+        cursor: pointer;
+        transition: var(--lx-transition);
+      }
+
+      .maint-corner-btn:hover {
+        background: var(--lx-surface);
+        color: var(--lx-primary);
+        border-color: var(--lx-primary);
+        transform: translateY(-2px);
+      }
+
+      .maint-icon-wrap {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 24px;
+        border-radius: 24px;
+        background: rgba(var(--lx-primary-rgb), 0.12);
+        color: var(--lx-primary);
+        display: grid;
+        place-items: center;
+        font-size: 38px;
+        box-shadow: 0 10px 25px var(--lx-primary-glow);
+        animation: maintGearSpin 12s linear infinite;
+      }
+
+      @keyframes maintGearSpin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      .maint-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 16px;
+        text-decoration: none;
+      }
+
+      .maint-brand-mark {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--lx-primary), #047857);
+        display: grid;
+        place-items: center;
+        color: #fff;
+        box-shadow: 0 4px 12px var(--lx-primary-glow);
+      }
+
+      .maint-brand-name {
+        font-family: var(--lx-font-display);
+        font-size: 19px;
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        color: var(--lx-text);
+      }
+
+      .maint-brand-name span {
+        color: var(--lx-primary);
+      }
+
+      .maint-card h1 {
+        font-size: clamp(26px, 3.5vw, 36px);
+        margin-bottom: 12px;
+        letter-spacing: -0.03em;
+      }
+
+      .maint-card p {
+        color: var(--lx-text-soft);
+        font-size: 15px;
+        line-height: 1.7;
+        margin-bottom: 28px;
+      }
+
+      .maint-status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 18px;
+        border-radius: var(--lx-radius-pill);
+        background: rgba(var(--lx-primary-rgb), 0.1);
+        color: var(--lx-primary-dark);
+        font-size: 12.5px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 32px;
+      }
+
+      .maint-status-badge::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--lx-primary);
+        animation: maintPulse 1.8s infinite;
+      }
+
+      @keyframes maintPulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.3); opacity: 0.6; }
+      }
+
+      .maint-notify-form {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 24px;
+      }
+
+      .maint-input {
+        flex: 1;
+        padding: 13px 18px;
+        border-radius: var(--lx-radius-pill);
+        background: var(--lx-bg-subtle);
+        border: 1px solid var(--lx-border);
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--lx-text);
+        outline: none;
+        transition: var(--lx-transition);
+        font-family: inherit;
+      }
+
+      .maint-input:focus {
+        border-color: var(--lx-primary);
+        background: var(--lx-surface);
+        box-shadow: 0 0 0 3px rgba(var(--lx-primary-rgb), 0.15);
+      }
+
+      .maint-submit-btn {
+        padding: 0 24px;
+        border-radius: var(--lx-radius-pill);
+        background: linear-gradient(135deg, var(--lx-primary), #047857);
+        color: #fff;
+        font-size: 14px;
+        font-weight: 800;
+        border: none;
+        cursor: pointer;
+        transition: var(--lx-transition);
+        box-shadow: 0 4px 14px var(--lx-primary-glow);
+        white-space: nowrap;
+      }
+
+      .maint-submit-btn:hover {
+        background: linear-gradient(135deg, #047857, #065f46);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px var(--lx-primary-glow);
+      }
+
+      .maint-help {
+        font-size: 13.5px;
+        color: var(--lx-text-muted);
+      }
+
+      .maint-help a {
+        color: var(--lx-primary);
+        font-weight: 700;
+      }
+
+      .maint-help a:hover {
+        text-decoration: underline;
+      }
+
+      /* Simple Minimalist Footer */
+      .maint-simple-footer {
+        padding: 20px 16px;
+        border-top: 1px solid var(--lx-border-subtle);
+        background: var(--lx-surface);
+        text-align: center;
+      }
+
+      .maint-simple-footer-inner {
+        width: min(var(--lx-container), 100%);
+        margin-inline: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: 12.5px;
+        color: var(--lx-text-muted);
+      }
+
+      .maint-simple-footer-links {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      .maint-simple-footer-links a {
+        color: var(--lx-text-soft);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .maint-simple-footer-links a:hover {
+        color: var(--lx-primary);
+      }
+
+      @media (max-width: 640px) {
+        .maint-notify-form {
+          flex-direction: column;
+        }
+        .maint-submit-btn {
+          min-height: 46px;
+          width: 100%;
+        }
+        .maint-simple-footer-inner {
+          flex-direction: column;
+          text-align: center;
+          gap: 8px;
+        }
+        .maint-simple-footer-links {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="maint-page-wrapper">
+      <!-- ======================================================
+           MAIN MAINTENANCE CONTAINER
+      ====================================================== -->
+      <main class="maint-main">
+        <div class="maint-card" data-reveal>
+          <!-- TOP-RIGHT CORNER TOGGLES -->
+          <div class="maint-corner-toggles">
+            <!-- Theme Toggle -->
+            <button
+              type="button"
+              class="maint-corner-btn"
+              data-theme-toggle
+              aria-label="Toggle theme"
+              title="Toggle Dark / Light Mode"
+            >
+              <span class="material-symbols-rounded" style="font-size:18px;"> dark_mode </span>
+            </button>
+
+            <!-- RTL Toggle -->
+            <button
+              type="button"
+              class="maint-corner-btn"
+              data-rtl-toggle
+              aria-label="Toggle LTR / RTL"
+              aria-pressed="false"
+              title="Toggle LTR / RTL"
+            >
+              <span class="material-symbols-rounded" style="font-size:18px;"> sync_alt </span>
+            </button>
+          </div>
+
+          <!-- BRAND -->
+          <a href="index.html" class="maint-brand" aria-label="LaundriX Home">
+            <div class="maint-brand-mark">
+              <span class="material-symbols-rounded" style="font-size:20px;"> local_laundry_service </span>
+            </div>
+            <div class="maint-brand-name">Laundri<span>X</span></div>
+          </a>
+
+          <!-- ICON -->
+          <div class="maint-icon-wrap">
+            <span class="material-symbols-rounded" style="font-size:40px;"> settings </span>
+          </div>
+
+          <div class="maint-status-badge">System Upgrade in Progress</div>
+
+          <h1>We'll be back shortly!</h1>
+          <p>
+            We are currently performing scheduled maintenance on our booking engines and live tracking servers to bring you an even faster experience.
+          </p>
+
+          <!-- NOTIFY ME FORM -->
+          <form class="maint-notify-form" id="maintForm" data-validate data-demo="true" data-success="Thank you! We will email you the moment we are back online." novalidate>
+            <input
+              type="email"
+              class="maint-input"
+              placeholder="Enter your email for updates..."
+              required
+              autocomplete="email"
+            />
+            <button type="submit" class="maint-submit-btn">Notify Me</button>
+          </form>
+
+          <div class="maint-help">
+            Need urgent assistance with an active pickup? Contact support at <a href="mailto:hello@laundrix.com">hello@laundrix.com</a>
+          </div>
+        </div>
+      </main>
+
+      <!-- ======================================================
+           SIMPLE MINIMAL FOOTER
+      ====================================================== -->
+      <footer class="maint-simple-footer">
+        <div class="maint-simple-footer-inner">
+          <p>© 2026 LaundriX Technologies Inc. All rights reserved.</p>
+          <div class="maint-simple-footer-links">
+            <a href="terms.html">Terms of Service</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="contact.html">Help &amp; Support</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- ======================================================
+         SHARED GLOBAL JAVASCRIPT
+    ====================================================== -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

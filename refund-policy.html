@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="LaundriX Refund & Return Policy — Learn about our satisfaction guarantee, garment damage claims, and cancellation refund timelines."
+    />
+    <meta name="theme-color" content="#059669" />
+    <title>Refund &amp; Return Policy | LaundriX — Premium Doorstep Laundry</title>
+
+    <!-- ======================================================
+         GOOGLE FONTS (MANROPE & PLUS JAKARTA SANS)
+    ====================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ======================================================
+         ICONS (MATERIAL SYMBOLS & FONT AWESOME)
+    ====================================================== -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <!-- ======================================================
+         SHARED GLOBAL CSS
+    ====================================================== -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+    <!-- ======================================================
+         PAGE-SPECIFIC STYLES (MODERN LUXE EMERALD)
+    ====================================================== -->
+    <style>
+      .refund-hero {
+        position: relative;
+        padding-top: clamp(130px, 15vh, 170px);
+        padding-bottom: clamp(40px, 6vh, 70px);
+        text-align: center;
+        background: radial-gradient(circle at 50% 15%, rgba(var(--lx-primary-rgb), 0.08) 0%, transparent 60%);
+        overflow: hidden;
+      }
+
+      .refund-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 16px;
+        border-radius: var(--lx-radius-pill);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-sm);
+        color: var(--lx-primary);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+      .refund-hero h1 {
+        font-size: clamp(36px, 5vw, 60px);
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        margin-bottom: 16px;
+      }
+
+      .refund-hero h1 span {
+        color: var(--lx-primary);
+      }
+
+      .refund-hero p {
+        font-size: clamp(15px, 1.1vw, 18px);
+        color: var(--lx-text-soft);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+
+      /* Refund Layout */
+      .refund-section {
+        padding-block: clamp(30px, 5vw, 70px);
+      }
+
+      .refund-grid {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: clamp(32px, 5vw, 60px);
+        align-items: start;
+      }
+
+      /* Sticky Sidebar Navigation */
+      .refund-nav-card {
+        position: sticky;
+        top: 100px;
+        padding: 24px;
+        border-radius: var(--lx-radius-xl);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-sm);
+      }
+
+      .refund-nav-card h3 {
+        font-size: 15px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 16px;
+        color: var(--lx-text);
+      }
+
+      .refund-nav-links {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .refund-nav-links a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: var(--lx-radius-md);
+        color: var(--lx-text-soft);
+        font-size: 14px;
+        font-weight: 600;
+        transition: var(--lx-transition);
+      }
+
+      .refund-nav-links a:hover,
+      .refund-nav-links a.active {
+        background: var(--lx-bg-subtle);
+        color: var(--lx-primary);
+        transform: translateX(4px);
+      }
+
+      /* Content Document */
+      .refund-content {
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        border-radius: var(--lx-radius-xl);
+        padding: clamp(32px, 5vw, 56px);
+        box-shadow: var(--lx-shadow-sm);
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--lx-text-soft);
+      }
+
+      .refund-content h2 {
+        font-size: clamp(22px, 2.5vw, 30px);
+        color: var(--lx-text);
+        margin: 36px 0 16px;
+        letter-spacing: -0.03em;
+      }
+
+      .refund-content h2:first-child {
+        margin-top: 0;
+      }
+
+      .refund-content h3 {
+        font-size: 18px;
+        color: var(--lx-text);
+        margin: 24px 0 12px;
+      }
+
+      .refund-content p {
+        margin-bottom: 18px;
+      }
+
+      .refund-content ul {
+        margin: 0 0 24px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .refund-content li strong {
+        color: var(--lx-text);
+      }
+
+      .refund-callout {
+        margin: 28px 0;
+        padding: 20px 24px;
+        border-left: 4px solid var(--lx-primary);
+        background: var(--lx-bg-subtle);
+        border-radius: 0 var(--lx-radius-md) var(--lx-radius-md) 0;
+        font-size: 15px;
+      }
+
+      .refund-callout strong {
+        color: var(--lx-primary);
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      @media (max-width: 980px) {
+        .refund-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .refund-nav-card {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ======================================================
+         GLOBAL HEADER & NAVIGATION
+    ====================================================== -->
+    <header class="lx-header">
+      <div class="lx-container">
+        <div class="lx-header-inner">
+          <!-- BRAND -->
+          <a href="index.html" class="lx-brand" aria-label="LaundriX Home">
+            <div class="lx-brand-mark">
+              <span class="material-symbols-rounded"> local_laundry_service </span>
+            </div>
+            <div class="lx-brand-name">Laundri<span>X</span></div>
+          </a>
+
+          <!-- DESKTOP NAVBAR -->
+          <nav class="lx-nav" aria-label="Main navigation">
+            <div class="lx-nav-dropdown">
+              <button
+                type="button"
+                class="lx-nav-link lx-nav-dropdown-trigger"
+                data-home-dropdown
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                <span>Home</span>
+                <span class="material-symbols-rounded" style="font-size:18px;"> keyboard_arrow_down </span>
+              </button>
+
+              <div class="lx-nav-dropdown-menu" aria-label="Home pages">
+                <a href="index.html" class="lx-nav-dropdown-item">
+                  <div class="lx-dropdown-icon">
+                    <span class="material-symbols-rounded"> home </span>
+                  </div>
+                  <span class="lx-dropdown-content">
+                    <strong> Home 1 </strong>
+                    <small> Signature Experience </small>
+                  </span>
+                </a>
+                <a href="home-2.html" class="lx-nav-dropdown-item">
+                  <div class="lx-dropdown-icon">
+                    <span class="material-symbols-rounded"> auto_awesome </span>
+                  </div>
+                  <span class="lx-dropdown-content">
+                    <strong> Home 2 </strong>
+                    <small> Expressive SaaS </small>
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            <a href="services.html" class="lx-nav-link"> Services </a>
+            <a href="about.html" class="lx-nav-link"> About </a>
+            <a href="pricing.html" class="lx-nav-link"> Pricing </a>
+            <a href="how-it-works.html" class="lx-nav-link"> How it works </a>
+            <a href="coverage.html" class="lx-nav-link"> Coverage </a>
+            <a href="blog.html" class="lx-nav-link"> Blog </a>
+            <a href="contact.html" class="lx-nav-link"> Contact </a>
+          </nav>
+
+          <!-- HEADER ACTIONS -->
+          <div class="lx-header-actions">
+            <a href="login.html" class="lx-nav-link" style="font-weight:700;"> Login </a>
+            <a href="register.html" class="lx-button lx-button-primary"> Sign up </a>
+
+            <button type="button" class="lx-icon-button" data-theme-toggle aria-label="Toggle theme">
+              <span class="material-symbols-rounded"> dark_mode </span>
+            </button>
+
+            <button type="button" class="lx-direction-toggle" data-rtl-toggle aria-label="Toggle LTR / RTL" aria-pressed="false">
+              <span class="lx-direction-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </button>
+
+            <button type="button" class="lx-icon-button lx-menu-toggle" data-menu-toggle aria-label="Open menu" aria-expanded="false">
+              <span class="material-symbols-rounded"> menu </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- MOBILE MENU -->
+        <div class="lx-mobile-menu" data-mobile-menu>
+          <div class="lx-mobile-menu-inner">
+            <div class="lx-mobile-home">
+              <button type="button" class="lx-mobile-home-trigger" data-mobile-home-toggle aria-expanded="false">
+                <span>Home Options</span>
+                <span class="material-symbols-rounded"> keyboard_arrow_down </span>
+              </button>
+              <div class="lx-mobile-home-links">
+                <a href="index.html"> Home 1 (Signature) </a>
+                <a href="home-2.html"> Home 2 (Expressive) </a>
+              </div>
+            </div>
+
+            <a href="services.html"> Services </a>
+            <a href="about.html"> About </a>
+            <a href="pricing.html"> Pricing </a>
+            <a href="how-it-works.html"> How it works </a>
+            <a href="coverage.html"> Coverage </a>
+            <a href="blog.html"> Blog </a>
+            <a href="contact.html"> Contact </a>
+
+            <div class="lx-mobile-menu-actions">
+              <a href="login.html" class="lx-button lx-button-outline"> Login </a>
+              <a href="register.html" class="lx-button lx-button-primary"> Sign up </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ======================================================
+         PAGE MAIN CONTENT
+    ====================================================== -->
+    <main>
+      <!-- HERO -->
+      <section class="refund-hero">
+        <div class="lx-container">
+          <div class="refund-eyebrow">
+            <span class="material-symbols-rounded" style="font-size:16px;"> verified </span>
+            Satisfaction Guaranteed
+          </div>
+          <h1>Refund &amp; Return <span>Policy</span></h1>
+          <p>
+            Last Updated: August 15, 2026. Learn about our quality re-wash guarantee, damage claims, and refund processing timelines.
+          </p>
+        </div>
+      </section>
+
+      <!-- REFUND DOCUMENT CONTENT -->
+      <section class="refund-section">
+        <div class="lx-container">
+          <div class="refund-grid">
+            <!-- Table of Contents Sticky Sidebar -->
+            <aside class="refund-nav-card" data-reveal>
+              <h3>Sections</h3>
+              <ul class="refund-nav-links">
+                <li><a href="#guarantee"><i class="fa-solid fa-medal"></i> 1. Satisfaction Guarantee</a></li>
+                <li><a href="#rewash"><i class="fa-solid fa-rotate"></i> 2. Re-Wash Policy</a></li>
+                <li><a href="#damages"><i class="fa-solid fa-triangle-exclamation"></i> 3. Damage &amp; Loss Claims</a></li>
+                <li><a href="#cancellations"><i class="fa-solid fa-ban"></i> 4. Order Cancellations</a></li>
+                <li><a href="#timelines"><i class="fa-solid fa-clock"></i> 5. Refund Timelines</a></li>
+                <li><a href="#contact-claims"><i class="fa-solid fa-envelope"></i> 6. File a Claim</a></li>
+              </ul>
+            </aside>
+
+            <!-- Text Content -->
+            <div class="refund-content" data-reveal>
+              <h2 id="guarantee">1. Our 100% Satisfaction Guarantee</h2>
+              <p>
+                At LaundriX, we take pride in delivering pristine garment care and crisp doorstep delivery. If you are not completely satisfied with the quality of your wash, fold, or dry cleaning, we are committed to making it right.
+              </p>
+
+              <h2 id="rewash">2. Free Re-Wash Policy</h2>
+              <p>
+                If you notice persistent stains that should have been removable or find any oversight in your returned garments, you are entitled to a <strong>free re-wash or re-press</strong>.
+              </p>
+              <ul>
+                <li><strong>Reporting Window:</strong> Inspection claims must be reported within <strong>48 hours</strong> of your delivery timestamp via our support app or hotline.</li>
+                <li><strong>Condition:</strong> Garments must remain unworn, unwashed by third parties, and in their original delivered state.</li>
+              </ul>
+
+              <h2 id="damages">3. Garment Damage &amp; Loss Claims</h2>
+              <p>
+                While our master technicians exercise the utmost professional care, handling textiles involves inherent risks.
+              </p>
+              <ul>
+                <li><strong>Inspection Upon Delivery:</strong> Any loss or damage must be documented and reported within 48 hours of delivery with photographic evidence.</li>
+                <li><strong>Liability Limits:</strong> In accordance with industry standards, compensation for proven damaged or lost items is capped at a maximum of ten (10) times the processing charge for that specific item.</li>
+                <li><strong>Exclusions:</strong> We cannot assume liability for items damaged due to hidden fabric defects, missing care labels, incorrect manufacturer tagging, or items left in pockets.</li>
+              </ul>
+
+              <div class="refund-callout">
+                <strong>Transparent Compensation</strong>
+                Approved refund or credit claims are processed directly back to your original payment method or credited instantly to your LaundriX wallet for future bookings.
+              </div>
+
+              <h2 id="cancellations">4. Order Cancellations &amp; Refunds</h2>
+              <p>
+                You may cancel an upcoming order at any time prior to driver dispatch without penalty:
+              </p>
+              <ul>
+                <li><strong>Early Cancellation:</strong> Cancellations made 2+ hours before your scheduled pickup window receive a 100% full refund.</li>
+                <li><strong>Late Cancellation:</strong> If our driver has already arrived at your designated pickup address, a nominal ₹150 logistics fee may be deducted from your refund.</li>
+              </ul>
+
+              <h2 id="timelines">5. Refund Processing Timelines</h2>
+              <p>
+                Once a refund has been approved by our quality team, the credit transfer is initiated immediately:
+              </p>
+              <ul>
+                <li><strong>LaundriX Wallet Credits:</strong> Applied instantly (within 1 hour).</li>
+                <li><strong>Credit/Debit Cards &amp; UPI:</strong> Typically reflects in your bank account within 3 to 7 business days, depending on your financial institution.</li>
+              </ul>
+
+              <h2 id="contact-claims">6. How to File a Claim or Request Support</h2>
+              <p>
+                If you need assistance with an order adjustment, re-wash, or refund inquiry, please reach out to our customer advocacy team:
+              </p>
+              <ul>
+                <li><strong>Email:</strong> <a href="mailto:support@laundrix.com" style="color:var(--lx-primary); font-weight:700;">support@laundrix.com</a></li>
+                <li><strong>Support Hotline:</strong> +91 98765 43210</li>
+                <li><strong>Hours:</strong> Monday–Saturday, 7:00 AM – 9:00 PM</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ======================================================
+         GLOBAL FOOTER (5-COLUMN LUXE DESIGN)
+    ====================================================== -->
+    <footer class="lx-footer">
+      <div class="lx-footer-main">
+        <div class="lx-container">
+          <div class="lx-footer-grid">
+            <!-- BRAND INFO -->
+            <div class="lx-footer-brand">
+              <a href="index.html" class="lx-brand">
+                <div class="lx-brand-mark">
+                  <span class="material-symbols-rounded"> local_laundry_service </span>
+                </div>
+                <div class="lx-brand-name">Laundri<span>X</span></div>
+              </a>
+              <p class="lx-footer-description">
+                Premium doorstep laundry and dry-cleaning service designed around your busy schedule. Freshness guaranteed.
+              </p>
+              <div class="lx-footer-socials">
+                <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="lx-social"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" class="lx-social"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://x.com" target="_blank" rel="noopener" aria-label="X Twitter" class="lx-social"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="lx-social"><i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+            </div>
+
+            <!-- COMPANY LINKS -->
+            <div class="lx-footer-column">
+              <h3>Company</h3>
+              <a href="about.html">About Us</a>
+              <a href="services.html">Services</a>
+              <a href="pricing.html">Pricing</a>
+              <a href="how-it-works.html">How It Works</a>
+              <a href="coverage.html">Coverage Areas</a>
+            </div>
+
+            <!-- SERVICES LINKS -->
+            <div class="lx-footer-column">
+              <h3>Services</h3>
+              <a href="service-wash-fold.html">Wash &amp; Fold</a>
+              <a href="service-dry-cleaning.html">Dry Cleaning</a>
+              <a href="service-ironing.html">Steam Press</a>
+              <a href="service-premium-care.html">Premium Care</a>
+              <a href="faq.html">Help &amp; FAQs</a>
+            </div>
+
+            <!-- SUPPORT LINKS -->
+            <div class="lx-footer-column">
+              <h3>Support</h3>
+              <a href="contact.html">Contact Us</a>
+              <a href="blog.html">Laundry Blog</a>
+              <a href="refund-policy.html" class="is-active">Refund Policy</a>
+              <a href="terms.html">Terms of Service</a>
+              <a href="privacy.html">Privacy Policy</a>
+            </div>
+
+            <!-- ACTION CTA CARD -->
+            <div class="lx-footer-cta">
+              <div class="lx-footer-cta-card">
+                <div class="lx-footer-cta-icon">
+                  <i class="fa-solid fa-basket-shopping"></i>
+                </div>
+                <div>
+                  <strong>Effortless Laundry</strong>
+                  <p>Book a pickup in seconds.</p>
+                </div>
+              </div>
+              <a href="register.html" class="lx-footer-button">
+                <span>Get Started</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER BOTTOM BAR -->
+      <div class="lx-footer-bottom">
+        <div class="lx-container">
+          <div class="lx-footer-bottom-inner">
+            <p>© 2026 LaundriX Technologies Inc. All rights reserved.</p>
+            <div class="lx-footer-bottom-links">
+              <a href="terms.html">Terms</a>
+              <a href="privacy.html">Privacy</a>
+              <a href="refund-policy.html">Refunds</a>
+            </div>
+            <div>Made with precision for cleaner days.</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ======================================================
+         GLOBAL JS SCRIPT
+    ====================================================== -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- Sidebar Active Link Tracking on Scroll -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const sections = document.querySelectorAll(".refund-content h2");
+        const navLinks = document.querySelectorAll(".refund-nav-links a");
+
+        window.addEventListener("scroll", () => {
+          let current = "";
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop - 150;
+            if (window.scrollY >= sectionTop) {
+              current = section.getAttribute("id");
+            }
+          });
+
+          navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${current}`) {
+              link.classList.add("active");
+            }
+          });
+        }, { passive: true });
+      });
+    </script>
+  </body>
+</html>

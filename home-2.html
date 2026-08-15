@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="LaundriX is the smartest way to manage your laundry. Schedule, track and get fresh clothes delivered with zero effort."
+    />
+    <meta name="theme-color" content="#10b981" />
+    <title>LaundriX — Smart Laundry, Simplified</title>
+
+    <!-- =========================================================
+         GOOGLE FONTS
+    ========================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- =========================================================
+         MATERIAL SYMBOLS & FONT AWESOME
+    ========================================================== -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <!-- =========================================================
+         COMMON GLOBAL CSS
+    ========================================================== -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+    <!-- =========================================================
+         HOME 2 PAGE SPECIFIC CSS (MODERN SAAS & GLASS AESTHETICS)
+    ========================================================== -->
+    <style>
+      /* SaaS Hero Section */
+      .s-hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 140px 0 90px;
+        overflow: hidden;
+        background: radial-gradient(circle at 15% 20%, rgba(var(--lx-primary-rgb), 0.1) 0%, transparent 45%),
+                    radial-gradient(circle at 85% 80%, rgba(var(--lx-accent-rgb), 0.08) 0%, transparent 50%);
+      }
+
+      .s-hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+        gap: 60px;
+      }
+
+      .s-hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 6px 16px 6px 8px;
+        border-radius: var(--lx-radius-pill);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-sm);
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--lx-text);
+        margin-bottom: 24px;
+      }
+
+      .s-hero-badge span {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: var(--lx-radius-pill);
+        background: var(--lx-primary);
+        color: #fff;
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        box-shadow: 0 2px 8px var(--lx-primary-glow);
+      }
+
+      .s-hero-title {
+        font-size: clamp(44px, 5.8vw, 72px);
+        font-weight: 900;
+        line-height: 1.04;
+        letter-spacing: -0.05em;
+        color: var(--lx-text);
+        margin-bottom: 22px;
+      }
+
+      .s-hero-title .highlight {
+        background: linear-gradient(135deg, var(--lx-primary), #059669 60%, var(--lx-accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+      }
+
+      .s-hero-desc {
+        font-size: 18px;
+        color: var(--lx-text-soft);
+        max-width: 540px;
+        line-height: 1.7;
+        margin-bottom: 36px;
+      }
+
+      .s-hero-actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: 44px;
+      }
+
+      .s-btn-primary {
+        min-height: 54px;
+        padding: 0 30px;
+        border-radius: var(--lx-radius-pill);
+        background: linear-gradient(135deg, var(--lx-primary), var(--lx-primary-hover));
+        color: #fff;
+        font-weight: 800;
+        font-size: 15px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 10px 25px var(--lx-primary-glow);
+        transition: var(--lx-transition);
+        cursor: pointer;
+      }
+
+      .s-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 36px var(--lx-primary-glow);
+        color: #fff;
+      }
+
+      .s-btn-secondary {
+        min-height: 54px;
+        padding: 0 26px;
+        border-radius: var(--lx-radius-pill);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        color: var(--lx-text);
+        font-weight: 700;
+        font-size: 15px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: var(--lx-shadow-sm);
+        transition: var(--lx-transition);
+        cursor: pointer;
+      }
+
+      .s-btn-secondary:hover {
+        background: var(--lx-bg-subtle);
+        transform: translateY(-2px);
+        box-shadow: var(--lx-shadow-md);
+      }
+
+      /* Social Proof */
+      .s-hero-social-proof {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .s-hero-avatars {
+        display: flex;
+      }
+
+      .s-hero-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 3px solid var(--lx-surface);
+        margin-left: -10px;
+        object-fit: cover;
+        box-shadow: var(--lx-shadow-sm);
+      }
+
+      .s-hero-avatar:first-child {
+        margin-left: 0;
+      }
+
+      .s-hero-social-text {
+        font-size: 13px;
+        color: var(--lx-text-soft);
+      }
+
+      .s-hero-social-text strong {
+        display: block;
+        color: var(--lx-text);
+        font-size: 14px;
+      }
+
+      /* Live Interactive Dashboard Mockup */
+      .s-hero-visual {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .s-hero-dashboard {
+        position: relative;
+        width: 100%;
+        max-width: 520px;
+        border-radius: var(--lx-radius-xl);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-xl);
+        padding: 30px;
+        transform: perspective(1000px) rotateY(-4deg) rotateX(2deg);
+        transition: transform 0.5s var(--lx-ease), box-shadow 0.5s ease;
+      }
+
+      .s-hero-visual:hover .s-hero-dashboard {
+        transform: perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(-6px);
+        box-shadow: 0 35px 80px -15px rgba(15, 23, 42, 0.2);
+      }
+
+      .s-dash-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+        padding-bottom: 18px;
+        border-bottom: 1px solid var(--lx-border);
+      }
+
+      .s-dash-dots {
+        display: flex;
+        gap: 6px;
+      }
+
+      .s-dash-dots span {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        display: block;
+      }
+
+      .s-dash-dots span:nth-child(1) { background: #ef4444; }
+      .s-dash-dots span:nth-child(2) { background: #f59e0b; }
+      .s-dash-dots span:nth-child(3) { background: #10b981; }
+
+      .s-dash-status {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--lx-text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .s-dash-status .live-pulse {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #10b981;
+        box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+        animation: pulseGlow 2s infinite;
+      }
+
+      .s-dash-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--lx-border-subtle);
+      }
+
+      .s-dash-row:last-child {
+        border-bottom: none;
+      }
+
+      .s-dash-label {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--lx-text-soft);
+      }
+
+      .s-dash-value {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--lx-text);
+      }
+
+      .s-dash-progress {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .s-dash-bar {
+        width: 120px;
+        height: 8px;
+        border-radius: var(--lx-radius-pill);
+        background: var(--lx-bg-subtle);
+        overflow: hidden;
+      }
+
+      .s-dash-bar .fill {
+        height: 100%;
+        border-radius: var(--lx-radius-pill);
+        background: linear-gradient(90deg, var(--lx-primary), #059669);
+      }
+
+      .s-dash-badge {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: var(--lx-radius-pill);
+        background: rgba(var(--lx-primary-rgb), 0.12);
+        color: var(--lx-primary-dark);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      /* Floating Badges */
+      .s-float-card {
+        position: absolute;
+        padding: 14px 20px;
+        border-radius: var(--lx-radius-md);
+        background: var(--lx-surface-glass);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-lg);
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        animation: floatMotion 6s ease-in-out infinite;
+        z-index: 10;
+      }
+
+      .s-float-card .icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: rgba(var(--lx-primary-rgb), 0.12);
+        color: var(--lx-primary);
+        display: grid;
+        place-items: center;
+        font-size: 20px;
+      }
+
+      .s-float-card strong {
+        display: block;
+        font-size: 13px;
+        color: var(--lx-text);
+      }
+
+      .s-float-card small {
+        display: block;
+        font-size: 11px;
+        color: var(--lx-text-soft);
+      }
+
+      .s-float-1 {
+        top: -20px;
+        right: -25px;
+      }
+
+      .s-float-2 {
+        bottom: -25px;
+        left: -25px;
+        animation-delay: -3s;
+      }
+
+      /* Features Grid */
+      .s-features {
+        padding: 100px 0 80px;
+        background: var(--lx-bg);
+      }
+
+      .s-section-head {
+        text-align: center;
+        max-width: 680px;
+        margin: 0 auto 60px;
+      }
+
+      .s-section-tag {
+        display: inline-block;
+        padding: 6px 16px;
+        border-radius: var(--lx-radius-pill);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        color: var(--lx-primary);
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 14px;
+      }
+
+      .s-section-title {
+        font-size: clamp(32px, 4vw, 48px);
+        margin-bottom: 16px;
+      }
+
+      .s-section-desc {
+        color: var(--lx-text-soft);
+        font-size: 17px;
+      }
+
+      .s-features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .s-feature-card {
+        padding: 38px 32px;
+        border-radius: var(--lx-radius-xl);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-sm);
+        transition: var(--lx-transition);
+        text-align: center;
+      }
+
+      .s-feature-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--lx-shadow-lg);
+        border-color: rgba(var(--lx-primary-rgb), 0.4);
+      }
+
+      .s-feature-icon {
+        width: 64px;
+        height: 64px;
+        display: grid;
+        place-items: center;
+        margin: 0 auto 20px;
+        border-radius: var(--lx-radius-md);
+        background: rgba(var(--lx-primary-rgb), 0.1);
+        color: var(--lx-primary);
+        font-size: 26px;
+        transition: var(--lx-transition);
+      }
+
+      .s-feature-card:hover .s-feature-icon {
+        background: var(--lx-primary);
+        color: #fff;
+        transform: scale(1.1);
+      }
+
+      .s-feature-card h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      .s-feature-card p {
+        color: var(--lx-text-soft);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      /* Stats Counter Section */
+      .s-stats {
+        padding: 80px 0;
+      }
+
+      .s-stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+      }
+
+      .s-stat {
+        padding: 36px 28px;
+        border-radius: var(--lx-radius-lg);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-sm);
+        text-align: center;
+        transition: var(--lx-transition);
+      }
+
+      .s-stat:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--lx-shadow-md);
+        border-color: var(--lx-primary);
+      }
+
+      .s-stat-number {
+        font-family: "Manrope", sans-serif;
+        font-size: 46px;
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        color: var(--lx-primary);
+        margin-bottom: 4px;
+      }
+
+      .s-stat-label {
+        color: var(--lx-text-soft);
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      /* How it Works */
+      .s-how {
+        padding: 100px 0;
+        background: var(--lx-bg-subtle);
+      }
+
+      .s-how-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+
+      .s-how-step {
+        text-align: center;
+        padding: 40px 30px;
+        border-radius: var(--lx-radius-xl);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-sm);
+        transition: var(--lx-transition);
+      }
+
+      .s-how-step:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--lx-shadow-md);
+      }
+
+      .s-how-number {
+        width: 52px;
+        height: 52px;
+        display: grid;
+        place-items: center;
+        margin: 0 auto 20px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, var(--lx-primary), var(--lx-primary-hover));
+        color: #fff;
+        font-weight: 900;
+        font-size: 20px;
+        box-shadow: var(--lx-shadow-glow);
+      }
+
+      .s-how-step h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      .s-how-step p {
+        color: var(--lx-text-soft);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      /* Testimonial Box */
+      .s-testimonial {
+        padding: 110px 0;
+      }
+
+      .s-testimonial-box {
+        padding: 65px 60px;
+        border-radius: var(--lx-radius-xl);
+        background: linear-gradient(135deg, var(--lx-surface), var(--lx-bg-subtle));
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-xl);
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .s-testimonial-stars {
+        color: var(--lx-gold);
+        letter-spacing: 4px;
+        margin-bottom: 20px;
+        font-size: 18px;
+      }
+
+      .s-testimonial-box blockquote {
+        font-family: "Manrope", sans-serif;
+        font-size: clamp(22px, 2.8vw, 32px);
+        line-height: 1.4;
+        letter-spacing: -0.025em;
+        color: var(--lx-text);
+        margin: 0 0 28px;
+        font-weight: 800;
+      }
+
+      .s-testimonial-author {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+      }
+
+      .s-testimonial-author img {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: var(--lx-shadow-sm);
+      }
+
+      .s-testimonial-author .name {
+        font-weight: 700;
+        font-size: 16px;
+        color: var(--lx-text);
+        text-align: left;
+      }
+
+      .s-testimonial-author .role {
+        display: block;
+        font-size: 13px;
+        color: var(--lx-text-soft);
+      }
+
+      /* SaaS CTA */
+      .s-cta {
+        padding: 0 0 110px;
+      }
+
+      .s-cta-box {
+        padding: 70px 60px;
+        border-radius: var(--lx-radius-xl);
+        background: radial-gradient(circle at 100% 0%, #059669 0%, #064e3b 100%);
+        color: #fff;
+        text-align: center;
+        box-shadow: 0 25px 60px -10px rgba(6, 78, 59, 0.4);
+      }
+
+      .s-cta-box h2 {
+        color: #fff;
+        font-size: clamp(32px, 4vw, 48px);
+        margin-bottom: 14px;
+      }
+
+      .s-cta-box p {
+        max-width: 580px;
+        margin: 0 auto 32px;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 18px;
+      }
+
+      .s-cta-actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .s-cta-actions .s-btn-primary {
+        background: #ffffff;
+        color: #064e3b;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .s-cta-actions .s-btn-primary:hover {
+        background: var(--lx-primary-light);
+      }
+
+      .s-cta-actions .s-btn-secondary {
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(10px);
+      }
+
+      .s-cta-actions .s-btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      /* Keyframes */
+      @keyframes floatMotion {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-12px); }
+      }
+
+      @keyframes pulseGlow {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.15); opacity: 0.7; }
+      }
+
+      /* Responsive Layout */
+      @media (max-width: 1050px) {
+        .s-hero-grid { grid-template-columns: 1fr; text-align: center; }
+        .s-hero-desc, .s-hero-actions, .s-hero-social-proof { justify-content: center; margin-inline: auto; }
+        .s-features-grid { grid-template-columns: repeat(2, 1fr); }
+        .s-stats-grid { grid-template-columns: repeat(2, 1fr); }
+        .s-how-grid { grid-template-columns: repeat(2, 1fr); }
+        .s-float-card { display: none; }
+      }
+
+      @media (max-width: 768px) {
+        .s-hero-title { font-size: clamp(36px, 10vw, 48px); }
+        .s-features-grid { grid-template-columns: 1fr; }
+        .s-how-grid { grid-template-columns: 1fr; }
+        .s-stats-grid { grid-template-columns: 1fr 1fr; }
+        .s-testimonial-box { padding: 40px 24px; }
+        .s-cta-box { padding: 40px 24px; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- =========================================================
+         GLOBAL HEADER
+    ========================================================== -->
+    <header class="lx-header">
+      <div class="lx-container">
+        <div class="lx-header-inner">
+          <!-- BRAND -->
+          <a href="index.html" class="lx-brand" aria-label="LaundriX Home">
+            <div class="lx-brand-mark">
+              <span class="material-symbols-rounded"> local_laundry_service </span>
+            </div>
+            <div class="lx-brand-name">Laundri<span>X</span></div>
+          </a>
+
+          <!-- DESKTOP NAV -->
+          <nav class="lx-nav" aria-label="Main navigation">
+            <div class="lx-nav-dropdown">
+              <button
+                type="button"
+                class="lx-nav-link lx-nav-dropdown-trigger is-active"
+                data-home-dropdown
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                <span>Home</span>
+                <span class="material-symbols-rounded" style="font-size:18px;"> keyboard_arrow_down </span>
+              </button>
+
+              <div class="lx-nav-dropdown-menu" aria-label="Home pages">
+                <a href="index.html" class="lx-nav-dropdown-item">
+                  <div class="lx-dropdown-icon">
+                    <span class="material-symbols-rounded"> home </span>
+                  </div>
+                  <span class="lx-dropdown-content">
+                    <strong> Home 1 </strong>
+                    <small> Signature Experience </small>
+                  </span>
+                </a>
+                <a href="home-2.html" class="lx-nav-dropdown-item is-current">
+                  <div class="lx-dropdown-icon">
+                    <span class="material-symbols-rounded"> auto_awesome </span>
+                  </div>
+                  <span class="lx-dropdown-content">
+                    <strong> Home 2 </strong>
+                    <small> Expressive SaaS </small>
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            <a href="services.html" class="lx-nav-link"> Services </a>
+            <a href="about.html" class="lx-nav-link"> About </a>
+            <a href="pricing.html" class="lx-nav-link"> Pricing </a>
+            <a href="how-it-works.html" class="lx-nav-link"> How it works </a>
+            <a href="coverage.html" class="lx-nav-link"> Coverage </a>
+            <a href="blog.html" class="lx-nav-link"> Blog </a>
+            <a href="contact.html" class="lx-nav-link"> Contact </a>
+          </nav>
+
+          <!-- HEADER ACTIONS -->
+          <div class="lx-header-actions">
+            <a href="login.html" class="lx-nav-link" style="font-weight:700;"> Login </a>
+            <a href="register.html" class="lx-button lx-button-primary"> Sign up </a>
+
+            <button type="button" class="lx-icon-button" data-theme-toggle aria-label="Toggle theme">
+              <span class="material-symbols-rounded"> dark_mode </span>
+            </button>
+
+            <button
+              type="button"
+              class="lx-direction-toggle"
+              data-rtl-toggle
+              aria-label="Toggle LTR / RTL"
+              aria-pressed="false"
+              title="Toggle LTR / RTL"
+            >
+              <span class="lx-direction-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </button>
+
+            <button type="button" class="lx-icon-button lx-menu-toggle" data-menu-toggle aria-label="Open menu" aria-expanded="false">
+              <span class="material-symbols-rounded"> menu </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- MOBILE MENU -->
+        <div class="lx-mobile-menu" data-mobile-menu>
+          <div class="lx-mobile-menu-inner">
+            <div class="lx-mobile-home">
+              <button type="button" class="lx-mobile-home-trigger" data-mobile-home-toggle aria-expanded="false">
+                <span>Home Options</span>
+                <span class="material-symbols-rounded"> keyboard_arrow_down </span>
+              </button>
+
+              <div class="lx-mobile-home-links">
+                <a href="index.html"> Home 1 (Signature) </a>
+                <a href="home-2.html" class="is-current"> Home 2 (Expressive) </a>
+              </div>
+            </div>
+
+            <a href="services.html"> Services </a>
+            <a href="about.html"> About </a>
+            <a href="pricing.html"> Pricing </a>
+            <a href="how-it-works.html"> How it works </a>
+            <a href="coverage.html"> Coverage </a>
+            <a href="blog.html"> Blog </a>
+            <a href="contact.html"> Contact </a>
+
+            <div class="lx-mobile-menu-actions">
+              <a href="login.html" class="lx-button lx-button-outline"> Login </a>
+              <a href="register.html" class="lx-button lx-button-primary"> Sign up </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- =========================================================
+         PAGE CONTENT
+    ========================================================== -->
+    <main>
+      <!-- HERO -->
+      <section class="s-hero">
+        <div class="lx-container">
+          <div class="s-hero-grid">
+            <!-- HERO CONTENT -->
+            <div>
+              <div class="s-hero-badge">
+                <span>New</span>
+                AI-Powered Laundry Management
+              </div>
+
+              <h1 class="s-hero-title">
+                Smart laundry.
+                <br />
+                <span class="highlight">Zero effort.</span>
+              </h1>
+
+              <p class="s-hero-desc">
+                LaundriX is the intelligent way to manage your laundry. Schedule pickups, track orders,
+                and get fresh clothes delivered — all from one sleek dashboard.
+              </p>
+
+              <div class="s-hero-actions">
+                <a href="register.html" class="s-btn-primary">
+                  Start Free Trial
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="how-it-works.html" class="s-btn-secondary">
+                  <i class="fa-solid fa-play" style="color:var(--lx-primary);"></i>
+                  See How It Works
+                </a>
+              </div>
+
+              <div class="s-hero-social-proof">
+                <div class="s-hero-avatars">
+                  <img class="s-hero-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Customer" />
+                  <img class="s-hero-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="Customer" />
+                  <img class="s-hero-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Customer" />
+                  <img class="s-hero-avatar" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80" alt="Customer" />
+                </div>
+                <div class="s-hero-social-text">
+                  <strong>Trusted by 12,000+ customers</strong>
+                  4.9/5 average verified rating
+                </div>
+              </div>
+            </div>
+
+            <!-- HERO VISUAL -->
+            <div class="s-hero-visual">
+              <div class="s-hero-dashboard">
+                <div class="s-dash-header">
+                  <div class="s-dash-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <span class="s-dash-status">
+                    <span class="live-pulse"></span> Live Dashboard
+                  </span>
+                </div>
+
+                <div class="s-dash-row">
+                  <span class="s-dash-label">Order #LD-2026-0842</span>
+                  <span class="s-dash-value" style="color:var(--lx-primary); display:flex; align-items:center; gap:6px;">
+                    <span style="font-size:10px;">●</span> In Progress
+                  </span>
+                </div>
+
+                <div class="s-dash-row">
+                  <span class="s-dash-label">Doorstep Pickup</span>
+                  <span class="s-dash-value">Today, 6:30 PM</span>
+                </div>
+
+                <div class="s-dash-row">
+                  <span class="s-dash-label">Estimated Delivery</span>
+                  <span class="s-dash-value">Tomorrow, 10:00 AM</span>
+                </div>
+
+                <div class="s-dash-row">
+                  <span class="s-dash-label">Cleaning Status</span>
+                  <div class="s-dash-progress">
+                    <span class="s-dash-badge">74% Complete</span>
+                    <div class="s-dash-bar">
+                      <div class="fill" style="width:74%;"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="s-dash-row" style="border-bottom: none; padding-top: 16px;">
+                  <span class="s-dash-label">Weight & Items</span>
+                  <span class="s-dash-value">8 items · 4.2 kg</span>
+                </div>
+              </div>
+
+              <!-- Floating Depth Badges -->
+              <div class="s-float-card s-float-1">
+                <div class="icon">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <div>
+                  <strong>Express Service</strong>
+                  <small>Same-day delivery ready</small>
+                </div>
+              </div>
+
+              
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURES -->
+      <section class="s-features">
+        <div class="lx-container">
+          <div class="s-section-head" data-reveal>
+            <span class="s-section-tag">Platform Features</span>
+            <h2 class="s-section-title">Everything you need to manage laundry</h2>
+            <p class="s-section-desc">
+              From scheduling to real-time order tracking, LaundriX gives you complete control over your wardrobe care.
+            </p>
+          </div>
+
+          <div class="s-features-grid">
+            <div class="s-feature-card" data-reveal>
+              <div class="s-feature-icon">
+                <i class="fa-solid fa-calendar-check"></i>
+              </div>
+              <h3>Smart Scheduling</h3>
+              <p>Choose pickup and delivery times that fit your schedule. Recurring subscription bookings available.</p>
+            </div>
+
+            <div class="s-feature-card" data-reveal>
+              <div class="s-feature-icon">
+                <i class="fa-solid fa-map-location-dot"></i>
+              </div>
+              <h3>Real-Time Tracking</h3>
+              <p>Track your garments through every stage of cleaning and delivery with live map updates.</p>
+            </div>
+
+            <div class="s-feature-card" data-reveal>
+              <div class="s-feature-icon">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <h3>Dashboard Analytics</h3>
+              <p>View historical orders, garment care preferences, and monthly spending insights in one place.</p>
+            </div>
+
+            <div class="s-feature-card" data-reveal>
+              <div class="s-feature-icon">
+                <i class="fa-solid fa-shield-heart"></i>
+              </div>
+              <h3>Garment Protection</h3>
+              <p>Certified fabric-safe washing with non-toxic solutions and complimentary garment insurance.</p>
+            </div>
+
+            <div class="s-feature-card" data-reveal>
+              <div class="s-feature-icon">
+                <i class="fa-solid fa-credit-card"></i>
+              </div>
+              <h3>Flexible Payments</h3>
+              <p>Pay securely with credit cards, UPI, Apple Pay or wallets. Transparent invoicing with no surprises.</p>
+            </div>
+
+            <div class="s-feature-card" data-reveal>
+              <div class="s-feature-icon">
+                <i class="fa-solid fa-headset"></i>
+              </div>
+              <h3>24/7 Dedicated Support</h3>
+              <p>Get instant assistance anytime from our dedicated garment care specialists and support team.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STATS -->
+      <section class="s-stats">
+        <div class="lx-container">
+          <div class="s-stats-grid" data-reveal>
+            <div class="s-stat">
+              <div class="s-stat-number" data-counter="12000">12K+</div>
+              <div class="s-stat-label">Active Customers</div>
+            </div>
+            <div class="s-stat">
+              <div class="s-stat-number" data-counter="98">98%</div>
+              <div class="s-stat-label">On-Time Delivery</div>
+            </div>
+            <div class="s-stat">
+              <div class="s-stat-number" data-counter="4.9">4.9</div>
+              <div class="s-stat-label">Average Rating</div>
+            </div>
+            <div class="s-stat">
+              <div class="s-stat-number" data-counter="24">24h</div>
+              <div class="s-stat-label">Express Turnaround</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section class="s-how">
+        <div class="lx-container">
+          <div class="s-section-head" data-reveal>
+            <span class="s-section-tag">How It Works</span>
+            <h2 class="s-section-title">Three steps to fresh clothes</h2>
+            <p class="s-section-desc">Simple, fast, and completely hands-free.</p>
+          </div>
+
+          <div class="s-how-grid">
+            <div class="s-how-step" data-reveal>
+              <div class="s-how-number">1</div>
+              <h3>Schedule Pickup</h3>
+              <p>Choose your desired laundry services, pickup time, and location in under 60 seconds.</p>
+            </div>
+
+            <div class="s-how-step" data-reveal>
+              <div class="s-how-number">2</div>
+              <h3>Master Cleaning</h3>
+              <p>Our specialists sort, wash, dry, and iron your garments according to textile care tags.</p>
+            </div>
+
+            <div class="s-how-step" data-reveal>
+              <div class="s-how-number">3</div>
+              <h3>Freshness Delivered</h3>
+              <p>Your clothes arrive fresh, crisply folded, and ready to wear right back to your door.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIAL -->
+      <section class="s-testimonial">
+        <div class="lx-container">
+          <div class="s-testimonial-box" data-reveal>
+            <div class="s-testimonial-stars">★★★★★</div>
+            <blockquote>
+              “LaundriX has completely transformed my laundry routine. I schedule pickups from my phone,
+              track everything in real-time, and my clothes always come back in pristine condition.”
+            </blockquote>
+            <div class="s-testimonial-author">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Customer" />
+              <div>
+                <div class="name">Ananya Sharma</div>
+                <span class="role">Verified Customer · 24 Orders Completed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="s-cta">
+        <div class="lx-container">
+          <div class="s-cta-box" data-reveal>
+            <h2>Ready to simplify your laundry?</h2>
+            <p>Join thousands of customers who've made laundry one less thing to think about.</p>
+            <div class="s-cta-actions">
+              <a href="register.html" class="s-btn-primary">
+                Start Your Free Trial
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+              <a href="pricing.html" class="s-btn-secondary">View Pricing</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- =========================================================
+         GLOBAL FOOTER
+    ========================================================== -->
+    <footer class="lx-footer">
+      <div class="lx-footer-main">
+        <div class="lx-container">
+          <div class="lx-footer-grid">
+            <!-- BRAND -->
+            <div class="lx-footer-brand">
+              <a href="index.html" class="lx-brand">
+                <div class="lx-brand-mark">
+                  <span class="material-symbols-rounded"> local_laundry_service </span>
+                </div>
+                <div class="lx-brand-name">Laundri<span>X</span></div>
+              </a>
+              <p class="lx-footer-description">
+                The smartest way to manage your laundry. Premium fabric care, live order tracking, and reliable doorstep delivery.
+              </p>
+              <div class="lx-footer-socials">
+                <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="lx-social">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" class="lx-social">
+                  <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://x.com" target="_blank" rel="noopener" aria-label="X" class="lx-social">
+                  <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="lx-social">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- COMPANY -->
+            <div class="lx-footer-column">
+              <h3>Company</h3>
+              <a href="about.html">About Us</a>
+              <a href="services.html">Services</a>
+              <a href="pricing.html">Pricing</a>
+              <a href="how-it-works.html">How It Works</a>
+              <a href="coverage.html">Coverage Areas</a>
+            </div>
+
+            <!-- SERVICES -->
+            <div class="lx-footer-column">
+              <h3>Services</h3>
+              <a href="service-wash-fold.html">Wash & Fold</a>
+              <a href="service-dry-cleaning.html">Dry Cleaning</a>
+              <a href="service-ironing.html">Steam Press</a>
+              <a href="service-premium-care.html">Premium Care</a>
+              <a href="faq.html">Help & FAQs</a>
+            </div>
+
+            <!-- SUPPORT -->
+            <div class="lx-footer-column">
+              <h3>Support</h3>
+              <a href="contact.html">Contact Us</a>
+              <a href="blog.html">Laundry Blog</a>
+              <a href="refund-policy.html">Refund Policy</a>
+              <a href="terms.html">Terms of Service</a>
+              <a href="privacy.html">Privacy Policy</a>
+            </div>
+
+            <!-- APP / CTA -->
+            <div class="lx-footer-cta">
+              <div class="lx-footer-cta-card">
+                <div class="lx-footer-cta-icon">
+                  <i class="fa-solid fa-basket-shopping"></i>
+                </div>
+                <div>
+                  <strong>Ready to start?</strong>
+                  <p>Schedule your first pickup today.</p>
+                </div>
+              </div>
+              <a href="register.html" class="lx-footer-button">
+                <span>Get Started</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER BOTTOM -->
+      <div class="lx-footer-bottom">
+        <div class="lx-container">
+          <div class="lx-footer-bottom-inner">
+            <p>© 2026 LaundriX Technologies Inc. All rights reserved.</p>
+            <div class="lx-footer-bottom-links">
+              <a href="terms.html">Terms</a>
+              <a href="privacy.html">Privacy</a>
+              <a href="refund-policy.html">Refunds</a>
+            </div>
+            <div>Made with precision for smarter laundry.</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- =========================================================
+         GLOBAL JS
+    ========================================================== -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="LaundriX transparent pricing for Wash & Fold, Dry Cleaning, Steam Pressing and Luxury Couture Care. Interactive order cost estimator and zero hidden fees."
+    />
+    <meta name="theme-color" content="#059669" />
+    <title>Pricing & Plans | LaundriX — Transparent Laundry & Dry Cleaning Rates</title>
+
+    <!-- ======================================================
+         GOOGLE FONTS (MANROPE & PLUS JAKARTA SANS)
+    ====================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ======================================================
+         ICONS (MATERIAL SYMBOLS & FONT AWESOME)
+    ====================================================== -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <!-- ======================================================
+         SHARED GLOBAL CSS
+    ====================================================== -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+    <!-- ======================================================
+         PRICING PAGE UNIQUE STYLES (MODERN LUXE & ANIMATIONS)
+    ====================================================== -->
+    <style>
+      /* Pricing Hero */
+      .prc-hero {
+        position: relative;
+        padding-top: clamp(130px, 15vh, 170px);
+        padding-bottom: clamp(50px, 7vh, 80px);
+        text-align: center;
+        background: radial-gradient(circle at 50% 15%, rgba(var(--lx-primary-rgb), 0.08) 0%, transparent 60%);
+        overflow: hidden;
+      }
+
+      .prc-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 16px;
+        border-radius: var(--lx-radius-pill);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-sm);
+        color: var(--lx-primary);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+      .prc-hero h1 {
+        font-size: clamp(36px, 5vw, 64px);
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        margin-bottom: 18px;
+      }
+
+      .prc-hero h1 span {
+        color: var(--lx-primary);
+      }
+
+      .prc-hero p {
+        font-size: clamp(16px, 1.2vw, 19px);
+        color: var(--lx-text-soft);
+        max-width: 600px;
+        margin: 0 auto 36px;
+        line-height: 1.7;
+      }
+
+      /* Dynamic Billing Switcher */
+      .prc-toggle-wrap {
+        display: inline-flex;
+        align-items: center;
+        gap: 16px;
+        padding: 6px 8px 6px 16px;
+        border-radius: var(--lx-radius-pill);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-md);
+      }
+
+      .prc-toggle-wrap span {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--lx-text-soft);
+        transition: var(--lx-transition);
+      }
+
+      .prc-toggle-wrap span.active {
+        color: var(--lx-text);
+      }
+
+      .prc-toggle {
+        position: relative;
+        width: 54px;
+        height: 28px;
+        background: var(--lx-bg-subtle);
+        border: 1px solid var(--lx-border);
+        border-radius: var(--lx-radius-pill);
+        cursor: pointer;
+        transition: var(--lx-transition);
+      }
+
+      .prc-toggle.active {
+        background: var(--lx-primary);
+        border-color: var(--lx-primary);
+      }
+
+      .prc-toggle-dot {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: #ffffff;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .prc-toggle.active .prc-toggle-dot {
+        transform: translateX(26px);
+      }
+
+      .prc-save-pill {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: var(--lx-radius-pill);
+        background: rgba(var(--lx-primary-rgb), 0.12);
+        color: var(--lx-primary-dark);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+      }
+
+      /* Pricing Cards Grid with 3D Tilt and Glassmorphic Highlight */
+      .prc-section {
+        padding-block: clamp(40px, 6vw, 80px);
+      }
+
+      .prc-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+        gap: clamp(24px, 3.5vw, 36px);
+        align-items: stretch;
+      }
+
+      .prc-card {
+        border-radius: var(--lx-radius-xl);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-sm);
+        padding: clamp(32px, 4vw, 42px) clamp(24px, 3vw, 32px);
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        transition: var(--lx-transition);
+      }
+
+      .prc-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--lx-shadow-xl);
+        border-color: rgba(var(--lx-primary-rgb), 0.4);
+      }
+
+      .prc-card.popular {
+        border: 2px solid var(--lx-primary);
+        background: linear-gradient(180deg, rgba(var(--lx-primary-rgb), 0.03) 0%, var(--lx-surface) 100%);
+        box-shadow: var(--lx-shadow-md);
+      }
+
+      .prc-card-badge {
+        position: absolute;
+        top: -14px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 6px 18px;
+        border-radius: var(--lx-radius-pill);
+        background: linear-gradient(135deg, var(--lx-primary), #047857);
+        color: #fff;
+        font-size: 11.5px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        box-shadow: 0 4px 14px var(--lx-primary-glow);
+        white-space: nowrap;
+      }
+
+      .prc-card-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        background: rgba(var(--lx-primary-rgb), 0.1);
+        color: var(--lx-primary);
+        display: grid;
+        place-items: center;
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      .prc-card h3 {
+        font-size: 22px;
+        margin-bottom: 6px;
+      }
+
+      .prc-card .sub {
+        font-size: 13.5px;
+        color: var(--lx-text-soft);
+        margin-bottom: 24px;
+      }
+
+      .prc-price-box {
+        padding-block: 16px 24px;
+        border-bottom: 1px solid var(--lx-border);
+        margin-bottom: 24px;
+      }
+
+      .prc-amount {
+        font-family: var(--lx-font-display);
+        font-size: clamp(40px, 4vw, 52px);
+        font-weight: 900;
+        color: var(--lx-text);
+        letter-spacing: -0.04em;
+        line-height: 1;
+        transition: transform 0.25s ease;
+      }
+
+      .prc-unit {
+        font-size: 14px;
+        color: var(--lx-text-muted);
+        font-weight: 600;
+      }
+
+      .prc-period-text {
+        font-size: 12px;
+        color: var(--lx-text-soft);
+        margin-top: 6px;
+      }
+
+      .prc-features {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 32px;
+        flex: 1;
+      }
+
+      .prc-features li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 14px;
+        color: var(--lx-text);
+        font-weight: 600;
+      }
+
+      .prc-features li i {
+        color: var(--lx-primary);
+        font-size: 15px;
+      }
+
+      .prc-features li.muted {
+        color: var(--lx-text-muted);
+        text-decoration: line-through;
+      }
+
+      .prc-features li.muted i {
+        color: var(--lx-text-muted);
+      }
+
+      .prc-btn {
+        width: 100%;
+        min-height: 50px;
+        border-radius: var(--lx-radius-pill);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-weight: 800;
+        font-size: 14.5px;
+        cursor: pointer;
+        transition: var(--lx-transition);
+        text-decoration: none;
+      }
+
+      .prc-btn-primary {
+        background: linear-gradient(135deg, var(--lx-primary), #047857);
+        color: #fff;
+        box-shadow: 0 4px 14px var(--lx-primary-glow);
+        border: none;
+      }
+
+      .prc-btn-primary:hover {
+        background: linear-gradient(135deg, #047857, #065f46);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px var(--lx-primary-glow);
+        color: #fff;
+      }
+
+      .prc-btn-outline {
+        background: var(--lx-bg-subtle);
+        border: 1px solid var(--lx-border);
+        color: var(--lx-text);
+      }
+
+      .prc-btn-outline:hover {
+        background: var(--lx-surface);
+        border-color: var(--lx-primary);
+        color: var(--lx-primary);
+        transform: translateY(-2px);
+      }
+
+      /* Detailed Price Table */
+      .prc-detail-section {
+        padding-block: clamp(60px, 8vw, 100px);
+        background: var(--lx-bg-subtle);
+      }
+
+      .prc-table-wrap {
+        overflow-x: auto;
+        border-radius: var(--lx-radius-xl);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-sm);
+      }
+
+      .prc-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        min-width: 600px;
+      }
+
+      .prc-table thead tr {
+        border-bottom: 1px solid var(--lx-border);
+        background: rgba(var(--lx-primary-rgb), 0.03);
+      }
+
+      .prc-table th {
+        padding: 18px 24px;
+        font-family: var(--lx-font-display);
+        font-size: 14px;
+        font-weight: 800;
+        color: var(--lx-text);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .prc-table td {
+        padding: 16px 24px;
+        font-size: 14px;
+        color: var(--lx-text-soft);
+        border-bottom: 1px solid var(--lx-border);
+      }
+
+      .prc-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .prc-table td strong {
+        color: var(--lx-text);
+        font-weight: 700;
+      }
+
+      .prc-table td .price-highlight {
+        font-family: var(--lx-font-display);
+        font-size: 16px;
+        font-weight: 900;
+        color: var(--lx-primary);
+      }
+
+      /* Interactive Live Estimator Calculator */
+      .prc-calc-section {
+        padding-block: clamp(70px, 9vw, 110px);
+      }
+
+      .prc-calc-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(36px, 5vw, 64px);
+        align-items: center;
+      }
+
+      .prc-calc-card {
+        padding: clamp(28px, 4vw, 40px);
+        border-radius: var(--lx-radius-xl);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-lg);
+      }
+
+      .prc-form-group {
+        margin-bottom: 18px;
+      }
+
+      .prc-form-group label {
+        display: block;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--lx-text);
+        margin-bottom: 8px;
+      }
+
+      .prc-form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .prc-input, .prc-select {
+        width: 100%;
+        padding: 12px 16px;
+        border-radius: var(--lx-radius-md);
+        background: var(--lx-bg-subtle);
+        border: 1px solid var(--lx-border);
+        font-size: 14.5px;
+        font-weight: 600;
+        color: var(--lx-text);
+        outline: none;
+        transition: var(--lx-transition);
+      }
+
+      .prc-input:focus, .prc-select:focus {
+        border-color: var(--lx-primary);
+        background: var(--lx-surface);
+        box-shadow: 0 0 0 3px rgba(var(--lx-primary-rgb), 0.15);
+      }
+
+      .prc-calc-result {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 22px;
+        border-radius: var(--lx-radius-md);
+        background: rgba(var(--lx-primary-rgb), 0.08);
+        border: 1px solid rgba(var(--lx-primary-rgb), 0.2);
+        margin-block: 20px;
+      }
+
+      .prc-calc-result span {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--lx-text-soft);
+      }
+
+      .prc-calc-result strong {
+        font-family: var(--lx-font-display);
+        font-size: clamp(26px, 3vw, 36px);
+        font-weight: 900;
+        color: var(--lx-primary);
+        transition: transform 0.2s ease;
+      }
+
+      /* FAQ Accordion */
+      .prc-faq-section {
+        padding-block: clamp(60px, 8vw, 100px);
+        background: var(--lx-bg-subtle);
+      }
+
+      .prc-faq-grid {
+        max-width: 820px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .prc-faq-item {
+        border-radius: var(--lx-radius-lg);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        overflow: hidden;
+        transition: var(--lx-transition);
+      }
+
+      .prc-faq-question {
+        width: 100%;
+        padding: 20px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 800;
+        color: var(--lx-text);
+        text-align: left;
+      }
+
+      .prc-faq-question i {
+        color: var(--lx-primary);
+        font-size: 14px;
+        transition: transform 0.3s var(--lx-ease);
+      }
+
+      .prc-faq-item.is-open .prc-faq-question i {
+        transform: rotate(180deg);
+      }
+
+      .prc-faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s var(--lx-ease);
+      }
+
+      .prc-faq-answer p {
+        padding: 0 24px 22px;
+        font-size: 14.5px;
+        color: var(--lx-text-soft);
+        line-height: 1.75;
+      }
+
+      .prc-faq-item.is-open .prc-faq-answer {
+        max-height: 250px;
+      }
+
+      /* Bottom CTA Banner */
+      .prc-cta-section {
+        padding-block: clamp(40px, 7vw, 90px);
+      }
+
+      .prc-cta-card {
+        padding: clamp(36px, 5vw, 65px) clamp(24px, 4vw, 55px);
+        border-radius: var(--lx-radius-xl);
+        background: radial-gradient(circle at 100% 0%, #059669 0%, #064e3b 100%);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        box-shadow: 0 20px 50px -10px rgba(6, 78, 59, 0.35);
+      }
+
+      .prc-cta-card h2 {
+        color: #fff;
+        font-size: clamp(28px, 3.4vw, 42px);
+        margin-bottom: 10px;
+      }
+
+      .prc-cta-card p {
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 16px;
+        max-width: 560px;
+      }
+
+      .prc-cta-card .lx-button-white {
+        background: #ffffff;
+        color: #064e3b;
+        font-weight: 800;
+        font-size: 15px;
+        padding: 14px 32px;
+        border-radius: var(--lx-radius-pill);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+        flex-shrink: 0;
+        transition: var(--lx-transition);
+      }
+
+      .prc-cta-card .lx-button-white:hover {
+        background: var(--lx-primary-light);
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 980px) {
+        .prc-calc-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .prc-form-row {
+          grid-template-columns: 1fr;
+        }
+        .prc-cta-card {
+          flex-direction: column;
+          text-align: center;
+        }
+        .prc-cta-card .lx-button-white {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ======================================================
+         GLOBAL HEADER & NAVIGATION
+    ====================================================== -->
+    <header class="lx-header">
+      <div class="lx-container">
+        <div class="lx-header-inner">
+          <!-- BRAND -->
+          <a href="index.html" class="lx-brand" aria-label="LaundriX Home">
+            <div class="lx-brand-mark">
+              <span class="material-symbols-rounded"> local_laundry_service </span>
+            </div>
+            <div class="lx-brand-name">Laundri<span>X</span></div>
+          </a>
+
+          <!-- DESKTOP NAVBAR -->
+          <nav class="lx-nav" aria-label="Main navigation">
+            <div class="lx-nav-dropdown">
+              <button
+                type="button"
+                class="lx-nav-link lx-nav-dropdown-trigger"
+                data-home-dropdown
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                <span>Home</span>
+                <span class="material-symbols-rounded" style="font-size:18px;"> keyboard_arrow_down </span>
+              </button>
+
+              <div class="lx-nav-dropdown-menu" aria-label="Home pages">
+                <a href="index.html" class="lx-nav-dropdown-item">
+                  <div class="lx-dropdown-icon">
+                    <span class="material-symbols-rounded"> home </span>
+                  </div>
+                  <span class="lx-dropdown-content">
+                    <strong> Home 1 </strong>
+                    <small> Signature Experience </small>
+                  </span>
+                </a>
+                <a href="home-2.html" class="lx-nav-dropdown-item">
+                  <div class="lx-dropdown-icon">
+                    <span class="material-symbols-rounded"> auto_awesome </span>
+                  </div>
+                  <span class="lx-dropdown-content">
+                    <strong> Home 2 </strong>
+                    <small> Expressive SaaS </small>
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            <a href="services.html" class="lx-nav-link"> Services </a>
+            <a href="about.html" class="lx-nav-link"> About </a>
+            <a href="pricing.html" class="lx-nav-link is-active"> Pricing </a>
+            <a href="how-it-works.html" class="lx-nav-link"> How it works </a>
+            <a href="coverage.html" class="lx-nav-link"> Coverage </a>
+            <a href="blog.html" class="lx-nav-link"> Blog </a>
+            <a href="contact.html" class="lx-nav-link"> Contact </a>
+          </nav>
+
+          <!-- HEADER ACTIONS -->
+          <div class="lx-header-actions">
+            <a href="login.html" class="lx-nav-link" style="font-weight:700;"> Login </a>
+            <a href="register.html" class="lx-button lx-button-primary"> Sign up </a>
+
+            <button
+              type="button"
+              class="lx-icon-button"
+              data-theme-toggle
+              aria-label="Toggle theme"
+            >
+              <span class="material-symbols-rounded"> dark_mode </span>
+            </button>
+
+            <button
+              type="button"
+              class="lx-direction-toggle"
+              data-rtl-toggle
+              aria-label="Toggle LTR / RTL"
+              aria-pressed="false"
+              title="Toggle LTR / RTL"
+            >
+              <span class="lx-direction-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </button>
+
+            <button
+              type="button"
+              class="lx-icon-button lx-menu-toggle"
+              data-menu-toggle
+              aria-label="Open menu"
+              aria-expanded="false"
+            >
+              <span class="material-symbols-rounded"> menu </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- MOBILE SLIDE-DOWN MENU -->
+        <div class="lx-mobile-menu" data-mobile-menu>
+          <div class="lx-mobile-menu-inner">
+            <div class="lx-mobile-home">
+              <button
+                type="button"
+                class="lx-mobile-home-trigger"
+                data-mobile-home-toggle
+                aria-expanded="false"
+              >
+                <span>Home Options</span>
+                <span class="material-symbols-rounded"> keyboard_arrow_down </span>
+              </button>
+
+              <div class="lx-mobile-home-links">
+                <a href="index.html"> Home 1 (Signature) </a>
+                <a href="home-2.html"> Home 2 (Expressive) </a>
+              </div>
+            </div>
+
+            <a href="services.html"> Services </a>
+            <a href="about.html"> About </a>
+            <a href="pricing.html" class="is-current"> Pricing </a>
+            <a href="how-it-works.html"> How it works </a>
+            <a href="coverage.html"> Coverage </a>
+            <a href="blog.html"> Blog </a>
+            <a href="contact.html"> Contact </a>
+
+            <div class="lx-mobile-menu-actions">
+              <a href="login.html" class="lx-button lx-button-outline"> Login </a>
+              <a href="register.html" class="lx-button lx-button-primary"> Sign up </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ======================================================
+         PAGE MAIN CONTENT
+    ====================================================== -->
+    <main>
+      <!-- HERO & BILLING TOGGLE -->
+      <section class="prc-hero">
+        <div class="lx-container">
+          <div class="prc-eyebrow">
+            <i class="fa-solid fa-tag"></i>
+            Clear &amp; Transparent Rates
+          </div>
+          <h1>
+            Fair pricing.
+            <span>No surprises.</span>
+          </h1>
+          <p>
+            Choose the care package that fits your wardrobe. Every price is straightforward with free doorstep delivery and zero hidden charges.
+          </p>
+
+          <!-- Interactive Switcher -->
+          <div class="prc-toggle-wrap" data-reveal>
+            <span id="labelMonthly" class="active">Pay Per Order</span>
+            <div class="prc-toggle" id="billingToggle" role="button" tabindex="0" aria-label="Toggle Subscription Discount">
+              <div class="prc-toggle-dot"></div>
+            </div>
+            <span id="labelYearly">Monthly Plan <span class="prc-save-pill">Save 20%</span></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRICING TIERS -->
+      <section class="prc-section">
+        <div class="lx-container">
+          <div class="prc-grid">
+            <!-- 1. Wash & Fold Tier -->
+            <article class="prc-card" data-reveal>
+              <div class="prc-card-icon">
+                <i class="fa-solid fa-shirt"></i>
+              </div>
+              <h3>Wash &amp; Fold</h3>
+              <div class="sub">Everyday laundry essentials</div>
+
+              <div class="prc-price-box">
+                <div class="prc-amount" data-regular="₹79" data-discount="₹63">₹79</div>
+                <span class="prc-unit">/ kg</span>
+                <div class="prc-period-text">Free pickup &amp; delivery on min. orders</div>
+              </div>
+
+              <ul class="prc-features">
+                <li><i class="fa-solid fa-circle-check"></i> Eco-friendly detergents</li>
+                <li><i class="fa-solid fa-circle-check"></i> Color sorting &amp; temperature care</li>
+                <li><i class="fa-solid fa-circle-check"></i> Tumble dry &amp; neat folding</li>
+                <li><i class="fa-solid fa-circle-check"></i> 24–48h doorstep turnaround</li>
+                <li class="muted"><i class="fa-solid fa-circle-xmark"></i> Stain spot-treatment</li>
+                <li class="muted"><i class="fa-solid fa-circle-xmark"></i> Hanger steam finishing</li>
+              </ul>
+
+              <a href="register.html" class="prc-btn prc-btn-outline">
+                <span>Book Wash &amp; Fold</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </article>
+
+            <!-- 2. Dry Cleaning Tier (Popular) -->
+            <article class="prc-card popular" data-reveal>
+              <div class="prc-card-badge">Most Popular</div>
+              <div class="prc-card-icon">
+                <i class="fa-solid fa-spray-can-sparkles"></i>
+              </div>
+              <h3>Dry Cleaning</h3>
+              <div class="sub">Tailored suits &amp; fine fabrics</div>
+
+              <div class="prc-price-box">
+                <div class="prc-amount" data-regular="₹149" data-discount="₹119">₹149</div>
+                <span class="prc-unit">/ garment</span>
+                <div class="prc-period-text">Hand-finished on custom hangers</div>
+              </div>
+
+              <ul class="prc-features">
+                <li><i class="fa-solid fa-circle-check"></i> Non-toxic hydrocarbon cleaning</li>
+                <li><i class="fa-solid fa-circle-check"></i> Hand-treated stain removal</li>
+                <li><i class="fa-solid fa-circle-check"></i> Fabric fiber restoration</li>
+                <li><i class="fa-solid fa-circle-check"></i> Precision steam form press</li>
+                <li><i class="fa-solid fa-circle-check"></i> Dust-free breathable garment covers</li>
+                <li><i class="fa-solid fa-circle-check"></i> Free doorstep delivery</li>
+              </ul>
+
+              <a href="register.html" class="prc-btn prc-btn-primary">
+                <span>Book Dry Cleaning</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </article>
+
+            <!-- 3. Luxe & Bridal Tier -->
+            <article class="prc-card" data-reveal>
+              <div class="prc-card-icon">
+                <i class="fa-solid fa-gem"></i>
+              </div>
+              <h3>Luxe Couture</h3>
+              <div class="sub">Bridal, leather &amp; heirlooms</div>
+
+              <div class="prc-price-box">
+                <div class="prc-amount">Custom</div>
+                <span class="prc-unit">quoted per piece</span>
+                <div class="prc-period-text">Master artisan inspection</div>
+              </div>
+
+              <ul class="prc-features">
+                <li><i class="fa-solid fa-circle-check"></i> Hand cleaning for beads &amp; sequins</li>
+                <li><i class="fa-solid fa-circle-check"></i> Acid-free preservation boxing</li>
+                <li><i class="fa-solid fa-circle-check"></i> Leather, suede &amp; cashmere care</li>
+                <li><i class="fa-solid fa-circle-check"></i> Full garment value insurance</li>
+                <li><i class="fa-solid fa-circle-check"></i> White-glove dedicated delivery</li>
+                <li><i class="fa-solid fa-circle-check"></i> 1-on-1 fabric master consultation</li>
+              </ul>
+
+              <a href="contact.html" class="prc-btn prc-btn-outline">
+                <span>Request Custom Quote</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- DETAILED ITEMIZED RATES TABLE -->
+      <section class="prc-detail-section">
+        <div class="lx-container">
+          <div class="ab-section-head" data-reveal>
+            <div class="prc-eyebrow">Itemized Rates</div>
+            <h2>Standard Item Breakdown</h2>
+            <p>Clear, fixed pricing for everyday apparel and household items.</p>
+          </div>
+
+          <div class="prc-table-wrap" data-reveal>
+            <table class="prc-table">
+              <thead>
+                <tr>
+                  <th>Garment / Service</th>
+                  <th>Process Details</th>
+                  <th>Price Rate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Wash &amp; Fold (Per Kg)</strong></td>
+                  <td>Washing, organic softener, gentle tumble dry &amp; neat folding</td>
+                  <td><span class="price-highlight">₹79</span> / kg</td>
+                </tr>
+                <tr>
+                  <td><strong>Steam Press (Ironing)</strong></td>
+                  <td>Industrial multi-point steam finishing for shirts &amp; trousers</td>
+                  <td><span class="price-highlight">₹25</span> / piece</td>
+                </tr>
+                <tr>
+                  <td><strong>Shirt / Blouse Dry Clean</strong></td>
+                  <td>Eco dry cleaning, stain removal &amp; crisp collar shaping</td>
+                  <td><span class="price-highlight">₹149</span> / piece</td>
+                </tr>
+                <tr>
+                  <td><strong>2-Piece Suit Dry Clean</strong></td>
+                  <td>Jacket and trouser deep clean with form finish press</td>
+                  <td><span class="price-highlight">₹399</span> / set</td>
+                </tr>
+                <tr>
+                  <td><strong>Silk Saree / Dress</strong></td>
+                  <td>Delicate fabric non-chemical clean &amp; roll press</td>
+                  <td><span class="price-highlight">₹249</span> / piece</td>
+                </tr>
+                <tr>
+                  <td><strong>Heavy Winter Jacket / Coat</strong></td>
+                  <td>Down feather / wool treatment with texture rejuvenation</td>
+                  <td><span class="price-highlight">₹349</span> / piece</td>
+                </tr>
+                <tr>
+                  <td><strong>Bed Linen &amp; Comforter</strong></td>
+                  <td>Anti-bacterial hot cycle wash, drying and vacuum seal</td>
+                  <td><span class="price-highlight">₹299</span> / piece</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- INTERACTIVE ORDER COST ESTIMATOR -->
+      <section class="prc-calc-section">
+        <div class="lx-container">
+          <div class="prc-calc-grid">
+            <div data-reveal>
+              <div class="prc-eyebrow">Live Cost Estimator</div>
+              <h2>Calculate Your Laundry Bill in Seconds</h2>
+              <p style="color:var(--lx-text-soft); font-size:16px; line-height:1.75; margin-bottom:24px;">
+                Select your desired service, quantity or weight, and frequency. Watch your instant total calculate with zero hidden fees.
+              </p>
+              <div style="display:flex; flex-direction:column; gap:12px;">
+                <div style="display:flex; align-items:center; gap:10px; font-weight:700; color:var(--lx-text);">
+                  <i class="fa-solid fa-circle-check" style="color:var(--lx-primary);"></i> Free pickup on orders above ₹249
+                </div>
+                <div style="display:flex; align-items:center; gap:10px; font-weight:700; color:var(--lx-text);">
+                  <i class="fa-solid fa-circle-check" style="color:var(--lx-primary);"></i> Automatic discounts applied for weekly subscribers
+                </div>
+              </div>
+            </div>
+
+            <!-- Dynamic Calculator Widget -->
+            <div class="prc-calc-card" data-reveal>
+              <div class="prc-form-group">
+                <label for="calcService">Choose Service Type</label>
+                <select class="prc-select" id="calcService">
+                  <option value="79">Wash &amp; Fold (₹79 / kg)</option>
+                  <option value="149">Dry Clean — Shirt / Blouse (₹149 / pc)</option>
+                  <option value="399">Dry Clean — 2-Piece Suit (₹399 / set)</option>
+                  <option value="249">Dry Clean — Silk Saree / Dress (₹249 / pc)</option>
+                  <option value="25">Steam Pressing / Ironing (₹25 / pc)</option>
+                </select>
+              </div>
+
+              <div class="prc-form-row">
+                <div class="prc-form-group">
+                  <label for="calcQty" id="calcQtyLabel">Quantity (Kg or Items)</label>
+                  <input type="number" class="prc-input" id="calcQty" value="4" min="1" max="50" />
+                </div>
+                <div class="prc-form-group">
+                  <label for="calcFrequency">Pickup Frequency</label>
+                  <select class="prc-select" id="calcFrequency">
+                    <option value="1">One-time Order</option>
+                    <option value="0.85">Weekly (15% Off)</option>
+                    <option value="0.80">Monthly Plan (20% Off)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="prc-calc-result">
+                <span>Estimated Total:</span>
+                <strong id="calcDisplay">₹316</strong>
+              </div>
+
+              <a href="register.html" class="prc-btn prc-btn-primary" style="width:100%;">
+                <span>Proceed to Schedule</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ ACCORDION -->
+      <section class="prc-faq-section">
+        <div class="lx-container">
+          <div class="ab-section-head" data-reveal>
+            <div class="prc-eyebrow">Got Questions?</div>
+            <h2>Pricing FAQs</h2>
+            <p>Clear answers to all your billing, payment, and refund questions.</p>
+          </div>
+
+          <div class="prc-faq-grid">
+            <div class="prc-faq-item is-open" data-reveal>
+              <button class="prc-faq-question" type="button">
+                <span>How is Wash &amp; Fold weighed and charged?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+              <div class="prc-faq-answer">
+                <p>
+                  Wash &amp; Fold is weighed on certified digital scales upon collection. You receive a digital weight confirmation SMS before processing starts so your invoice is always 100% transparent.
+                </p>
+              </div>
+            </div>
+
+            <div class="prc-faq-item" data-reveal>
+              <button class="prc-faq-question" type="button">
+                <span>What is the minimum order value for free delivery?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+              <div class="prc-faq-answer">
+                <p>
+                  Doorstep pickup and delivery are completely free for all orders above ₹249. A nominal ₹40 logistics fee applies to orders below this amount.
+                </p>
+              </div>
+            </div>
+
+            <div class="prc-faq-item" data-reveal>
+              <button class="prc-faq-question" type="button">
+                <span>What payment methods do you accept?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+              <div class="prc-faq-answer">
+                <p>
+                  We accept UPI (GPay, PhonePe, Paytm), credit/debit cards (Visa, MasterCard, RuPay), net banking, Apple Pay, and cash/card upon delivery.
+                </p>
+              </div>
+            </div>
+
+            <div class="prc-faq-item" data-reveal>
+              <button class="prc-faq-question" type="button">
+                <span>What is your satisfaction &amp; re-wash policy?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+              <div class="prc-faq-answer">
+                <p>
+                  If you are not 100% satisfied with the cleanliness or pressing quality of any garment, notify us within 24 hours and we will re-clean and press your item free of charge.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BOTTOM CTA -->
+      <section class="prc-cta-section">
+        <div class="lx-container">
+          <div class="prc-cta-card" data-reveal>
+            <div>
+              <h2>Ready for Fresh Clothes?</h2>
+              <p>Schedule your first pickup in under a minute and experience laundry without the hassle.</p>
+            </div>
+            <a href="register.html" class="lx-button-white">
+              <span>Book a Pickup</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ======================================================
+         GLOBAL FOOTER
+    ====================================================== -->
+    <footer class="lx-footer">
+      <div class="lx-footer-main">
+        <div class="lx-container">
+          <div class="lx-footer-grid">
+            <!-- BRAND INFO -->
+            <div class="lx-footer-brand">
+              <a href="index.html" class="lx-brand">
+                <div class="lx-brand-mark">
+                  <span class="material-symbols-rounded"> local_laundry_service </span>
+                </div>
+                <div class="lx-brand-name">Laundri<span>X</span></div>
+              </a>
+              <p class="lx-footer-description">
+                Premium doorstep laundry and dry-cleaning service designed around your busy schedule. Freshness guaranteed.
+              </p>
+              <div class="lx-footer-socials">
+                <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="lx-social">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" class="lx-social">
+                  <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://x.com" target="_blank" rel="noopener" aria-label="X" class="lx-social">
+                  <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="lx-social">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- COMPANY LINKS -->
+            <div class="lx-footer-column">
+              <h3>Company</h3>
+              <a href="about.html">About Us</a>
+              <a href="services.html">Services</a>
+              <a href="pricing.html" class="is-active">Pricing</a>
+              <a href="how-it-works.html">How It Works</a>
+              <a href="coverage.html">Coverage Areas</a>
+            </div>
+
+            <!-- SERVICES LINKS -->
+            <div class="lx-footer-column">
+              <h3>Services</h3>
+              <a href="service-wash-fold.html">Wash &amp; Fold</a>
+              <a href="service-dry-cleaning.html">Dry Cleaning</a>
+              <a href="service-ironing.html">Steam Press</a>
+              <a href="service-premium-care.html">Premium Care</a>
+              <a href="faq.html">Help &amp; FAQs</a>
+            </div>
+
+            <!-- SUPPORT LINKS -->
+            <div class="lx-footer-column">
+              <h3>Support</h3>
+              <a href="contact.html">Contact Us</a>
+              <a href="blog.html">Laundry Blog</a>
+              <a href="refund-policy.html">Refund Policy</a>
+              <a href="terms.html">Terms of Service</a>
+              <a href="privacy.html">Privacy Policy</a>
+            </div>
+
+            <!-- ACTION CTA CARD -->
+            <div class="lx-footer-cta">
+              <div class="lx-footer-cta-card">
+                <div class="lx-footer-cta-icon">
+                  <i class="fa-solid fa-basket-shopping"></i>
+                </div>
+                <div>
+                  <strong>Effortless Laundry</strong>
+                  <p>Book a pickup in seconds.</p>
+                </div>
+              </div>
+              <a href="register.html" class="lx-footer-button">
+                <span>Get Started</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER BOTTOM BAR -->
+      <div class="lx-footer-bottom">
+        <div class="lx-container">
+          <div class="lx-footer-bottom-inner">
+            <p>© 2026 LaundriX Technologies Inc. All rights reserved.</p>
+            <div class="lx-footer-bottom-links">
+              <a href="terms.html">Terms</a>
+              <a href="privacy.html">Privacy</a>
+              <a href="refund-policy.html">Refunds</a>
+            </div>
+            <div>Made with precision for cleaner days.</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ======================================================
+         GLOBAL JS SCRIPT
+    ====================================================== -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- ======================================================
+         PAGE-SPECIFIC INTERACTIVE CALCULATOR & TOGGLE SCRIPT
+    ====================================================== -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // 1. Billing Switcher (Pay per order vs. Subscription Discount)
+        const toggle = document.getElementById("billingToggle");
+        const labelMonthly = document.getElementById("labelMonthly");
+        const labelYearly = document.getElementById("labelYearly");
+        const priceAmounts = document.querySelectorAll(".prc-amount[data-regular]");
+
+        if (toggle) {
+          toggle.addEventListener("click", () => {
+            const isDiscount = toggle.classList.toggle("active");
+            labelMonthly.classList.toggle("active", !isDiscount);
+            labelYearly.classList.toggle("active", isDiscount);
+
+            priceAmounts.forEach((el) => {
+              el.style.transform = "scale(0.85)";
+              setTimeout(() => {
+                el.textContent = isDiscount ? el.dataset.discount : el.dataset.regular;
+                el.style.transform = "scale(1)";
+              }, 150);
+            });
+          });
+        }
+
+        // 2. Real-time Interactive Cost Estimator
+        const calcService = document.getElementById("calcService");
+        const calcQty = document.getElementById("calcQty");
+        const calcFrequency = document.getElementById("calcFrequency");
+        const calcDisplay = document.getElementById("calcDisplay");
+
+        function updateLiveEstimate() {
+          if (!calcService || !calcQty || !calcFrequency || !calcDisplay) return;
+          const rate = parseFloat(calcService.value) || 0;
+          const qty = Math.max(1, parseFloat(calcQty.value) || 1);
+          const mult = parseFloat(calcFrequency.value) || 1;
+
+          const total = Math.round(rate * qty * mult);
+          calcDisplay.style.transform = "scale(1.15)";
+          calcDisplay.textContent = "₹" + total.toLocaleString("en-IN");
+          setTimeout(() => {
+            calcDisplay.style.transform = "scale(1)";
+          }, 150);
+        }
+
+        [calcService, calcQty, calcFrequency].forEach((input) => {
+          if (input) {
+            input.addEventListener("input", updateLiveEstimate);
+            input.addEventListener("change", updateLiveEstimate);
+          }
+        });
+
+        // 3. FAQ Accordion Click Listeners
+        document.querySelectorAll(".prc-faq-question").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const item = btn.closest(".prc-faq-item");
+            const isOpen = item.classList.contains("is-open");
+            document.querySelectorAll(".prc-faq-item").forEach((f) => f.classList.remove("is-open"));
+            if (!isOpen) item.classList.add("is-open");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

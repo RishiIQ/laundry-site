@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+        name="description"
+        content="Check if LaundriX delivers to your area. We cover 12+ active service zones across the city with free doorstep pickup and delivery."
+    />
+    <meta name="theme-color" content="#059669" />
+    <title>Service Coverage & Delivery Zones | LaundriX — Where We Deliver</title>
+
+    <!-- ======================================================
+         GOOGLE FONTS (MANROPE & PLUS JAKARTA SANS)
+    ====================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    />
+
+    <!-- ======================================================
+         ICONS (MATERIAL SYMBOLS & FONT AWESOME)
+    ====================================================== -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200"
+        rel="stylesheet"
+    />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <!-- ======================================================
+         SHARED GLOBAL CSS
+    ====================================================== -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+    <!-- ======================================================
+         COVERAGE PAGE UNIQUE STYLES (MODERN LUXE)
+    ====================================================== -->
+    <style>
+        /* Hero Section */
+        .cov-hero {
+            position: relative;
+            padding-top: clamp(130px, 15vh, 170px);
+            padding-bottom: clamp(50px, 7vh, 80px);
+            text-align: center;
+            background: radial-gradient(circle at 50% 15%, rgba(var(--lx-primary-rgb), 0.08) 0%, transparent 60%);
+            overflow: hidden;
+        }
+
+        .cov-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: var(--lx-radius-pill);
+            background: var(--lx-surface);
+            border: 1px solid var(--lx-border);
+            box-shadow: var(--lx-shadow-sm);
+            color: var(--lx-primary);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .cov-hero h1 {
+            font-size: clamp(36px, 5vw, 64px);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            margin-bottom: 18px;
+        }
+
+        .cov-hero h1 span {
+            color: var(--lx-primary);
+        }
+
+        .cov-hero p {
+            font-size: clamp(16px, 1.2vw, 19px);
+            color: var(--lx-text-soft);
+            max-width: 620px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Coverage Checker Widget */
+        .cov-checker-section {
+            padding-block: clamp(30px, 5vw, 60px);
+        }
+
+        .cov-checker-box {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: clamp(28px, 4vw, 42px);
+            border-radius: var(--lx-radius-xl);
+            background: var(--lx-surface);
+            border: 1px solid var(--lx-border);
+            box-shadow: var(--lx-shadow-lg);
+        }
+
+        .cov-checker-box .label {
+            display: block;
+            text-align: center;
+            color: var(--lx-primary);
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 6px;
+        }
+
+        .cov-checker-box h3 {
+            text-align: center;
+            font-size: clamp(20px, 2.5vw, 26px);
+            margin-bottom: 24px;
+        }
+
+        .cov-checker-form {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .cov-input-wrap {
+            flex: 1;
+            position: relative;
+            min-width: 0;
+        }
+
+        .cov-input-wrap i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--lx-primary);
+            font-size: 16px;
+        }
+
+        .cov-checker-form input {
+            width: 100%;
+            padding: 14px 18px 14px 48px;
+            border-radius: var(--lx-radius-pill);
+            border: 1px solid var(--lx-border);
+            background: var(--lx-bg-subtle);
+            color: var(--lx-text);
+            font-size: 15px;
+            font-weight: 600;
+            outline: none;
+            transition: var(--lx-transition);
+        }
+
+        .cov-checker-form input:focus {
+            border-color: var(--lx-primary);
+            background: var(--lx-surface);
+            box-shadow: 0 0 0 3px rgba(var(--lx-primary-rgb), 0.15);
+        }
+
+        .cov-check-btn {
+            min-height: 52px;
+            padding: 0 clamp(20px, 3vw, 32px);
+            border-radius: var(--lx-radius-pill);
+            background: linear-gradient(135deg, var(--lx-primary), #047857);
+            color: #fff;
+            font-size: 14.5px;
+            font-weight: 800;
+            border: none;
+            cursor: pointer;
+            transition: var(--lx-transition);
+            box-shadow: 0 4px 14px var(--lx-primary-glow);
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cov-check-btn:hover {
+            background: linear-gradient(135deg, #047857, #065f46);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px var(--lx-primary-glow);
+        }
+
+        .cov-checker-result {
+            margin-top: 20px;
+            padding: 16px 20px;
+            border-radius: var(--lx-radius-md);
+            display: none;
+            align-items: flex-start;
+            gap: 14px;
+            animation: fadeInResult 0.3s var(--lx-ease);
+        }
+
+        .cov-checker-result.visible {
+            display: flex;
+        }
+
+        .cov-checker-result.success {
+            background: rgba(var(--lx-primary-rgb), 0.1);
+            border: 1px solid rgba(var(--lx-primary-rgb), 0.3);
+            color: var(--lx-primary-dark);
+        }
+
+        .cov-checker-result.warning {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            color: #b45309;
+        }
+
+        .cov-checker-result.error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #b91c1c;
+        }
+
+        .cov-checker-result .icon {
+            font-size: 20px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .cov-checker-result strong {
+            display: block;
+            font-size: 15px;
+            margin-bottom: 2px;
+        }
+
+        .cov-checker-result span {
+            font-size: 13.5px;
+            line-height: 1.5;
+        }
+
+        @keyframes fadeInResult {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Stats Grid */
+        .cov-stats {
+            padding-block: clamp(40px, 6vw, 70px);
+        }
+
+        .cov-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .cov-stat {
+            padding: 32px 24px;
+            border-radius: var(--lx-radius-lg);
+            background: var(--lx-surface);
+            border: 1px solid var(--lx-border);
+            box-shadow: var(--lx-shadow-sm);
+            text-align: center;
+            transition: var(--lx-transition);
+        }
+
+        .cov-stat:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--lx-shadow-md);
+            border-color: var(--lx-primary);
+        }
+
+        .cov-stat-number {
+            font-family: var(--lx-font-display);
+            font-size: clamp(36px, 3.5vw, 44px);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            color: var(--lx-primary);
+            margin-bottom: 4px;
+        }
+
+        .cov-stat-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--lx-text-soft);
+        }
+
+        /* Interactive Map Area Preview */
+        .cov-map {
+            padding-block: clamp(60px, 8vw, 100px);
+            background: var(--lx-bg-subtle);
+        }
+
+        .cov-map-head {
+            text-align: center;
+            max-width: 660px;
+            margin: 0 auto clamp(36px, 5vw, 54px);
+        }
+
+        .cov-map-head h2 {
+            font-size: clamp(30px, 3.6vw, 44px);
+            margin-bottom: 12px;
+        }
+
+        .cov-map-head p {
+            color: var(--lx-text-soft);
+            font-size: 16px;
+        }
+
+        .cov-map-container {
+            position: relative;
+            width: 100%;
+            min-height: 420px;
+            border-radius: var(--lx-radius-xl);
+            overflow: hidden;
+            background: var(--lx-surface);
+            border: 1px solid var(--lx-border);
+            box-shadow: var(--lx-shadow-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .cov-map-card {
+            text-align: center;
+            max-width: 460px;
+            padding: clamp(28px, 4vw, 40px);
+            border-radius: var(--lx-radius-lg);
+            background: var(--lx-surface-glass);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid var(--lx-border);
+            box-shadow: var(--lx-shadow-xl);
+            z-index: 2;
+        }
+
+        .cov-pin-pulse {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 18px;
+            background: rgba(var(--lx-primary-rgb), 0.12);
+            color: var(--lx-primary);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 26px;
+            position: relative;
+        }
+
+        .cov-pin-pulse::after {
+            content: "";
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 2px solid var(--lx-primary);
+            opacity: 0.5;
+            animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+
+        @keyframes ping {
+            0% { transform: scale(0.85); opacity: 0.8; }
+            100% { transform: scale(1.45); opacity: 0; }
+        }
+
+        .cov-map-card h4 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .cov-map-card p {
+            color: var(--lx-text-soft);
+            font-size: 14.5px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Operational Zones Grid */
+        .cov-zones {
+            padding-block: clamp(70px, 9vw, 110px);
+        }
+
+        .cov-zones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+            gap: 20px;
+        }
+
+        .cov-zone {
+            padding: 26px 22px;
+            border-radius: var(--lx-radius-lg);
+            background: var(--lx-surface);
+            border: 1px solid var(--lx-border);
+            box-shadow: var(--lx-shadow-sm);
+            transition: var(--lx-transition);
+            text-align: center;
+        }
+
+        .cov-zone:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--lx-shadow-lg);
+            border-color: rgba(var(--lx-primary-rgb), 0.4);
+        }
+
+        .cov-zone-icon {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            margin: 0 auto 14px;
+            border-radius: 14px;
+            background: rgba(var(--lx-primary-rgb), 0.1);
+            color: var(--lx-primary);
+            font-size: 20px;
+            transition: var(--lx-transition);
+        }
+
+        .cov-zone:hover .cov-zone-icon {
+            background: var(--lx-primary);
+            color: #fff;
+            transform: scale(1.08);
+        }
+
+        .cov-zone h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .cov-zone-status {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: var(--lx-radius-pill);
+            background: rgba(var(--lx-primary-rgb), 0.12);
+            color: var(--lx-primary-dark);
+            font-size: 11.5px;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+        }
+
+        .cov-zone-status.coming {
+            background: rgba(245, 158, 11, 0.12);
+            color: #b45309;
+        }
+
+        /* Coverage FAQ Accordion */
+        .cov-faq-section {
+            padding-block: clamp(60px, 8vw, 100px);
+            background: var(--lx-bg-subtle);
+        }
+
+        .cov-faq-grid {
+            max-width: 820px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .cov-faq-item {
+            border-radius: var(--lx-radius-lg);
+            background: var(--lx-surface);
+            border: 1px solid var(--lx-border);
+            overflow: hidden;
+            transition: var(--lx-transition);
+        }
+
+        .cov-faq-question {
+            width: 100%;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--lx-text);
+            text-align: left;
+        }
+
+        .cov-faq-question i {
+            color: var(--lx-primary);
+            font-size: 14px;
+            transition: transform 0.3s var(--lx-ease);
+        }
+
+        .cov-faq-item.is-open .cov-faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .cov-faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s var(--lx-ease);
+        }
+
+        .cov-faq-answer p {
+            padding: 0 24px 22px;
+            font-size: 14.5px;
+            color: var(--lx-text-soft);
+            line-height: 1.75;
+        }
+
+        .cov-faq-item.is-open .cov-faq-answer {
+            max-height: 220px;
+        }
+
+        /* Coverage CTA Banner */
+        .cov-cta-section {
+            padding-block: clamp(40px, 7vw, 90px);
+        }
+
+        .cov-cta-card {
+            padding: clamp(36px, 5vw, 65px) clamp(24px, 4vw, 55px);
+            border-radius: var(--lx-radius-xl);
+            background: radial-gradient(circle at 100% 0%, #059669 0%, #064e3b 100%);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 32px;
+            box-shadow: 0 20px 50px -10px rgba(6, 78, 59, 0.35);
+        }
+
+        .cov-cta-card h2 {
+            color: #fff;
+            font-size: clamp(28px, 3.4vw, 42px);
+            margin-bottom: 10px;
+        }
+
+        .cov-cta-card p {
+            color: rgba(255, 255, 255, 0.88);
+            font-size: 16px;
+            max-width: 560px;
+        }
+
+        .cov-cta-card .lx-button-white {
+            background: #ffffff;
+            color: #064e3b;
+            font-weight: 800;
+            font-size: 15px;
+            padding: 14px 32px;
+            border-radius: var(--lx-radius-pill);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+            flex-shrink: 0;
+            transition: var(--lx-transition);
+            text-decoration: none;
+        }
+
+        .cov-cta-card .lx-button-white:hover {
+            background: var(--lx-primary-light);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .cov-checker-form {
+                flex-direction: column;
+            }
+            .cov-checker-form .cov-check-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .cov-cta-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .cov-cta-card .lx-button-white {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body class="coverage-page">
+
+    <!-- ======================================================
+         GLOBAL HEADER & NAVIGATION
+    ====================================================== -->
+    <header class="lx-header">
+        <div class="lx-container">
+            <div class="lx-header-inner">
+                <!-- BRAND -->
+                <a href="index.html" class="lx-brand" aria-label="LaundriX Home">
+                    <div class="lx-brand-mark">
+                        <span class="material-symbols-rounded"> local_laundry_service </span>
+                    </div>
+                    <div class="lx-brand-name">Laundri<span>X</span></div>
+                </a>
+
+                <!-- DESKTOP NAVBAR -->
+                <nav class="lx-nav" aria-label="Main navigation">
+                    <div class="lx-nav-dropdown">
+                        <button
+                            type="button"
+                            class="lx-nav-link lx-nav-dropdown-trigger"
+                            data-home-dropdown
+                            aria-expanded="false"
+                            aria-haspopup="true"
+                        >
+                            <span>Home</span>
+                            <span class="material-symbols-rounded" style="font-size:18px;"> keyboard_arrow_down </span>
+                        </button>
+
+                        <div class="lx-nav-dropdown-menu" aria-label="Home pages">
+                            <a href="index.html" class="lx-nav-dropdown-item">
+                                <div class="lx-dropdown-icon">
+                                    <span class="material-symbols-rounded"> home </span>
+                                </div>
+                                <span class="lx-dropdown-content">
+                                    <strong> Home 1 </strong>
+                                    <small> Signature Experience </small>
+                                </span>
+                            </a>
+                            <a href="home-2.html" class="lx-nav-dropdown-item">
+                                <div class="lx-dropdown-icon">
+                                    <span class="material-symbols-rounded"> auto_awesome </span>
+                                </div>
+                                <span class="lx-dropdown-content">
+                                    <strong> Home 2 </strong>
+                                    <small> Expressive SaaS </small>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="services.html" class="lx-nav-link"> Services </a>
+                    <a href="about.html" class="lx-nav-link"> About </a>
+                    <a href="pricing.html" class="lx-nav-link"> Pricing </a>
+                    <a href="how-it-works.html" class="lx-nav-link"> How it works </a>
+                    <a href="coverage.html" class="lx-nav-link is-active"> Coverage </a>
+                    <a href="blog.html" class="lx-nav-link"> Blog </a>
+                    <a href="contact.html" class="lx-nav-link"> Contact </a>
+                </nav>
+
+                <!-- HEADER ACTIONS -->
+                <div class="lx-header-actions">
+                    <a href="login.html" class="lx-nav-link" style="font-weight:700;"> Login </a>
+                    <a href="register.html" class="lx-button lx-button-primary"> Sign up </a>
+
+                    <button
+                        type="button"
+                        class="lx-icon-button"
+                        data-theme-toggle
+                        aria-label="Toggle theme"
+                    >
+                        <span class="material-symbols-rounded"> dark_mode </span>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="lx-direction-toggle"
+                        data-rtl-toggle
+                        aria-label="Toggle LTR / RTL"
+                        aria-pressed="false"
+                        title="Toggle LTR / RTL"
+                    >
+                        <span class="lx-direction-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="lx-icon-button lx-menu-toggle"
+                        data-menu-toggle
+                        aria-label="Open menu"
+                        aria-expanded="false"
+                    >
+                        <span class="material-symbols-rounded"> menu </span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- MOBILE SLIDE-DOWN MENU -->
+            <div class="lx-mobile-menu" data-mobile-menu>
+                <div class="lx-mobile-menu-inner">
+                    <div class="lx-mobile-home">
+                        <button
+                            type="button"
+                            class="lx-mobile-home-trigger"
+                            data-mobile-home-toggle
+                            aria-expanded="false"
+                        >
+                            <span>Home Options</span>
+                            <span class="material-symbols-rounded"> keyboard_arrow_down </span>
+                        </button>
+
+                        <div class="lx-mobile-home-links">
+                            <a href="index.html"> Home 1 (Signature) </a>
+                            <a href="home-2.html"> Home 2 (Expressive) </a>
+                        </div>
+                    </div>
+
+                    <a href="services.html"> Services </a>
+                    <a href="about.html"> About </a>
+                    <a href="pricing.html"> Pricing </a>
+                    <a href="how-it-works.html"> How it works </a>
+                    <a href="coverage.html" class="is-current"> Coverage </a>
+                    <a href="blog.html"> Blog </a>
+                    <a href="contact.html"> Contact </a>
+
+                    <div class="lx-mobile-menu-actions">
+                        <a href="login.html" class="lx-button lx-button-outline"> Login </a>
+                        <a href="register.html" class="lx-button lx-button-primary"> Sign up </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ======================================================
+         PAGE MAIN CONTENT
+    ====================================================== -->
+    <main>
+        <!-- HERO -->
+        <section class="cov-hero">
+            <div class="lx-container">
+                <div class="cov-eyebrow">
+                    <i class="fa-solid fa-location-dot"></i>
+                    City-Wide Doorstep Network
+                </div>
+                <h1>
+                    We're in your
+                    <span>neighbourhood.</span>
+                </h1>
+                <p>
+                    LaundriX serves 12+ major hubs across the metropolitan region. Enter your postal code below to check instant pickup availability at your doorstep.
+                </p>
+            </div>
+        </section>
+
+        <!-- LIVE COVERAGE CHECKER -->
+        <section class="cov-checker-section">
+            <div class="lx-container">
+                <div class="cov-checker-box" data-reveal>
+                    <span class="label">Instant Address Verification</span>
+                    <h3>Is LaundriX available at your location?</h3>
+
+                    <form class="cov-checker-form" id="coverageForm" novalidate>
+                        <div class="cov-input-wrap">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input
+                                type="text"
+                                id="postalInput"
+                                placeholder="Enter postal code (e.g. 560001) or locality..."
+                                required
+                                aria-label="Enter your postal code or area"
+                                autocomplete="off"
+                            />
+                        </div>
+                        <button type="submit" class="cov-check-btn">
+                            <span>Check Area</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </form>
+
+                    <div class="cov-checker-result" id="checkerResult" aria-live="polite">
+                        <span class="icon" id="resultIcon"></span>
+                        <div class="text">
+                            <strong id="resultTitle"></strong>
+                            <span id="resultMessage"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATS -->
+        <section class="cov-stats">
+            <div class="lx-container">
+                <div class="cov-stats-grid" data-reveal>
+                    <div class="cov-stat">
+                        <div class="cov-stat-number" data-counter="12">12+</div>
+                        <div class="cov-stat-label">Active Hubs</div>
+                    </div>
+                    <div class="cov-stat">
+                        <div class="cov-stat-number" data-counter="98">98%</div>
+                        <div class="cov-stat-label">On-Time Delivery</div>
+                    </div>
+                    <div class="cov-stat">
+                        <div class="cov-stat-number" data-counter="24">24h</div>
+                        <div class="cov-stat-label">Express Turnaround</div>
+                    </div>
+                    <div class="cov-stat">
+                        <div class="cov-stat-number" data-counter="12000">12K+</div>
+                        <div class="cov-stat-label">Happy Customers</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIVE MAP OVERVIEW -->
+        <section class="cov-map">
+            <div class="lx-container">
+                <div class="cov-map-head" data-reveal>
+                    <div class="cov-eyebrow">Interactive Fleet Grid</div>
+                    <h2>Where We Deliver</h2>
+                    <p>We operate micro-fulfilment hubs across city zones to ensure punctual pickup, pristine care, and prompt return.</p>
+                </div>
+
+                <div class="cov-map-container" data-reveal>
+                    <div class="cov-map-card">
+                        <div class="cov-pin-pulse">
+                            <i class="fa-solid fa-location-crosshairs"></i>
+                        </div>
+                        <h4>Looking for coverage in a new sector?</h4>
+                        <p>We continuously map community requests to prioritize our next fleet and service zone expansion.</p>
+                        <button type="button" class="prc-btn prc-btn-outline" style="max-width:240px; margin:0 auto;" onclick="document.getElementById('postalInput').focus();">
+                            <span>Search Your Area</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OPERATIONAL ZONES LIST -->
+        <section class="cov-zones">
+            <div class="lx-container">
+                <div class="cov-map-head" data-reveal>
+                    <div class="cov-eyebrow">Active &amp; Upcoming Sectors</div>
+                    <h2>Operational Service Zones</h2>
+                    <p>Check active areas or see where LaundriX will launch next in the coming month.</p>
+                </div>
+
+                <div class="cov-zones-grid">
+                    <div class="cov-zone" data-reveal>
+                        <div class="cov-zone-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <h3>Indiranagar</h3>
+                        <span class="cov-zone-status">Active &amp; Available</span>
+                    </div>
+
+                    <div class="cov-zone" data-reveal>
+                        <div class="cov-zone-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <h3>Koramangala</h3>
+                        <span class="cov-zone-status">Active &amp; Available</span>
+                    </div>
+
+                    <div class="cov-zone" data-reveal>
+                        <div class="cov-zone-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <h3>Whitefield</h3>
+                        <span class="cov-zone-status">Active &amp; Available</span>
+                    </div>
+
+                    <div class="cov-zone" data-reveal>
+                        <div class="cov-zone-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <h3>JP Nagar</h3>
+                        <span class="cov-zone-status">Active &amp; Available</span>
+                    </div>
+
+                    <div class="cov-zone" data-reveal>
+                        <div class="cov-zone-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <h3>HSR Layout</h3>
+                        <span class="cov-zone-status">Active &amp; Available</span>
+                    </div>
+
+                    <div class="cov-zone" data-reveal>
+                        <div class="cov-zone-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <h3>MG Road</h3>
+                        <span class="cov-zone-status">Active &amp; Available</span>
+                    </div>
+
+                    <div class="cov-zone" data-reveal>
+                        <div class="cov-zone-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <h3>Bannerghatta Road</h3>
+                        <span class="cov-zone-status">Active &amp; Available</span>
+                    </div>
+
+                    <div class="cov-zone" data-reveal>
+                        <div class="cov-zone-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <h3>Electronic City</h3>
+                        <span class="cov-zone-status">Active &amp; Available</span>
+                    </div>
+
+                    <div class="cov-zone" data-reveal>
+                        <div class="cov-zone-icon"><i class="fa-solid fa-clock"></i></div>
+                        <h3>Marathahalli</h3>
+                        <span class="cov-zone-status coming">Launching Soon</span>
+                    </div>
+
+                    <div class="cov-zone" data-reveal>
+                        <div class="cov-zone-icon"><i class="fa-solid fa-clock"></i></div>
+                        <h3>Bellandur</h3>
+                        <span class="cov-zone-status coming">Launching Soon</span>
+                    </div>
+
+                    <div class="cov-zone" data-reveal>
+                        <div class="cov-zone-icon"><i class="fa-solid fa-clock"></i></div>
+                        <h3>Sarjapur Road</h3>
+                        <span class="cov-zone-status coming">Launching Soon</span>
+                    </div>
+
+                    <div class="cov-zone" data-reveal>
+                        <div class="cov-zone-icon"><i class="fa-solid fa-clock"></i></div>
+                        <h3>Yelahanka</h3>
+                        <span class="cov-zone-status coming">Launching Soon</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COVERAGE FAQ -->
+        <section class="cov-faq-section">
+            <div class="lx-container">
+                <div class="cov-map-head" data-reveal>
+                    <div class="cov-eyebrow">Coverage FAQs</div>
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Helpful answers regarding doorstep pickup radii, turnaround windows, and minimum orders.</p>
+                </div>
+
+                <div class="cov-faq-grid">
+                    <div class="cov-faq-item is-open" data-reveal>
+                        <button type="button" class="cov-faq-question">
+                            <span>How do I know if my address qualifies for free delivery?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="cov-faq-answer">
+                            <p>
+                                Doorstep pickup and delivery are 100% free across all our operational zones for orders meeting the minimum order threshold of ₹249.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="cov-faq-item" data-reveal>
+                        <button type="button" class="cov-faq-question">
+                            <span>What are your daily collection and delivery hours?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="cov-faq-answer">
+                            <p>
+                                Our logistics fleet operates between 7:00 AM and 9:00 PM, Monday through Saturday. Sunday evening delivery slots are available in select priority zones.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="cov-faq-item" data-reveal>
+                        <button type="button" class="cov-faq-question">
+                            <span>What if my pincode is listed as "Launching Soon"?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="cov-faq-answer">
+                            <p>
+                                Sectors marked Launching Soon are actively undergoing hub trials. You can enter your email to pre-register and receive an exclusive 25% launch coupon code.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="cov-faq-item" data-reveal>
+                        <button type="button" class="cov-faq-question">
+                            <span>Do you serve apartment complexes and office parks?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="cov-faq-answer">
+                            <p>
+                                Yes, we offer contactless concierge and security desk handoffs for gated communities, high-rise apartments, and commercial corporate parks.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOTTOM CTA -->
+        <section class="cov-cta-section">
+            <div class="lx-container">
+                <div class="cov-cta-card" data-reveal>
+                    <div>
+                        <h2>Ready for Effortless Laundry?</h2>
+                        <p>If LaundriX serves your area, schedule your first doorstep collection today and enjoy 20% off.</p>
+                    </div>
+                    <a href="register.html" class="cov-cta-card lx-button-white">
+                        <span>Book a Pickup</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================================================
+         GLOBAL FOOTER
+    ====================================================== -->
+    <footer class="lx-footer">
+        <div class="lx-footer-main">
+            <div class="lx-container">
+                <div class="lx-footer-grid">
+                    <!-- BRAND INFO -->
+                    <div class="lx-footer-brand">
+                        <a href="index.html" class="lx-brand">
+                            <div class="lx-brand-mark">
+                                <span class="material-symbols-rounded"> local_laundry_service </span>
+                            </div>
+                            <div class="lx-brand-name">Laundri<span>X</span></div>
+                        </a>
+                        <p class="lx-footer-description">
+                            Premium doorstep laundry and dry-cleaning service designed around your busy schedule. Freshness guaranteed.
+                        </p>
+                        <div class="lx-footer-socials">
+                            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="lx-social">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" class="lx-social">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a href="https://x.com" target="_blank" rel="noopener" aria-label="X" class="lx-social">
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="lx-social">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- COMPANY LINKS -->
+                    <div class="lx-footer-column">
+                        <h3>Company</h3>
+                        <a href="about.html">About Us</a>
+                        <a href="services.html">Services</a>
+                        <a href="pricing.html">Pricing</a>
+                        <a href="how-it-works.html">How It Works</a>
+                        <a href="coverage.html" class="is-active">Coverage Areas</a>
+                    </div>
+
+                    <!-- SERVICES LINKS -->
+                    <div class="lx-footer-column">
+                        <h3>Services</h3>
+                        <a href="service-wash-fold.html">Wash &amp; Fold</a>
+                        <a href="service-dry-cleaning.html">Dry Cleaning</a>
+                        <a href="service-ironing.html">Steam Press</a>
+                        <a href="service-premium-care.html">Premium Care</a>
+                        <a href="faq.html">Help &amp; FAQs</a>
+                    </div>
+
+                    <!-- SUPPORT LINKS -->
+                    <div class="lx-footer-column">
+                        <h3>Support</h3>
+                        <a href="contact.html">Contact Us</a>
+                        <a href="blog.html">Laundry Blog</a>
+                        <a href="refund-policy.html">Refund Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                    </div>
+
+                    <!-- ACTION CTA CARD -->
+                    <div class="lx-footer-cta">
+                        <div class="lx-footer-cta-card">
+                            <div class="lx-footer-cta-icon">
+                                <i class="fa-solid fa-basket-shopping"></i>
+                            </div>
+                            <div>
+                                <strong>Effortless Laundry</strong>
+                                <p>Book a pickup in seconds.</p>
+                            </div>
+                        </div>
+                        <a href="register.html" class="lx-footer-button">
+                            <span>Get Started</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER BOTTOM BAR -->
+        <div class="lx-footer-bottom">
+            <div class="lx-container">
+                <div class="lx-footer-bottom-inner">
+                    <p>© 2026 LaundriX Technologies Inc. All rights reserved.</p>
+                    <div class="lx-footer-bottom-links">
+                        <a href="terms.html">Terms</a>
+                        <a href="privacy.html">Privacy</a>
+                        <a href="refund-policy.html">Refunds</a>
+                    </div>
+                    <div>Made with precision for cleaner days.</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ======================================================
+         GLOBAL JS SCRIPT
+    ====================================================== -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- Page Specific Script: Coverage Search & FAQ logic -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("coverageForm");
+            const input = document.getElementById("postalInput");
+            const result = document.getElementById("checkerResult");
+            const resultIcon = document.getElementById("resultIcon");
+            const resultTitle = document.getElementById("resultTitle");
+            const resultMessage = document.getElementById("resultMessage");
+
+            const activeZones = [
+                '560001', '560002', '560003', '560004', '560005', '560008',
+                '560034', '560095', '560066', '560078', '560102', '560100',
+                'indiranagar', 'koramangala', 'whitefield', 'jp nagar',
+                'hsr layout', 'mg road', 'bannerghatta', 'electronic city'
+            ];
+
+            const upcomingZones = [
+                'marathahalli', 'bellandur', 'sarjapur', 'yelahanka', '560037', '560103', '560064'
+            ];
+
+            if (form && input && result) {
+                form.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    const query = input.value.trim().toLowerCase();
+                    if (!query) return;
+
+                    const isCovered = activeZones.some(zone => query.includes(zone) || zone.includes(query));
+                    const isComing = upcomingZones.some(zone => query.includes(zone) || zone.includes(query));
+
+                    result.className = "cov-checker-result visible";
+
+                    if (isCovered) {
+                        result.className = "cov-checker-result visible success";
+                        resultIcon.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+                        resultTitle.textContent = "Great news! We deliver here.";
+                        resultMessage.textContent = `Doorstep pickup and delivery is fully active for "${input.value.trim()}".`;
+                    } else if (isComing) {
+                        result.className = "cov-checker-result visible warning";
+                        resultIcon.innerHTML = '<i class="fa-solid fa-clock"></i>';
+                        resultTitle.textContent = "Launching very soon!";
+                        resultMessage.textContent = `We are expanding to "${input.value.trim()}" soon. Pre-register for early access coupons!`;
+                    } else {
+                        result.className = "cov-checker-result visible error";
+                        resultIcon.innerHTML = '<i class="fa-solid fa-circle-xmark"></i>';
+                        resultTitle.textContent = "Area not covered yet.";
+                        resultMessage.textContent = `We don't operate in "${input.value.trim()}" yet, but we're expanding hubs regularly.`;
+                    }
+                });
+            }
+
+            // FAQ Accordion click toggles
+            document.querySelectorAll(".cov-faq-question").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const item = btn.closest(".cov-faq-item");
+                    const isOpen = item.classList.contains("is-open");
+                    document.querySelectorAll(".cov-faq-item").forEach((f) => f.classList.remove("is-open"));
+                    if (!isOpen) item.classList.add("is-open");
+                });
+            });
+        });
+    </script>
+</body>
+</html>

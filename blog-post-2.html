@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Decode universal laundry care symbols on clothing tags. Understand wash tubs, drying squares, iron temperatures, and dry-clean circles."
+    />
+    <meta name="theme-color" content="#059669" />
+    <title>The Ultimate Guide to Universal Fabric Care Symbols | LaundriX Blog</title>
+
+    <!-- ======================================================
+         GOOGLE FONTS (MANROPE & PLUS JAKARTA SANS)
+    ====================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ======================================================
+         ICONS (MATERIAL SYMBOLS & FONT AWESOME)
+    ====================================================== -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <!-- ======================================================
+         SHARED GLOBAL CSS
+    ====================================================== -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+    <!-- ======================================================
+         ARTICLE SPECIFIC STYLES (EMERALD LUXE)
+    ====================================================== -->
+    <style>
+      .article-hero {
+        position: relative;
+        padding-top: clamp(120px, 14vh, 150px);
+        padding-bottom: clamp(30px, 4vh, 50px);
+        background: radial-gradient(circle at 50% 10%, rgba(var(--lx-primary-rgb), 0.08) 0%, transparent 60%);
+      }
+
+      .article-breadcrumb {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--lx-text-muted);
+        margin-bottom: 20px;
+      }
+
+      .article-breadcrumb a {
+        color: var(--lx-text-soft);
+      }
+
+      .article-breadcrumb a:hover {
+        color: var(--lx-primary);
+      }
+
+      .article-breadcrumb i {
+        font-size: 10px;
+      }
+
+      .article-header {
+        max-width: 840px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .article-tag {
+        display: inline-block;
+        padding: 5px 14px;
+        border-radius: var(--lx-radius-pill);
+        background: rgba(var(--lx-primary-rgb), 0.12);
+        color: var(--lx-primary-dark);
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 16px;
+      }
+
+      .article-title {
+        font-size: clamp(32px, 4.5vw, 52px);
+        line-height: 1.12;
+        letter-spacing: -0.04em;
+        margin-bottom: 20px;
+      }
+
+      .article-meta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        font-size: 14px;
+        color: var(--lx-text-soft);
+        font-weight: 600;
+      }
+
+      .article-meta img {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      /* Featured Image */
+      .article-image-wrap {
+        max-width: 960px;
+        margin: 30px auto clamp(40px, 6vw, 60px);
+        border-radius: var(--lx-radius-xl);
+        overflow: hidden;
+        box-shadow: var(--lx-shadow-xl);
+        border: 1px solid var(--lx-border);
+      }
+
+      .article-image-wrap img {
+        width: 100%;
+        height: clamp(320px, 48vh, 520px);
+        object-fit: cover;
+      }
+
+      /* Content Body */
+      .article-container {
+        max-width: 780px;
+        margin: 0 auto;
+        padding-inline: 16px;
+      }
+
+      .article-content {
+        font-size: 17px;
+        line-height: 1.8;
+        color: var(--lx-text-soft);
+      }
+
+      .article-content p {
+        margin-bottom: 24px;
+      }
+
+      .article-content h2 {
+        font-size: clamp(24px, 2.8vw, 32px);
+        color: var(--lx-text);
+        margin: 44px 0 16px;
+        letter-spacing: -0.03em;
+      }
+
+      .article-content h3 {
+        font-size: 20px;
+        color: var(--lx-text);
+        margin: 30px 0 12px;
+      }
+
+      .article-content ul, .article-content ol {
+        margin: 0 0 24px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .article-content li strong {
+        color: var(--lx-text);
+      }
+
+      /* Symbol Guide Table */
+      .symbol-table-wrap {
+        margin: 30px 0;
+        border-radius: var(--lx-radius-lg);
+        overflow: hidden;
+        border: 1px solid var(--lx-border);
+        background: var(--lx-surface);
+      }
+
+      .symbol-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        font-size: 15px;
+      }
+
+      .symbol-table th {
+        background: var(--lx-bg-subtle);
+        padding: 14px 18px;
+        font-weight: 800;
+        color: var(--lx-text);
+        border-bottom: 1px solid var(--lx-border);
+      }
+
+      .symbol-table td {
+        padding: 14px 18px;
+        border-bottom: 1px solid var(--lx-border-subtle);
+        color: var(--lx-text-soft);
+      }
+
+      .symbol-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .symbol-table td strong {
+        color: var(--lx-text);
+      }
+
+      .article-quote {
+        margin: 36px 0;
+        padding: 24px 30px;
+        border-left: 4px solid var(--lx-primary);
+        background: var(--lx-bg-subtle);
+        border-radius: 0 var(--lx-radius-md) var(--lx-radius-md) 0;
+        font-family: var(--lx-font-display);
+        font-size: 19px;
+        font-weight: 700;
+        color: var(--lx-text);
+        line-height: 1.6;
+      }
+
+      /* Article Footer & Share */
+      .article-footer {
+        max-width: 780px;
+        margin: 50px auto 0;
+        padding-top: 24px;
+        border-top: 1px solid var(--lx-border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .article-share {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .article-share span {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--lx-text);
+      }
+
+      /* Author Box */
+      .article-author-card {
+        max-width: 780px;
+        margin: 40px auto 0;
+        padding: 30px;
+        border-radius: var(--lx-radius-lg);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-sm);
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .article-author-card img {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+
+      .article-author-info h4 {
+        font-size: 18px;
+        margin-bottom: 4px;
+      }
+
+      .article-author-info p {
+        font-size: 14px;
+        color: var(--lx-text-soft);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      @media (max-width: 640px) {
+        .article-author-card {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ======================================================
+         GLOBAL HEADER & NAVIGATION
+    ====================================================== -->
+    <header class="lx-header">
+      <div class="lx-container">
+        <div class="lx-header-inner">
+          <a href="index.html" class="lx-brand" aria-label="LaundriX Home">
+            <div class="lx-brand-mark">
+              <span class="material-symbols-rounded"> local_laundry_service </span>
+            </div>
+            <div class="lx-brand-name">Laundri<span>X</span></div>
+          </a>
+
+          <nav class="lx-nav" aria-label="Main navigation">
+            <div class="lx-nav-dropdown">
+              <button
+                type="button"
+                class="lx-nav-link lx-nav-dropdown-trigger"
+                data-home-dropdown
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                <span>Home</span>
+                <span class="material-symbols-rounded" style="font-size:18px;"> keyboard_arrow_down </span>
+              </button>
+
+              <div class="lx-nav-dropdown-menu" aria-label="Home pages">
+                <a href="index.html" class="lx-nav-dropdown-item">
+                  <div class="lx-dropdown-icon">
+                    <span class="material-symbols-rounded"> home </span>
+                  </div>
+                  <span class="lx-dropdown-content">
+                    <strong> Home 1 </strong>
+                    <small> Signature Experience </small>
+                  </span>
+                </a>
+                <a href="home-2.html" class="lx-nav-dropdown-item">
+                  <div class="lx-dropdown-icon">
+                    <span class="material-symbols-rounded"> auto_awesome </span>
+                  </div>
+                  <span class="lx-dropdown-content">
+                    <strong> Home 2 </strong>
+                    <small> Expressive SaaS </small>
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            <a href="services.html" class="lx-nav-link"> Services </a>
+            <a href="about.html" class="lx-nav-link"> About </a>
+            <a href="pricing.html" class="lx-nav-link"> Pricing </a>
+            <a href="how-it-works.html" class="lx-nav-link"> How it works </a>
+            <a href="coverage.html" class="lx-nav-link"> Coverage </a>
+            <a href="blog.html" class="lx-nav-link is-active"> Blog </a>
+            <a href="contact.html" class="lx-nav-link"> Contact </a>
+          </nav>
+
+          <div class="lx-header-actions">
+            <a href="login.html" class="lx-nav-link" style="font-weight:700;"> Login </a>
+            <a href="register.html" class="lx-button lx-button-primary"> Sign up </a>
+
+            <button type="button" class="lx-icon-button" data-theme-toggle aria-label="Toggle theme">
+              <span class="material-symbols-rounded"> dark_mode </span>
+            </button>
+
+            <button type="button" class="lx-direction-toggle" data-rtl-toggle aria-label="Toggle LTR / RTL" aria-pressed="false">
+              <span class="lx-direction-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </button>
+
+            <button type="button" class="lx-icon-button lx-menu-toggle" data-menu-toggle aria-label="Open menu" aria-expanded="false">
+              <span class="material-symbols-rounded"> menu </span>
+            </button>
+          </div>
+        </div>
+
+        <div class="lx-mobile-menu" data-mobile-menu>
+          <div class="lx-mobile-menu-inner">
+            <div class="lx-mobile-home">
+              <button type="button" class="lx-mobile-home-trigger" data-mobile-home-toggle aria-expanded="false">
+                <span>Home Options</span>
+                <span class="material-symbols-rounded"> keyboard_arrow_down </span>
+              </button>
+              <div class="lx-mobile-home-links">
+                <a href="index.html"> Home 1 (Signature) </a>
+                <a href="home-2.html"> Home 2 (Expressive) </a>
+              </div>
+            </div>
+
+            <a href="services.html"> Services </a>
+            <a href="about.html"> About </a>
+            <a href="pricing.html"> Pricing </a>
+            <a href="how-it-works.html"> How it works </a>
+            <a href="coverage.html"> Coverage </a>
+            <a href="blog.html" class="is-current"> Blog </a>
+            <a href="contact.html"> Contact </a>
+
+            <div class="lx-mobile-menu-actions">
+              <a href="login.html" class="lx-button lx-button-outline"> Login </a>
+              <a href="register.html" class="lx-button lx-button-primary"> Sign up </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ======================================================
+         ARTICLE CONTENT
+    ====================================================== -->
+    <main>
+      <section class="article-hero">
+        <div class="lx-container">
+          <div class="article-header" data-reveal>
+            <div class="article-breadcrumb">
+              <a href="index.html">Home</a>
+              <i class="fa-solid fa-chevron-right"></i>
+              <a href="blog.html">Blog</a>
+              <i class="fa-solid fa-chevron-right"></i>
+              <span style="color:var(--lx-primary);">Article</span>
+            </div>
+
+            <span class="article-tag">Garment Care</span>
+            <h1 class="article-title">The Ultimate Guide to Universal Fabric Care Symbols</h1>
+
+            <div class="article-meta">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80" alt="Vikram Desai" />
+              <span>By Vikram Desai</span>
+              <span>•</span>
+              <span>March 28, 2026</span>
+              <span>•</span>
+              <span>6 min read</span>
+            </div>
+          </div>
+
+          <div class="article-image-wrap" data-reveal>
+            <img src="https://images.unsplash.com/photo-1545042746-ec9e5a59b359?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Fabric care labels on clothing tag" />
+          </div>
+        </div>
+      </section>
+
+      <section class="article-container">
+        <article class="article-content" data-reveal>
+          <p>
+            Clothing care labels can feel like a cryptic puzzle of geometric shapes, dots, and crossed-out icons. Yet these symbols are your garment's exact instruction manual for preserving color integrity, fiber elasticity, and seam structure over years of wear.
+          </p>
+
+          <h2>The Five Core Universal Symbols</h2>
+          <p>
+            Every international care tag breaks down garment maintenance into five primary categories, arranged sequentially across the label:
+          </p>
+
+          <div class="symbol-table-wrap">
+            <table class="symbol-table">
+              <thead>
+                <tr>
+                  <th>Base Icon</th>
+                  <th>Category</th>
+                  <th>Core Purpose</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Washtub</strong></td>
+                  <td>Washing</td>
+                  <td>Indicates water temperature and machine cycle intensity.</td>
+                </tr>
+                <tr>
+                  <td><strong>Triangle</strong></td>
+                  <td>Bleaching</td>
+                  <td>Specifies whether chlorine or oxygen bleach is permissible.</td>
+                </tr>
+                <tr>
+                  <td><strong>Square</strong></td>
+                  <td>Drying</td>
+                  <td>Denotes tumble drying, flat drying, or line drying rules.</td>
+                </tr>
+                <tr>
+                  <td><strong>Iron</strong></td>
+                  <td>Ironing</td>
+                  <td>Regulates base heat settings and steam permissions.</td>
+                </tr>
+                <tr>
+                  <td><strong>Circle</strong></td>
+                  <td>Professional Care</td>
+                  <td>Instructs professional dry cleaning and chemical compatibility.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>Understanding Dots, Lines, and Crosses</h2>
+          <p>
+            Once you recognize the basic shapes, modifying marks tell you the exact temperature thresholds and mechanical cautions:
+          </p>
+
+          <ul>
+            <li><strong>Dots indicate Temperature:</strong> One dot represents cold/low heat (30°C / 110°C iron), two dots indicate warm/medium heat (40°C / 150°C iron), and three dots indicate hot/high heat (50°C+ / 200°C iron).</li>
+            <li><strong>Bars underneath denote Gentleness:</strong> No bar means normal machine cycle, one bar specifies a permanent press/synthetic cycle, and two bars require a gentle/delicate cycle.</li>
+            <li><strong>An 'X' means Do Not:</strong> An X over an iron means do not iron; an X over a washtub means do not wash (requires dry cleaning).</li>
+          </ul>
+
+          <blockquote class="article-quote">
+            "When in doubt, always default to lower temperature settings and gentle agitation. High heat is the single greatest cause of permanent fabric damage."
+          </blockquote>
+
+          <h2>Dry Cleaning vs. Hand Washing</h2>
+          <p>
+            A plain circle indicates professional dry clean only. If the circle contains a letter (such as 'P' or 'F'), this guides master dry cleaners on which solvent chemistry—hydrocarbon or perchlorethylene—is safe for delicate linings and glues.
+          </p>
+        </article>
+
+        <!-- Social Share & Tags -->
+        <div class="article-footer" data-reveal>
+          <div style="display:flex; gap:8px;">
+            <span class="article-tag" style="margin:0;">#GarmentCare</span>
+            <span class="article-tag" style="margin:0;">#FabricScience</span>
+          </div>
+
+          <div class="article-share">
+            <span>Share:</span>
+            <a href="https://twitter.com" target="_blank" rel="noopener" class="lx-social" aria-label="Share on X">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="lx-social" aria-label="Share on Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="lx-social" aria-label="Share on LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Author Box -->
+        <div class="article-author-card" data-reveal>
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" alt="Vikram Desai" />
+          <div class="article-author-info">
+            <h4>Vikram Desai</h4>
+            <p>Garment Care Specialist at LaundriX. Brings 15 years of master dry cleaning, textile restoration, and bespoke garment care experience.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ======================================================
+         GLOBAL FOOTER (5-COLUMN LUXE DESIGN)
+    ====================================================== -->
+    <footer class="lx-footer" style="margin-top: 80px;">
+      <div class="lx-footer-main">
+        <div class="lx-container">
+          <div class="lx-footer-grid">
+            <div class="lx-footer-brand">
+              <a href="index.html" class="lx-brand">
+                <div class="lx-brand-mark">
+                  <span class="material-symbols-rounded"> local_laundry_service </span>
+                </div>
+                <div class="lx-brand-name">Laundri<span>X</span></div>
+              </a>
+              <p class="lx-footer-description">
+                Premium doorstep laundry and dry-cleaning service designed around your busy schedule. Freshness guaranteed.
+              </p>
+              <div class="lx-footer-socials">
+                <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="lx-social"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" class="lx-social"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://x.com" target="_blank" rel="noopener" aria-label="X Twitter" class="lx-social"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="lx-social"><i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+            </div>
+
+            <div class="lx-footer-column">
+              <h3>Company</h3>
+              <a href="about.html">About Us</a>
+              <a href="services.html">Services</a>
+              <a href="pricing.html">Pricing</a>
+              <a href="how-it-works.html">How It Works</a>
+              <a href="coverage.html">Coverage Areas</a>
+            </div>
+
+            <div class="lx-footer-column">
+              <h3>Services</h3>
+              <a href="service-wash-fold.html">Wash &amp; Fold</a>
+              <a href="service-dry-cleaning.html">Dry Cleaning</a>
+              <a href="service-ironing.html">Steam Press</a>
+              <a href="service-premium-care.html">Premium Care</a>
+              <a href="faq.html">Help &amp; FAQs</a>
+            </div>
+
+            <div class="lx-footer-column">
+              <h3>Support</h3>
+              <a href="contact.html">Contact Us</a>
+              <a href="blog.html" class="is-active">Laundry Blog</a>
+              <a href="refund-policy.html">Refund Policy</a>
+              <a href="terms.html">Terms of Service</a>
+              <a href="privacy.html">Privacy Policy</a>
+            </div>
+
+            <div class="lx-footer-cta">
+              <div class="lx-footer-cta-card">
+                <div class="lx-footer-cta-icon">
+                  <i class="fa-solid fa-basket-shopping"></i>
+                </div>
+                <div>
+                  <strong>Effortless Laundry</strong>
+                  <p>Book a pickup in seconds.</p>
+                </div>
+              </div>
+              <a href="register.html" class="lx-footer-button">
+                <span>Get Started</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lx-footer-bottom">
+        <div class="lx-container">
+          <div class="lx-footer-bottom-inner">
+            <p>© 2026 LaundriX Technologies Inc. All rights reserved.</p>
+            <div class="lx-footer-bottom-links">
+              <a href="terms.html">Terms</a>
+              <a href="privacy.html">Privacy</a>
+              <a href="refund-policy.html">Refunds</a>
+            </div>
+            <div>Made with precision for cleaner days.</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ======================================================
+         GLOBAL JS SCRIPT
+    ====================================================== -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

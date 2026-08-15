@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Contact LaundriX for laundry pickup, dry cleaning, support or any questions. We're here to help 7 days a week."
+    />
+    <meta name="theme-color" content="#059669" />
+    <title>Contact Us &amp; Support | LaundriX — Get in Touch</title>
+
+    <!-- ======================================================
+         GOOGLE FONTS (MANROPE & PLUS JAKARTA SANS)
+    ====================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ======================================================
+         ICONS (MATERIAL SYMBOLS & FONT AWESOME)
+    ====================================================== -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <!-- ======================================================
+         SHARED GLOBAL CSS
+    ====================================================== -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+    <!-- ======================================================
+         CONTACT PAGE UNIQUE STYLES (MODERN LUXE EMERALD)
+    ====================================================== -->
+    <style>
+      /* Contact Hero */
+      .cnt-hero {
+        position: relative;
+        padding-top: clamp(130px, 15vh, 170px);
+        padding-bottom: clamp(40px, 6vh, 70px);
+        text-align: center;
+        background: radial-gradient(circle at 50% 15%, rgba(var(--lx-primary-rgb), 0.08) 0%, transparent 60%);
+        overflow: hidden;
+      }
+
+      .cnt-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 16px;
+        border-radius: var(--lx-radius-pill);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-sm);
+        color: var(--lx-primary);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+      .cnt-hero h1 {
+        font-size: clamp(36px, 5vw, 64px);
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        margin-bottom: 18px;
+      }
+
+      .cnt-hero h1 span {
+        color: var(--lx-primary);
+      }
+
+      .cnt-hero p {
+        font-size: clamp(16px, 1.2vw, 19px);
+        color: var(--lx-text-soft);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+
+      /* Quick Contact Channels */
+      .cnt-methods-section {
+        padding-block: clamp(20px, 3vw, 40px);
+      }
+
+      .cnt-methods-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+        gap: 20px;
+      }
+
+      .cnt-method-card {
+        padding: 30px 24px;
+        border-radius: var(--lx-radius-xl);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-sm);
+        text-align: center;
+        transition: var(--lx-transition);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .cnt-method-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--lx-shadow-lg);
+        border-color: rgba(var(--lx-primary-rgb), 0.4);
+      }
+
+      .cnt-method-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        background: rgba(var(--lx-primary-rgb), 0.1);
+        color: var(--lx-primary);
+        display: grid;
+        place-items: center;
+        font-size: 24px;
+        margin-bottom: 16px;
+        transition: var(--lx-transition);
+      }
+
+      .cnt-method-card:hover .cnt-method-icon {
+        background: var(--lx-primary);
+        color: #fff;
+        transform: scale(1.08);
+      }
+
+      .cnt-method-card h3 {
+        font-size: 18px;
+        margin-bottom: 6px;
+      }
+
+      .cnt-method-card p {
+        margin: 0;
+        color: var(--lx-text-soft);
+        font-size: 14.5px;
+      }
+
+      .cnt-method-card a {
+        color: var(--lx-primary);
+        font-weight: 700;
+      }
+
+      .cnt-method-card a:hover {
+        color: var(--lx-primary-hover);
+        text-decoration: underline;
+      }
+
+      .cnt-method-meta {
+        font-size: 12px;
+        color: var(--lx-text-muted);
+        margin-top: 6px;
+      }
+
+      /* Main Form & Direct Info Section */
+      .cnt-form-section {
+        padding-block: clamp(40px, 6vw, 80px);
+      }
+
+      .cnt-form-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+        gap: clamp(32px, 5vw, 60px);
+        align-items: start;
+      }
+
+      .cnt-form-wrapper {
+        padding: clamp(28px, 4vw, 44px);
+        border-radius: var(--lx-radius-xl);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-lg);
+      }
+
+      .cnt-form-wrapper .label {
+        color: var(--lx-primary);
+        font-size: 11.5px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 6px;
+        display: block;
+      }
+
+      .cnt-form-wrapper h2 {
+        font-size: clamp(24px, 3vw, 34px);
+        margin-bottom: 24px;
+      }
+
+      .cnt-form-group {
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      .cnt-form-group label {
+        display: block;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--lx-text);
+        margin-bottom: 8px;
+      }
+
+      .cnt-form-group label .required {
+        color: #ef4444;
+      }
+
+      .cnt-form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .cnt-input,
+      .cnt-select,
+      .cnt-textarea {
+        width: 100%;
+        padding: 13px 18px;
+        border-radius: var(--lx-radius-md);
+        background: var(--lx-bg-subtle);
+        border: 1px solid var(--lx-border);
+        font-size: 14.5px;
+        font-weight: 600;
+        color: var(--lx-text);
+        outline: none;
+        transition: var(--lx-transition);
+        font-family: inherit;
+      }
+
+      .cnt-textarea {
+        min-height: 140px;
+        resize: vertical;
+      }
+
+      .cnt-input:focus,
+      .cnt-select:focus,
+      .cnt-textarea:focus {
+        border-color: var(--lx-primary);
+        background: var(--lx-surface);
+        box-shadow: 0 0 0 3px rgba(var(--lx-primary-rgb), 0.15);
+      }
+
+      .cnt-input.is-invalid,
+      .cnt-select.is-invalid,
+      .cnt-textarea.is-invalid {
+        border-color: #ef4444;
+      }
+
+      .cnt-field-error {
+        display: none;
+        color: #ef4444;
+        font-size: 11.5px;
+        font-weight: 600;
+        margin-top: 5px;
+      }
+
+      .cnt-field-error.visible {
+        display: block;
+      }
+
+      .cnt-submit-btn {
+        min-height: 52px;
+        width: 100%;
+        border-radius: var(--lx-radius-pill);
+        background: linear-gradient(135deg, var(--lx-primary), #047857);
+        color: #fff;
+        font-size: 15px;
+        font-weight: 800;
+        border: none;
+        cursor: pointer;
+        transition: var(--lx-transition);
+        box-shadow: 0 4px 14px var(--lx-primary-glow);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .cnt-submit-btn:hover {
+        background: linear-gradient(135deg, #047857, #065f46);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px var(--lx-primary-glow);
+      }
+
+      .cnt-submit-btn:disabled {
+        opacity: 0.65;
+        cursor: not-allowed;
+        transform: none !important;
+      }
+
+      /* Sidebar Cards */
+      .cnt-info-sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .cnt-info-card {
+        padding: clamp(24px, 3.5vw, 36px);
+        border-radius: var(--lx-radius-xl);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-sm);
+        transition: var(--lx-transition);
+      }
+
+      .cnt-info-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--lx-shadow-md);
+      }
+
+      .cnt-info-card .info-tag {
+        color: var(--lx-primary);
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 6px;
+        display: block;
+      }
+
+      .cnt-info-card h3 {
+        font-size: 20px;
+        margin-bottom: 18px;
+      }
+
+      .cnt-detail-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding-block: 10px;
+        border-bottom: 1px solid var(--lx-border-subtle);
+        color: var(--lx-text);
+        font-size: 14px;
+      }
+
+      .cnt-detail-row:last-child {
+        border-bottom: none;
+      }
+
+      .cnt-detail-row i {
+        color: var(--lx-primary);
+        font-size: 16px;
+        margin-top: 3px;
+        width: 20px;
+      }
+
+      .cnt-detail-row a {
+        color: var(--lx-text);
+      }
+
+      .cnt-detail-row a:hover {
+        color: var(--lx-primary);
+      }
+
+      .cnt-social-links {
+        display: flex;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      /* Interactive Location Showcase */
+      .cnt-map-section {
+        padding-block: clamp(60px, 8vw, 100px);
+        background: var(--lx-bg-subtle);
+      }
+
+      .cnt-section-head {
+        text-align: center;
+        max-width: 660px;
+        margin: 0 auto clamp(36px, 5vw, 54px);
+      }
+
+      .cnt-section-head h2 {
+        font-size: clamp(30px, 3.6vw, 44px);
+        margin-bottom: 12px;
+      }
+
+      .cnt-section-head p {
+        color: var(--lx-text-soft);
+        font-size: 16px;
+      }
+
+      .cnt-map-container {
+        position: relative;
+        width: 100%;
+        min-height: 380px;
+        border-radius: var(--lx-radius-xl);
+        overflow: hidden;
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+      }
+
+      .cnt-map-card {
+        text-align: center;
+        max-width: 440px;
+        padding: clamp(28px, 4vw, 40px);
+        border-radius: var(--lx-radius-lg);
+        background: var(--lx-surface-glass);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-xl);
+        z-index: 2;
+      }
+
+      .cnt-map-pin {
+        width: 58px;
+        height: 58px;
+        margin: 0 auto 16px;
+        background: rgba(var(--lx-primary-rgb), 0.12);
+        color: var(--lx-primary);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 26px;
+        position: relative;
+      }
+
+      .cnt-map-pin::after {
+        content: "";
+        position: absolute;
+        inset: -6px;
+        border-radius: 50%;
+        border: 2px solid var(--lx-primary);
+        opacity: 0.5;
+        animation: pinPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+      }
+
+      @keyframes pinPing {
+        0% { transform: scale(0.85); opacity: 0.8; }
+        100% { transform: scale(1.45); opacity: 0; }
+      }
+
+      .cnt-map-card h4 {
+        font-size: 20px;
+        margin-bottom: 6px;
+      }
+
+      .cnt-map-card p {
+        color: var(--lx-text-soft);
+        font-size: 14px;
+        margin-bottom: 18px;
+      }
+
+      /* Contact FAQ Accordion */
+      .cnt-faq-section {
+        padding-block: clamp(60px, 8vw, 100px);
+      }
+
+      .cnt-faq-grid {
+        max-width: 820px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .cnt-faq-item {
+        border-radius: var(--lx-radius-lg);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        overflow: hidden;
+        transition: var(--lx-transition);
+      }
+
+      .cnt-faq-question {
+        width: 100%;
+        padding: 20px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 800;
+        color: var(--lx-text);
+        text-align: left;
+      }
+
+      .cnt-faq-question i {
+        color: var(--lx-primary);
+        font-size: 14px;
+        transition: transform 0.3s var(--lx-ease);
+      }
+
+      .cnt-faq-item.is-open .cnt-faq-question i {
+        transform: rotate(180deg);
+      }
+
+      .cnt-faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s var(--lx-ease);
+      }
+
+      .cnt-faq-answer p {
+        padding: 0 24px 22px;
+        font-size: 14.5px;
+        color: var(--lx-text-soft);
+        line-height: 1.75;
+      }
+
+      .cnt-faq-item.is-open .cnt-faq-answer {
+        max-height: 220px;
+      }
+
+      /* Bottom CTA */
+      .cnt-cta-section {
+        padding-block: clamp(40px, 7vw, 90px);
+      }
+
+      .cnt-cta-card {
+        padding: clamp(36px, 5vw, 65px) clamp(24px, 4vw, 55px);
+        border-radius: var(--lx-radius-xl);
+        background: radial-gradient(circle at 100% 0%, #059669 0%, #064e3b 100%);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        box-shadow: 0 20px 50px -10px rgba(6, 78, 59, 0.35);
+      }
+
+      .cnt-cta-card h2 {
+        color: #fff;
+        font-size: clamp(28px, 3.4vw, 42px);
+        margin-bottom: 10px;
+      }
+
+      .cnt-cta-card p {
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 16px;
+        max-width: 560px;
+      }
+
+      .cnt-cta-card .lx-button-white {
+        background: #ffffff;
+        color: #064e3b;
+        font-weight: 800;
+        font-size: 15px;
+        padding: 14px 32px;
+        border-radius: var(--lx-radius-pill);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+        flex-shrink: 0;
+        transition: var(--lx-transition);
+        text-decoration: none;
+      }
+
+      .cnt-cta-card .lx-button-white:hover {
+        background: var(--lx-primary-light);
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 980px) {
+        .cnt-form-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .cnt-form-row {
+          grid-template-columns: 1fr;
+        }
+        .cnt-cta-card {
+          flex-direction: column;
+          text-align: center;
+        }
+        .cnt-cta-card .lx-button-white {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ======================================================
+         GLOBAL HEADER & NAVIGATION
+    ====================================================== -->
+    <header class="lx-header">
+      <div class="lx-container">
+        <div class="lx-header-inner">
+          <!-- BRAND -->
+          <a href="index.html" class="lx-brand" aria-label="LaundriX Home">
+            <div class="lx-brand-mark">
+              <span class="material-symbols-rounded"> local_laundry_service </span>
+            </div>
+            <div class="lx-brand-name">Laundri<span>X</span></div>
+          </a>
+
+          <!-- DESKTOP NAVBAR -->
+          <nav class="lx-nav" aria-label="Main navigation">
+            <div class="lx-nav-dropdown">
+              <button
+                type="button"
+                class="lx-nav-link lx-nav-dropdown-trigger"
+                data-home-dropdown
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                <span>Home</span>
+                <span class="material-symbols-rounded" style="font-size:18px;"> keyboard_arrow_down </span>
+              </button>
+
+              <div class="lx-nav-dropdown-menu" aria-label="Home pages">
+                <a href="index.html" class="lx-nav-dropdown-item">
+                  <div class="lx-dropdown-icon">
+                    <span class="material-symbols-rounded"> home </span>
+                  </div>
+                  <span class="lx-dropdown-content">
+                    <strong> Home 1 </strong>
+                    <small> Signature Experience </small>
+                  </span>
+                </a>
+                <a href="home-2.html" class="lx-nav-dropdown-item">
+                  <div class="lx-dropdown-icon">
+                    <span class="material-symbols-rounded"> auto_awesome </span>
+                  </div>
+                  <span class="lx-dropdown-content">
+                    <strong> Home 2 </strong>
+                    <small> Expressive SaaS </small>
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            <a href="services.html" class="lx-nav-link"> Services </a>
+            <a href="about.html" class="lx-nav-link"> About </a>
+            <a href="pricing.html" class="lx-nav-link"> Pricing </a>
+            <a href="how-it-works.html" class="lx-nav-link"> How it works </a>
+            <a href="coverage.html" class="lx-nav-link"> Coverage </a>
+            <a href="blog.html" class="lx-nav-link"> Blog </a>
+            <a href="contact.html" class="lx-nav-link is-active"> Contact </a>
+          </nav>
+
+          <!-- HEADER ACTIONS -->
+          <div class="lx-header-actions">
+            <a href="login.html" class="lx-nav-link" style="font-weight:700;"> Login </a>
+            <a href="register.html" class="lx-button lx-button-primary"> Sign up </a>
+
+            <button
+              type="button"
+              class="lx-icon-button"
+              data-theme-toggle
+              aria-label="Toggle theme"
+            >
+              <span class="material-symbols-rounded"> dark_mode </span>
+            </button>
+
+            <button
+              type="button"
+              class="lx-direction-toggle"
+              data-rtl-toggle
+              aria-label="Toggle LTR / RTL"
+              aria-pressed="false"
+              title="Toggle LTR / RTL"
+            >
+              <span class="lx-direction-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </button>
+
+            <button
+              type="button"
+              class="lx-icon-button lx-menu-toggle"
+              data-menu-toggle
+              aria-label="Open menu"
+              aria-expanded="false"
+            >
+              <span class="material-symbols-rounded"> menu </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- MOBILE SLIDE-DOWN MENU -->
+        <div class="lx-mobile-menu" data-mobile-menu>
+          <div class="lx-mobile-menu-inner">
+            <div class="lx-mobile-home">
+              <button
+                type="button"
+                class="lx-mobile-home-trigger"
+                data-mobile-home-toggle
+                aria-expanded="false"
+              >
+                <span>Home Options</span>
+                <span class="material-symbols-rounded"> keyboard_arrow_down </span>
+              </button>
+
+              <div class="lx-mobile-home-links">
+                <a href="index.html"> Home 1 (Signature) </a>
+                <a href="home-2.html"> Home 2 (Expressive) </a>
+              </div>
+            </div>
+
+            <a href="services.html"> Services </a>
+            <a href="about.html"> About </a>
+            <a href="pricing.html"> Pricing </a>
+            <a href="how-it-works.html"> How it works </a>
+            <a href="coverage.html"> Coverage </a>
+            <a href="blog.html"> Blog </a>
+            <a href="contact.html" class="is-current"> Contact </a>
+
+            <div class="lx-mobile-menu-actions">
+              <a href="login.html" class="lx-button lx-button-outline"> Login </a>
+              <a href="register.html" class="lx-button lx-button-primary"> Sign up </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ======================================================
+         PAGE MAIN CONTENT
+    ====================================================== -->
+    <main>
+      <!-- HERO -->
+      <section class="cnt-hero">
+        <div class="lx-container">
+          <div class="cnt-eyebrow">
+            <i class="fa-solid fa-headset"></i>
+            7 Days a Week Assistance
+          </div>
+          <h1>
+            We're here to
+            <span>help.</span>
+          </h1>
+          <p>
+            Have a question about our services? Need instant assistance with an ongoing order? Or looking for corporate partnership? Reach out anytime.
+          </p>
+        </div>
+      </section>
+
+      <!-- 4 QUICK CONTACT CHANNELS -->
+      <section class="cnt-methods-section">
+        <div class="lx-container">
+          <div class="cnt-methods-grid">
+            <div class="cnt-method-card" data-reveal>
+              <div class="cnt-method-icon">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <h3>Call Us</h3>
+              <p><a href="tel:+919876543210">+91 98765 43210</a></p>
+              <span class="cnt-method-meta">Mon–Sat, 7:00 AM – 9:00 PM</span>
+            </div>
+
+            <div class="cnt-method-card" data-reveal>
+              <div class="cnt-method-icon">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <h3>Email Us</h3>
+              <p><a href="mailto:hello@laundrix.com">hello@laundrix.com</a></p>
+              <span class="cnt-method-meta">Guaranteed reply in 24 hours</span>
+            </div>
+
+            <div class="cnt-method-card" data-reveal>
+              <div class="cnt-method-icon">
+                <i class="fa-solid fa-comments"></i>
+              </div>
+              <h3>Live Chat</h3>
+              <p><a href="#" id="openChatBtn">Chat with Support</a></p>
+              <span class="cnt-method-meta">Available 7 days a week</span>
+            </div>
+
+            <div class="cnt-method-card" data-reveal>
+              <div class="cnt-method-icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <h3>Headquarters</h3>
+              <p>Bengaluru, India</p>
+              <span class="cnt-method-meta">Hub visits by appointment</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INTERACTIVE MESSAGE FORM & DIRECT INFO -->
+      <section class="cnt-form-section">
+        <div class="lx-container">
+          <div class="cnt-form-grid">
+            <!-- MESSAGE FORM -->
+            <div class="cnt-form-wrapper" data-reveal>
+              <span class="label">Send an Inquiry</span>
+              <h2>We'd love to hear from you.</h2>
+
+              <form id="contactForm" data-validate data-demo="true" data-success="Thank you! Your message has been sent successfully. Our team will get back to you within 24 hours." novalidate>
+                <div class="cnt-form-row">
+                  <div class="cnt-form-group">
+                    <label for="fullName">Full Name <span class="required">*</span></label>
+                    <input type="text" id="fullName" class="cnt-input" placeholder="e.g. Rahul Verma" required minlength="2" />
+                    <span class="cnt-field-error">Please enter your full name (at least 2 characters)</span>
+                  </div>
+                  <div class="cnt-form-group">
+                    <label for="email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="email" class="cnt-input" placeholder="e.g. rahul@example.com" required />
+                    <span class="cnt-field-error">Please enter a valid email address</span>
+                  </div>
+                </div>
+
+                <div class="cnt-form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" class="cnt-input" placeholder="e.g. +91 98765 43210" />
+                </div>
+
+                <div class="cnt-form-group">
+                  <label for="subject">Inquiry Subject <span class="required">*</span></label>
+                  <select id="subject" class="cnt-select" required>
+                    <option value="">Select subject category...</option>
+                    <option value="booking">Booking &amp; Pickup Logistics</option>
+                    <option value="pricing">Pricing &amp; Subscription Inquiries</option>
+                    <option value="support">Active Order Assistance &amp; Help</option>
+                    <option value="feedback">Feedback &amp; Quality Review</option>
+                    <option value="partnership">Corporate &amp; Commercial Partnerships</option>
+                    <option value="other">Other Inquiries</option>
+                  </select>
+                  <span class="cnt-field-error">Please select a subject category</span>
+                </div>
+
+                <div class="cnt-form-group">
+                  <label for="message">Your Message <span class="required">*</span></label>
+                  <textarea id="message" class="cnt-textarea" placeholder="Tell us how we can help you..." required minlength="10"></textarea>
+                  <span class="cnt-field-error">Please enter your message (at least 10 characters)</span>
+                </div>
+
+                <button type="submit" class="cnt-submit-btn" id="contactSubmitBtn">
+                  <span>Send Message</span>
+                  <i class="fa-regular fa-paper-plane"></i>
+                </button>
+              </form>
+            </div>
+
+            <!-- SIDEBAR DIRECT CONTACT -->
+            <div class="cnt-info-sidebar" data-reveal>
+              <div class="cnt-info-card">
+                <span class="info-tag">Direct Lines</span>
+                <h3>Reach Us Directly</h3>
+
+                <div class="cnt-detail-row">
+                  <i class="fa-solid fa-phone"></i>
+                  <div>
+                    <a href="tel:+919876543210">+91 98765 43210</a>
+                  </div>
+                </div>
+
+                <div class="cnt-detail-row">
+                  <i class="fa-solid fa-envelope"></i>
+                  <div>
+                    <a href="mailto:hello@laundrix.com">hello@laundrix.com</a>
+                  </div>
+                </div>
+
+                <div class="cnt-detail-row">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <div>
+                    Bengaluru, Karnataka, India
+                  </div>
+                </div>
+
+                <div class="cnt-detail-row">
+                  <i class="fa-solid fa-clock"></i>
+                  <div>
+                    Mon–Sat: 7:00 AM – 9:00 PM<br />
+                    <span style="color:var(--lx-text-muted); font-size:12.5px;">Sunday: Concierge only</span>
+                  </div>
+                </div>
+
+                <div class="cnt-social-links">
+                  <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="lx-social">
+                    <i class="fa-brands fa-instagram"></i>
+                  </a>
+                  <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" class="lx-social">
+                    <i class="fa-brands fa-facebook-f"></i>
+                  </a>
+                  <a href="https://x.com" target="_blank" rel="noopener" aria-label="X Twitter" class="lx-social">
+                    <i class="fa-brands fa-x-twitter"></i>
+                  </a>
+                  <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="lx-social">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                  </a>
+                </div>
+              </div>
+
+              <div class="cnt-info-card">
+                <span class="info-tag">Fast Resolution</span>
+                <h3>Priority Support</h3>
+                <p style="color:var(--lx-text-soft); font-size:14px; line-height:1.7;">
+                  For urgent modifications to pickup times or garment requests, please call our hotline directly for immediate 1-on-1 dispatcher assistance.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HEADQUARTERS MAP PREVIEW -->
+      <section class="cnt-map-section">
+        <div class="lx-container">
+          <div class="cnt-section-head" data-reveal>
+            <div class="cnt-eyebrow">Central Operations</div>
+            <h2>Headquarters &amp; Facilities</h2>
+            <p>Our centralized processing hub is located in the heart of the city.</p>
+          </div>
+
+          <div class="cnt-map-container" data-reveal>
+            <div class="cnt-map-card">
+              <div class="cnt-map-pin">
+                <i class="fa-solid fa-building-circle-check"></i>
+              </div>
+              <h4>LaundriX Central Facility</h4>
+              <p>Indiranagar, Bengaluru, Karnataka, India</p>
+              <a href="coverage.html" class="prc-btn prc-btn-outline" style="max-width:240px; margin:0 auto;">
+                <span>View All 12+ Hubs</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT FAQS -->
+      <section class="cnt-faq-section">
+        <div class="lx-container">
+          <div class="cnt-section-head" data-reveal>
+            <div class="cnt-eyebrow">Frequently Asked</div>
+            <h2>Contact &amp; Support FAQs</h2>
+            <p>Quick answers to our most common support questions.</p>
+          </div>
+
+          <div class="cnt-faq-grid">
+            <div class="cnt-faq-item is-open" data-reveal>
+              <button type="button" class="cnt-faq-question">
+                <span>What is the fastest way to get help with an existing order?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+              <div class="cnt-faq-answer">
+                <p>
+                  For immediate order modifications or driver updates, call our dispatch line at <strong>+91 98765 43210</strong>. For non-urgent billing or invoice requests, use the contact form above for a 24-hour response.
+                </p>
+              </div>
+            </div>
+
+            <div class="cnt-faq-item" data-reveal>
+              <button type="button" class="cnt-faq-question">
+                <span>Can I drop off my garments in person?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+              <div class="cnt-faq-answer">
+                <p>
+                  LaundriX operates primarily as a digitized doorstep pickup and delivery service so you never have to visit a store. However, hub drop-offs can be coordinated by prior appointment.
+                </p>
+              </div>
+            </div>
+
+            <div class="cnt-faq-item" data-reveal>
+              <button type="button" class="cnt-faq-question">
+                <span>What are your customer support operating hours?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+              <div class="cnt-faq-answer">
+                <p>
+                  Our dedicated live support agents are active Monday through Saturday from 7:00 AM to 9:00 PM. Inquiries submitted on Sundays are processed immediately first thing Monday morning.
+                </p>
+              </div>
+            </div>
+
+            <div class="cnt-faq-item" data-reveal>
+              <button type="button" class="cnt-faq-question">
+                <span>How do I request laundry services for my business or hotel?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+              <div class="cnt-faq-answer">
+                <p>
+                  Select "Corporate &amp; Commercial Partnerships" in the form dropdown above or email us at <strong>partners@laundrix.com</strong> to speak with our enterprise account manager.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BOTTOM CTA -->
+      <section class="cnt-cta-section">
+        <div class="lx-container">
+          <div class="cnt-cta-card" data-reveal>
+            <div>
+              <h2>Ready to Experience LaundriX?</h2>
+              <p>Whether you want to book your first pickup or have questions, we're here to help.</p>
+            </div>
+            <a href="register.html" class="lx-button-white">
+              <span>Book a Pickup</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ======================================================
+         GLOBAL FOOTER (5-COLUMN LUXE DESIGN)
+    ====================================================== -->
+    <footer class="lx-footer">
+      <div class="lx-footer-main">
+        <div class="lx-container">
+          <div class="lx-footer-grid">
+            <!-- BRAND INFO -->
+            <div class="lx-footer-brand">
+              <a href="index.html" class="lx-brand">
+                <div class="lx-brand-mark">
+                  <span class="material-symbols-rounded"> local_laundry_service </span>
+                </div>
+                <div class="lx-brand-name">Laundri<span>X</span></div>
+              </a>
+              <p class="lx-footer-description">
+                Premium doorstep laundry and dry-cleaning service designed around your busy schedule. Freshness guaranteed.
+              </p>
+              <div class="lx-footer-socials">
+                <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="lx-social">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" class="lx-social">
+                  <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://x.com" target="_blank" rel="noopener" aria-label="X Twitter" class="lx-social">
+                  <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="lx-social">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- COMPANY LINKS -->
+            <div class="lx-footer-column">
+              <h3>Company</h3>
+              <a href="about.html">About Us</a>
+              <a href="services.html">Services</a>
+              <a href="pricing.html">Pricing</a>
+              <a href="how-it-works.html">How It Works</a>
+              <a href="coverage.html">Coverage Areas</a>
+            </div>
+
+            <!-- SERVICES LINKS -->
+            <div class="lx-footer-column">
+              <h3>Services</h3>
+              <a href="service-wash-fold.html">Wash &amp; Fold</a>
+              <a href="service-dry-cleaning.html">Dry Cleaning</a>
+              <a href="service-ironing.html">Steam Press</a>
+              <a href="service-premium-care.html">Premium Care</a>
+              <a href="faq.html">Help &amp; FAQs</a>
+            </div>
+
+            <!-- SUPPORT LINKS -->
+            <div class="lx-footer-column">
+              <h3>Support</h3>
+              <a href="contact.html" class="is-active">Contact Us</a>
+              <a href="blog.html">Laundry Blog</a>
+              <a href="refund-policy.html">Refund Policy</a>
+              <a href="terms.html">Terms of Service</a>
+              <a href="privacy.html">Privacy Policy</a>
+            </div>
+
+            <!-- ACTION CTA CARD -->
+            <div class="lx-footer-cta">
+              <div class="lx-footer-cta-card">
+                <div class="lx-footer-cta-icon">
+                  <i class="fa-solid fa-basket-shopping"></i>
+                </div>
+                <div>
+                  <strong>Effortless Laundry</strong>
+                  <p>Book a pickup in seconds.</p>
+                </div>
+              </div>
+              <a href="register.html" class="lx-footer-button">
+                <span>Get Started</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER BOTTOM BAR -->
+      <div class="lx-footer-bottom">
+        <div class="lx-container">
+          <div class="lx-footer-bottom-inner">
+            <p>© 2026 LaundriX Technologies Inc. All rights reserved.</p>
+            <div class="lx-footer-bottom-links">
+              <a href="terms.html">Terms</a>
+              <a href="privacy.html">Privacy</a>
+              <a href="refund-policy.html">Refunds</a>
+            </div>
+            <div>Made with precision for cleaner days.</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ======================================================
+         GLOBAL JS SCRIPT
+    ====================================================== -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- Page Specific Script: Form validation helper & Chat simulator -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Live Chat Button Handler
+        const chatBtn = document.getElementById("openChatBtn");
+        if (chatBtn) {
+          chatBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (window.LaundriX && window.LaundriX.showToast) {
+              window.LaundriX.showToast("Connecting you with a live LaundriX support agent...", { type: "info" });
+            }
+          });
+        }
+
+        // Contact FAQ Accordion
+        document.querySelectorAll(".cnt-faq-question").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const item = btn.closest(".cnt-faq-item");
+            const isOpen = item.classList.contains("is-open");
+            document.querySelectorAll(".cnt-faq-item").forEach((f) => f.classList.remove("is-open"));
+            if (!isOpen) item.classList.add("is-open");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

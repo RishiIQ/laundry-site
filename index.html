@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="LaundriX is a modern doorstep laundry and dry cleaning service. Schedule a pickup, track your order and get fresh clothes delivered to your door."
+    />
+    <meta name="theme-color" content="#059669" />
+    <title>LaundriX — Fresh Clothes. Zero Hassle.</title>
+
+    <!-- ======================================================
+         GOOGLE FONTS (MANROPE & PLUS JAKARTA SANS)
+    ====================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ======================================================
+         ICONS (MATERIAL SYMBOLS & FONT AWESOME)
+    ====================================================== -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <!-- ======================================================
+         SHARED GLOBAL CSS
+    ====================================================== -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+    <!-- ======================================================
+         INDEX PAGE UNIQUE LUXE STYLES
+    ====================================================== -->
+    <style>
+      /* Hero Section */
+      .home-hero {
+        position: relative;
+        min-height: calc(100dvh - 20px);
+        display: flex;
+        align-items: center;
+        padding-top: clamp(120px, 14vh, 160px);
+        padding-bottom: clamp(60px, 8vh, 100px);
+        overflow: hidden;
+        background: radial-gradient(circle at 85% 25%, rgba(var(--lx-primary-rgb), 0.08) 0%, transparent 45%),
+                    radial-gradient(circle at 10% 85%, rgba(79, 70, 229, 0.04) 0%, transparent 40%);
+      }
+
+      .home-hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+        align-items: center;
+        gap: clamp(36px, 5vw, 64px);
+      }
+
+      /* Hero Eyebrow */
+      .home-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 18px;
+        border-radius: var(--lx-radius-pill);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-sm);
+        color: var(--lx-primary);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+      }
+
+      .home-eyebrow-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--lx-primary);
+        box-shadow: 0 0 0 3px var(--lx-primary-light);
+        animation: pulseGlow 2s infinite;
+      }
+
+      /* Prominent Hero Title */
+      .home-title {
+        font-size: clamp(38px, 5vw, 68px);
+        font-weight: 900;
+        line-height: 1.05;
+        letter-spacing: -0.045em;
+        color: var(--lx-text);
+        margin-bottom: 22px;
+      }
+
+      .home-title-accent {
+        color: var(--lx-primary);
+        display: inline;
+      }
+
+      .home-description {
+        font-size: clamp(16px, 1.2vw, 18px);
+        color: var(--lx-text-soft);
+        max-width: 540px;
+        line-height: 1.7;
+        margin-bottom: 34px;
+      }
+
+      /* Hero CTAs */
+      .home-actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+      }
+
+      .home-primary-button {
+        min-height: 54px;
+        padding: 0 30px;
+        border-radius: var(--lx-radius-pill);
+        background: linear-gradient(135deg, var(--lx-primary), #047857);
+        color: #fff;
+        font-size: 15px;
+        font-weight: 800;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 10px 25px var(--lx-primary-glow);
+        transition: var(--lx-transition);
+        white-space: nowrap;
+      }
+
+      .home-primary-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 36px var(--lx-primary-glow);
+        color: #fff;
+      }
+
+      .home-secondary-button {
+        min-height: 54px;
+        padding: 0 26px;
+        border-radius: var(--lx-radius-pill);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        color: var(--lx-text);
+        font-size: 15px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: var(--lx-shadow-sm);
+        transition: var(--lx-transition);
+        white-space: nowrap;
+      }
+
+      .home-secondary-button:hover {
+        background: var(--lx-bg-subtle);
+        transform: translateY(-2px);
+        box-shadow: var(--lx-shadow-md);
+      }
+
+      /* Verified Customers Trust Row */
+      .home-trust {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .home-avatars {
+        display: flex;
+      }
+
+      .home-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 3px solid var(--lx-surface);
+        margin-left: -10px;
+        object-fit: cover;
+        box-shadow: var(--lx-shadow-sm);
+      }
+
+      .home-avatar:first-child {
+        margin-left: 0;
+      }
+
+      .home-trust-text {
+        font-size: 13px;
+        color: var(--lx-text-soft);
+        line-height: 1.4;
+      }
+
+      .home-trust-text strong {
+        display: block;
+        color: var(--lx-text);
+        font-size: 14px;
+      }
+
+      /* Hero Visual & Badges */
+      .home-visual {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .home-image-card {
+        position: relative;
+        width: 100%;
+        max-width: 420px;
+        border-radius: var(--lx-radius-xl);
+        overflow: hidden;
+        box-shadow: var(--lx-shadow-xl);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        transform: perspective(1000px) rotateY(-4deg) rotateX(2deg);
+        transition: transform 0.5s var(--lx-ease), box-shadow 0.5s ease;
+      }
+
+      .home-visual:hover .home-image-card {
+        transform: perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(-6px);
+        box-shadow: 0 35px 80px -15px rgba(15, 23, 42, 0.25);
+      }
+
+      .home-image-card img {
+        width: 100%;
+        height: clamp(380px, 48vh, 500px);
+        object-fit: cover;
+        display: block;
+      }
+
+      .home-image-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 40px 26px 26px;
+        background: linear-gradient(to top, rgba(15, 23, 42, 0.92) 0%, transparent 100%);
+        color: #fff;
+      }
+
+      .home-image-overlay small {
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 11px;
+        color: var(--lx-primary-light);
+        font-weight: 800;
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .home-image-overlay strong {
+        font-size: 20px;
+        font-weight: 800;
+      }
+
+      /* Floating Hero Badges */
+      .home-floating-card {
+        position: absolute;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 18px;
+        border-radius: var(--lx-radius-md);
+        background: var(--lx-surface-glass);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-lg);
+        animation: floatMotion 6s ease-in-out infinite;
+      }
+
+      .home-floating-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: rgba(var(--lx-primary-rgb), 0.12);
+        color: var(--lx-primary);
+        display: grid;
+        place-items: center;
+        font-size: 20px;
+        flex-shrink: 0;
+      }
+
+      .home-pickup-card {
+        top: 25px;
+        left: -25px;
+      }
+
+      .home-rating-card {
+        bottom: 25px;
+        right: -25px;
+        animation-delay: -3s;
+      }
+
+      .home-rating-stars {
+        color: var(--lx-gold);
+        font-size: 12px;
+        letter-spacing: 2px;
+        margin-bottom: 2px;
+      }
+
+      /* Quick Booking Interactive Card */
+      .home-booking-wrap {
+        position: relative;
+        z-index: 20;
+        margin-top: -45px;
+      }
+
+      .home-booking {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1.3fr auto;
+        gap: 12px;
+        padding: 14px;
+        border-radius: var(--lx-radius-xl);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-xl);
+        align-items: center;
+      }
+
+      .home-booking-field {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 14px;
+        border-radius: var(--lx-radius-md);
+        background: var(--lx-bg-subtle);
+        border: 1px solid transparent;
+        transition: var(--lx-transition);
+        min-width: 0;
+      }
+
+      .home-booking-field:focus-within {
+        border-color: var(--lx-primary);
+        background: var(--lx-surface);
+        box-shadow: 0 0 0 3px rgba(var(--lx-primary-rgb), 0.15);
+      }
+
+      .home-booking-field-icon {
+        font-size: 20px;
+        color: var(--lx-primary);
+        flex-shrink: 0;
+      }
+
+      .home-booking-field span.label {
+        display: block;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--lx-text-muted);
+        letter-spacing: 0.05em;
+      }
+
+      .home-booking-select,
+      .home-booking-date,
+      .home-booking-input {
+        width: 100%;
+        border: none;
+        background: transparent;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--lx-text);
+        outline: none;
+      }
+
+      .home-booking-submit {
+        min-height: 52px;
+        padding: 0 28px;
+        border-radius: var(--lx-radius-md);
+        background: linear-gradient(135deg, var(--lx-primary), #047857);
+        color: #fff;
+        font-size: 15px;
+        font-weight: 800;
+        border: none;
+        cursor: pointer;
+        transition: var(--lx-transition);
+        box-shadow: 0 4px 14px var(--lx-primary-glow);
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .home-booking-submit:hover {
+        background: linear-gradient(135deg, #047857, #065f46);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px var(--lx-primary-glow);
+      }
+
+      /* Stats Section */
+      .home-stats {
+        padding-block: 90px 40px;
+      }
+
+      .home-stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+      }
+
+      .home-stat {
+        padding: 32px 24px;
+        border-radius: var(--lx-radius-lg);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-sm);
+        text-align: center;
+        transition: var(--lx-transition);
+      }
+
+      .home-stat:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--lx-shadow-md);
+        border-color: var(--lx-primary);
+      }
+
+      .home-stat-number {
+        font-family: var(--lx-font-display);
+        font-size: clamp(36px, 3.5vw, 44px);
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        color: var(--lx-primary);
+        margin-bottom: 4px;
+      }
+
+      .home-stat-label {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--lx-text-soft);
+      }
+
+      /* Services Showcase Grid */
+      .home-services {
+        padding-block: 80px;
+      }
+
+      .home-section-heading {
+        text-align: center;
+        max-width: 680px;
+        margin: 0 auto 50px;
+      }
+
+      .home-section-eyebrow {
+        color: var(--lx-primary);
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 10px;
+      }
+
+      .home-section-title {
+        font-size: clamp(30px, 3.6vw, 44px);
+        margin-bottom: 14px;
+      }
+
+      .home-section-description {
+        color: var(--lx-text-soft);
+        font-size: 16px;
+      }
+
+      .home-services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+        gap: 24px;
+      }
+
+      .home-service-card {
+        border-radius: var(--lx-radius-lg);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        overflow: hidden;
+        box-shadow: var(--lx-shadow-sm);
+        display: flex;
+        flex-direction: column;
+        transition: var(--lx-transition);
+      }
+
+      .home-service-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--lx-shadow-lg);
+        border-color: rgba(var(--lx-primary-rgb), 0.4);
+      }
+
+      .home-service-image {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .home-service-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s var(--lx-ease);
+      }
+
+      .home-service-card:hover .home-service-image img {
+        transform: scale(1.06);
+      }
+
+      .service-badge {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        padding: 5px 12px;
+        border-radius: var(--lx-radius-pill);
+        background: var(--lx-surface-glass);
+        backdrop-filter: blur(10px);
+        color: var(--lx-primary-dark);
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .home-service-content {
+        padding: 24px 22px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+
+      .home-service-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        background: rgba(var(--lx-primary-rgb), 0.1);
+        color: var(--lx-primary);
+        display: grid;
+        place-items: center;
+        font-size: 22px;
+        margin-bottom: 14px;
+      }
+
+      .home-service-content h3 {
+        font-size: 19px;
+        margin-bottom: 8px;
+      }
+
+      .home-service-content p {
+        font-size: 14px;
+        color: var(--lx-text-soft);
+        margin-bottom: 18px;
+        flex: 1;
+      }
+
+      .home-service-arrow {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: var(--lx-bg-subtle);
+        display: grid;
+        place-items: center;
+        margin-left: auto;
+        color: var(--lx-text);
+        transition: var(--lx-transition);
+      }
+
+      .home-service-card:hover .home-service-arrow {
+        background: var(--lx-primary);
+        color: #fff;
+        transform: translateX(3px) rotate(-45deg);
+      }
+
+      /* 3 Steps Process Section */
+      .home-process {
+        padding-block: 90px;
+        background: var(--lx-bg-subtle);
+      }
+
+      .home-process-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+        gap: 28px;
+      }
+
+      .home-process-card {
+        padding: 36px 30px;
+        border-radius: var(--lx-radius-xl);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-sm);
+        transition: var(--lx-transition);
+      }
+
+      .home-process-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--lx-shadow-md);
+      }
+
+      .home-process-number {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 22px;
+      }
+
+      .home-process-number span {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--lx-primary), #047857);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font-family: var(--lx-font-display);
+        font-size: 18px;
+        font-weight: 900;
+      }
+
+      .home-process-card h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      .home-process-card p {
+        color: var(--lx-text-soft);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      /* Testimonial Spotlight */
+      .home-testimonial {
+        padding-block: 100px;
+      }
+
+      .home-testimonial-box {
+        padding: clamp(36px, 5vw, 65px) clamp(24px, 4vw, 55px);
+        border-radius: var(--lx-radius-xl);
+        background: linear-gradient(135deg, var(--lx-surface), var(--lx-bg-subtle));
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-xl);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .home-testimonial-quote {
+        font-size: clamp(22px, 2.6vw, 34px);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.4;
+        color: var(--lx-text);
+        margin-block: 20px 28px;
+        max-width: 860px;
+      }
+
+      .home-testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .home-testimonial-author img {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .home-testimonial-author strong {
+        font-size: 15px;
+        display: block;
+      }
+
+      .home-testimonial-author span {
+        font-size: 13px;
+        color: var(--lx-text-soft);
+      }
+
+      /* Final CTA Card */
+      .home-final-cta {
+        padding-block-end: 90px;
+      }
+
+      .home-final-cta-box {
+        padding: clamp(36px, 5vw, 60px) clamp(24px, 4vw, 55px);
+        border-radius: var(--lx-radius-xl);
+        background: radial-gradient(circle at 100% 0%, #059669 0%, #064e3b 100%);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        box-shadow: 0 20px 50px -10px rgba(6, 78, 59, 0.35);
+      }
+
+      .home-final-cta-box h2 {
+        color: #fff;
+        font-size: clamp(28px, 3.4vw, 42px);
+        margin-bottom: 10px;
+      }
+
+      .home-final-cta-box p {
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 16px;
+        max-width: 560px;
+      }
+
+      .home-final-cta-box .home-primary-button {
+        background: #ffffff;
+        color: #064e3b;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+        flex-shrink: 0;
+      }
+
+      .home-final-cta-box .home-primary-button:hover {
+        background: var(--lx-primary-light);
+        color: #064e3b;
+      }
+
+      /* Keyframes */
+      @keyframes floatMotion {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+      }
+
+      @keyframes pulseGlow {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.15); opacity: 0.7; }
+      }
+
+      /* Responsive Query Tweaks */
+      @media (max-width: 980px) {
+        .home-hero-grid {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        .home-eyebrow, .home-actions, .home-trust {
+          justify-content: center;
+          margin-inline: auto;
+        }
+        .home-description {
+          margin-inline: auto;
+        }
+        .home-booking {
+          grid-template-columns: 1fr 1fr;
+        }
+        .home-booking-submit {
+          grid-column: 1 / -1;
+        }
+        .home-floating-card {
+          display: none;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .home-booking {
+          grid-template-columns: 1fr;
+        }
+        .home-booking-submit {
+          grid-column: auto;
+          width: 100%;
+        }
+        .home-actions {
+          flex-direction: column;
+          width: 100%;
+        }
+        .home-primary-button, .home-secondary-button {
+          width: 100%;
+        }
+        .home-final-cta-box {
+          flex-direction: column;
+          text-align: center;
+        }
+        .home-final-cta-box .home-primary-button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ======================================================
+         GLOBAL HEADER & NAVIGATION
+    ====================================================== -->
+    <header class="lx-header">
+      <div class="lx-container">
+        <div class="lx-header-inner">
+          <!-- BRAND LOGO -->
+          <a href="index.html" class="lx-brand" aria-label="LaundriX Home">
+            <div class="lx-brand-mark">
+              <span class="material-symbols-rounded"> local_laundry_service </span>
+            </div>
+            <div class="lx-brand-name">Laundri<span>X</span></div>
+          </a>
+
+          <!-- DESKTOP NAVBAR -->
+          <nav class="lx-nav" aria-label="Main navigation">
+            <div class="lx-nav-dropdown">
+              <button
+                type="button"
+                class="lx-nav-link lx-nav-dropdown-trigger is-active"
+                data-home-dropdown
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                <span>Home</span>
+                <span class="material-symbols-rounded" style="font-size:18px;"> keyboard_arrow_down </span>
+              </button>
+
+              <div class="lx-nav-dropdown-menu" aria-label="Home pages">
+                <a href="index.html" class="lx-nav-dropdown-item is-current">
+                  <div class="lx-dropdown-icon">
+                    <span class="material-symbols-rounded"> home </span>
+                  </div>
+                  <span class="lx-dropdown-content">
+                    <strong> Home 1 </strong>
+                    <small> Signature Experience </small>
+                  </span>
+                </a>
+                <a href="home-2.html" class="lx-nav-dropdown-item">
+                  <div class="lx-dropdown-icon">
+                    <span class="material-symbols-rounded"> auto_awesome </span>
+                  </div>
+                  <span class="lx-dropdown-content">
+                    <strong> Home 2 </strong>
+                    <small> Expressive SaaS </small>
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            <a href="services.html" class="lx-nav-link"> Services </a>
+            <a href="about.html" class="lx-nav-link"> About </a>
+            <a href="pricing.html" class="lx-nav-link"> Pricing </a>
+            <a href="how-it-works.html" class="lx-nav-link"> How it works </a>
+            <a href="coverage.html" class="lx-nav-link"> Coverage </a>
+            <a href="blog.html" class="lx-nav-link"> Blog </a>
+            <a href="contact.html" class="lx-nav-link"> Contact </a>
+          </nav>
+
+          <!-- HEADER ACTIONS & TOGGLES -->
+          <div class="lx-header-actions">
+            <a href="login.html" class="lx-nav-link" style="font-weight:700;"> Login </a>
+            <a href="register.html" class="lx-button lx-button-primary"> Sign up </a>
+
+            <button
+              type="button"
+              class="lx-icon-button"
+              data-theme-toggle
+              aria-label="Toggle theme"
+            >
+              <span class="material-symbols-rounded"> dark_mode </span>
+            </button>
+
+            <button
+              type="button"
+              class="lx-direction-toggle"
+              data-rtl-toggle
+              aria-label="Toggle LTR / RTL"
+              aria-pressed="false"
+              title="Toggle LTR / RTL"
+            >
+              <span class="lx-direction-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </button>
+
+            <button
+              type="button"
+              class="lx-icon-button lx-menu-toggle"
+              data-menu-toggle
+              aria-label="Open menu"
+              aria-expanded="false"
+            >
+              <span class="material-symbols-rounded"> menu </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- MOBILE SLIDE-DOWN MENU -->
+        <div class="lx-mobile-menu" data-mobile-menu>
+          <div class="lx-mobile-menu-inner">
+            <div class="lx-mobile-home">
+              <button
+                type="button"
+                class="lx-mobile-home-trigger"
+                data-mobile-home-toggle
+                aria-expanded="false"
+              >
+                <span>Home Options</span>
+                <span class="material-symbols-rounded"> keyboard_arrow_down </span>
+              </button>
+
+              <div class="lx-mobile-home-links">
+                <a href="index.html" class="is-current"> Home 1 (Signature) </a>
+                <a href="home-2.html"> Home 2 (Expressive) </a>
+              </div>
+            </div>
+
+            <a href="services.html"> Services </a>
+            <a href="about.html"> About </a>
+            <a href="pricing.html"> Pricing </a>
+            <a href="how-it-works.html"> How it works </a>
+            <a href="coverage.html"> Coverage </a>
+            <a href="blog.html"> Blog </a>
+            <a href="contact.html"> Contact </a>
+
+            <div class="lx-mobile-menu-actions">
+              <a href="login.html" class="lx-button lx-button-outline"> Login </a>
+              <a href="register.html" class="lx-button lx-button-primary"> Sign up </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ======================================================
+         PAGE MAIN CONTENT
+    ====================================================== -->
+    <main>
+      <!-- HERO SECTION -->
+      <section class="home-hero">
+        <div class="lx-container">
+          <div class="home-hero-grid">
+            <div>
+              <div class="home-eyebrow">
+                <span class="home-eyebrow-dot"></span>
+                Doorstep Laundry, Reimagined
+              </div>
+
+              <h1 class="home-title">
+                Fresh clothes.
+                <br />
+                <span class="home-title-accent">Zero hassle.</span>
+              </h1>
+
+              <p class="home-description">
+                LaundriX picks up your clothes, gives them the care they deserve, and brings them
+                back fresh — right to your doorstep.
+              </p>
+
+              <div class="home-actions">
+                <a href="register.html" class="home-primary-button">
+                  Book a pickup
+                  <span class="material-symbols-rounded"> arrow_forward </span>
+                </a>
+
+                <a href="how-it-works.html" class="home-secondary-button">
+                  <span class="material-symbols-rounded"> play_circle </span>
+                  See how it works
+                </a>
+              </div>
+
+              <div class="home-trust">
+                <div class="home-avatars">
+                  <img
+                    class="home-avatar"
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80"
+                    alt="LaundriX customer"
+                  />
+                  <img
+                    class="home-avatar"
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80"
+                    alt="LaundriX customer"
+                  />
+                  <img
+                    class="home-avatar"
+                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80"
+                    alt="LaundriX customer"
+                  />
+                  <img
+                    class="home-avatar"
+                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80"
+                    alt="LaundriX customer"
+                  />
+                </div>
+                <div class="home-trust-text">
+                  <strong>Loved by 12,000+ customers</strong>
+                  4.9/5 average verified rating
+                </div>
+              </div>
+            </div>
+
+            <!-- HERO 3D SHOWCASE -->
+            <div class="home-visual">
+              <div class="home-floating-card home-pickup-card">
+                <div class="home-floating-icon">
+                  <span class="material-symbols-rounded"> local_shipping </span>
+                </div>
+                <div>
+                  <strong>Pickup Scheduled</strong>
+                  <small style="color:var(--lx-text-soft); font-size:12px;">Today · 6:30 PM</small>
+                </div>
+              </div>
+
+              <div class="home-image-card">
+                <img
+                  src="https://images.pexels.com/photos/4386143/pexels-photo-4386143.jpeg"
+                  alt="Freshly laundered clothes"
+                />
+                <div class="home-image-overlay">
+                  <small>Eco-Friendly Care</small>
+                  <strong>Fresh. Clean. Delivered.</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INTERACTIVE QUICK BOOKING COMPONENT -->
+      <section class="home-booking-wrap">
+        <div class="lx-container">
+          <form class="home-booking" id="quickBookingForm" data-validate data-demo="true" data-success="Your pickup has been successfully scheduled!">
+            <div class="home-booking-field">
+              <span class="home-booking-field-icon">
+                <i class="fa-solid fa-shirt"></i>
+              </span>
+              <div style="flex:1; min-width:0;">
+                <span class="label">Choose Service</span>
+                <select class="home-booking-select" id="bookingService" required>
+                  <option value="">Select service...</option>
+                  <option value="wash-fold">Wash & Fold</option>
+                  <option value="dry-clean">Dry Cleaning</option>
+                  <option value="ironing">Professional Ironing</option>
+                  <option value="premium">Premium Garment Care</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="home-booking-field">
+              <span class="home-booking-field-icon">
+                <i class="fa-solid fa-calendar-days"></i>
+              </span>
+              <div style="flex:1; min-width:0;">
+                <span class="label">Pickup Date</span>
+                <input
+                  type="date"
+                  class="home-booking-date"
+                  id="pickupDate"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="home-booking-field">
+              <span class="home-booking-field-icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </span>
+              <div style="flex:1; min-width:0;">
+                <span class="label">Postal Code / Area</span>
+                <input
+                  type="text"
+                  class="home-booking-input"
+                  placeholder="e.g. 560001 or Indiranagar"
+                  id="postalCode"
+                  required
+                />
+              </div>
+            </div>
+
+            <button type="submit" class="home-booking-submit">
+              Schedule Now
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- STATS SECTION -->
+      <section class="home-stats">
+        <div class="lx-container">
+          <div class="home-stats-grid" data-reveal>
+            <div class="home-stat">
+              <div class="home-stat-number" data-counter="12000">12K+</div>
+              <div class="home-stat-label">Happy Customers</div>
+            </div>
+
+            <div class="home-stat">
+              <div class="home-stat-number" data-counter="98">98%</div>
+              <div class="home-stat-label">On-Time Deliveries</div>
+            </div>
+
+            <div class="home-stat">
+              <div class="home-stat-number" data-counter="4.9">4.9</div>
+              <div class="home-stat-label">Average Customer Rating</div>
+            </div>
+
+            <div class="home-stat">
+              <div class="home-stat-number" data-counter="24">24h</div>
+              <div class="home-stat-label">Express Turnaround</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES SECTION -->
+      <section class="home-services">
+        <div class="lx-container">
+          <div class="home-section-heading" data-reveal>
+            <div class="home-section-eyebrow">Tailored Solutions</div>
+            <h2 class="home-section-title">Everything your wardrobe needs.</h2>
+            <p class="home-section-description">
+              From everyday essentials to fine silk and designer suits, our fabric experts ensure perfection every time.
+            </p>
+          </div>
+
+          <div class="home-services-grid">
+            <!-- WASH & FOLD -->
+            <a href="service-wash-fold.html" class="home-service-card" data-reveal>
+              <div class="home-service-image">
+                <img
+                  src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=800&q=80"
+                  alt="Freshly washed and folded clothes"
+                  loading="lazy"
+                />
+                <span class="service-badge">Wash & Fold</span>
+              </div>
+              <div class="home-service-content">
+                <div class="home-service-icon">
+                  <span class="material-symbols-rounded"> local_laundry_service </span>
+                </div>
+                <h3>Wash & Fold</h3>
+                <p>Everyday clothes washed with eco-friendly detergent, tumble-dried, and crisply folded.</p>
+                <div class="home-service-arrow">
+                  <span class="material-symbols-rounded"> arrow_forward </span>
+                </div>
+              </div>
+            </a>
+
+            <!-- DRY CLEANING -->
+            <a href="service-dry-cleaning.html" class="home-service-card" data-reveal>
+              <div class="home-service-image">
+                <img
+                  src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=800&q=80"
+                  alt="Professional dry cleaning service"
+                  loading="lazy"
+                />
+                <span class="service-badge">Dry Cleaning</span>
+              </div>
+              <div class="home-service-content">
+                <div class="home-service-icon">
+                  <span class="material-symbols-rounded"> dry_cleaning </span>
+                </div>
+                <h3>Dry Cleaning</h3>
+                <p>Non-toxic solvent cleaning for delicate suits, evening gowns, coats, and formal wear.</p>
+                <div class="home-service-arrow">
+                  <span class="material-symbols-rounded"> arrow_forward </span>
+                </div>
+              </div>
+            </a>
+
+            <!-- IRONING -->
+            <a href="service-ironing.html" class="home-service-card" data-reveal>
+              <div class="home-service-image">
+                <img
+                  src="https://images.unsplash.com/photo-1489274495757-95c7c837b101?auto=format&fit=crop&w=800&q=80"
+                  alt="Professional steam ironing"
+                  loading="lazy"
+                />
+                <span class="service-badge">Steam Press</span>
+              </div>
+              <div class="home-service-content">
+                <div class="home-service-icon">
+                  <span class="material-symbols-rounded"> iron </span>
+                </div>
+                <h3>Steam Ironing</h3>
+                <p>Industrial steam press finishing for crisp, wrinkle-free garments ready for the boardroom.</p>
+                <div class="home-service-arrow">
+                  <span class="material-symbols-rounded"> arrow_forward </span>
+                </div>
+              </div>
+            </a>
+
+            <!-- PREMIUM CARE -->
+            <a href="service-premium-care.html" class="home-service-card" data-reveal>
+              <div class="home-service-image">
+                <img
+                  src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=800&q=80"
+                  alt="Luxury garment care"
+                  loading="lazy"
+                />
+                <span class="service-badge">Luxe Care</span>
+              </div>
+              <div class="home-service-content">
+                <div class="home-service-icon">
+                  <span class="material-symbols-rounded"> diamond </span>
+                </div>
+                <h3>Premium Care</h3>
+                <p>Hand-finished couture care, leather conditioning, stain preservation, and bridal packages.</p>
+                <div class="home-service-arrow">
+                  <span class="material-symbols-rounded"> arrow_forward </span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3-STEP PROCESS SECTION -->
+      <section class="home-process">
+        <div class="lx-container">
+          <div class="home-section-heading" data-reveal>
+            <div class="home-section-eyebrow">Simplicity in Motion</div>
+            <h2 class="home-section-title">Three steps to fresher days.</h2>
+            <p class="home-section-description">
+              No queues. No laundry piles. Just schedule, relax, and receive.
+            </p>
+          </div>
+
+          <div class="home-process-grid">
+            <article class="home-process-card" data-reveal>
+              <div class="home-process-number">
+                <span>01</span>
+                <i class="fa-solid fa-arrow-right" style="color:var(--lx-text-muted);"></i>
+              </div>
+              <h3>Schedule in 60s</h3>
+              <p>Pick your desired laundry services and choose a doorstep collection slot that fits your lifestyle.</p>
+            </article>
+
+            <article class="home-process-card" data-reveal>
+              <div class="home-process-number">
+                <span>02</span>
+                <i class="fa-solid fa-arrow-right" style="color:var(--lx-text-muted);"></i>
+              </div>
+              <h3>Master Cleaning</h3>
+              <p>Our certified textile specialists inspect, treat stains, wash, and hand-press each item with care.</p>
+            </article>
+
+            <article class="home-process-card" data-reveal>
+              <div class="home-process-number">
+                <span>03</span>
+                <i class="fa-solid fa-check" style="color:var(--lx-primary);"></i>
+              </div>
+              <h3>Delivered Fresh</h3>
+              <p>Your garments return neatly folded or on hangers within 24 hours, ready to wear immediately.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIAL SPOTLIGHT -->
+      <section class="home-testimonial">
+        <div class="lx-container">
+          <div class="home-testimonial-box" data-reveal>
+            <div style="color:var(--lx-gold); font-size:18px; letter-spacing:4px;">★★★★★</div>
+            <blockquote class="home-testimonial-quote">
+              “I stopped thinking about laundry completely. LaundriX picks everything up from my lobby, takes incredible care of delicate fabrics, and brings them back feeling better than brand new.”
+            </blockquote>
+            <div class="home-testimonial-author">
+              <img
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80"
+                alt="Ananya Sharma"
+              />
+              <div>
+                <strong>Ananya Sharma</strong>
+                <span>Verified Customer · Bengaluru</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CALL TO ACTION BANNER -->
+      <section class="home-final-cta">
+        <div class="lx-container">
+          <div class="home-final-cta-box" data-reveal>
+            <div>
+              <h2>Your laundry day just got easier.</h2>
+              <p>
+                Get your first pickup scheduled today and enjoy 20% off your initial order. Experience premium garment care without the hassle.
+              </p>
+            </div>
+            <a href="register.html" class="home-primary-button">
+              Book Your First Pickup
+              <span class="material-symbols-rounded"> arrow_forward </span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ======================================================
+         GLOBAL FOOTER
+    ====================================================== -->
+    <footer class="lx-footer">
+      <div class="lx-footer-main">
+        <div class="lx-container">
+          <div class="lx-footer-grid">
+            <!-- BRAND INFO -->
+            <div class="lx-footer-brand">
+              <a href="index.html" class="lx-brand">
+                <div class="lx-brand-mark">
+                  <span class="material-symbols-rounded"> local_laundry_service </span>
+                </div>
+                <div class="lx-brand-name">Laundri<span>X</span></div>
+              </a>
+              <p class="lx-footer-description">
+                Premium doorstep laundry and dry-cleaning service designed around your busy schedule. Freshness guaranteed.
+              </p>
+              <div class="lx-footer-socials">
+                <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="lx-social">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" class="lx-social">
+                  <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://x.com" target="_blank" rel="noopener" aria-label="X" class="lx-social">
+                  <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="lx-social">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- COMPANY LINKS -->
+            <div class="lx-footer-column">
+              <h3>Company</h3>
+              <a href="about.html">About Us</a>
+              <a href="services.html">Services</a>
+              <a href="pricing.html">Pricing</a>
+              <a href="how-it-works.html">How It Works</a>
+              <a href="coverage.html">Coverage Areas</a>
+            </div>
+
+            <!-- SERVICES LINKS -->
+            <div class="lx-footer-column">
+              <h3>Services</h3>
+              <a href="service-wash-fold.html">Wash & Fold</a>
+              <a href="service-dry-cleaning.html">Dry Cleaning</a>
+              <a href="service-ironing.html">Steam Press</a>
+              <a href="service-premium-care.html">Premium Care</a>
+              <a href="faq.html">Help & FAQs</a>
+            </div>
+
+            <!-- SUPPORT LINKS -->
+            <div class="lx-footer-column">
+              <h3>Support</h3>
+              <a href="contact.html">Contact Us</a>
+              <a href="blog.html">Laundry Blog</a>
+              <a href="refund-policy.html">Refund Policy</a>
+              <a href="terms.html">Terms of Service</a>
+              <a href="privacy.html">Privacy Policy</a>
+            </div>
+
+            <!-- ACTION CTA CARD -->
+            <div class="lx-footer-cta">
+              <div class="lx-footer-cta-card">
+                <div class="lx-footer-cta-icon">
+                  <i class="fa-solid fa-basket-shopping"></i>
+                </div>
+                <div>
+                  <strong>Effortless Laundry</strong>
+                  <p>Book a pickup in seconds.</p>
+                </div>
+              </div>
+              <a href="register.html" class="lx-footer-button">
+                <span>Get Started</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER BOTTOM BAR -->
+      <div class="lx-footer-bottom">
+        <div class="lx-container">
+          <div class="lx-footer-bottom-inner">
+            <p>© 2026 LaundriX Technologies Inc. All rights reserved.</p>
+            <div class="lx-footer-bottom-links">
+              <a href="terms.html">Terms</a>
+              <a href="privacy.html">Privacy</a>
+              <a href="refund-policy.html">Refunds</a>
+            </div>
+            <div>Made with precision for cleaner days.</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ======================================================
+         GLOBAL JS SCRIPT
+    ====================================================== -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- Page Specific Script: Auto set tomorrow as default date -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const dateInput = document.getElementById("pickupDate");
+        if (dateInput) {
+          const tomorrow = new Date();
+          tomorrow.setDate(tomorrow.getDate() + 1);
+          dateInput.min = tomorrow.toISOString().split("T")[0];
+          dateInput.value = tomorrow.toISOString().split("T")[0];
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="LaundriX blog — expert laundry tips, garment care guides, stain removal hacks and stories from our community."
+    />
+    <meta name="theme-color" content="#059669" />
+    <title>Blog & Garment Care Guides | LaundriX — Laundry Tips & Stories</title>
+
+    <!-- ======================================================
+         GOOGLE FONTS (MANROPE & PLUS JAKARTA SANS)
+    ====================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ======================================================
+         ICONS (MATERIAL SYMBOLS & FONT AWESOME)
+    ====================================================== -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <!-- ======================================================
+         SHARED GLOBAL CSS
+    ====================================================== -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+    <!-- ======================================================
+         BLOG PAGE UNIQUE STYLES (MODERN LUXE EMERALD)
+    ====================================================== -->
+    <style>
+      /* Blog Hero */
+      .blog-hero {
+        position: relative;
+        padding-top: clamp(130px, 15vh, 170px);
+        padding-bottom: clamp(50px, 7vh, 80px);
+        text-align: center;
+        background: radial-gradient(circle at 50% 15%, rgba(var(--lx-primary-rgb), 0.08) 0%, transparent 60%);
+        overflow: hidden;
+      }
+
+      .blog-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 16px;
+        border-radius: var(--lx-radius-pill);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-sm);
+        color: var(--lx-primary);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+      .blog-hero h1 {
+        font-size: clamp(36px, 5vw, 64px);
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        margin-bottom: 18px;
+      }
+
+      .blog-hero h1 span {
+        color: var(--lx-primary);
+      }
+
+      .blog-hero p {
+        font-size: clamp(16px, 1.2vw, 19px);
+        color: var(--lx-text-soft);
+        max-width: 620px;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+
+      /* Featured Post Spotlight */
+      .blog-featured {
+        padding-block: clamp(30px, 5vw, 50px);
+      }
+
+      .blog-featured-card {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        border-radius: var(--lx-radius-xl);
+        overflow: hidden;
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-md);
+        transition: var(--lx-transition);
+      }
+
+      .blog-featured-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--lx-shadow-xl);
+        border-color: rgba(var(--lx-primary-rgb), 0.4);
+      }
+
+      .blog-featured-image {
+        min-height: clamp(300px, 40vh, 420px);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .blog-featured-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s var(--lx-ease);
+      }
+
+      .blog-featured-card:hover .blog-featured-image img {
+        transform: scale(1.05);
+      }
+
+      .blog-featured-image .featured-badge {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        padding: 6px 14px;
+        border-radius: var(--lx-radius-pill);
+        background: linear-gradient(135deg, var(--lx-primary), #047857);
+        color: #fff;
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        box-shadow: 0 4px 12px var(--lx-primary-glow);
+      }
+
+      .blog-featured-content {
+        padding: clamp(32px, 4vw, 54px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .blog-meta {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--lx-text-soft);
+        font-size: 13.5px;
+        font-weight: 600;
+        margin-bottom: 14px;
+      }
+
+      .blog-meta .category {
+        color: var(--lx-primary);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 12px;
+      }
+
+      .blog-featured-content h2 {
+        font-size: clamp(22px, 2.6vw, 32px);
+        line-height: 1.25;
+        letter-spacing: -0.03em;
+        margin-bottom: 16px;
+      }
+
+      .blog-featured-content h2 a {
+        color: var(--lx-text);
+        transition: color 0.2s ease;
+      }
+
+      .blog-featured-content h2 a:hover {
+        color: var(--lx-primary);
+      }
+
+      .blog-featured-content p {
+        color: var(--lx-text-soft);
+        font-size: 15px;
+        line-height: 1.7;
+        margin-bottom: 24px;
+      }
+
+      .blog-read-more {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--lx-primary);
+        font-weight: 800;
+        font-size: 14.5px;
+        transition: gap 0.25s ease;
+      }
+
+      .blog-read-more:hover {
+        gap: 14px;
+        color: var(--lx-primary-hover);
+      }
+
+      /* Toolbar: Search & Category Pills */
+      .blog-toolbar {
+        padding-block: clamp(20px, 3vw, 40px);
+      }
+
+      .blog-toolbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .blog-search {
+        flex: 1;
+        min-width: 260px;
+        position: relative;
+      }
+
+      .blog-search i {
+        position: absolute;
+        left: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--lx-primary);
+        font-size: 16px;
+      }
+
+      .blog-search input {
+        width: 100%;
+        padding: 13px 18px 13px 48px;
+        border-radius: var(--lx-radius-pill);
+        border: 1px solid var(--lx-border);
+        background: var(--lx-surface);
+        color: var(--lx-text);
+        font-size: 14.5px;
+        font-weight: 600;
+        outline: none;
+        transition: var(--lx-transition);
+      }
+
+      .blog-search input:focus {
+        border-color: var(--lx-primary);
+        box-shadow: 0 0 0 3px rgba(var(--lx-primary-rgb), 0.15);
+      }
+
+      .blog-categories {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .blog-categories .cat-btn {
+        padding: 9px 18px;
+        border-radius: var(--lx-radius-pill);
+        border: 1px solid var(--lx-border);
+        background: var(--lx-surface);
+        color: var(--lx-text-soft);
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: var(--lx-transition);
+        white-space: nowrap;
+      }
+
+      .blog-categories .cat-btn:hover {
+        border-color: var(--lx-primary);
+        color: var(--lx-primary);
+      }
+
+      .blog-categories .cat-btn.active {
+        background: linear-gradient(135deg, var(--lx-primary), #047857);
+        color: #fff;
+        border-color: transparent;
+        box-shadow: 0 4px 12px var(--lx-primary-glow);
+      }
+
+      /* Articles Grid */
+      .blog-grid-section {
+        padding-block: 20px clamp(40px, 6vw, 80px);
+      }
+
+      .blog-grid-inner {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+        gap: clamp(20px, 3vw, 30px);
+      }
+
+      .blog-post-card {
+        border-radius: var(--lx-radius-xl);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        overflow: hidden;
+        box-shadow: var(--lx-shadow-sm);
+        display: flex;
+        flex-direction: column;
+        transition: var(--lx-transition);
+      }
+
+      .blog-post-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--lx-shadow-xl);
+        border-color: rgba(var(--lx-primary-rgb), 0.4);
+      }
+
+      .blog-post-card .post-image {
+        position: relative;
+        height: 220px;
+        overflow: hidden;
+      }
+
+      .blog-post-card .post-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s var(--lx-ease);
+      }
+
+      .blog-post-card:hover .post-image img {
+        transform: scale(1.06);
+      }
+
+      .blog-post-card .category-tag {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        padding: 5px 12px;
+        border-radius: var(--lx-radius-pill);
+        background: var(--lx-surface-glass);
+        backdrop-filter: blur(10px);
+        color: var(--lx-primary-dark);
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .blog-post-card .post-content {
+        padding: 26px 24px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+
+      .blog-post-card .meta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--lx-text-muted);
+        font-size: 12.5px;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .blog-post-card .meta .dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--lx-text-muted);
+      }
+
+      .blog-post-card h3 {
+        font-size: 19px;
+        margin-bottom: 10px;
+        line-height: 1.35;
+      }
+
+      .blog-post-card h3 a {
+        color: var(--lx-text);
+        transition: color 0.2s ease;
+      }
+
+      .blog-post-card h3 a:hover {
+        color: var(--lx-primary);
+      }
+
+      .blog-post-card p {
+        font-size: 14px;
+        color: var(--lx-text-soft);
+        line-height: 1.65;
+        margin-bottom: 20px;
+        flex: 1;
+      }
+
+      .blog-post-card .read-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--lx-primary);
+        font-weight: 800;
+        font-size: 13.5px;
+        transition: gap 0.2s ease;
+      }
+
+      .blog-post-card .read-link:hover {
+        gap: 10px;
+      }
+
+      /* Empty Search Fallback */
+      .blog-empty-state {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 80px 20px;
+        display: none;
+      }
+
+      .blog-empty-state i {
+        font-size: 3rem;
+        color: var(--lx-primary);
+        margin-bottom: 16px;
+        opacity: 0.8;
+      }
+
+      .blog-empty-state h3 {
+        font-size: 22px;
+        margin-bottom: 8px;
+      }
+
+      /* Pagination */
+      .blog-pagination {
+        padding-block: 40px 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .blog-pagination .page-btn {
+        min-width: 44px;
+        height: 44px;
+        padding: 0 14px;
+        display: grid;
+        place-items: center;
+        border-radius: var(--lx-radius-pill);
+        border: 1px solid var(--lx-border);
+        background: var(--lx-surface);
+        color: var(--lx-text-soft);
+        font-weight: 700;
+        font-size: 14px;
+        cursor: pointer;
+        transition: var(--lx-transition);
+      }
+
+      .blog-pagination .page-btn:hover:not(:disabled) {
+        border-color: var(--lx-primary);
+        color: var(--lx-primary);
+      }
+
+      .blog-pagination .page-btn.active {
+        background: linear-gradient(135deg, var(--lx-primary), #047857);
+        color: #fff;
+        border-color: transparent;
+        box-shadow: 0 4px 12px var(--lx-primary-glow);
+      }
+
+      .blog-pagination .page-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      /* Sidebar Section */
+      .blog-sidebar {
+        padding-block: clamp(60px, 8vw, 100px);
+        background: var(--lx-bg-subtle);
+      }
+
+      .blog-sidebar-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+
+      .blog-widget {
+        padding: clamp(24px, 3.5vw, 36px);
+        border-radius: var(--lx-radius-xl);
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-sm);
+      }
+
+      .blog-widget h4 {
+        font-size: 19px;
+        margin-bottom: 20px;
+      }
+
+      .blog-widget ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .blog-widget ul li {
+        border-bottom: 1px solid var(--lx-border-subtle);
+        padding-bottom: 12px;
+      }
+
+      .blog-widget ul li:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .blog-widget ul li a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--lx-text-soft);
+        font-weight: 600;
+        font-size: 14.5px;
+      }
+
+      .blog-widget ul li a:hover {
+        color: var(--lx-primary);
+        transform: translateX(4px);
+      }
+
+      .blog-widget ul li a .count {
+        font-size: 12px;
+        font-weight: 800;
+        background: var(--lx-bg-subtle);
+        padding: 3px 10px;
+        border-radius: var(--lx-radius-pill);
+      }
+
+      .blog-widget .recent-post {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid var(--lx-border-subtle);
+        margin-bottom: 14px;
+      }
+
+      .blog-widget .recent-post:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .blog-widget .recent-post img {
+        width: 68px;
+        height: 68px;
+        border-radius: var(--lx-radius-md);
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+
+      .blog-widget .recent-post .info h5 {
+        font-size: 14.5px;
+        margin-bottom: 4px;
+        line-height: 1.35;
+      }
+
+      .blog-widget .recent-post .info h5 a {
+        color: var(--lx-text);
+      }
+
+      .blog-widget .recent-post .info h5 a:hover {
+        color: var(--lx-primary);
+      }
+
+      .blog-widget .recent-post .info span {
+        font-size: 12px;
+        color: var(--lx-text-muted);
+      }
+
+      /* Bottom CTA Banner */
+      .blog-cta-section {
+        padding-block: clamp(40px, 7vw, 90px);
+      }
+
+      .blog-cta-card {
+        padding: clamp(36px, 5vw, 65px) clamp(24px, 4vw, 55px);
+        border-radius: var(--lx-radius-xl);
+        background: radial-gradient(circle at 100% 0%, #059669 0%, #064e3b 100%);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        box-shadow: 0 20px 50px -10px rgba(6, 78, 59, 0.35);
+      }
+
+      .blog-cta-card h2 {
+        color: #fff;
+        font-size: clamp(28px, 3.4vw, 42px);
+        margin-bottom: 10px;
+      }
+
+      .blog-cta-card p {
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 16px;
+        max-width: 560px;
+      }
+
+      .blog-cta-card .lx-button-white {
+        background: #ffffff;
+        color: #064e3b;
+        font-weight: 800;
+        font-size: 15px;
+        padding: 14px 32px;
+        border-radius: var(--lx-radius-pill);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+        flex-shrink: 0;
+        transition: var(--lx-transition);
+        text-decoration: none;
+      }
+
+      .blog-cta-card .lx-button-white:hover {
+        background: var(--lx-primary-light);
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 980px) {
+        .blog-featured-card {
+          grid-template-columns: 1fr;
+        }
+        .blog-sidebar-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .blog-toolbar-inner {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .blog-categories {
+          overflow-x: auto;
+          flex-wrap: nowrap;
+          padding-bottom: 6px;
+        }
+        .blog-cta-card {
+          flex-direction: column;
+          text-align: center;
+        }
+        .blog-cta-card .lx-button-white {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ======================================================
+         GLOBAL HEADER & NAVIGATION
+    ====================================================== -->
+    <header class="lx-header">
+      <div class="lx-container">
+        <div class="lx-header-inner">
+          <!-- BRAND -->
+          <a href="index.html" class="lx-brand" aria-label="LaundriX Home">
+            <div class="lx-brand-mark">
+              <span class="material-symbols-rounded"> local_laundry_service </span>
+            </div>
+            <div class="lx-brand-name">Laundri<span>X</span></div>
+          </a>
+
+          <!-- DESKTOP NAVBAR -->
+          <nav class="lx-nav" aria-label="Main navigation">
+            <div class="lx-nav-dropdown">
+              <button
+                type="button"
+                class="lx-nav-link lx-nav-dropdown-trigger"
+                data-home-dropdown
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                <span>Home</span>
+                <span class="material-symbols-rounded" style="font-size:18px;"> keyboard_arrow_down </span>
+              </button>
+
+              <div class="lx-nav-dropdown-menu" aria-label="Home pages">
+                <a href="index.html" class="lx-nav-dropdown-item">
+                  <div class="lx-dropdown-icon">
+                    <span class="material-symbols-rounded"> home </span>
+                  </div>
+                  <span class="lx-dropdown-content">
+                    <strong> Home 1 </strong>
+                    <small> Signature Experience </small>
+                  </span>
+                </a>
+                <a href="home-2.html" class="lx-nav-dropdown-item">
+                  <div class="lx-dropdown-icon">
+                    <span class="material-symbols-rounded"> auto_awesome </span>
+                  </div>
+                  <span class="lx-dropdown-content">
+                    <strong> Home 2 </strong>
+                    <small> Expressive SaaS </small>
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            <a href="services.html" class="lx-nav-link"> Services </a>
+            <a href="about.html" class="lx-nav-link"> About </a>
+            <a href="pricing.html" class="lx-nav-link"> Pricing </a>
+            <a href="how-it-works.html" class="lx-nav-link"> How it works </a>
+            <a href="coverage.html" class="lx-nav-link"> Coverage </a>
+            <a href="blog.html" class="lx-nav-link is-active"> Blog </a>
+            <a href="contact.html" class="lx-nav-link"> Contact </a>
+          </nav>
+
+          <!-- HEADER ACTIONS -->
+          <div class="lx-header-actions">
+            <a href="login.html" class="lx-nav-link" style="font-weight:700;"> Login </a>
+            <a href="register.html" class="lx-button lx-button-primary"> Sign up </a>
+
+            <button
+              type="button"
+              class="lx-icon-button"
+              data-theme-toggle
+              aria-label="Toggle theme"
+            >
+              <span class="material-symbols-rounded"> dark_mode </span>
+            </button>
+
+            <button
+              type="button"
+              class="lx-direction-toggle"
+              data-rtl-toggle
+              aria-label="Toggle LTR / RTL"
+              aria-pressed="false"
+              title="Toggle LTR / RTL"
+            >
+              <span class="lx-direction-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </button>
+
+            <button
+              type="button"
+              class="lx-icon-button lx-menu-toggle"
+              data-menu-toggle
+              aria-label="Open menu"
+              aria-expanded="false"
+            >
+              <span class="material-symbols-rounded"> menu </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- MOBILE SLIDE-DOWN MENU -->
+        <div class="lx-mobile-menu" data-mobile-menu>
+          <div class="lx-mobile-menu-inner">
+            <div class="lx-mobile-home">
+              <button
+                type="button"
+                class="lx-mobile-home-trigger"
+                data-mobile-home-toggle
+                aria-expanded="false"
+              >
+                <span>Home Options</span>
+                <span class="material-symbols-rounded"> keyboard_arrow_down </span>
+              </button>
+
+              <div class="lx-mobile-home-links">
+                <a href="index.html"> Home 1 (Signature) </a>
+                <a href="home-2.html"> Home 2 (Expressive) </a>
+              </div>
+            </div>
+
+            <a href="services.html"> Services </a>
+            <a href="about.html"> About </a>
+            <a href="pricing.html"> Pricing </a>
+            <a href="how-it-works.html"> How it works </a>
+            <a href="coverage.html"> Coverage </a>
+            <a href="blog.html" class="is-current"> Blog </a>
+            <a href="contact.html"> Contact </a>
+
+            <div class="lx-mobile-menu-actions">
+              <a href="login.html" class="lx-button lx-button-outline"> Login </a>
+              <a href="register.html" class="lx-button lx-button-primary"> Sign up </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ======================================================
+         PAGE MAIN CONTENT
+    ====================================================== -->
+    <main>
+      <!-- HERO -->
+      <section class="blog-hero">
+        <div class="lx-container">
+          <div class="blog-eyebrow">
+            <i class="fa-solid fa-newspaper"></i>
+            LaundriX Journal &amp; Guides
+          </div>
+          <h1>
+            Tips, stories &amp;
+            <span>care guides.</span>
+          </h1>
+          <p>
+            Expert garment advice, fabric preservation guides, stain removal strategies, and stories from the LaundriX team.
+          </p>
+        </div>
+      </section>
+
+      <!-- FEATURED POST SPOTLIGHT -->
+      <section class="blog-featured">
+        <div class="lx-container">
+          <div class="blog-featured-card" data-reveal>
+            <div class="blog-featured-image">
+              <img
+                src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=1000&q=85"
+                alt="Featured blog post - Laundry hacks"
+              />
+              <span class="featured-badge">Featured Story</span>
+            </div>
+            <div class="blog-featured-content">
+              <div class="blog-meta">
+                <span class="category">Laundry Tips</span>
+                <span>•</span>
+                <span>March 15, 2026</span>
+                <span>•</span>
+                <span>5 min read</span>
+              </div>
+              <h2>
+                <a href="blog-post-1.html">10 Laundry Hacks That Will Save You Time and Extend Fabric Life</a>
+              </h2>
+              <p>
+                From sorting tricks to natural stain spot-treatments, these simple laundry hacks will transform the way you do laundry and save you money.
+              </p>
+              <a href="blog-post-1.html" class="blog-read-more">
+                <span>Read Full Article</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEARCH & FILTER TOOLBAR -->
+      <section class="blog-toolbar">
+        <div class="lx-container">
+          <div class="blog-toolbar-inner" data-reveal>
+            <div class="blog-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="search"
+                id="blogSearch"
+                placeholder="Search articles by title or keyword..."
+                aria-label="Search blog posts"
+                autocomplete="off"
+              />
+            </div>
+            <div class="blog-categories" id="categoryFilters" role="tablist">
+              <button class="cat-btn active" data-category="all" role="tab" aria-selected="true">All</button>
+              <button class="cat-btn" data-category="tips" role="tab" aria-selected="false">Laundry Tips</button>
+              <button class="cat-btn" data-category="care" role="tab" aria-selected="false">Garment Care</button>
+              <button class="cat-btn" data-category="stain" role="tab" aria-selected="false">Stain Removal</button>
+              <button class="cat-btn" data-category="stories" role="tab" aria-selected="false">Stories</button>
+              <button class="cat-btn" data-category="tech" role="tab" aria-selected="false">Technology</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ARTICLES GRID -->
+      <section class="blog-grid-section">
+        <div class="lx-container">
+          <div class="blog-grid-inner" id="blogGrid">
+            <!-- EMPTY STATE -->
+            <div class="blog-empty-state" id="blogEmptyState">
+              <i class="fa-regular fa-folder-open"></i>
+              <h3>No articles found</h3>
+              <p style="color:var(--lx-text-soft);">Try adjusting your search terms or selecting another category filter.</p>
+            </div>
+
+            <!-- POST 1 -->
+            <article class="blog-post-card" data-category="tips" data-reveal>
+              <div class="post-image">
+                <img
+                  src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=600&q=80"
+                  alt="Sorting laundry like a pro"
+                  loading="lazy"
+                />
+                <span class="category-tag">Laundry Tips</span>
+              </div>
+              <div class="post-content">
+                <div class="meta">
+                  <span>April 2, 2026</span>
+                  <span class="dot"></span>
+                  <span>4 min read</span>
+                </div>
+                <h3><a href="blog-post-1.html">How to Sort Laundry Like an Industry Pro</a></h3>
+                <p>Master the art of sorting laundry with our simple guide to fabric types, colors, and care labels.</p>
+                <a href="blog-post-1.html" class="read-link">
+                  <span>Read more</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </article>
+
+            <!-- POST 2 -->
+            <article class="blog-post-card" data-category="care" data-reveal>
+              <div class="post-image">
+                <img
+                  src="https://images.unsplash.com/photo-1545042746-ec9e5a59b359?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt="Garment care labels"
+                  loading="lazy"
+                />
+                <span class="category-tag">Garment Care</span>
+              </div>
+              <div class="post-content">
+                <div class="meta">
+                  <span>March 28, 2026</span>
+                  <span class="dot"></span>
+                  <span>6 min read</span>
+                </div>
+                <h3><a href="blog-post-2.html">The Ultimate Guide to Universal Fabric Care Symbols</a></h3>
+                <p>Decode those mysterious care tags and learn exactly how to wash, dry, and iron every fabric type.</p>
+                <a href="blog-post-2.html" class="read-link">
+                  <span>Read more</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </article>
+
+            <!-- POST 3 -->
+            <article class="blog-post-card" data-category="stain" data-reveal>
+              <div class="post-image">
+                <img
+                  src="https://plus.unsplash.com/premium_photo-1738091397171-cb2a53385fb2?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt="Stain removal guide"
+                  loading="lazy"
+                />
+                <span class="category-tag">Stain Removal</span>
+              </div>
+              <div class="post-content">
+                <div class="meta">
+                  <span>March 20, 2026</span>
+                  <span class="dot"></span>
+                  <span>7 min read</span>
+                </div>
+                <h3><a href="blog-post-3.html">10 Common Stains and Exactly How to Remove Them</a></h3>
+                <p>From stubborn coffee to red wine, our stain removal guide has you covered with field-tested solutions.</p>
+                <a href="blog-post-3.html" class="read-link">
+                  <span>Read more</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </article>
+
+            <!-- POST 4 -->
+            <article class="blog-post-card" data-category="stories" data-reveal>
+              <div class="post-image">
+                <img
+                  src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=600&q=80"
+                  alt="Customer laundry routine"
+                  loading="lazy"
+                />
+                <span class="category-tag">Stories</span>
+              </div>
+              <div class="post-content">
+                <div class="meta">
+                  <span>March 15, 2026</span>
+                  <span class="dot"></span>
+                  <span>3 min read</span>
+                </div>
+                <h3><a href="blog-post-4.html">How LaundriX Changed My Weekend Routine Forever</a></h3>
+                <p>A customer's story about how scheduled doorstep pickups gave them back 6 hours of their weekends.</p>
+                <a href="blog-post-4.html" class="read-link">
+                  <span>Read more</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </article>
+
+            <!-- POST 5 -->
+            <article class="blog-post-card" data-category="tech" data-reveal>
+              <div class="post-image">
+                <img
+                  src="https://images.pexels.com/photos/8438967/pexels-photo-8438967.jpeg"
+                  alt="Laundry technology"
+                  loading="lazy"
+                />
+                <span class="category-tag">Technology</span>
+              </div>
+              <div class="post-content">
+                <div class="meta">
+                  <span>March 8, 2026</span>
+                  <span class="dot"></span>
+                  <span>5 min read</span>
+                </div>
+                <h3><a href="blog-post-5.html">The Future of Laundry: Tech Trends to Watch</a></h3>
+                <p>From smart washers to AI-powered stain detection, explore the modern tech transforming garment care.</p>
+                <a href="blog-post-5.html" class="read-link">
+                  <span>Read more</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </article>
+
+            <!-- POST 6 -->
+            <article class="blog-post-card" data-category="tips" data-reveal>
+              <div class="post-image">
+                <img
+                  src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=600&q=80"
+                  alt="Laundry room organization"
+                  loading="lazy"
+                />
+                <span class="category-tag">Laundry Tips</span>
+              </div>
+              <div class="post-content">
+                <div class="meta">
+                  <span>February 28, 2026</span>
+                  <span class="dot"></span>
+                  <span>4 min read</span>
+                </div>
+                <h3><a href="blog-post-6.html">How to Organize Your Laundry Room for Maximum Efficiency</a></h3>
+                <p>Transform your laundry room with these smart storage ideas and streamlined workflow tips.</p>
+                <a href="blog-post-6.html" class="read-link">
+                  <span>Read more</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <!-- PAGINATION -->
+          <div class="blog-pagination" aria-label="Blog articles pagination">
+            <button class="page-btn active">1</button>
+          
+            </div>
+        </div>
+      </section>
+
+      <!-- SIDEBAR & CATEGORIES SECTION -->
+      <section class="blog-sidebar">
+        <div class="lx-container">
+          <div class="blog-sidebar-grid">
+            <!-- CATEGORIES WIDGET -->
+            <div class="blog-widget" data-reveal>
+              <h4>Browse Categories</h4>
+              <ul>
+                <li><a href="#" data-filter-target="tips">Laundry Tips <span class="count">2</span></a></li>
+                <li><a href="#" data-filter-target="care">Garment Care <span class="count">1</span></a></li>
+                <li><a href="#" data-filter-target="stain">Stain Removal <span class="count">1</span></a></li>
+                <li><a href="#" data-filter-target="stories">Stories <span class="count">1</span></a></li>
+                <li><a href="#" data-filter-target="tech">Technology <span class="count">1</span></a></li>
+              </ul>
+            </div>
+
+            <!-- RECENT POSTS WIDGET -->
+            <div class="blog-widget" data-reveal>
+              <h4>Recent Articles</h4>
+              <div class="recent-post">
+                <img
+                  src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=100&q=80"
+                  alt="Recent article - Laundry hacks"
+                  loading="lazy"
+                />
+                <div class="info">
+                  <h5><a href="blog-post-1.html">10 Laundry Hacks That Will Save You Time</a></h5>
+                  <span>March 15, 2026</span>
+                </div>
+              </div>
+              <div class="recent-post">
+                <img
+                  src="https://images.unsplash.com/photo-1545042746-ec9e5a59b359?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt="Recent article - Care labels"
+                  loading="lazy"
+                />
+                <div class="info">
+                  <h5><a href="blog-post-2.html">The Ultimate Guide to Fabric Care Labels</a></h5>
+                  <span>March 8, 2026</span>
+                </div>
+              </div>
+              <div class="recent-post">
+                <img
+                  src="https://plus.unsplash.com/premium_photo-1738091397171-cb2a53385fb2?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt="Recent article - Tough stains"
+                  loading="lazy"
+                />
+                <div class="info">
+                  <h5><a href="blog-post-3.html">10 Common Stains and How to Remove Them</a></h5>
+                  <span>February 28, 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BOTTOM CTA BANNER -->
+      <section class="blog-cta-section">
+        <div class="lx-container">
+          <div class="blog-cta-card" data-reveal>
+            <div>
+              <h2>Enjoy reading? Let us handle the laundry.</h2>
+              <p>Experience the easiest doorstep laundry service in your city. Schedule your first pickup today.</p>
+            </div>
+            <a href="register.html" class="lx-button-white">
+              <span>Book a Pickup</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ======================================================
+         GLOBAL FOOTER (5-COLUMN LUXE DESIGN)
+    ====================================================== -->
+    <footer class="lx-footer">
+      <div class="lx-footer-main">
+        <div class="lx-container">
+          <div class="lx-footer-grid">
+            <!-- BRAND INFO -->
+            <div class="lx-footer-brand">
+              <a href="index.html" class="lx-brand">
+                <div class="lx-brand-mark">
+                  <span class="material-symbols-rounded"> local_laundry_service </span>
+                </div>
+                <div class="lx-brand-name">Laundri<span>X</span></div>
+              </a>
+              <p class="lx-footer-description">
+                Premium doorstep laundry and dry-cleaning service designed around your busy schedule. Freshness guaranteed.
+              </p>
+              <div class="lx-footer-socials">
+                <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="lx-social">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" class="lx-social">
+                  <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://x.com" target="_blank" rel="noopener" aria-label="X" class="lx-social">
+                  <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="lx-social">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- COMPANY LINKS -->
+            <div class="lx-footer-column">
+              <h3>Company</h3>
+              <a href="about.html">About Us</a>
+              <a href="services.html">Services</a>
+              <a href="pricing.html">Pricing</a>
+              <a href="how-it-works.html">How It Works</a>
+              <a href="coverage.html">Coverage Areas</a>
+            </div>
+
+            <!-- SERVICES LINKS -->
+            <div class="lx-footer-column">
+              <h3>Services</h3>
+              <a href="service-wash-fold.html">Wash &amp; Fold</a>
+              <a href="service-dry-cleaning.html">Dry Cleaning</a>
+              <a href="service-ironing.html">Steam Press</a>
+              <a href="service-premium-care.html">Premium Care</a>
+              <a href="faq.html">Help &amp; FAQs</a>
+            </div>
+
+            <!-- SUPPORT LINKS -->
+            <div class="lx-footer-column">
+              <h3>Support</h3>
+              <a href="contact.html">Contact Us</a>
+              <a href="blog.html" class="is-active">Laundry Blog</a>
+              <a href="refund-policy.html">Refund Policy</a>
+              <a href="terms.html">Terms of Service</a>
+              <a href="privacy.html">Privacy Policy</a>
+            </div>
+
+            <!-- ACTION CTA CARD -->
+            <div class="lx-footer-cta">
+              <div class="lx-footer-cta-card">
+                <div class="lx-footer-cta-icon">
+                  <i class="fa-solid fa-basket-shopping"></i>
+                </div>
+                <div>
+                  <strong>Effortless Laundry</strong>
+                  <p>Book a pickup in seconds.</p>
+                </div>
+              </div>
+              <a href="register.html" class="lx-footer-button">
+                <span>Get Started</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER BOTTOM BAR -->
+      <div class="lx-footer-bottom">
+        <div class="lx-container">
+          <div class="lx-footer-bottom-inner">
+            <p>© 2026 LaundriX Technologies Inc. All rights reserved.</p>
+            <div class="lx-footer-bottom-links">
+              <a href="terms.html">Terms</a>
+              <a href="privacy.html">Privacy</a>
+              <a href="refund-policy.html">Refunds</a>
+            </div>
+            <div>Made with precision for cleaner days.</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ======================================================
+         GLOBAL JS SCRIPT
+    ====================================================== -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- Page Specific Script: Real-time Combined Search & Category Filters -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const searchInput = document.getElementById("blogSearch");
+        const catButtons = document.querySelectorAll(".cat-btn");
+        const posts = document.querySelectorAll(".blog-post-card");
+        const emptyState = document.getElementById("blogEmptyState");
+        let activeCategory = "all";
+        let searchQuery = "";
+
+        function applyBlogFilters() {
+          let visibleCount = 0;
+          posts.forEach((post) => {
+            const postCategory = post.dataset.category;
+            const title = post.querySelector("h3 a")?.textContent.toLowerCase() || "";
+            const desc = post.querySelector("p")?.textContent.toLowerCase() || "";
+
+            const matchesCategory = (activeCategory === "all" || postCategory === activeCategory);
+            const matchesSearch = (!searchQuery || title.includes(searchQuery) || desc.includes(searchQuery));
+
+            if (matchesCategory && matchesSearch) {
+              post.style.display = "flex";
+              visibleCount++;
+            } else {
+              post.style.display = "none";
+            }
+          });
+
+          if (emptyState) {
+            emptyState.style.display = visibleCount === 0 ? "block" : "none";
+          }
+        }
+
+        // Category Tab Switcher
+        catButtons.forEach((btn) => {
+          btn.addEventListener("click", function () {
+            catButtons.forEach((b) => {
+              b.classList.remove("active");
+              b.setAttribute("aria-selected", "false");
+            });
+            this.classList.add("active");
+            this.setAttribute("aria-selected", "true");
+            activeCategory = this.dataset.category;
+            applyBlogFilters();
+          });
+        });
+
+        // Real-Time Search Handler
+        if (searchInput) {
+          searchInput.addEventListener("input", function () {
+            searchQuery = this.value.toLowerCase().trim();
+            applyBlogFilters();
+          });
+        }
+
+        // Sidebar Quick Category Deep Links
+        document.querySelectorAll("[data-filter-target]").forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const target = link.dataset.filterTarget;
+            const matchingBtn = document.querySelector(`.cat-btn[data-category="${target}"]`);
+            if (matchingBtn) {
+              matchingBtn.click();
+              document.querySelector(".blog-toolbar")?.scrollIntoView({ behavior: "smooth" });
+            }
+          });
+        });
+
+        // Interactive Pagination
+        const pageButtons = document.querySelectorAll(".blog-pagination .page-btn:not(.arrow)");
+        const prevBtn = document.getElementById("prevPage");
+        const nextBtn = document.getElementById("nextPage");
+        let currentPage = 1;
+        const maxPages = pageButtons.length;
+
+        function setPage(page) {
+          currentPage = Math.max(1, Math.min(page, maxPages));
+          pageButtons.forEach((btn, index) => {
+            btn.classList.toggle("active", index + 1 === currentPage);
+          });
+          if (prevBtn) prevBtn.disabled = (currentPage === 1);
+          if (nextBtn) nextBtn.disabled = (currentPage === maxPages);
+          document.querySelector(".blog-toolbar")?.scrollIntoView({ behavior: "smooth" });
+        }
+
+        pageButtons.forEach((btn, idx) => {
+          btn.addEventListener("click", () => setPage(idx + 1));
+        });
+
+        prevBtn?.addEventListener("click", () => setPage(currentPage - 1));
+        nextBtn?.addEventListener("click", () => setPage(currentPage + 1));
+      });
+    </script>
+  </body>
+</html>

@@ -136,7 +136,7 @@
         min-height: 52px;
         padding: 0 30px;
         border-radius: var(--lx-radius-pill);
-        background: linear-gradient(135deg, var(--lx-primary), #047857);
+        background: linear-gradient(135deg, var(--lx-primary), #b7ba00);
         color: #fff;
         font-size: 15px;
         font-weight: 800;
@@ -319,7 +319,7 @@
       }
 
       .wash-float-one {
-        top: 25px;
+        top: -20px;
         left: -25px;
       }
 
@@ -565,7 +565,7 @@
       .wash-cta-card {
         padding: clamp(36px, 5vw, 65px) clamp(24px, 4vw, 55px);
         border-radius: var(--lx-radius-xl);
-        background: radial-gradient(circle at 100% 0%, #059669 0%, #064e3b 100%);
+        background: radial-gradient(circle at 100% 0%, #c08fe8 0%, #80c722 100%);
         color: #fff;
         display: flex;
         align-items: center;
@@ -643,7 +643,593 @@
           justify-content: center;
         }
       }
-    </style>
+    
+/* =========================================================
+   LAUNDRIX WASH & FOLD — CAELESTIA / EXPRESSIVE MOTION
+   Existing functionality/content preserved.
+   ========================================================= */
+:root{--wf-x:50%;--wf-y:35%}
+html{scroll-behavior:smooth}
+body{isolation:isolate;overflow-x:hidden;perspective:1400px}
+
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:9998;
+  opacity:.03;mix-blend-mode:screen;
+  background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,.95) 50%,transparent 58%);
+  background-size:220% 220%;animation:wfSweep 14s linear infinite
+}
+@keyframes wfSweep{from{background-position:180% 10%}to{background-position:-40% 90%}}
+
+/* Premium header arrival */
+header,.header,.navbar,.site-header{
+  animation:wfHeader .9s cubic-bezier(.16,1,.3,1) both
+}
+@keyframes wfHeader{
+  0%{opacity:0;transform:translateY(-30px) scale(.975);filter:blur(10px)}
+  70%{opacity:1;transform:translateY(3px) scale(1.008);filter:blur(0)}
+  100%{transform:none}
+}
+
+/* Hero atmosphere */
+.hero,.page-hero,.service-hero{
+  position:relative;overflow:hidden;transform-style:preserve-3d
+}
+.hero::before,.page-hero::before,.service-hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(520px circle at var(--wf-x) var(--wf-y),rgba(255,255,255,.075),transparent 64%);
+  transition:background .45s ease-out
+}
+
+/* Hero copy choreography */
+.hero h1,.page-hero h1,.service-hero h1{
+  animation:wfTitle 1.1s cubic-bezier(.16,1,.3,1) .15s both
+}
+@keyframes wfTitle{
+  0%{opacity:0;transform:translateY(35px) scale(.94);filter:blur(12px);letter-spacing:-.045em}
+  65%{opacity:1;transform:translateY(-4px) scale(1.012);filter:blur(0)}
+  100%{transform:none;letter-spacing:normal}
+}
+.hero p,.page-hero p,.service-hero p{
+  animation:wfCopy .85s cubic-bezier(.16,1,.3,1) .4s both
+}
+@keyframes wfCopy{
+  from{opacity:0;transform:translateY(18px);filter:blur(5px)}
+  to{opacity:1;transform:none;filter:blur(0)}
+}
+
+/* Top-right laundry image: washing-machine style spin */
+.hero img,.page-hero img,.service-hero img{
+  transform-style:preserve-3d
+}
+.wf-wash-visual{
+  position:relative;
+  transform-style:preserve-3d;
+  animation:wfVisualIn 1.15s cubic-bezier(.16,1,.3,1) .25s both
+}
+@keyframes wfVisualIn{
+  0%{opacity:0;transform:translateX(40px) rotateY(-13deg) rotateX(7deg) scale(.86);filter:blur(11px)}
+  65%{opacity:1;transform:translateX(-3px) rotateY(2deg) rotateX(-1deg) scale(1.025);filter:blur(0)}
+  100%{transform:none}
+}
+
+/* Applied automatically to likely top-right clothing image */
+.hero .hero-image,.hero .hero-visual,.page-hero .hero-image,.page-hero .hero-visual,
+.service-hero .hero-image,.service-hero .hero-visual{
+  animation:wfVisualIn 1.15s cubic-bezier(.16,1,.3,1) .25s both
+}
+
+/* Wash/spin effect: whole image rotates subtly, while an inner
+   sheen travels around it to suggest a real washing drum. */
+.wf-washing-spin{
+  animation:wfSpin 4.8s cubic-bezier(.45,.05,.55,.95) infinite;
+  transform-origin:50% 50%;
+}
+@keyframes wfSpin{
+  0%{transform:rotate(0deg) scale(1)}
+  22%{transform:rotate(72deg) scale(1.025)}
+  48%{transform:rotate(180deg) scale(1)}
+  72%{transform:rotate(286deg) scale(1.025)}
+  100%{transform:rotate(360deg) scale(1)}
+}
+
+/* More natural laundry tumble than a flat constant spin */
+.wf-washing-tumble{
+  animation:wfTumble 3.6s cubic-bezier(.65,0,.35,1) infinite;
+  transform-origin:50% 52%;
+}
+@keyframes wfTumble{
+  0%,100%{transform:rotate(-2deg) translateY(0) scale(1)}
+  25%{transform:rotate(9deg) translateY(-5px) scale(1.035)}
+  50%{transform:rotate(-7deg) translateY(2px) scale(.985)}
+  75%{transform:rotate(5deg) translateY(-4px) scale(1.02)}
+}
+
+/* Card sheen follows the laundry motion */
+.wf-washing-frame{
+  position:relative;
+  overflow:hidden;
+}
+.wf-washing-frame::after{
+  content:"";position:absolute;inset:-30%;
+  background:linear-gradient(110deg,transparent 38%,rgba(255,255,255,.28) 49%,transparent 60%);
+  background-size:230% 230%;
+  pointer-events:none;
+  animation:wfSheen 3.8s ease-in-out infinite;
+}
+@keyframes wfSheen{
+  0%,35%{background-position:170% 30%;opacity:0}
+  55%{opacity:.8}
+  85%,100%{background-position:-40% 70%;opacity:0}
+}
+
+/* Buttons */
+.btn,.button,.cta,.hero a,.service-hero a{
+  position:relative;overflow:hidden;
+  transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s cubic-bezier(.16,1,.3,1)
+}
+.btn::before,.button::before,.cta::before,.hero a::before,.service-hero a::before{
+  content:"";position:absolute;width:30px;height:180px;left:-75px;top:-65px;
+  transform:rotate(24deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+  transition:left .7s cubic-bezier(.16,1,.3,1);pointer-events:none
+}
+.btn:hover,.button:hover,.cta:hover,.hero a:hover,.service-hero a:hover{transform:translateY(-4px) scale(1.025)}
+.btn:hover::before,.button:hover::before,.cta:hover::before,.hero a:hover::before,.service-hero a:hover::before{left:125%}
+.btn:active,.button:active,.cta:active{transform:scale(.95)}
+
+/* Modern card depth */
+.card,.service-card,.feature-card,.process-card,.pricing-card,.info-card,.testimonial-card{
+  transition:transform .55s cubic-bezier(.16,1,.3,1),box-shadow .55s cubic-bezier(.16,1,.3,1),border-color .4s ease
+}
+.card:hover,.service-card:hover,.feature-card:hover,.process-card:hover,.pricing-card:hover,.info-card:hover,.testimonial-card:hover{
+  transform:translateY(-8px) scale(1.012);
+  box-shadow:0 30px 75px rgba(0,0,0,.14)
+}
+
+/* Icons */
+.card:hover i,.card:hover .material-symbols-rounded,
+.service-card:hover i,.service-card:hover .material-symbols-rounded{
+  animation:wfIcon .65s cubic-bezier(.16,1,.3,1)
+}
+@keyframes wfIcon{
+  0%{transform:scale(.7) rotate(-12deg)}
+  55%{transform:scale(1.18) rotate(5deg)}
+  100%{transform:none}
+}
+
+/* Scroll reveal fallback for common section elements */
+.wf-reveal{
+  opacity:0;
+  transform:perspective(1100px) translateY(45px) rotateX(10deg) scale(.97);
+  filter:blur(6px);
+  transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1),filter .9s cubic-bezier(.16,1,.3,1)
+}
+.wf-reveal.wf-visible{opacity:1;transform:none;filter:blur(0)}
+
+.wf-ripple{
+  position:fixed;width:12px;height:12px;border-radius:50%;pointer-events:none;z-index:10000;
+  background:rgba(16,185,129,.18);border:1px solid rgba(16,185,129,.65);
+  transform:translate(-50%,-50%);animation:wfRipple .8s cubic-bezier(.16,1,.3,1) forwards
+}
+@keyframes wfRipple{to{opacity:0;transform:translate(-50%,-50%) scale(16)}}
+
+@media(max-width:700px){
+  body::after{opacity:.018}
+  .wf-washing-spin,.wf-washing-tumble{animation-duration:6s}
+}
+@media(prefers-reduced-motion:reduce){
+  body::after,header,.header,.navbar,.site-header,
+  .hero h1,.page-hero h1,.service-hero h1,.hero p,.page-hero p,.service-hero p,
+  .wf-wash-visual,.hero .hero-image,.hero .hero-visual,.page-hero .hero-image,
+  .page-hero .hero-visual,.service-hero .hero-image,.service-hero .hero-visual,
+  .wf-washing-spin,.wf-washing-tumble,.wf-washing-frame::after{
+    animation:none!important
+  }
+  .wf-reveal{transition:none!important;transform:none!important;filter:none!important}
+}
+
+
+/* =========================================================
+   ULTIMATE CAELESTIA MOTION — CLOTH / DRESS SPIN
+   ========================================================= */
+
+/* Ambient animated blobs */
+body::before{
+  content:"";
+  position:fixed;
+  width:42vw;height:42vw;
+  min-width:280px;min-height:280px;
+  left:-14vw;top:18vh;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(80,220,170,.10),transparent 68%);
+  filter:blur(20px);
+  pointer-events:none;
+  z-index:-1;
+  animation:wfAuroraLeft 10s ease-in-out infinite alternate;
+}
+@keyframes wfAuroraLeft{
+  0%{transform:translate3d(0,0,0) scale(.9)}
+  50%{transform:translate3d(10vw,-7vh,0) scale(1.12)}
+  100%{transform:translate3d(2vw,12vh,0) scale(.96)}
+}
+
+/* More sophisticated section entrance */
+.wf-motion-section{
+  opacity:0;
+  transform:perspective(1300px) translateY(70px) rotateX(10deg) scale(.94);
+  filter:blur(10px);
+  transition:
+    opacity 1.05s cubic-bezier(.16,1,.3,1),
+    transform 1.05s cubic-bezier(.16,1,.3,1),
+    filter 1.05s cubic-bezier(.16,1,.3,1);
+}
+.wf-motion-section.wf-entered{
+  opacity:1;
+  transform:none;
+  filter:none;
+}
+
+/* Stagger children */
+.wf-motion-section.wf-entered > *{
+  animation:wfChildIn .85s cubic-bezier(.16,1,.3,1) both;
+}
+.wf-motion-section.wf-entered > *:nth-child(1){animation-delay:.02s}
+.wf-motion-section.wf-entered > *:nth-child(2){animation-delay:.09s}
+.wf-motion-section.wf-entered > *:nth-child(3){animation-delay:.16s}
+.wf-motion-section.wf-entered > *:nth-child(4){animation-delay:.23s}
+.wf-motion-section.wf-entered > *:nth-child(5){animation-delay:.30s}
+@keyframes wfChildIn{
+  from{opacity:0;transform:translateY(28px) scale(.96)}
+  to{opacity:1;transform:none}
+}
+
+/* =========================================================
+   DRESS / CLOTH — REAL HERO SPIN
+   ========================================================= */
+.wf-dress-spin{
+  position:relative;
+  transform-style:preserve-3d;
+  transform-origin:center center;
+  will-change:transform;
+  animation:
+    wfDressEntrance 1.2s cubic-bezier(.16,1,.3,1) .2s both,
+    wfDressSpin 4.2s cubic-bezier(.45,.05,.55,.95) 1.5s infinite;
+}
+
+@keyframes wfDressEntrance{
+  0%{
+    opacity:0;
+    transform:translate3d(45px,20px,0) rotateY(-70deg) rotateZ(-8deg) scale(.72);
+    filter:blur(14px);
+  }
+  65%{
+    opacity:1;
+    transform:translate3d(-3px,-3px,0) rotateY(8deg) rotateZ(2deg) scale(1.04);
+    filter:blur(0);
+  }
+  100%{
+    transform:translate3d(0,0,0) rotateY(0deg) rotateZ(0deg) scale(1);
+  }
+}
+
+/* Continuous 360° dress spin */
+@keyframes wfDressSpin{
+  0%{
+    transform:rotateY(0deg) rotateZ(0deg) scale(1);
+  }
+  25%{
+    transform:rotateY(90deg) rotateZ(-2deg) scale(1.04);
+  }
+  50%{
+    transform:rotateY(180deg) rotateZ(2deg) scale(.98);
+  }
+  75%{
+    transform:rotateY(270deg) rotateZ(-2deg) scale(1.04);
+  }
+  100%{
+    transform:rotateY(360deg) rotateZ(0deg) scale(1);
+  }
+}
+
+/* If the dress is a flat transparent PNG, give it a convincing
+   cloth-like breathing/tumble motion while it spins. */
+.wf-dress-spin img{
+  display:block;
+  transform-style:preserve-3d;
+  animation:wfClothWave 2.1s ease-in-out infinite;
+}
+@keyframes wfClothWave{
+  0%,100%{transform:skewX(0deg) scaleX(1) translateY(0)}
+  25%{transform:skewX(-2deg) scaleX(.985) translateY(-4px)}
+  50%{transform:skewX(2deg) scaleX(1.018) translateY(2px)}
+  75%{transform:skewX(-1deg) scaleX(.992) translateY(-3px)}
+}
+
+/* Rotating halo behind the dress */
+.wf-dress-stage{
+  position:relative;
+  transform-style:preserve-3d;
+}
+.wf-dress-stage::before{
+  content:"";
+  position:absolute;
+  width:125%;height:125%;
+  left:-12.5%;top:-12.5%;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:
+    0 0 70px rgba(80,220,170,.10),
+    inset 0 0 70px rgba(255,255,255,.04);
+  pointer-events:none;
+  animation:wfHalo 8s linear infinite;
+}
+@keyframes wfHalo{
+  from{transform:rotate(0deg) scale(.96);opacity:.55}
+  50%{transform:rotate(180deg) scale(1.04);opacity:.95}
+  to{transform:rotate(360deg) scale(.96);opacity:.55}
+}
+
+/* Three-dimensional orbit rings */
+.wf-dress-stage::after{
+  content:"";
+  position:absolute;
+  width:108%;height:62%;
+  left:-4%;top:19%;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:50%;
+  transform:rotate(-18deg);
+  pointer-events:none;
+  animation:wfOrbit 5.5s ease-in-out infinite;
+}
+@keyframes wfOrbit{
+  0%,100%{transform:rotate(-18deg) scaleX(.88);opacity:.35}
+  50%{transform:rotate(18deg) scaleX(1.06);opacity:.8}
+}
+
+/* Floating particles around the dress */
+.wf-dress-particles{
+  position:absolute;
+  inset:-18%;
+  pointer-events:none;
+  overflow:visible;
+}
+.wf-dress-particles i{
+  position:absolute;
+  width:5px;height:5px;
+  border-radius:50%;
+  background:rgba(255,255,255,.6);
+  box-shadow:0 0 14px rgba(255,255,255,.5);
+  animation:wfParticle 4.5s ease-in-out infinite;
+}
+.wf-dress-particles i:nth-child(1){left:12%;top:55%;animation-delay:-.4s}
+.wf-dress-particles i:nth-child(2){left:25%;top:12%;animation-delay:-1.8s}
+.wf-dress-particles i:nth-child(3){left:77%;top:18%;animation-delay:-2.5s}
+.wf-dress-particles i:nth-child(4){left:91%;top:58%;animation-delay:-3.2s}
+.wf-dress-particles i:nth-child(5){left:68%;top:88%;animation-delay:-1.1s}
+@keyframes wfParticle{
+  0%,100%{transform:translate3d(0,0,0) scale(.5);opacity:.2}
+  50%{transform:translate3d(8px,-18px,20px) scale(1.4);opacity:.9}
+}
+
+/* Dress shadow breathes underneath */
+.wf-dress-shadow{
+  position:absolute;
+  width:65%;height:11%;
+  left:17.5%;bottom:-4%;
+  border-radius:50%;
+  background:rgba(0,0,0,.22);
+  filter:blur(18px);
+  animation:wfShadow 4.2s ease-in-out infinite;
+}
+@keyframes wfShadow{
+  0%,100%{transform:scaleX(.88);opacity:.35}
+  50%{transform:scaleX(1.08);opacity:.6}
+}
+
+/* Magnetic hover pause — lets user inspect the dress */
+.wf-dress-stage:hover .wf-dress-spin{
+  animation-play-state:paused;
+  filter:drop-shadow(0 25px 40px rgba(0,0,0,.18));
+}
+
+/* Modern shimmer passes across sections */
+.wf-shimmer{
+  position:relative;
+  overflow:hidden;
+}
+.wf-shimmer::before{
+  content:"";
+  position:absolute;
+  top:-30%;left:-65%;
+  width:35%;height:160%;
+  transform:rotate(18deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.16),transparent);
+  pointer-events:none;
+  animation:wfShimmer 5.5s ease-in-out infinite;
+}
+@keyframes wfShimmer{
+  0%,45%{left:-65%;opacity:0}
+  55%{opacity:1}
+  80%,100%{left:135%;opacity:0}
+}
+
+@media(max-width:700px){
+  .wf-dress-spin{animation-duration:5.5s}
+  .wf-dress-stage::before,.wf-dress-stage::after{opacity:.5}
+}
+@media(prefers-reduced-motion:reduce){
+  body::before,.wf-motion-section.wf-entered>*,
+  .wf-dress-spin,.wf-dress-spin img,.wf-dress-stage::before,
+  .wf-dress-stage::after,.wf-dress-particles i,.wf-dress-shadow,
+  .wf-shimmer::before{animation:none!important}
+  .wf-motion-section{opacity:1;transform:none;filter:none}
+}
+
+
+/* =========================================================
+   HERO RIGHT-SIDE DRESS — FOCUSED MOTION
+   Only the hero's right visual is animated.
+   ========================================================= */
+.hero,
+.page-hero,
+.service-hero{
+  overflow:visible !important;
+  perspective:1400px;
+  transform-style:preserve-3d;
+}
+
+/* Dedicated hero-right stage */
+.wf-hero-right-dress{
+  position:relative;
+  z-index:4;
+  transform-origin:center center;
+  transform-style:preserve-3d;
+  will-change:transform,filter;
+  animation:wfHeroDressEntrance 1.15s cubic-bezier(.16,1,.3,1) .25s both,
+            wfHeroDressSpin 5s linear 1.35s infinite;
+}
+
+/* Dramatic entrance */
+@keyframes wfHeroDressEntrance{
+  0%{
+    opacity:0;
+    transform:translate3d(55px,15px,0) rotateY(-55deg) rotateZ(-8deg) scale(.72);
+    filter:blur(14px);
+  }
+  65%{
+    opacity:1;
+    transform:translate3d(-4px,-5px,0) rotateY(8deg) rotateZ(2deg) scale(1.05);
+    filter:blur(0);
+  }
+  100%{
+    opacity:1;
+    transform:translate3d(0,0,0) rotateY(0deg) rotateZ(0deg) scale(1);
+  }
+}
+
+/* The actual right-side dress rotates continuously */
+@keyframes wfHeroDressSpin{
+  0%   {transform:rotateY(0deg) rotateZ(0deg) scale(1)}
+  12.5%{transform:rotateY(45deg) rotateZ(-1deg) scale(1.025)}
+  25%  {transform:rotateY(90deg) rotateZ(0deg) scale(1.04)}
+  37.5%{transform:rotateY(135deg) rotateZ(1deg) scale(1.025)}
+  50%  {transform:rotateY(180deg) rotateZ(0deg) scale(1)}
+  62.5%{transform:rotateY(225deg) rotateZ(-1deg) scale(1.025)}
+  75%  {transform:rotateY(270deg) rotateZ(0deg) scale(1.04)}
+  87.5%{transform:rotateY(315deg) rotateZ(1deg) scale(1.025)}
+  100% {transform:rotateY(360deg) rotateZ(0deg) scale(1)}
+}
+
+/* Cloth movement layered onto the image */
+.wf-hero-right-dress{
+  animation-name:wfHeroDressEntrance,wfHeroDressSpin,wfHeroCloth;
+  animation-duration:1.15s,5s,2.4s;
+  animation-delay:.25s,1.35s,1.35s;
+  animation-timing-function:cubic-bezier(.16,1,.3,1),linear,ease-in-out;
+  animation-iteration-count:1,infinite,infinite;
+}
+
+@keyframes wfHeroCloth{
+  0%,100%{
+    margin-top:0;
+    filter:drop-shadow(0 18px 26px rgba(0,0,0,.14));
+  }
+  25%{
+    margin-top:-5px;
+    filter:drop-shadow(8px 24px 30px rgba(0,0,0,.18));
+  }
+  50%{
+    margin-top:2px;
+    filter:drop-shadow(0 14px 22px rgba(0,0,0,.12));
+  }
+  75%{
+    margin-top:-4px;
+    filter:drop-shadow(-8px 24px 30px rgba(0,0,0,.18));
+  }
+}
+
+/* Soft rotating aura specifically behind hero dress */
+.hero:has(.wf-hero-right-dress)::after,
+.page-hero:has(.wf-hero-right-dress)::after,
+.service-hero:has(.wf-hero-right-dress)::after{
+  content:"";
+  position:absolute;
+  width:min(42vw,520px);
+  height:min(42vw,520px);
+  right:-4%;
+  top:50%;
+  transform:translateY(-50%);
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(80,220,170,.12),transparent 68%);
+  filter:blur(12px);
+  pointer-events:none;
+  z-index:1;
+  animation:wfHeroAura 7s ease-in-out infinite;
+}
+@keyframes wfHeroAura{
+  0%,100%{scale:.9;opacity:.45}
+  50%{scale:1.12;opacity:.8}
+}
+
+/* A subtle circular "washing drum" ring */
+.hero:has(.wf-hero-right-dress)::before,
+.page-hero:has(.wf-hero-right-dress)::before,
+.service-hero:has(.wf-hero-right-dress)::before{
+  content:"";
+  position:absolute;
+  width:min(34vw,420px);
+  height:min(34vw,420px);
+  right:3%;
+  top:50%;
+  transform:translateY(-50%) rotate(-15deg);
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:2;
+  animation:wfHeroRing 9s linear infinite;
+}
+@keyframes wfHeroRing{
+  from{rotate:0deg;scale:.96}
+  50%{scale:1.05}
+  to{rotate:360deg;scale:.96}
+}
+
+/* Hover: pause the spin to inspect the dress */
+.hero:has(.wf-hero-right-dress) .wf-hero-right-dress:hover{
+  animation-play-state:paused;
+}
+
+/* Mobile: smaller motion, still clearly spinning */
+@media(max-width:800px){
+  .hero:has(.wf-hero-right-dress)::before,
+  .page-hero:has(.wf-hero-right-dress)::before,
+  .service-hero:has(.wf-hero-right-dress)::before{
+    width:280px;height:280px;right:-30px;
+  }
+  .hero:has(.wf-hero-right-dress)::after,
+  .page-hero:has(.wf-hero-right-dress)::after,
+  .service-hero:has(.wf-hero-right-dress)::after{
+    width:330px;height:330px;right:-45px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .wf-hero-right-dress,
+  .hero:has(.wf-hero-right-dress)::before,
+  .hero:has(.wf-hero-right-dress)::after,
+  .page-hero:has(.wf-hero-right-dress)::before,
+  .page-hero:has(.wf-hero-right-dress)::after,
+  .service-hero:has(.wf-hero-right-dress)::before,
+  .service-hero:has(.wf-hero-right-dress)::after{
+    animation:none!important;
+  }
+}
+
+
+.wf-hero-right-dress{
+  transform:perspective(1000px) rotateX(var(--hero-dress-tilt-x,0deg)) rotateY(var(--hero-dress-tilt-y,0deg));
+}
+
+</style>
   </head>
 
   <body>
@@ -802,7 +1388,7 @@
       </div>
 
       <!-- HERO SECTION -->
-      <section class="wash-hero">
+      <section class="wash-hero lx-bubble-effect">
         <div class="lx-container">
           <div class="wash-hero-grid">
             <div data-reveal>
@@ -817,7 +1403,7 @@
                 <span>Zero laundry day.</span>
               </h1>
 
-              <p class="wash-description">
+              <p class="wash-description lx-bubble-effect">
                 Our Wash &amp; Fold service takes care of the everyday laundry you never have time for. We wash, dry, neatly fold, and return your clothes ready for the closet in 24–48 hours.
               </p>
 
@@ -852,7 +1438,7 @@
                 </div>
 
                 <div class="wash-machine">
-                  <div class="wash-machine-inner">
+                  <div class="wash-machine-inner spinning">
                     <i class="fa-solid fa-shirt"></i>
                   </div>
                 </div>
@@ -886,7 +1472,7 @@
               <span>Professional Care</span>
             </div>
 
-            <div class="wash-stat-box">
+            <div class="wash-stat-box lx-bubble-effect">
               <i class="fa-solid fa-truck"></i>
               <strong>Free Doorstep</strong>
               <span>Pickup &amp; Delivery</span>
@@ -1211,5 +1797,176 @@
         });
       });
     </script>
-  </body>
+  
+<script>
+
+/* =========================================================
+   WASHING CLOTH MOTION — automatically targets the
+   top-right hero image without replacing existing JS.
+   ========================================================= */
+(() => {
+  const reduce = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Find the likely hero visual/image in the first viewport.
+  const hero = document.querySelector(".hero,.page-hero,.service-hero,main");
+  if (!hero) return;
+
+  const images = [...hero.querySelectorAll("img")];
+  if (images.length) {
+    // Prefer an image positioned toward the right by its geometry.
+    let chosen = images
+      .map(img => ({img, rect: img.getBoundingClientRect()}))
+      .sort((a,b) => (b.rect.left+b.rect.width) - (a.rect.left+a.rect.width))[0]?.img;
+
+    if (chosen) {
+      chosen.classList.add("wf-washing-tumble");
+
+      // If the image is inside a card/frame, give the frame a washer-like sheen.
+      const frame = chosen.closest(
+        ".hero-image,.hero-visual,.image-card,.visual-card,.card,figure,.media"
+      );
+      if (frame) frame.classList.add("wf-washing-frame");
+    }
+  }
+
+  // Pointer-reactive ambient field.
+  let frame=null,x=innerWidth*.5,y=innerHeight*.35;
+  addEventListener("pointermove",e=>{
+    x=e.clientX;y=e.clientY;
+    if(frame)return;
+    frame=requestAnimationFrame(()=>{
+      document.documentElement.style.setProperty("--wf-x",x+"px");
+      document.documentElement.style.setProperty("--wf-y",y+"px");
+      frame=null;
+    });
+  },{passive:true});
+
+  // Gentle 3D movement on the top-right visual.
+  const visual = images[images.length-1];
+  visual?.addEventListener("pointermove",e=>{
+    if(reduce())return;
+    const r=visual.getBoundingClientRect();
+    const px=(e.clientX-r.left)/r.width-.5;
+    const py=(e.clientY-r.top)/r.height-.5;
+    visual.style.transform =
+      `perspective(1000px) rotateX(${(-py*2).toFixed(2)}deg) rotateY(${(px*3).toFixed(2)}deg)`;
+  });
+  visual?.addEventListener("pointerleave",()=>visual.style.transform="");
+
+  // Non-invasive click feedback.
+  document.addEventListener("pointerdown",e=>{
+    if(reduce())return;
+    const target=e.target.closest(".btn,.button,.cta,.hero a,.service-hero a");
+    if(!target)return;
+    const r=document.createElement("span");
+    r.className="wf-ripple";
+    r.style.left=e.clientX+"px";
+    r.style.top=e.clientY+"px";
+    document.body.appendChild(r);
+    r.addEventListener("animationend",()=>r.remove(),{once:true});
+  },{passive:true});
+})();
+
+</script>
+
+<script>
+
+/* =========================================================
+   AUTOMATIC TOP-RIGHT DRESS DETECTION + SPIN ENHANCEMENT
+   ========================================================= */
+(() => {
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const hero = document.querySelector(".hero,.page-hero,.service-hero,main");
+  if(!hero) return;
+
+  const imgs=[...hero.querySelectorAll("img")];
+  if(!imgs.length) return;
+
+  // Choose the visually right-most image in the hero.
+  const chosen=imgs
+    .map(img=>({img,r:img.getBoundingClientRect()}))
+    .sort((a,b)=>(b.r.left+b.r.width)-(a.r.left+a.r.width))[0]?.img;
+
+  if(!chosen) return;
+
+  // Wrap the existing image so absolutely nothing in its markup/functionality
+  // is removed.
+  if(!chosen.parentElement.classList.contains("wf-dress-spin")){
+    const wrap=document.createElement("div");
+    wrap.className="wf-dress-stage";
+    chosen.parentNode.insertBefore(wrap,chosen);
+    wrap.appendChild(chosen);
+
+    const spin=document.createElement("div");
+    spin.className="wf-dress-spin";
+    wrap.insertBefore(spin,chosen);
+    spin.appendChild(chosen);
+
+    const particles=document.createElement("span");
+    particles.className="wf-dress-particles";
+    for(let i=0;i<5;i++) particles.appendChild(document.createElement("i"));
+    wrap.appendChild(particles);
+
+    const shadow=document.createElement("span");
+    shadow.className="wf-dress-shadow";
+    wrap.appendChild(shadow);
+  }
+
+  // Add motion class to major sections for richer page choreography.
+  document.querySelectorAll("section,.section,.service-section,.content-section").forEach((el,i)=>{
+    if(i>0) el.classList.add("wf-motion-section");
+  });
+
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting) entry.target.classList.add("wf-entered");
+    });
+  },{threshold:.12});
+  document.querySelectorAll(".wf-motion-section").forEach(el=>observer.observe(el));
+
+  // Cursor-driven 3D cloth tilt.
+  const stage=document.querySelector(".wf-dress-stage");
+  const spin=document.querySelector(".wf-dress-spin");
+  if(stage && spin && !reduce){
+    stage.addEventListener("pointermove",e=>{
+      const r=stage.getBoundingClientRect();
+      const px=(e.clientX-r.left)/r.width-.5;
+      const py=(e.clientY-r.top)/r.height-.5;
+      spin.style.marginTop=(-py*5).toFixed(1)+"px";
+      spin.style.filter=`drop-shadow(${(px*12).toFixed(1)}px ${(8+Math.abs(py)*12).toFixed(1)}px 25px rgba(0,0,0,.16))`;
+    });
+    stage.addEventListener("pointerleave",()=>{
+      spin.style.marginTop="";
+      spin.style.filter="";
+    });
+  }
+})();
+
+</script>
+
+<script>
+
+(() => {
+  const dress = document.querySelector(".wf-hero-right-dress");
+  if (!dress || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  let raf = 0;
+  dress.addEventListener("pointermove", e => {
+    const r = dress.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - .5;
+    const y = (e.clientY - r.top) / r.height - .5;
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => {
+      dress.style.setProperty("--hero-dress-tilt-x", `${(-y * 5).toFixed(2)}deg`);
+      dress.style.setProperty("--hero-dress-tilt-y", `${(x * 7).toFixed(2)}deg`);
+    });
+  });
+  dress.addEventListener("pointerleave", () => {
+    dress.style.removeProperty("--hero-dress-tilt-x");
+    dress.style.removeProperty("--hero-dress-tilt-y");
+  });
+})();
+
+</script>
+</body>
 </html>

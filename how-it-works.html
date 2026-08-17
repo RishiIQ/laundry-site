@@ -38,9 +38,24 @@
     <link rel="stylesheet" href="assets/css/main.css" />
 
     <!-- ======================================================
-         HOW IT WORKS PAGE UNIQUE LUXE STYLES
+         HOW IT WORKS PAGE UNIQUE LUXE STYLES WITH 3D CURVE REVEAL & MOTION
     ====================================================== -->
     <style>
+      /* Smooth Slow 3D Curve Scroll Reveal Animations Setup with Reverse Out Animation */
+      [data-reveal] {
+        opacity: 0;
+        transform: perspective(1000px) translateY(60px) rotateX(12deg) scale(0.96);
+        transition:
+          opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+      }
+
+      [data-reveal].is-visible {
+        opacity: 1;
+        transform: perspective(1000px) translateY(0) rotateX(0deg) scale(1);
+      }
+
       /* Hero Section */
       .how-hero {
         position: relative;
@@ -105,7 +120,10 @@
         box-shadow: var(--lx-shadow-sm);
         padding: clamp(32px, 4vw, 44px) clamp(24px, 3vw, 32px);
         text-align: center;
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          border-color 0.8s ease;
         position: relative;
         display: flex;
         flex-direction: column;
@@ -113,8 +131,8 @@
       }
 
       .how-step-card:hover {
-        transform: translateY(-8px);
-        box-shadow: var(--lx-shadow-xl);
+        transform: translateY(-8px) scale(1.012);
+        box-shadow: 0 30px 75px rgba(0, 0, 0, 0.14);
         border-color: rgba(var(--lx-primary-rgb), 0.4);
       }
 
@@ -209,13 +227,16 @@
         background: var(--lx-surface);
         border: 1px solid var(--lx-border);
         box-shadow: var(--lx-shadow-sm);
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s ease,
+          border-color 0.8s ease;
         text-align: center;
       }
 
       .how-detailed-card:hover {
-        transform: translateY(-6px);
-        box-shadow: var(--lx-shadow-md);
+        transform: translateY(-8px) scale(1.012);
+        box-shadow: 0 30px 75px rgba(0, 0, 0, 0.14);
         border-color: var(--lx-primary);
       }
 
@@ -229,7 +250,10 @@
         place-items: center;
         font-size: 24px;
         margin: 0 auto 20px;
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          background-color 0.8s ease,
+          color 0.8s ease;
       }
 
       .how-detailed-card:hover .how-detailed-icon {
@@ -325,11 +349,11 @@
         position: absolute;
         inset: 0;
         filter: brightness(0.75);
-        transition: transform 0.6s var(--lx-ease);
+        transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .how-demo-visual:hover img {
-        transform: scale(1.05);
+        transform: scale(1.06);
       }
 
       .how-play-btn {
@@ -344,13 +368,16 @@
         border: none;
         cursor: pointer;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          background-color 0.8s ease,
+          box-shadow 0.8s ease;
         position: relative;
         z-index: 2;
       }
 
       .how-play-btn:hover {
-        transform: scale(1.1);
+        transform: scale(1.12);
         background: var(--lx-primary-hover);
         box-shadow: 0 15px 40px var(--lx-primary-glow);
       }
@@ -372,6 +399,14 @@
         text-align: center;
         max-width: 860px;
         margin: 0 auto;
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s ease;
+      }
+
+      .how-testimonial-box:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
       }
 
       .how-testimonial-stars {
@@ -424,13 +459,15 @@
       .how-cta-card {
         padding: clamp(36px, 5vw, 65px) clamp(24px, 4vw, 55px);
         border-radius: var(--lx-radius-xl);
-        background: radial-gradient(circle at 100% 0%, #059669 0%, #064e3b 100%);
+        background: radial-gradient(circle at 100% 0%, #c08fe8 0%, #80c722 100%);
         color: #fff;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 32px;
         box-shadow: 0 20px 50px -10px rgba(6, 78, 59, 0.35);
+        position: relative;
+        overflow: hidden;
       }
 
       .how-cta-card h2 {
@@ -457,12 +494,170 @@
         gap: 10px;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
         flex-shrink: 0;
-        transition: var(--lx-transition);
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          background-color 0.8s ease;
+      }
+
+      .how-cta-card .lx-button-white::before {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 180px;
+        left: -75px;
+        top: -65px;
+        transform: rotate(24deg);
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+        transition: left 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        pointer-events: none;
+      }
+
+      .how-cta-card .lx-button-white:hover::before {
+        left: 125%;
       }
 
       .how-cta-card .lx-button-white:hover {
         background: var(--lx-primary-light);
         transform: translateY(-2px);
+      }
+
+      /* =========================================================
+         LAUNDRIX — CAELESTIA EXPRESSIVE MOTION LAYER
+         ========================================================= */
+      :root {
+        --cx: 50%;
+        --cy: 35%;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        isolation: isolate;
+        overflow-x: hidden;
+        perspective: 1400px;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.032;
+        mix-blend-mode: screen;
+        background: linear-gradient(
+          115deg,
+          transparent 42%,
+          rgba(255, 255, 255, 0.95) 50%,
+          transparent 58%
+        );
+        background-size: 220% 220%;
+        animation: cxSweep 15s linear infinite;
+      }
+      @keyframes cxSweep {
+        from { background-position: 180% 10%; }
+        to { background-position: -40% 90%; }
+      }
+
+      header,
+      .header,
+      .navbar,
+      .site-header {
+        animation: cxHeader 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+      @keyframes cxHeader {
+        from {
+          opacity: 0;
+          transform: translateY(-30px) scale(0.975);
+          filter: blur(10px);
+        }
+        70% {
+          opacity: 1;
+          transform: translateY(3px) scale(1.008);
+          filter: blur(0);
+        }
+        to { transform: none; }
+      }
+
+      /* Pointer-following ambient glow */
+      main,
+      .main,
+      .page,
+      .hero,
+      .section {
+        --cx-glow-x: var(--cx);
+        --cx-glow-y: var(--cy);
+      }
+      .how-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(
+          500px circle at var(--cx-glow-x) var(--cx-glow-y),
+          rgba(255, 255, 255, 0.07),
+          transparent 62%
+        );
+        transition: background-position 0.5s ease;
+      }
+
+      /* Hero Title & Copy Animations */
+      .how-hero h1 {
+        animation: cxTitle 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+      }
+      @keyframes cxTitle {
+        0% {
+          opacity: 0;
+          transform: translateY(34px) scale(0.94);
+          filter: blur(12px);
+          letter-spacing: -0.05em;
+        }
+        65% {
+          opacity: 1;
+          transform: translateY(-4px) scale(1.012);
+          filter: blur(0);
+        }
+        100% {
+          transform: none;
+          letter-spacing: normal;
+        }
+      }
+      .how-hero p {
+        animation: cxCopy 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both;
+      }
+      @keyframes cxCopy {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+          filter: blur(5px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+          filter: blur(0);
+        }
+      }
+
+      /* Ripple Effect */
+      .cx-ripple {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 10001;
+        background: rgba(16, 185, 129, 0.18);
+        border: 1px solid rgba(16, 185, 129, 0.65);
+        transform: translate(-50%, -50%);
+        animation: cxRipple 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      @keyframes cxRipple {
+        to {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(16);
+        }
       }
 
       @media (max-width: 980px) {
@@ -483,6 +678,19 @@
         .how-cta-card .lx-button-white {
           width: 100%;
           justify-content: center;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        body::after,
+        header,
+        .how-hero h1,
+        .how-hero p {
+          animation: none !important;
+        }
+        [data-reveal] {
+          transition: none !important;
+          transform: none !important;
+          filter: none !important;
         }
       }
     </style>
@@ -726,7 +934,7 @@
 
             <div class="how-detailed-card" data-reveal>
               <div class="how-detailed-icon">
-                <i class="fa-solid fa-box-check"></i>
+                <i class="fa-solid fa-square-check"></i>
               </div>
               <h3>4. Final Quality &amp; Return</h3>
               <p>Dust-free breathable packaging keeps everything crisp until handed safely back to you.</p>
@@ -913,7 +1121,7 @@
     ====================================================== -->
     <script src="assets/js/main.js"></script>
 
-    <!-- Page Specific Script: Demo Video Toast Preview -->
+    <!-- Page Specific Script: Demo Video Toast Preview & 3D Reveal Observer -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const playBtn = document.getElementById("playDemoBtn");
@@ -928,7 +1136,76 @@
             }, 600);
           });
         }
+
+        // Smooth slow 3D curve scroll reveal observer with bidirectional/reverse animation support
+        const revealElements = document.querySelectorAll("[data-reveal]");
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+              } else {
+                entry.target.classList.remove("is-visible");
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -40px 0px",
+          },
+        );
+
+        revealElements.forEach((el) => revealObserver.observe(el));
       });
+    </script>
+
+    <script>
+      /* Caelestia-style pointer ambience & interactions */
+      let cxFrame = null,
+        cxX = innerWidth * 0.5,
+        cxY = innerHeight * 0.35;
+      window.addEventListener(
+        "pointermove",
+        (e) => {
+          cxX = e.clientX;
+          cxY = e.clientY;
+          if (cxFrame) return;
+          cxFrame = requestAnimationFrame(() => {
+            document.documentElement.style.setProperty("--cx", cxX + "px");
+            document.documentElement.style.setProperty("--cy", cxY + "px");
+            cxFrame = null;
+          });
+        },
+        { passive: true },
+      );
+
+      const howVisual = document.querySelector(".how-demo-visual");
+      howVisual?.addEventListener("pointermove", (e) => {
+        if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        const r = howVisual.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5,
+          py = (e.clientY - r.top) / r.height - 0.5;
+        howVisual.style.transform = `perspective(1200px) rotateX(${(-py * 2.5).toFixed(2)}deg) rotateY(${(px * 3.5).toFixed(2)}deg) translateY(-3px)`;
+      });
+      howVisual?.addEventListener("pointerleave", () => {
+        if (howVisual) howVisual.style.transform = "";
+      });
+
+      document.addEventListener(
+        "pointerdown",
+        (e) => {
+          if (matchMedia("(prefers-reduced-motion: reduce)").matches || !e.isPrimary) return;
+          const target = e.target.closest(".how-play-btn,.how-cta-card .lx-button-white");
+          if (!target) return;
+          const r = document.createElement("span");
+          r.className = "cx-ripple";
+          r.style.left = e.clientX + "px";
+          r.style.top = e.clientY + "px";
+          document.body.appendChild(r);
+          r.addEventListener("animationend", () => r.remove(), { once: true });
+        },
+        { passive: true },
+      );
     </script>
   </body>
 </html>

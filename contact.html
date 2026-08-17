@@ -38,9 +38,24 @@
     <link rel="stylesheet" href="assets/css/main.css" />
 
     <!-- ======================================================
-         CONTACT PAGE UNIQUE STYLES (MODERN LUXE EMERALD)
+         CONTACT PAGE UNIQUE STYLES WITH 3D CURVE REVEAL & MOTION
     ====================================================== -->
     <style>
+      /* Smooth Slow 3D Curve Scroll Reveal Animations Setup with Reverse Out Animation */
+      [data-reveal] {
+        opacity: 0;
+        transform: perspective(1000px) translateY(60px) rotateX(12deg) scale(0.96);
+        transition:
+          opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+      }
+
+      [data-reveal].is-visible {
+        opacity: 1;
+        transform: perspective(1000px) translateY(0) rotateX(0deg) scale(1);
+      }
+
       /* Contact Hero */
       .cnt-hero {
         position: relative;
@@ -105,15 +120,18 @@
         border: 1px solid var(--lx-border);
         box-shadow: var(--lx-shadow-sm);
         text-align: center;
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          border-color 0.8s ease;
         display: flex;
         flex-direction: column;
         align-items: center;
       }
 
       .cnt-method-card:hover {
-        transform: translateY(-6px);
-        box-shadow: var(--lx-shadow-lg);
+        transform: translateY(-8px) scale(1.012);
+        box-shadow: 0 30px 75px rgba(0, 0, 0, 0.14);
         border-color: rgba(var(--lx-primary-rgb), 0.4);
       }
 
@@ -127,7 +145,10 @@
         place-items: center;
         font-size: 24px;
         margin-bottom: 16px;
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          background-color 0.8s ease,
+          color 0.8s ease;
       }
 
       .cnt-method-card:hover .cnt-method-icon {
@@ -181,6 +202,14 @@
         background: var(--lx-surface);
         border: 1px solid var(--lx-border);
         box-shadow: var(--lx-shadow-lg);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s ease;
+      }
+
+      .cnt-form-wrapper:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
       }
 
       .cnt-form-wrapper .label {
@@ -233,7 +262,10 @@
         font-weight: 600;
         color: var(--lx-text);
         outline: none;
-        transition: var(--lx-transition);
+        transition:
+          border-color 0.6s ease,
+          background-color 0.6s ease,
+          box-shadow 0.6s ease;
         font-family: inherit;
       }
 
@@ -272,13 +304,18 @@
         min-height: 52px;
         width: 100%;
         border-radius: var(--lx-radius-pill);
-        background: linear-gradient(135deg, var(--lx-primary), #047857);
+        background: linear-gradient(135deg, var(--lx-primary), #76f563);
         color: #fff;
         font-size: 15px;
         font-weight: 800;
         border: none;
         cursor: pointer;
-        transition: var(--lx-transition);
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+          background 0.8s ease;
         box-shadow: 0 4px 14px var(--lx-primary-glow);
         display: inline-flex;
         align-items: center;
@@ -286,9 +323,27 @@
         gap: 10px;
       }
 
+      .cnt-submit-btn::before {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 180px;
+        left: -75px;
+        top: -65px;
+        transform: rotate(24deg);
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+        transition: left 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        pointer-events: none;
+      }
+
+      .cnt-submit-btn:hover::before {
+        left: 125%;
+      }
+
       .cnt-submit-btn:hover {
-        background: linear-gradient(135deg, #047857, #065f46);
-        transform: translateY(-2px);
+        background: linear-gradient(135deg, #cdffbd, #b8a7f8);
+        color: green;
+        transform: translateY(-4px) scale(1.025);
         box-shadow: 0 8px 20px var(--lx-primary-glow);
       }
 
@@ -311,12 +366,16 @@
         background: var(--lx-surface);
         border: 1px solid var(--lx-border);
         box-shadow: var(--lx-shadow-sm);
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s ease,
+          border-color 0.8s ease;
       }
 
       .cnt-info-card:hover {
-        transform: translateY(-4px);
+        transform: translateY(-6px);
         box-shadow: var(--lx-shadow-md);
+        border-color: rgba(var(--lx-primary-rgb), 0.3);
       }
 
       .cnt-info-card .info-tag {
@@ -342,6 +401,13 @@
         border-bottom: 1px solid var(--lx-border-subtle);
         color: var(--lx-text);
         font-size: 14px;
+        transition: background-color 0.3s ease;
+      }
+
+      .cnt-detail-row:hover {
+        background-color: var(--lx-bg-subtle);
+        border-radius: 8px;
+        padding-inline: 6px;
       }
 
       .cnt-detail-row:last-child {
@@ -417,6 +483,14 @@
         border: 1px solid var(--lx-border);
         box-shadow: var(--lx-shadow-xl);
         z-index: 2;
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s ease;
+      }
+
+      .cnt-map-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
       }
 
       .cnt-map-pin {
@@ -476,7 +550,14 @@
         background: var(--lx-surface);
         border: 1px solid var(--lx-border);
         overflow: hidden;
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s ease;
+      }
+
+      .cnt-faq-item:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--lx-shadow-md);
       }
 
       .cnt-faq-question {
@@ -498,7 +579,7 @@
       .cnt-faq-question i {
         color: var(--lx-primary);
         font-size: 14px;
-        transition: transform 0.3s var(--lx-ease);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .cnt-faq-item.is-open .cnt-faq-question i {
@@ -508,7 +589,7 @@
       .cnt-faq-answer {
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.35s var(--lx-ease);
+        transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .cnt-faq-answer p {
@@ -530,13 +611,15 @@
       .cnt-cta-card {
         padding: clamp(36px, 5vw, 65px) clamp(24px, 4vw, 55px);
         border-radius: var(--lx-radius-xl);
-        background: radial-gradient(circle at 100% 0%, #059669 0%, #064e3b 100%);
+        background: radial-gradient(circle at 100% 0%, #c08fe8 0%, #80c722 100%);
         color: #fff;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 32px;
         box-shadow: 0 20px 50px -10px rgba(6, 78, 59, 0.35);
+        position: relative;
+        overflow: hidden;
       }
 
       .cnt-cta-card h2 {
@@ -563,13 +646,171 @@
         gap: 10px;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
         flex-shrink: 0;
-        transition: var(--lx-transition);
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          background-color 0.8s ease;
         text-decoration: none;
+      }
+
+      .cnt-cta-card .lx-button-white::before {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 180px;
+        left: -75px;
+        top: -65px;
+        transform: rotate(24deg);
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+        transition: left 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        pointer-events: none;
+      }
+
+      .cnt-cta-card .lx-button-white:hover::before {
+        left: 125%;
       }
 
       .cnt-cta-card .lx-button-white:hover {
         background: var(--lx-primary-light);
         transform: translateY(-2px);
+      }
+
+      /* =========================================================
+         LAUNDRIX — CAELESTIA EXPRESSIVE MOTION LAYER
+         ========================================================= */
+      :root {
+        --cx: 50%;
+        --cy: 35%;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        isolation: isolate;
+        overflow-x: hidden;
+        perspective: 1400px;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.032;
+        mix-blend-mode: screen;
+        background: linear-gradient(
+          115deg,
+          transparent 42%,
+          rgba(255, 255, 255, 0.95) 50%,
+          transparent 58%
+        );
+        background-size: 220% 220%;
+        animation: cxSweep 15s linear infinite;
+      }
+      @keyframes cxSweep {
+        from { background-position: 180% 10%; }
+        to { background-position: -40% 90%; }
+      }
+
+      header,
+      .header,
+      .navbar,
+      .site-header {
+        animation: cxHeader 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+      @keyframes cxHeader {
+        from {
+          opacity: 0;
+          transform: translateY(-30px) scale(0.975);
+          filter: blur(10px);
+        }
+        70% {
+          opacity: 1;
+          transform: translateY(3px) scale(1.008);
+          filter: blur(0);
+        }
+        to { transform: none; }
+      }
+
+      /* Pointer-following ambient glow */
+      main,
+      .main,
+      .page,
+      .hero,
+      .section {
+        --cx-glow-x: var(--cx);
+        --cx-glow-y: var(--cy);
+      }
+      .cnt-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(
+          500px circle at var(--cx-glow-x) var(--cx-glow-y),
+          rgba(255, 255, 255, 0.07),
+          transparent 62%
+        );
+        transition: background-position 0.5s ease;
+      }
+
+      /* Hero Title & Copy Animations */
+      .cnt-hero h1 {
+        animation: cxTitle 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+      }
+      @keyframes cxTitle {
+        0% {
+          opacity: 0;
+          transform: translateY(34px) scale(0.94);
+          filter: blur(12px);
+          letter-spacing: -0.05em;
+        }
+        65% {
+          opacity: 1;
+          transform: translateY(-4px) scale(1.012);
+          filter: blur(0);
+        }
+        100% {
+          transform: none;
+          letter-spacing: normal;
+        }
+      }
+      .cnt-hero p {
+        animation: cxCopy 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both;
+      }
+      @keyframes cxCopy {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+          filter: blur(5px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+          filter: blur(0);
+        }
+      }
+
+      /* Ripple Effect */
+      .cx-ripple {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 10001;
+        background: rgba(16, 185, 129, 0.18);
+        border: 1px solid rgba(16, 185, 129, 0.65);
+        transform: translate(-50%, -50%);
+        animation: cxRipple 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      @keyframes cxRipple {
+        to {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(16);
+        }
       }
 
       @media (max-width: 980px) {
@@ -589,6 +830,19 @@
         .cnt-cta-card .lx-button-white {
           width: 100%;
           justify-content: center;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        body::after,
+        header,
+        .cnt-hero h1,
+        .cnt-hero p {
+          animation: none !important;
+        }
+        [data-reveal] {
+          transition: none !important;
+          transform: none !important;
+          filter: none !important;
         }
       }
     </style>
@@ -1144,7 +1398,64 @@
             if (!isOpen) item.classList.add("is-open");
           });
         });
+
+        // Smooth slow 3D curve scroll reveal observer with bidirectional/reverse animation support
+        const revealElements = document.querySelectorAll("[data-reveal]");
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+              } else {
+                entry.target.classList.remove("is-visible");
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -40px 0px",
+          },
+        );
+
+        revealElements.forEach((el) => revealObserver.observe(el));
       });
+    </script>
+
+    <script>
+      /* Caelestia-style pointer ambience & interactions */
+      let cxFrame = null,
+        cxX = innerWidth * 0.5,
+        cxY = innerHeight * 0.35;
+      window.addEventListener(
+        "pointermove",
+        (e) => {
+          cxX = e.clientX;
+          cxY = e.clientY;
+          if (cxFrame) return;
+          cxFrame = requestAnimationFrame(() => {
+            document.documentElement.style.setProperty("--cx", cxX + "px");
+            document.documentElement.style.setProperty("--cy", cxY + "px");
+            cxFrame = null;
+          });
+        },
+        { passive: true },
+      );
+
+      document.addEventListener(
+        "pointerdown",
+        (e) => {
+          if (matchMedia("(prefers-reduced-motion: reduce)").matches || !e.isPrimary) return;
+          const target = e.target.closest(".cnt-submit-btn,.cnt-cta-card .lx-button-white,.cnt-method-card");
+          if (!target) return;
+          const r = document.createElement("span");
+          r.className = "cx-ripple";
+          r.style.left = e.clientX + "px";
+          r.style.top = e.clientY + "px";
+          document.body.appendChild(r);
+          r.addEventListener("animationend", () => r.remove(), { once: true });
+        },
+        { passive: true },
+      );
     </script>
   </body>
 </html>

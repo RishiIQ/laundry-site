@@ -38,9 +38,24 @@
     <link rel="stylesheet" href="assets/css/main.css" />
 
     <!-- ======================================================
-         PRICING PAGE UNIQUE STYLES (MODERN LUXE & ANIMATIONS)
+         PRICING PAGE UNIQUE STYLES WITH 3D CURVE REVEAL & CAELESTIA MOTION
     ====================================================== -->
     <style>
+      /* Smooth Slow 3D Curve Scroll Reveal Animations Setup with Reverse Out Animation */
+      [data-reveal] {
+        opacity: 0;
+        transform: perspective(1000px) translateY(60px) rotateX(12deg) scale(0.96);
+        transition:
+          opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+      }
+
+      [data-reveal].is-visible {
+        opacity: 1;
+        transform: perspective(1000px) translateY(0) rotateX(0deg) scale(1);
+      }
+
       /* Pricing Hero */
       .prc-hero {
         position: relative;
@@ -174,12 +189,15 @@
         display: flex;
         flex-direction: column;
         position: relative;
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          border-color 0.8s ease;
       }
 
       .prc-card:hover {
-        transform: translateY(-10px);
-        box-shadow: var(--lx-shadow-xl);
+        transform: translateY(-8px) scale(1.012);
+        box-shadow: 0 30px 75px rgba(0, 0, 0, 0.14);
         border-color: rgba(var(--lx-primary-rgb), 0.4);
       }
 
@@ -191,7 +209,7 @@
 
       .prc-card-badge {
         position: absolute;
-        top: -14px;
+        top: 4px;
         left: 50%;
         transform: translateX(-50%);
         padding: 6px 18px;
@@ -216,6 +234,16 @@
         place-items: center;
         font-size: 24px;
         margin-bottom: 20px;
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          background-color 0.8s ease,
+          color 0.8s ease;
+      }
+
+      .prc-card:hover .prc-card-icon {
+        background: var(--lx-primary);
+        color: #fff;
+        transform: scale(1.08);
       }
 
       .prc-card h3 {
@@ -300,8 +328,29 @@
         font-weight: 800;
         font-size: 14.5px;
         cursor: pointer;
-        transition: var(--lx-transition);
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
         text-decoration: none;
+      }
+
+      .prc-btn::before {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 180px;
+        left: -75px;
+        top: -65px;
+        transform: rotate(24deg);
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+        transition: left 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        pointer-events: none;
+      }
+
+      .prc-btn:hover::before {
+        left: 125%;
       }
 
       .prc-btn-primary {
@@ -313,7 +362,7 @@
 
       .prc-btn-primary:hover {
         background: linear-gradient(135deg, #047857, #065f46);
-        transform: translateY(-2px);
+        transform: translateY(-4px) scale(1.025);
         box-shadow: 0 8px 20px var(--lx-primary-glow);
         color: #fff;
       }
@@ -328,7 +377,7 @@
         background: var(--lx-surface);
         border-color: var(--lx-primary);
         color: var(--lx-primary);
-        transform: translateY(-2px);
+        transform: translateY(-4px) scale(1.025);
       }
 
       /* Detailed Price Table */
@@ -372,6 +421,11 @@
         font-size: 14px;
         color: var(--lx-text-soft);
         border-bottom: 1px solid var(--lx-border);
+        transition: background-color 0.3s ease;
+      }
+
+      .prc-table tbody tr:hover td {
+        background-color: var(--lx-bg-subtle);
       }
 
       .prc-table tr:last-child td {
@@ -408,6 +462,14 @@
         background: var(--lx-surface);
         border: 1px solid var(--lx-border);
         box-shadow: var(--lx-shadow-lg);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s ease;
+      }
+
+      .prc-calc-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 30px 75px rgba(0, 0, 0, 0.14);
       }
 
       .prc-form-group {
@@ -438,7 +500,10 @@
         font-weight: 600;
         color: var(--lx-text);
         outline: none;
-        transition: var(--lx-transition);
+        transition:
+          border-color 0.6s ease,
+          background-color 0.6s ease,
+          box-shadow 0.6s ease;
       }
 
       .prc-input:focus, .prc-select:focus {
@@ -491,7 +556,14 @@
         background: var(--lx-surface);
         border: 1px solid var(--lx-border);
         overflow: hidden;
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s ease;
+      }
+
+      .prc-faq-item:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--lx-shadow-md);
       }
 
       .prc-faq-question {
@@ -513,7 +585,7 @@
       .prc-faq-question i {
         color: var(--lx-primary);
         font-size: 14px;
-        transition: transform 0.3s var(--lx-ease);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .prc-faq-item.is-open .prc-faq-question i {
@@ -523,7 +595,7 @@
       .prc-faq-answer {
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.35s var(--lx-ease);
+        transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .prc-faq-answer p {
@@ -545,13 +617,15 @@
       .prc-cta-card {
         padding: clamp(36px, 5vw, 65px) clamp(24px, 4vw, 55px);
         border-radius: var(--lx-radius-xl);
-        background: radial-gradient(circle at 100% 0%, #059669 0%, #064e3b 100%);
+        background: radial-gradient(circle at 100% 0%, #c08fe8 0%, #80c722 100%);
         color: #fff;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 32px;
         box-shadow: 0 20px 50px -10px rgba(6, 78, 59, 0.35);
+        position: relative;
+        overflow: hidden;
       }
 
       .prc-cta-card h2 {
@@ -578,12 +652,170 @@
         gap: 10px;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
         flex-shrink: 0;
-        transition: var(--lx-transition);
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          background-color 0.8s ease;
+      }
+
+      .prc-cta-card .lx-button-white::before {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 180px;
+        left: -75px;
+        top: -65px;
+        transform: rotate(24deg);
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+        transition: left 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        pointer-events: none;
+      }
+
+      .prc-cta-card .lx-button-white:hover::before {
+        left: 125%;
       }
 
       .prc-cta-card .lx-button-white:hover {
         background: var(--lx-primary-light);
         transform: translateY(-2px);
+      }
+
+      /* =========================================================
+         LAUNDRIX — CAELESTIA EXPRESSIVE MOTION LAYER
+         ========================================================= */
+      :root {
+        --cx: 50%;
+        --cy: 35%;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        isolation: isolate;
+        overflow-x: hidden;
+        perspective: 1400px;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.032;
+        mix-blend-mode: screen;
+        background: linear-gradient(
+          115deg,
+          transparent 42%,
+          rgba(255, 255, 255, 0.95) 50%,
+          transparent 58%
+        );
+        background-size: 220% 220%;
+        animation: cxSweep 15s linear infinite;
+      }
+      @keyframes cxSweep {
+        from { background-position: 180% 10%; }
+        to { background-position: -40% 90%; }
+      }
+
+      header,
+      .header,
+      .navbar,
+      .site-header {
+        animation: cxHeader 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+      @keyframes cxHeader {
+        from {
+          opacity: 0;
+          transform: translateY(-30px) scale(0.975);
+          filter: blur(10px);
+        }
+        70% {
+          opacity: 1;
+          transform: translateY(3px) scale(1.008);
+          filter: blur(0);
+        }
+        to { transform: none; }
+      }
+
+      /* Pointer-following ambient glow */
+      main,
+      .main,
+      .page,
+      .hero,
+      .section {
+        --cx-glow-x: var(--cx);
+        --cx-glow-y: var(--cy);
+      }
+      .prc-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(
+          500px circle at var(--cx-glow-x) var(--cx-glow-y),
+          rgba(255, 255, 255, 0.07),
+          transparent 62%
+        );
+        transition: background-position 0.5s ease;
+      }
+
+      /* Hero Title & Copy Animations */
+      .prc-hero h1 {
+        animation: cxTitle 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+      }
+      @keyframes cxTitle {
+        0% {
+          opacity: 0;
+          transform: translateY(34px) scale(0.94);
+          filter: blur(12px);
+          letter-spacing: -0.05em;
+        }
+        65% {
+          opacity: 1;
+          transform: translateY(-4px) scale(1.012);
+          filter: blur(0);
+        }
+        100% {
+          transform: none;
+          letter-spacing: normal;
+        }
+      }
+      .prc-hero p {
+        animation: cxCopy 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both;
+      }
+      @keyframes cxCopy {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+          filter: blur(5px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+          filter: blur(0);
+        }
+      }
+
+      /* Ripple Effect */
+      .cx-ripple {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 10001;
+        background: rgba(16, 185, 129, 0.18);
+        border: 1px solid rgba(16, 185, 129, 0.65);
+        transform: translate(-50%, -50%);
+        animation: cxRipple 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      @keyframes cxRipple {
+        to {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(16);
+        }
       }
 
       @media (max-width: 980px) {
@@ -603,6 +835,19 @@
         .prc-cta-card .lx-button-white {
           width: 100%;
           justify-content: center;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        body::after,
+        header,
+        .prc-hero h1,
+        .prc-hero p {
+          animation: none !important;
+        }
+        [data-reveal] {
+          transition: none !important;
+          transform: none !important;
+          filter: none !important;
         }
       }
     </style>
@@ -777,8 +1022,8 @@
       </section>
 
       <!-- PRICING TIERS -->
-      <section class="prc-section">
-        <div class="lx-container">
+      <section class="prc-section lx-bubble-effect">
+        <div class="lx-container lx-bubble-effect">
           <div class="prc-grid">
             <!-- 1. Wash & Fold Tier -->
             <article class="prc-card" data-reveal>
@@ -794,7 +1039,7 @@
                 <div class="prc-period-text">Free pickup &amp; delivery on min. orders</div>
               </div>
 
-              <ul class="prc-features">
+              <ul class="prc-features lx-bubble-effect">
                 <li><i class="fa-solid fa-circle-check"></i> Eco-friendly detergents</li>
                 <li><i class="fa-solid fa-circle-check"></i> Color sorting &amp; temperature care</li>
                 <li><i class="fa-solid fa-circle-check"></i> Tumble dry &amp; neat folding</li>
@@ -1239,7 +1484,64 @@
             if (!isOpen) item.classList.add("is-open");
           });
         });
+
+        // 4. Smooth slow 3D curve scroll reveal observer with bidirectional/reverse animation support
+        const revealElements = document.querySelectorAll("[data-reveal]");
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+              } else {
+                entry.target.classList.remove("is-visible");
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -40px 0px",
+          },
+        );
+
+        revealElements.forEach((el) => revealObserver.observe(el));
       });
+    </script>
+
+    <script>
+      /* Caelestia-style pointer ambience & interactions */
+      let cxFrame = null,
+        cxX = innerWidth * 0.5,
+        cxY = innerHeight * 0.35;
+      window.addEventListener(
+        "pointermove",
+        (e) => {
+          cxX = e.clientX;
+          cxY = e.clientY;
+          if (cxFrame) return;
+          cxFrame = requestAnimationFrame(() => {
+            document.documentElement.style.setProperty("--cx", cxX + "px");
+            document.documentElement.style.setProperty("--cy", cxY + "px");
+            cxFrame = null;
+          });
+        },
+        { passive: true },
+      );
+
+      document.addEventListener(
+        "pointerdown",
+        (e) => {
+          if (matchMedia("(prefers-reduced-motion: reduce)").matches || !e.isPrimary) return;
+          const target = e.target.closest(".prc-btn,.prc-cta-card .lx-button-white");
+          if (!target) return;
+          const r = document.createElement("span");
+          r.className = "cx-ripple";
+          r.style.left = e.clientX + "px";
+          r.style.top = e.clientY + "px";
+          document.body.appendChild(r);
+          r.addEventListener("animationend", () => r.remove(), { once: true });
+        },
+        { passive: true },
+      );
     </script>
   </body>
 </html>

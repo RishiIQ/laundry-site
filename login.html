@@ -7,7 +7,7 @@
       name="description"
       content="Log in to your LaundriX account to schedule laundry pickups, track active deliveries, and manage your garment care preferences."
     />
-    <meta name="theme-color" content="#059669" />
+    <meta name="theme-color" content="#8b5cf6" />
     <title>Login | LaundriX — Premium Doorstep Laundry</title>
 
     <!-- ======================================================
@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="assets/css/main.css" />
 
     <!-- ======================================================
-         AUTH UNIQUE STYLES (DISTRACTION-FREE LUXE)
+         AUTH UNIQUE STYLES (MATCHING LATEST THEME & ANIMATIONS)
     ====================================================== -->
     <style>
       .auth-page-wrapper {
@@ -46,8 +46,6 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        background: radial-gradient(circle at 50% 15%, rgba(var(--lx-primary-rgb), 0.08) 0%, transparent 65%),
-                    radial-gradient(circle at 85% 85%, rgba(79, 70, 229, 0.04) 0%, transparent 50%);
         position: relative;
         overflow: hidden;
       }
@@ -97,7 +95,7 @@
         display: grid;
         place-items: center;
         background: var(--lx-bg-subtle);
-        border: 1px solid var(--lx-border-subtle);
+        border: 1px solid var(--lx-border);
         color: var(--lx-text-soft);
         cursor: pointer;
         transition: var(--lx-transition);
@@ -106,7 +104,7 @@
       .auth-corner-btn:hover {
         background: var(--lx-surface);
         color: var(--lx-primary);
-        border-color: var(--lx-primary);
+        border-color: var(--lx-selected-green);
         transform: translateY(-2px);
       }
 
@@ -129,12 +127,12 @@
         width: 42px;
         height: 42px;
         border-radius: 12px;
-        background: linear-gradient(135deg, var(--lx-primary), #047857);
+        background: var(--lx-selected-green);
         display: grid;
         place-items: center;
-        color: #fff;
-        box-shadow: 0 4px 12px var(--lx-primary-glow);
-        transition: transform 0.3s var(--lx-ease);
+        color: #0f172a;
+        box-shadow: 0 4px 12px rgba(204, 255, 0, 0.3);
+        transition: transform 0.5s var(--lx-ease);
       }
 
       .auth-brand:hover .auth-brand-mark {
@@ -203,7 +201,7 @@
 
       .auth-input {
         width: 100%;
-        padding: 12px 42px 12px 42px;
+        padding: 12px 48px 12px 42px;
         border-radius: var(--lx-radius-md);
         background: var(--lx-bg-subtle);
         border: 1px solid var(--lx-border);
@@ -215,10 +213,14 @@
         font-family: inherit;
       }
 
+      html[dir="rtl"] .auth-input {
+        padding: 12px 42px 12px 48px;
+      }
+
       .auth-input:focus {
-        border-color: var(--lx-primary);
+        border-color: var(--lx-selected-green);
         background: var(--lx-surface);
-        box-shadow: 0 0 0 3px rgba(var(--lx-primary-rgb), 0.15);
+        box-shadow: 0 0 0 3px rgba(204, 255, 0, 0.25);
       }
 
       .auth-input.is-error {
@@ -234,17 +236,20 @@
         margin-top: 2px;
       }
 
+      /* Unique Material UI-like Animated Visibility Toggle Button */
       .auth-password-toggle {
         position: absolute;
         right: 12px;
-        background: none;
+        background: transparent;
         border: none;
         color: var(--lx-text-muted);
         cursor: pointer;
         display: grid;
         place-items: center;
-        padding: 4px;
-        transition: color 0.2s ease;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       html[dir="rtl"] .auth-password-toggle {
@@ -253,7 +258,21 @@
       }
 
       .auth-password-toggle:hover {
+        background: rgba(139, 92, 246, 0.1);
         color: var(--lx-primary);
+        transform: scale(1.1);
+      }
+
+      .auth-password-toggle:active {
+        transform: scale(0.9);
+      }
+
+      .auth-password-toggle .material-symbols-rounded {
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
+      }
+
+      .auth-password-toggle:hover .material-symbols-rounded {
+        transform: rotate(15deg);
       }
 
       .auth-options {
@@ -274,7 +293,7 @@
       }
 
       .auth-remember input {
-        accent-color: var(--lx-primary);
+        accent-color: var(--lx-selected-green);
         width: 15px;
         height: 15px;
         cursor: pointer;
@@ -295,14 +314,14 @@
         min-height: 48px;
         width: 100%;
         border-radius: var(--lx-radius-pill);
-        background: linear-gradient(135deg, var(--lx-primary), #047857);
-        color: #fff;
+        background: var(--lx-selected-green);
+        color: #0f172a;
         font-size: 14.5px;
         font-weight: 800;
         border: none;
         cursor: pointer;
         transition: var(--lx-transition);
-        box-shadow: 0 4px 14px var(--lx-primary-glow);
+        box-shadow: 0 4px 14px rgba(204, 255, 0, 0.3);
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -311,9 +330,8 @@
       }
 
       .auth-submit-btn:hover {
-        background: linear-gradient(135deg, #047857, #065f46);
         transform: translateY(-2px);
-        box-shadow: 0 8px 20px var(--lx-primary-glow);
+        box-shadow: 0 8px 20px rgba(204, 255, 0, 0.4);
       }
 
       .auth-divider {
@@ -362,9 +380,8 @@
       }
 
       .auth-social-btn:hover {
-        background: var(--lx-bg-subtle);
-        border-color: var(--lx-primary);
-        color: var(--lx-primary);
+        background: rgba(204, 255, 0, 0.15);
+        border-color: var(--lx-selected-green);
         transform: translateY(-2px);
       }
 
@@ -388,7 +405,7 @@
       /* Simple Minimalist Footer */
       .auth-simple-footer {
         padding: 20px 16px;
-        border-top: 1px solid var(--lx-border-subtle);
+        border-top: 1px solid var(--lx-border);
         background: var(--lx-surface);
         text-align: center;
       }
@@ -435,7 +452,7 @@
   </head>
 
   <body>
-    <div class="auth-page-wrapper">
+    <div class="auth-page-wrapper lx-bubble-effect">
       <!-- ======================================================
            MAIN AUTH CONTAINER
       ====================================================== -->
@@ -457,13 +474,17 @@
             <!-- RTL Toggle -->
             <button
               type="button"
-              class="auth-corner-btn"
+              class="lx-direction-toggle"
               data-rtl-toggle
               aria-label="Toggle LTR / RTL"
               aria-pressed="false"
               title="Toggle LTR / RTL"
             >
-              <span class="material-symbols-rounded" style="font-size:18px;"> sync_alt </span>
+              <span class="lx-direction-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
             </button>
           </div>
 
@@ -513,7 +534,7 @@
                   autocomplete="current-password"
                 />
                 <button type="button" class="auth-password-toggle" data-password-toggle="#loginPassword" aria-label="Toggle password visibility">
-                  <span class="material-symbols-rounded" style="font-size:19px;"> visibility </span>
+                  <span class="material-symbols-rounded" style="font-size:20px;"> visibility </span>
                 </button>
               </div>
               <span class="auth-error-msg" id="passwordError">Password must be at least 6 characters long.</span>
@@ -528,7 +549,7 @@
             </div>
 
             <!-- Submit CTA -->
-            <button type="submit" class="auth-submit-btn" id="loginSubmitBtn">
+            <button type="submit" class="auth-submit-btn lx-water-ripple" id="loginSubmitBtn">
               <span>Sign in</span>
               <i class="fa-solid fa-arrow-right"></i>
             </button>
@@ -588,7 +609,6 @@
         const emailError = document.getElementById("emailError");
         const passwordError = document.getElementById("passwordError");
 
-        // Simple email validation regex helper
         function isValidEmail(email) {
           return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
         }
@@ -598,13 +618,11 @@
             e.preventDefault();
             let isValid = true;
 
-            // Reset previous error states
             emailInput.classList.remove("is-error");
             passwordInput.classList.remove("is-error");
             emailError.style.display = "none";
             passwordError.style.display = "none";
 
-            // Validate Email
             const emailVal = emailInput.value.trim();
             if (!emailVal || !isValidEmail(emailVal)) {
               emailInput.classList.add("is-error");
@@ -612,7 +630,6 @@
               isValid = false;
             }
 
-            // Validate Password
             const passwordVal = passwordInput.value;
             if (!passwordVal || passwordVal.length < 6) {
               passwordInput.classList.add("is-error");
@@ -627,12 +644,10 @@
               return;
             }
 
-            // Success state and redirect to dashboard
             if (window.LaundriX && window.LaundriX.showToast) {
               window.LaundriX.showToast("Login successful! Redirecting to dashboard...", { type: "success" });
             }
 
-            // Disable button during redirect transition
             const submitBtn = document.getElementById("loginSubmitBtn");
             if (submitBtn) {
               submitBtn.disabled = true;
@@ -645,7 +660,6 @@
           });
         }
 
-        // Forgot password interaction
         const forgotLink = document.getElementById("forgotPasswordLink");
         if (forgotLink) {
           forgotLink.addEventListener("click", (e) => {
@@ -656,7 +670,6 @@
           });
         }
 
-        // Social button interactions
         const socialBtns = [document.getElementById("googleLoginBtn"), document.getElementById("appleLoginBtn")];
         socialBtns.forEach((btn) => {
           if (btn) {

@@ -38,9 +38,24 @@
     <link rel="stylesheet" href="assets/css/main.css" />
 
     <!-- ======================================================
-         PREMIUM CARE PAGE UNIQUE STYLES (MODERN LUXE EMERALD & GOLD)
+         PREMIUM CARE PAGE UNIQUE STYLES WITH 3D CURVE REVEAL & CAELESTIA MOTION
     ====================================================== -->
     <style>
+      /* Smooth Slow 3D Curve Scroll Reveal Animations Setup with Reverse Out Animation */
+      [data-reveal] {
+        opacity: 0;
+        transform: perspective(1000px) translateY(60px) rotateX(12deg) scale(0.96);
+        transition:
+          opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+      }
+
+      [data-reveal].is-visible {
+        opacity: 1;
+        transform: perspective(1000px) translateY(0) rotateX(0deg) scale(1);
+      }
+
       /* Breadcrumb */
       .srv-breadcrumb-wrap {
         padding-top: clamp(100px, 12vh, 120px);
@@ -122,7 +137,7 @@
       }
 
       .prm-title .gold-accent {
-        background: linear-gradient(135deg, var(--lx-primary) 0%, #10b981 50%, var(--lx-gold) 100%);
+        background: linear-gradient(135deg, var(--lx-primary) 0%, #b7ba00 50%, var(--lx-gold) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         display: inline-block;
@@ -148,7 +163,7 @@
         min-height: 52px;
         padding: 0 30px;
         border-radius: var(--lx-radius-pill);
-        background: linear-gradient(135deg, var(--lx-primary), #047857);
+        background: linear-gradient(135deg, var(--lx-primary), #b7ba00);
         color: #fff;
         font-size: 15px;
         font-weight: 800;
@@ -156,13 +171,15 @@
         align-items: center;
         gap: 10px;
         box-shadow: 0 10px 25px var(--lx-primary-glow);
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         white-space: nowrap;
       }
 
       .prm-primary-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 16px 36px var(--lx-primary-glow);
+        transform: translateY(-3px);
+        box-shadow: 0 18px 40px var(--lx-primary-glow);
         color: #fff;
       }
 
@@ -179,13 +196,16 @@
         align-items: center;
         gap: 10px;
         box-shadow: var(--lx-shadow-sm);
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          background-color 0.8s ease;
         white-space: nowrap;
       }
 
       .prm-secondary-btn:hover {
         background: var(--lx-bg-subtle);
-        transform: translateY(-2px);
+        transform: translateY(-3px);
         box-shadow: var(--lx-shadow-md);
       }
 
@@ -252,13 +272,15 @@
         box-shadow: var(--lx-shadow-xl);
         padding: 30px;
         transform: perspective(1000px) rotateY(-4deg) rotateX(2deg);
-        transition: transform 0.4s var(--lx-ease), box-shadow 0.4s ease;
+        transition:
+          transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 1s ease;
         z-index: 2;
       }
 
       .prm-visual:hover .prm-card {
-        transform: perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(-6px);
-        box-shadow: 0 35px 80px -15px rgba(var(--lx-primary-rgb), 0.25);
+        transform: perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(-8px);
+        box-shadow: 0 40px 90px -15px rgba(15, 23, 42, 0.3);
       }
 
       .prm-card-top {
@@ -368,7 +390,7 @@
         box-shadow: var(--lx-shadow-lg);
         font-size: 13px;
         font-weight: 700;
-        animation: floatMotion 6s ease-in-out infinite;
+        animation: floatMotion 10s ease-in-out infinite;
       }
 
       .prm-float i {
@@ -377,14 +399,14 @@
       }
 
       .prm-float-one {
-        top: 25px;
+        top: -20px;
         left: -25px;
       }
 
       .prm-float-two {
-        bottom: 25px;
+        bottom: -25px;
         right: -25px;
-        animation-delay: -3s;
+        animation-delay: -5s;
       }
 
       /* Stats Section */
@@ -404,12 +426,15 @@
         background: var(--lx-surface);
         border: 1px solid var(--lx-border);
         box-shadow: var(--lx-shadow-sm);
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s ease,
+          border-color 0.8s ease;
         text-align: center;
       }
 
       .prm-stat-box:hover {
-        transform: translateY(-4px);
+        transform: translateY(-6px);
         box-shadow: var(--lx-shadow-md);
         border-color: var(--lx-primary);
       }
@@ -474,7 +499,10 @@
         background: var(--lx-surface);
         border: 1px solid var(--lx-border);
         box-shadow: var(--lx-shadow-sm);
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s ease,
+          border-color 0.8s ease;
         text-align: center;
       }
 
@@ -494,7 +522,10 @@
         display: grid;
         place-items: center;
         font-size: 24px;
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          background-color 0.8s ease,
+          color 0.8s ease;
       }
 
       .prm-feature-card:hover .prm-feature-icon {
@@ -527,7 +558,10 @@
         background: var(--lx-surface);
         border: 1px solid var(--lx-border);
         box-shadow: var(--lx-shadow-sm);
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s ease,
+          border-color 0.8s ease;
         position: relative;
       }
 
@@ -584,7 +618,10 @@
         border: 1px solid var(--lx-border);
         box-shadow: var(--lx-shadow-sm);
         text-align: center;
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s ease,
+          border-color 0.8s ease;
       }
 
       .prm-garment:hover {
@@ -598,7 +635,7 @@
         font-size: 32px;
         color: var(--lx-primary);
         margin-bottom: 14px;
-        transition: transform 0.3s ease;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .prm-garment:hover i {
@@ -668,7 +705,9 @@
         background: var(--lx-surface);
         border: 1px solid var(--lx-border);
         overflow: hidden;
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s ease;
       }
 
       .prm-faq-question {
@@ -690,7 +729,7 @@
       .prm-faq-question i {
         color: var(--lx-primary);
         font-size: 14px;
-        transition: transform 0.3s var(--lx-ease);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .prm-faq-item.is-open .prm-faq-question i {
@@ -700,7 +739,7 @@
       .prm-faq-answer {
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.35s var(--lx-ease);
+        transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .prm-faq-answer p {
@@ -718,7 +757,7 @@
       .prm-cta-card {
         padding: clamp(36px, 5vw, 65px) clamp(24px, 4vw, 55px);
         border-radius: var(--lx-radius-xl);
-        background: radial-gradient(circle at 100% 0%, #059669 0%, #064e3b 100%);
+        background: radial-gradient(circle at 100% 0%, #c08fe8 0%, #80c722 100%);
         color: #fff;
         display: flex;
         align-items: center;
@@ -752,7 +791,9 @@
         gap: 10px;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
         flex-shrink: 0;
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          background-color 0.8s ease;
         text-decoration: none;
       }
 
@@ -764,7 +805,7 @@
       /* Keyframes */
       @keyframes floatMotion {
         0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-8px); }
+        50% { transform: translateY(-10px); }
       }
 
       @keyframes prmRotate {
@@ -804,6 +845,216 @@
         .prm-cta-card .lx-button-white {
           width: 100%;
           justify-content: center;
+        }
+      }
+
+      /* =========================================================
+         LAUNDRIX — CAELESTIA EXPRESSIVE MOTION LAYER
+         ========================================================= */
+      :root {
+        --cx: 50%;
+        --cy: 35%;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        isolation: isolate;
+        overflow-x: hidden;
+        perspective: 1400px;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.032;
+        mix-blend-mode: screen;
+        background: linear-gradient(
+          115deg,
+          transparent 42%,
+          rgba(255, 255, 255, 0.95) 50%,
+          transparent 58%
+        );
+        background-size: 220% 220%;
+        animation: cxSweep 15s linear infinite;
+      }
+      @keyframes cxSweep {
+        from { background-position: 180% 10%; }
+        to { background-position: -40% 90%; }
+      }
+
+      header,
+      .header,
+      .navbar,
+      .site-header {
+        animation: cxHeader 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+      @keyframes cxHeader {
+        from {
+          opacity: 0;
+          transform: translateY(-30px) scale(0.975);
+          filter: blur(10px);
+        }
+        70% {
+          opacity: 1;
+          transform: translateY(3px) scale(1.008);
+          filter: blur(0);
+        }
+        to { transform: none; }
+      }
+
+      /* Pointer-following ambient glow */
+      main,
+      .main,
+      .page,
+      .hero,
+      .section {
+        --cx-glow-x: var(--cx);
+        --cx-glow-y: var(--cy);
+      }
+      .prm-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(
+          500px circle at var(--cx-glow-x) var(--cx-glow-y),
+          rgba(255, 255, 255, 0.07),
+          transparent 62%
+        );
+        transition: background-position 0.5s ease;
+      }
+
+      /* Hero Title & Copy Animations */
+      .prm-title {
+        animation: cxTitle 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+      }
+      @keyframes cxTitle {
+        0% {
+          opacity: 0;
+          transform: translateY(34px) scale(0.94);
+          filter: blur(12px);
+          letter-spacing: -0.05em;
+        }
+        65% {
+          opacity: 1;
+          transform: translateY(-4px) scale(1.012);
+          filter: blur(0);
+        }
+        100% {
+          transform: none;
+          letter-spacing: normal;
+        }
+      }
+      .prm-description {
+        animation: cxCopy 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both;
+      }
+      @keyframes cxCopy {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+          filter: blur(5px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+          filter: blur(0);
+        }
+      }
+
+      /* Buttons: expressive light sweep + lift */
+      .prm-primary-btn,
+      .prm-secondary-btn,
+      .prm-cta-card .lx-button-white {
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .prm-primary-btn::before,
+      .prm-secondary-btn::before,
+      .prm-cta-card .lx-button-white::before {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 180px;
+        left: -75px;
+        top: -65px;
+        transform: rotate(24deg);
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+        transition: left 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        pointer-events: none;
+      }
+      .prm-primary-btn:hover,
+      .prm-secondary-btn:hover,
+      .prm-cta-card .lx-button-white:hover {
+        transform: translateY(-4px) scale(1.025);
+      }
+      .prm-primary-btn:hover::before,
+      .prm-secondary-btn:hover::before,
+      .prm-cta-card .lx-button-white:hover::before {
+        left: 125%;
+      }
+
+      /* Universal card depth */
+      .prm-stat-box,
+      .prm-feature-card,
+      .prm-process-card,
+      .prm-garment,
+      .prm-faq-item {
+        transition:
+          transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+          border-color 0.4s ease;
+      }
+      .prm-stat-box:hover,
+      .prm-feature-card:hover,
+      .prm-process-card:hover,
+      .prm-garment:hover,
+      .prm-faq-item:hover {
+        transform: translateY(-8px) scale(1.012);
+        box-shadow: 0 30px 75px rgba(0, 0, 0, 0.14);
+      }
+
+      /* Ripple Effect */
+      .cx-ripple {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 10001;
+        background: rgba(16, 185, 129, 0.18);
+        border: 1px solid rgba(16, 185, 129, 0.65);
+        transform: translate(-50%, -50%);
+        animation: cxRipple 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      @keyframes cxRipple {
+        to {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(16);
+        }
+      }
+
+      @media (max-width: 700px) {
+        body::after { opacity: 0.02; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        body::after,
+        header,
+        .prm-title,
+        .prm-description,
+        .prm-float {
+          animation: none !important;
+        }
+        [data-reveal] {
+          transition: none !important;
+          transform: none !important;
+          filter: none !important;
         }
       }
     </style>
@@ -981,7 +1232,7 @@
               </h1>
 
               <p class="prm-description">
-                Premium Garment Care is our most advanced white-glove atelier service — designed specifically for bridal lehengas, bespoke tuxedos, silk gowns, leather, suede, cashmere, and high-value heirloom pieces[cite: 24].
+                Premium Garment Care is our most advanced white-glove atelier service — designed specifically for bridal lehengas, bespoke tuxedos, silk gowns, leather, suede, cashmere, and high-value heirloom pieces.
               </p>
 
               <div class="prm-actions">
@@ -998,7 +1249,7 @@
               <div class="prm-trust">
                 <div class="prm-trust-item">
                   <i class="fa-solid fa-circle-check"></i>
-                  Full garment value insurance[cite: 24]
+                  Full garment value insurance
                 </div>
                 <div class="prm-trust-item">
                   <i class="fa-solid fa-circle-check"></i>
@@ -1040,9 +1291,9 @@
                 <div class="prm-card-bottom">
                   <div>
                     <strong>Luxe &amp; Bridal Care</strong>
-                    <small>Couture • Bridal • Heirlooms[cite: 24]</small>
+                    <small>Couture • Bridal • Heirlooms</small>
                   </div>
-                  <span class="prm-price">Custom Quote[cite: 24]</span>
+                  <span class="prm-price">Custom Quote</span>
                 </div>
               </div>
             </div>
@@ -1063,19 +1314,19 @@
             <div class="prm-stat-box">
               <i class="fa-solid fa-hand-sparkles"></i>
               <strong>Hand-Finished</strong>
-              <span>Sequins, Beads &amp; Embroidery[cite: 24]</span>
+              <span>Sequins, Beads &amp; Embroidery</span>
             </div>
 
             <div class="prm-stat-box">
               <i class="fa-solid fa-truck"></i>
               <strong>White-Glove</strong>
-              <span>Dedicated Doorstep Concierge[cite: 24]</span>
+              <span>Dedicated Doorstep Concierge</span>
             </div>
 
             <div class="prm-stat-box">
               <i class="fa-solid fa-shield"></i>
               <strong>100% Insured</strong>
-              <span>Total Garment Value Coverage[cite: 24]</span>
+              <span>Total Garment Value Coverage</span>
             </div>
           </div>
         </div>
@@ -1087,7 +1338,7 @@
           <div class="prm-section-head" data-reveal>
             <div class="prm-eyebrow">The Gold Standard</div>
             <h2>Why Choose Our Couture Atelier</h2>
-            <p>Every piece is treated with artisan craftsmanship, specialized non-destructive methods, and eco-certified organic solutions[cite: 24].</p>
+            <p>Every piece is treated with artisan craftsmanship, specialized non-destructive methods, and eco-certified organic solutions.</p>
           </div>
 
           <div class="prm-features-grid">
@@ -1096,7 +1347,7 @@
                 <i class="fa-solid fa-flask"></i>
               </div>
               <h3>Specialist Fabric Cleaning</h3>
-              <p>Individualized micro-wash and non-toxic hydrocarbon treatments tailored for delicate silk, cashmere, pashmina, velvet, and leather[cite: 24].</p>
+              <p>Individualized micro-wash and non-toxic hydrocarbon treatments tailored for delicate silk, cashmere, pashmina, velvet, and leather.</p>
             </div>
 
             <div class="prm-feature-card" data-reveal>
@@ -1104,7 +1355,7 @@
                 <i class="fa-solid fa-wand-magic-sparkles"></i>
               </div>
               <h3>Artisan Stain Spotting</h3>
-              <p>Senior textile master technicians hand-treat difficult oxidations, cosmetics, oils, and wine spots without stressing delicate fibers[cite: 24].</p>
+              <p>Senior textile master technicians hand-treat difficult oxidations, cosmetics, oils, and wine spots without stressing delicate fibers.</p>
             </div>
 
             <div class="prm-feature-card" data-reveal>
@@ -1112,7 +1363,7 @@
                 <i class="fa-solid fa-box-archive"></i>
               </div>
               <h3>Acid-Free Preservation</h3>
-              <p>Bridal attire and bespoke suits are packaged with acid-free tissue paper inside breathable archival boxes to prevent yellowing[cite: 24].</p>
+              <p>Bridal attire and bespoke suits are packaged with acid-free tissue paper inside breathable archival boxes to prevent yellowing.</p>
             </div>
           </div>
         </div>
@@ -1124,7 +1375,7 @@
           <div class="prm-section-head" data-reveal>
             <div class="prm-eyebrow">Our Workflow</div>
             <h2>Haute Couture Care in Four Thoughtful Steps</h2>
-            <p>From initial fabric diagnosis to white-glove delivery, every step is calibrated for complete garment preservation[cite: 24].</p>
+            <p>From initial fabric diagnosis to white-glove delivery, every step is calibrated for complete garment preservation.</p>
           </div>
 
           <div class="prm-process-grid">
@@ -1134,7 +1385,7 @@
                 <i class="fa-solid fa-comments"></i>
               </div>
               <h3>1. Consultation</h3>
-              <p>We review your garment's weave, embellishments, age, and individual care objectives with transparent custom pricing[cite: 24].</p>
+              <p>We review your garment's weave, embellishments, age, and individual care objectives with transparent custom pricing.</p>
             </article>
 
             <article class="prm-process-card" data-reveal>
@@ -1143,7 +1394,7 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
               </div>
               <h3>2. Textile Diagnosis</h3>
-              <p>Every bead, button, zipper, and seam is mapped with digital barcode tracking under specialized inspection lighting[cite: 24].</p>
+              <p>Every bead, button, zipper, and seam is mapped with digital barcode tracking under specialized inspection lighting.</p>
             </article>
 
             <article class="prm-process-card" data-reveal>
@@ -1152,7 +1403,7 @@
                 <i class="fa-solid fa-gem"></i>
               </div>
               <h3>3. Master Processing</h3>
-              <p>Gentle non-mechanical cleaning, hand spot treatments, and form-fitting multi-point steam finishing[cite: 24].</p>
+              <p>Gentle non-mechanical cleaning, hand spot treatments, and form-fitting multi-point steam finishing.</p>
             </article>
 
             <article class="prm-process-card" data-reveal>
@@ -1161,7 +1412,7 @@
                 <i class="fa-solid fa-box-open"></i>
               </div>
               <h3>4. White-Glove Return</h3>
-              <p>Your piece is returned in archival dust covers or luxury presentation boxes directly by our specialized courier[cite: 24].</p>
+              <p>Your piece is returned in archival dust covers or luxury presentation boxes directly by our specialized courier.</p>
             </article>
           </div>
         </div>
@@ -1173,28 +1424,28 @@
           <div class="prm-section-head" data-reveal>
             <div class="prm-eyebrow">Ideal For</div>
             <h2>Built for Your Most Treasured Wardrobe Pieces</h2>
-            <p>Haute couture cleaning engineered specifically for high-value apparel and bespoke designer garments[cite: 24].</p>
+            <p>Haute couture cleaning engineered specifically for high-value apparel and bespoke designer garments.</p>
           </div>
 
           <div class="prm-garment-grid">
             <div class="prm-garment" data-reveal>
               <i class="fa-solid fa-user-tie"></i>
-              <strong>Bespoke Tuxedos &amp; Suits[cite: 24]</strong>
+              <strong>Bespoke Tuxedos &amp; Suits</strong>
             </div>
 
             <div class="prm-garment" data-reveal>
               <i class="fa-solid fa-person-dress"></i>
-              <strong>Bridal Lehengas &amp; Gowns[cite: 24]</strong>
+              <strong>Bridal Lehengas &amp; Gowns</strong>
             </div>
 
             <div class="prm-garment" data-reveal>
               <i class="fa-solid fa-vest"></i>
-              <strong>Cashmere, Pashmina &amp; Wool[cite: 24]</strong>
+              <strong>Cashmere, Pashmina &amp; Wool</strong>
             </div>
 
             <div class="prm-garment" data-reveal>
               <i class="fa-solid fa-feather"></i>
-              <strong>Silk Sarees &amp; Vintage Leather[cite: 24]</strong>
+              <strong>Silk Sarees &amp; Vintage Leather</strong>
             </div>
           </div>
         </div>
@@ -1214,35 +1465,35 @@
 
             <div data-reveal>
               <div class="prm-eyebrow">Included in Premium Care</div>
-              <h2 style="font-size:clamp(28px, 3.6vw, 44px); margin-bottom:16px;">The Ultimate Garment Care Experience[cite: 24]</h2>
+              <h2 style="font-size:clamp(28px, 3.6vw, 44px); margin-bottom:16px;">The Ultimate Garment Care Experience</h2>
               <p style="color:var(--lx-text-soft); font-size:15.5px; line-height:1.75;">
-                We combine the world's finest non-toxic chemistry with time-honored garment preservation techniques[cite: 24].
+                We combine the world's finest non-toxic chemistry with time-honored garment preservation techniques.
               </p>
 
               <div class="prm-check-list">
                 <div class="prm-check-item">
                   <i class="fa-solid fa-circle-check"></i>
-                  Specialist bespoke cleaning[cite: 24]
+                  Specialist bespoke cleaning
                 </div>
                 <div class="prm-check-item">
                   <i class="fa-solid fa-circle-check"></i>
-                  Manual bead &amp; sequin inspection[cite: 24]
+                  Manual bead &amp; sequin inspection
                 </div>
                 <div class="prm-check-item">
                   <i class="fa-solid fa-circle-check"></i>
-                  Hand-finished press &amp; form[cite: 24]
+                  Hand-finished press &amp; form
                 </div>
                 <div class="prm-check-item">
                   <i class="fa-solid fa-circle-check"></i>
-                  Acid-free archival packaging[cite: 24]
+                  Acid-free archival packaging
                 </div>
                 <div class="prm-check-item">
                   <i class="fa-solid fa-circle-check"></i>
-                  Full garment value insurance[cite: 24]
+                  Full garment value insurance
                 </div>
                 <div class="prm-check-item">
                   <i class="fa-solid fa-circle-check"></i>
-                  White-glove dedicated delivery[cite: 24]
+                  White-glove dedicated delivery
                 </div>
               </div>
 
@@ -1261,54 +1512,54 @@
           <div class="prm-section-head" data-reveal>
             <div class="prm-eyebrow">Questions &amp; Answers</div>
             <h2>Premium Garment Care FAQs</h2>
-            <p>Everything you need to know about our luxury garment atelier and insurance coverage[cite: 24].</p>
+            <p>Everything you need to know about our luxury garment atelier and insurance coverage.</p>
           </div>
 
           <div class="prm-faq-grid">
             <div class="prm-faq-item is-open" data-reveal>
               <button type="button" class="prm-faq-question">
-                <span>What makes Premium Care different from standard dry cleaning?[cite: 24]</span>
+                <span>What makes Premium Care different from standard dry cleaning?</span>
                 <i class="fa-solid fa-chevron-down"></i>
               </button>
               <div class="prm-faq-answer">
                 <p>
-                  Premium Care is carried out in individual specialized batches by master cleaners[cite: 24]. Embellishments, delicate lace, pearls, and hand-embroidered threads are hand-protected, spot-cleaned manually, and finished on tailored steam formers[cite: 24].
+                  Premium Care is carried out in individual specialized batches by master cleaners. Embellishments, delicate lace, pearls, and hand-embroidered threads are hand-protected, spot-cleaned manually, and finished on tailored steam formers.
                 </p>
               </div>
             </div>
 
             <div class="prm-faq-item" data-reveal>
               <button type="button" class="prm-faq-question">
-                <span>How is custom pricing determined?[cite: 24]</span>
+                <span>How is custom pricing determined?</span>
                 <i class="fa-solid fa-chevron-down"></i>
               </button>
               <div class="prm-faq-answer">
                 <p>
-                  Because couture items vary greatly in intricacy (e.g. 15 kg bridal lehengas vs. pure cashmere overcoats), pricing is provided as a transparent fixed quote following initial textile diagnosis[cite: 24].
+                  Because couture items vary greatly in intricacy (e.g. 15 kg bridal lehengas vs. pure cashmere overcoats), pricing is provided as a transparent fixed quote following initial textile diagnosis.
                 </p>
               </div>
             </div>
 
             <div class="prm-faq-item" data-reveal>
               <button type="button" class="prm-faq-question">
-                <span>Are high-value garments fully insured during processing?[cite: 24]</span>
+                <span>Are high-value garments fully insured during processing?</span>
                 <i class="fa-solid fa-chevron-down"></i>
               </button>
               <div class="prm-faq-answer">
                 <p>
-                  Yes[cite: 24]. Every item booked under Luxe &amp; Bridal Care includes comprehensive garment value protection from the moment of doorstep pickup to final delivery[cite: 24].
+                  Yes. Every item booked under Luxe &amp; Bridal Care includes comprehensive garment value protection from the moment of doorstep pickup to final delivery.
                 </p>
               </div>
             </div>
 
             <div class="prm-faq-item" data-reveal>
               <button type="button" class="prm-faq-question">
-                <span>Do you offer bridal preservation boxing?[cite: 24]</span>
+                <span>Do you offer bridal preservation boxing?</span>
                 <i class="fa-solid fa-chevron-down"></i>
               </button>
               <div class="prm-faq-answer">
                 <p>
-                  Yes, we offer museum-grade acid-free presentation boxing with view windows and custom breathable liners designed to preserve bridal garments for decades without fading or discoloration[cite: 24].
+                  Yes, we offer museum-grade acid-free presentation boxing with view windows and custom breathable liners designed to preserve bridal garments for decades without fading or discoloration.
                 </p>
               </div>
             </div>
@@ -1321,7 +1572,7 @@
         <div class="prm-cta-card" data-reveal>
           <div>
             <h2>Your Wardrobe Deserves the Gold Standard</h2>
-            <p>Schedule a couture consultation and let our master specialists preserve your treasured pieces[cite: 24].</p>
+            <p>Schedule a couture consultation and let our master specialists preserve your treasured pieces.</p>
           </div>
           <a href="contact.html" class="lx-button-white">
             <span>Book a Consultation</span>
@@ -1436,7 +1687,7 @@
     ====================================================== -->
     <script src="assets/js/main.js"></script>
 
-    <!-- Page Specific Script: FAQ Accordion & 3D Interactive Card Tilt -->
+    <!-- Page Specific Script: FAQ Accordion & Bidirectional 3D Curve Scroll Reveal -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         // FAQ Accordion click toggles
@@ -1449,32 +1700,76 @@
           });
         });
 
-        // 3D Pointer Dynamic Tilt
-        const visual = document.querySelector(".prm-visual");
-        const card = document.querySelector(".prm-card");
-
-        if (visual && card && window.matchMedia("(pointer:fine)").matches) {
-          let rafId = null;
-
-          visual.addEventListener("mousemove", (event) => {
-            if (rafId) cancelAnimationFrame(rafId);
-
-            rafId = requestAnimationFrame(() => {
-              const rect = visual.getBoundingClientRect();
-              const x = (event.clientX - rect.left) / rect.width;
-              const y = (event.clientY - rect.top) / rect.height;
-              const rotateY = (x - 0.5) * 14;
-              const rotateX = (y - 0.5) * -14;
-              card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+        // Smooth slow 3D curve scroll reveal observer with bidirectional/reverse animation support
+        const revealElements = document.querySelectorAll("[data-reveal]");
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+              } else {
+                entry.target.classList.remove("is-visible");
+              }
             });
-          });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -40px 0px",
+          },
+        );
 
-          visual.addEventListener("mouseleave", () => {
-            if (rafId) cancelAnimationFrame(rafId);
-            card.style.transform = "perspective(1000px) rotateY(-4deg) rotateX(2deg)";
-          });
-        }
+        revealElements.forEach((el) => revealObserver.observe(el));
       });
+    </script>
+
+    <script>
+      /* Caelestia-style pointer ambience & interactions */
+      let cxFrame = null,
+        cxX = innerWidth * 0.5,
+        cxY = innerHeight * 0.35;
+      window.addEventListener(
+        "pointermove",
+        (e) => {
+          cxX = e.clientX;
+          cxY = e.clientY;
+          if (cxFrame) return;
+          cxFrame = requestAnimationFrame(() => {
+            document.documentElement.style.setProperty("--cx", cxX + "px");
+            document.documentElement.style.setProperty("--cy", cxY + "px");
+            cxFrame = null;
+          });
+        },
+        { passive: true },
+      );
+
+      const prmCard = document.querySelector(".prm-card");
+      const prmVisual = document.querySelector(".prm-visual");
+      prmVisual?.addEventListener("pointermove", (e) => {
+        if (matchMedia("(prefers-reduced-motion: reduce)").matches || !prmCard) return;
+        const r = prmVisual.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5,
+          py = (e.clientY - r.top) / r.height - 0.5;
+        prmCard.style.transform = `perspective(1200px) rotateX(${(-py * 2.5).toFixed(2)}deg) rotateY(${(px * 3.5).toFixed(2)}deg) translateY(-3px)`;
+      });
+      prmVisual?.addEventListener("pointerleave", () => {
+        if (prmCard) prmCard.style.transform = "";
+      });
+
+      document.addEventListener(
+        "pointerdown",
+        (e) => {
+          if (matchMedia("(prefers-reduced-motion: reduce)").matches || !e.isPrimary) return;
+          const target = e.target.closest(".prm-primary-btn,.prm-secondary-btn,.prm-cta-card .lx-button-white");
+          if (!target) return;
+          const r = document.createElement("span");
+          r.className = "cx-ripple";
+          r.style.left = e.clientX + "px";
+          r.style.top = e.clientY + "px";
+          document.body.appendChild(r);
+          r.addEventListener("animationend", () => r.remove(), { once: true });
+        },
+        { passive: true },
+      );
     </script>
   </body>
 </html>

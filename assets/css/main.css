@@ -1,52 +1,52 @@
 /* ============================================================
-   LAUNDRIX — LUXURY MODERN DESIGN SYSTEM (MAIN.CSS)
+   LAUNDRIX — 3D LIGHT THEME (VIOLET BG & LIME/YELLOW HIGHLIGHTS)
    ============================================================ */
 
 :root {
-  /* Dynamic Viewport Units & Fluid Scale */
   --lx-container: min(1280px, 100% - clamp(20px, 4vw, 64px));
   --lx-header-height: 76px;
 
-  /* Brand Palette - Modern Emerald Luxe */
-  --lx-primary: #059669;
-  --lx-primary-rgb: 5, 150, 105;
-  --lx-primary-hover: #047857;
-  --lx-primary-dark: #065f46;
-  --lx-primary-light: #ecfdf5;
-  --lx-primary-glow: rgba(5, 150, 105, 0.28);
+  /* Reference-Inspired Palette: Soft Violet Background, Lime/Yellow Highlights, Solid Colors */
+  --lx-primary: #8b5cf6;
+  --lx-primary-rgb: 139, 92, 246;
+  --lx-primary-hover: #7c3aed;
+  --lx-primary-dark: #5b21b6;
+  --lx-primary-light: #ede9fe;
+  --lx-primary-glow: rgba(139, 92, 246, 0.3);
 
-  --lx-secondary: #0f172a;
-  --lx-accent: #4f46e5;
+  --lx-selected-green: #ccff00; /* Lime-Yellow Highlight from Reference */
+  --lx-secondary: #8b5cf6;
+  --lx-accent: #06b6d4;
   --lx-gold: #f59e0b;
 
   /* Typographic Font Stacks */
   --lx-font-display: "Manrope", sans-serif;
   --lx-font-body: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
 
-  /* Light Theme Surfaces */
-  --lx-bg: #f8fafc;
-  --lx-bg-subtle: #f1f5f9;
+  /* Surfaces: Soft Violet Tinted Canvas Background */
+  --lx-bg: #f3f0fa;
+  --lx-bg-subtle: #eae5f5;
   --lx-surface: #ffffff;
-  --lx-surface-glass: rgba(255, 255, 255, 0.9);
+  --lx-surface-glass: #ffffff;
   --lx-surface-card: #ffffff;
 
-  /* Text Colors */
+  /* 100% Readable Dark Inked Text Colors (Zero Text Shadow) */
   --lx-text: #0f172a;
-  --lx-text-soft: #475569;
-  --lx-text-muted: #94a3b8;
+  --lx-text-soft: #334155;
+  --lx-text-muted: #64748b;
   --lx-text-inverse: #ffffff;
 
-  /* Borders & Dividers */
+  /* Clean Crisp Borders */
   --lx-border: #e2e8f0;
-  --lx-border-subtle: rgba(226, 232, 240, 0.85);
+  --lx-border-subtle: #f1f5f9;
 
-  /* Modern Ambient Luxe Shadows */
-  --lx-shadow-sm: 0 2px 8px -2px rgba(15, 23, 42, 0.05), 0 1px 4px -1px rgba(15, 23, 42, 0.03);
-  --lx-shadow-md: 0 12px 24px -4px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
-  --lx-shadow-lg: 0 20px 40px -10px rgba(15, 23, 42, 0.12), 0 8px 18px -4px rgba(15, 23, 42, 0.06);
-  --lx-shadow-xl: 0 30px 60px -15px rgba(15, 23, 42, 0.16), 0 12px 28px -6px rgba(15, 23, 42, 0.08);
+  /* Solid Clean Depth Shadows */
+  --lx-shadow-sm: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  --lx-shadow-md: 0 12px 35px -5px rgba(139, 92, 246, 0.12);
+  --lx-shadow-lg: 0 20px 50px -10px rgba(15, 23, 42, 0.1);
+  --lx-shadow-xl: 0 30px 70px -15px rgba(139, 92, 246, 0.2);
 
-  /* Radii & Motion */
+  /* Rounded Radii */
   --lx-radius-xs: 8px;
   --lx-radius-sm: 12px;
   --lx-radius-md: 18px;
@@ -54,30 +54,31 @@
   --lx-radius-xl: 32px;
   --lx-radius-pill: 9999px;
 
+  /* Reduced Animation Speed for Smooth Visuals */
   --lx-ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --lx-transition: all 0.3s var(--lx-ease);
+  --lx-transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Dark Theme Palette */
+/* Dark Theme Compatibility */
 html.dark {
-  --lx-bg: #0b0f19;
-  --lx-bg-subtle: #111827;
-  --lx-surface: #141e33;
-  --lx-surface-glass: rgba(20, 30, 51, 0.92);
-  --lx-surface-card: #141e33;
+  --lx-bg: #120e1f;
+  --lx-bg-subtle: #1a142e;
+  --lx-surface: #221b3b;
+  --lx-surface-glass: #221b3b;
+  --lx-surface-card: #221b3b;
 
-  --lx-text: #f8fafc;
-  --lx-text-soft: #94a3b8;
-  --lx-text-muted: #64748b;
-  --lx-text-inverse: #0f172a;
+  --lx-text: #ffffff;
+  --lx-text-soft: #c4b5fd;
+  --lx-text-muted: #9ca3af;
+  --lx-text-inverse: #120e1f;
 
-  --lx-border: #1e293b;
-  --lx-border-subtle: rgba(30, 41, 59, 0.85);
+  --lx-border: rgba(139, 92, 246, 0.3);
+  --lx-border-subtle: rgba(255, 255, 255, 0.08);
 
-  --lx-shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.4);
-  --lx-shadow-md: 0 12px 24px -4px rgba(0, 0, 0, 0.5);
-  --lx-shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
-  --lx-shadow-xl: 0 30px 60px -15px rgba(0, 0, 0, 0.7);
+  --lx-shadow-sm: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+  --lx-shadow-md: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+  --lx-shadow-lg: 0 20px 50px -10px rgba(0, 0, 0, 0.6);
+  --lx-shadow-xl: 0 30px 70px -15px rgba(0, 0, 0, 0.7);
 }
 
 /* ------------------------------------------------------------
@@ -107,7 +108,8 @@ body {
   min-height: 100dvh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.35s ease, color 0.35s ease;
+  transition: background-color 0.6s ease, color 0.6s ease;
+  position: relative;
 }
 
 body.lx-menu-open {
@@ -119,8 +121,13 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--lx-font-display);
   font-weight: 800;
   color: var(--lx-text);
-  letter-spacing: -0.035em;
-  line-height: 1.15;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  text-shadow: none !important;
+}
+
+p, span, a, li, label, strong, small {
+  text-shadow: none !important;
 }
 
 a {
@@ -134,6 +141,14 @@ img, svg, picture {
   display: block;
   max-width: 100%;
   height: auto;
+  border-radius: var(--lx-radius-lg);
+  box-shadow: var(--lx-shadow-md);
+  transition: transform 0.8s var(--lx-ease), box-shadow 0.8s var(--lx-ease);
+}
+
+img:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: var(--lx-shadow-lg);
 }
 
 button, input, select, textarea {
@@ -143,13 +158,124 @@ button, input, select, textarea {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* ------------------------------------------------------------
+   GENTLE 3D FLOATING ANIMATIONS (REDUCED SPEED)
+   ------------------------------------------------------------ */
+@keyframes float3DObject {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg) scale(1.01);
+  }
+}
+
+.home-visual, .home-image-card, .home-floating-card {
+  animation: float3DObject 10s ease-in-out infinite;
+}
+
+button, .lx-button, .home-primary-button, .home-secondary-button, .home-booking-submit, .dash-btn, .auth-submit-btn, .auth-social-btn, .lx-icon-button, .lx-direction-toggle {
+  transition: transform 0.4s var(--lx-ease), box-shadow 0.4s var(--lx-ease), background-color 0.4s ease !important;
+}
+
+button:hover, .lx-button:hover, .home-primary-button:hover, .home-secondary-button:hover, .home-booking-submit:hover, .dash-btn:hover, .auth-submit-btn:hover, .auth-social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(204, 255, 0, 0.3);
+}
+
+button:active, .lx-button:active, .home-primary-button:active, .home-secondary-button:active, .home-booking-submit:active, .dash-btn:active, .auth-submit-btn:active, .auth-social-btn:active, .lx-icon-button:active, .lx-direction-toggle:active {
+  transform: scale(0.98) translateY(1px) !important;
+}
+
 .lx-container {
   width: var(--lx-container);
   margin-inline: auto;
 }
 
 /* ------------------------------------------------------------
-   HEADER & NAVIGATION
+   ATMOSPHERIC LAUNDRY EFFECTS: BUBBLES, STEAM & WATER RIPPLES
+   ------------------------------------------------------------ */
+
+/* 1. Floating Soap Bubbles */
+.lx-bubble-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.lx-bubble-effect::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 1px solid rgba(204, 255, 0, 0.6);
+  border-radius: 50%;
+  background: var(--lx-surface);
+  box-shadow: 0 0 15px rgba(204, 255, 0, 0.4);
+  bottom: -30px;
+  left: 20%;
+  animation: lxFloatBubble 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 5;
+}
+
+@keyframes lxFloatBubble {
+  0% { transform: translateY(0) scale(0.4) translateX(0); opacity: 0; }
+  30% { opacity: 0.8; }
+  100% { transform: translateY(-160px) scale(1.2) translateX(15px); opacity: 0; }
+}
+
+/* 2. Steam / Heat Evaporation Effect */
+.lx-steam-effect {
+  position: relative;
+}
+
+.lx-steam-effect::before {
+  content: "~~~";
+  position: absolute;
+  top: -26px;
+  right: 24px;
+  font-size: 16px;
+  letter-spacing: -3px;
+  color: var(--lx-selected-green);
+  opacity: 0;
+  animation: lxSteamRise 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes lxSteamRise {
+  0% { transform: translateY(12px) scaleY(0.4); opacity: 0; }
+  50% { opacity: 0.7; }
+  100% { transform: translateY(-25px) scaleY(1.4); opacity: 0; }
+}
+
+/* 3. Water Ripple Effect for Clicks */
+.lx-water-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.lx-water-ripple::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(204, 255, 0, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.8s ease-out, height 0.8s ease-out, opacity 0.8s ease-out;
+  pointer-events: none;
+}
+
+.lx-water-ripple:active::before {
+  width: 400px;
+  height: 400px;
+  opacity: 0;
+}
+
+/* ------------------------------------------------------------
+   HEADER & NAVIGATION (SOLID 3D BAR WITH LIME HIGHLIGHTS)
    ------------------------------------------------------------ */
 .lx-header {
   position: fixed;
@@ -158,11 +284,11 @@ button, input, select, textarea {
   right: 0;
   z-index: 1000;
   padding-block: 16px;
-  transition: padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  transition: padding 0.5s ease;
 }
 
 .lx-header.is-scrolled {
-  padding-block: 10px;
+  padding-block: 8px;
 }
 
 .lx-header-inner {
@@ -170,39 +296,37 @@ button, input, select, textarea {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 6px 12px 6px 18px;
+  padding: 10px 18px 10px 22px;
   border-radius: var(--lx-radius-pill);
-  background: var(--lx-surface-glass);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid var(--lx-border-subtle);
-  box-shadow: var(--lx-shadow-sm);
+  background: var(--lx-surface);
+  border: 1px solid var(--lx-border);
+  box-shadow: var(--lx-shadow-md);
   transition: var(--lx-transition);
 }
 
 .lx-header.is-scrolled .lx-header-inner {
-  box-shadow: var(--lx-shadow-md);
-  border-color: var(--lx-border);
+  box-shadow: var(--lx-shadow-lg);
+  border-color: var(--lx-selected-green);
 }
 
 /* Brand */
 .lx-brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex-shrink: 0;
 }
 
 .lx-brand-mark {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--lx-primary), #047857);
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: var(--lx-selected-green);
   display: grid;
   place-items: center;
-  color: #fff;
-  box-shadow: 0 4px 12px var(--lx-primary-glow);
-  transition: transform 0.3s var(--lx-ease);
+  color: #0f172a;
+  box-shadow: 0 6px 20px rgba(204, 255, 0, 0.35);
+  transition: transform 0.5s var(--lx-ease);
 }
 
 .lx-brand:hover .lx-brand-mark {
@@ -211,7 +335,7 @@ button, input, select, textarea {
 
 .lx-brand-name {
   font-family: var(--lx-font-display);
-  font-size: 19px;
+  font-size: 22px;
   font-weight: 900;
   letter-spacing: -0.04em;
   color: var(--lx-text);
@@ -225,17 +349,17 @@ button, input, select, textarea {
 .lx-nav {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 6px;
   flex-wrap: nowrap;
 }
 
 .lx-nav-link {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 8px 11px;
-  font-size: 13.5px;
-  font-weight: 600;
+  gap: 6px;
+  padding: 10px 16px;
+  font-size: 14.5px;
+  font-weight: 700;
   color: var(--lx-text-soft);
   border-radius: var(--lx-radius-pill);
   transition: var(--lx-transition);
@@ -243,14 +367,18 @@ button, input, select, textarea {
 }
 
 .lx-nav-link:hover {
-  color: var(--lx-primary);
-  background: rgba(var(--lx-primary-rgb), 0.08);
+  color: var(--lx-text);
+  background: rgba(204, 255, 0, 0.25);
+  transform: translateY(-1px);
 }
 
-.lx-nav-link.is-active {
-  color: var(--lx-primary);
-  font-weight: 700;
-  background: rgba(var(--lx-primary-rgb), 0.12);
+/* Selected Items / Active Links in Lime-Yellow */
+.lx-nav-link.is-active,
+.lx-nav-link.active,
+.lx-nav-dropdown-item.is-current {
+  color: #0f172a !important;
+  background: var(--lx-selected-green) !important;
+  box-shadow: 0 4px 15px rgba(204, 255, 0, 0.35);
 }
 
 /* Home Dropdown */
@@ -268,9 +396,9 @@ button, input, select, textarea {
   position: absolute;
   top: calc(100% + 14px);
   left: 50%;
-  transform: translateX(-50%) translateY(10px);
+  transform: translateX(-50%) translateY(12px);
   min-width: 250px;
-  padding: 8px;
+  padding: 10px;
   border-radius: var(--lx-radius-md);
   background: var(--lx-surface);
   border: 1px solid var(--lx-border);
@@ -278,7 +406,7 @@ button, input, select, textarea {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s var(--lx-ease), visibility 0.2s ease;
+  transition: opacity 0.5s var(--lx-ease), transform 0.5s var(--lx-ease), visibility 0.5s var(--lx-ease);
   z-index: 1050;
 }
 
@@ -293,28 +421,28 @@ button, input, select, textarea {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 10px 14px;
+  padding: 12px 16px;
   border-radius: var(--lx-radius-sm);
   color: var(--lx-text);
   font-size: 14px;
+  font-weight: 600;
   transition: var(--lx-transition);
 }
 
-.lx-nav-dropdown-item:hover,
-.lx-nav-dropdown-item.is-current {
-  background: var(--lx-bg-subtle);
-  color: var(--lx-primary);
+.lx-nav-dropdown-item:hover {
+  background: rgba(204, 255, 0, 0.25);
+  color: #0f172a;
   transform: translateX(4px);
 }
 
 .lx-dropdown-icon {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   display: grid;
   place-items: center;
-  border-radius: 10px;
-  background: rgba(var(--lx-primary-rgb), 0.1);
-  color: var(--lx-primary);
+  border-radius: 12px;
+  background: rgba(204, 255, 0, 0.3);
+  color: #0f172a;
   flex-shrink: 0;
 }
 
@@ -334,7 +462,7 @@ button, input, select, textarea {
 .lx-header-actions {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
   flex-shrink: 0;
 }
 
@@ -343,47 +471,47 @@ button, input, select, textarea {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 8px 18px;
+  padding: 12px 26px;
   border-radius: var(--lx-radius-pill);
-  font-size: 13.5px;
-  font-weight: 700;
+  font-size: 14.5px;
+  font-weight: 800;
   cursor: pointer;
-  border: 1px solid transparent;
+  border: none;
   transition: var(--lx-transition);
   white-space: nowrap;
 }
 
 .lx-button-primary {
-  background: linear-gradient(135deg, var(--lx-primary), #047857);
-  color: #fff;
-  box-shadow: 0 4px 12px var(--lx-primary-glow);
+  background: var(--lx-selected-green);
+  color: #0f172a;
+  box-shadow: 0 6px 20px rgba(204, 255, 0, 0.4);
 }
 
 .lx-button-primary:hover {
-  background: linear-gradient(135deg, #047857, #065f46);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px var(--lx-primary-glow);
-  color: #fff;
+  box-shadow: 0 10px 25px rgba(204, 255, 0, 0.5);
 }
 
 .lx-icon-button, .lx-direction-toggle {
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
   border-radius: var(--lx-radius-pill);
   display: grid;
   place-items: center;
-  background: var(--lx-bg-subtle);
-  border: 1px solid var(--lx-border-subtle);
+  background: var(--lx-surface);
+  border: 1px solid var(--lx-border);
   color: var(--lx-text-soft);
   cursor: pointer;
   flex-shrink: 0;
+  box-shadow: var(--lx-shadow-sm);
   transition: var(--lx-transition);
 }
 
 .lx-icon-button:hover, .lx-direction-toggle:hover {
-  background: var(--lx-surface);
-  color: var(--lx-primary);
-  border-color: var(--lx-primary);
+  background: rgba(204, 255, 0, 0.25);
+  color: #0f172a;
+  border-color: var(--lx-selected-green);
+  transform: translateY(-1px);
 }
 
 .lx-direction-icon {
@@ -416,10 +544,10 @@ button, input, select, textarea {
   background: var(--lx-surface);
   border: 1px solid var(--lx-border);
   box-shadow: var(--lx-shadow-xl);
-  padding: 16px;
+  padding: 20px;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-10px);
+  transform: translateY(-15px);
   transition: var(--lx-transition);
   z-index: 1040;
   max-height: calc(85dvh - var(--lx-header-height));
@@ -437,15 +565,15 @@ button, input, select, textarea {
   align-items: center;
   padding: 12px 16px;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: var(--lx-radius-sm);
   color: var(--lx-text-soft);
 }
 
 .lx-mobile-menu-inner > a:hover,
 .lx-mobile-menu-inner > a.is-current {
-  background: var(--lx-bg-subtle);
-  color: var(--lx-primary);
+  background: rgba(204, 255, 0, 0.25);
+  color: #0f172a;
 }
 
 .lx-mobile-home-trigger {
@@ -458,7 +586,7 @@ button, input, select, textarea {
   background: transparent;
   border: none;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--lx-text-soft);
   cursor: pointer;
 }
@@ -476,15 +604,16 @@ button, input, select, textarea {
 .lx-mobile-home-links a {
   padding: 10px 14px;
   font-size: 14px;
+  font-weight: 600;
   color: var(--lx-text-soft);
 }
 
 .lx-mobile-menu-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-top: 16px;
-  padding-top: 16px;
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 18px;
   border-top: 1px solid var(--lx-border);
 }
 
@@ -497,6 +626,7 @@ button, input, select, textarea {
   position: relative;
   overflow: hidden;
   margin-top: clamp(60px, 10vw, 120px);
+  box-shadow: 0 -15px 40px rgba(139, 92, 246, 0.04);
 }
 
 .lx-footer-main {
@@ -522,23 +652,24 @@ button, input, select, textarea {
 }
 
 .lx-social {
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
   border-radius: var(--lx-radius-pill);
   display: grid;
   place-items: center;
   background: var(--lx-bg-subtle);
-  border: 1px solid var(--lx-border-subtle);
+  border: 1px solid var(--lx-border);
   color: var(--lx-text-soft);
+  box-shadow: var(--lx-shadow-sm);
   transition: var(--lx-transition);
 }
 
 .lx-social:hover {
-  background: var(--lx-primary);
-  color: #fff;
-  border-color: var(--lx-primary);
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px var(--lx-primary-glow);
+  background: var(--lx-selected-green);
+  color: #0f172a;
+  border-color: var(--lx-selected-green);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(204, 255, 0, 0.3);
 }
 
 .lx-footer-column h3 {
@@ -559,15 +690,16 @@ button, input, select, textarea {
 }
 
 .lx-footer-column a:hover {
-  color: var(--lx-primary);
+  color: var(--lx-selected-green);
   transform: translateX(4px);
 }
 
 .lx-footer-cta-card {
-  padding: 18px;
+  padding: 20px;
   border-radius: var(--lx-radius-md);
   background: var(--lx-bg-subtle);
   border: 1px solid var(--lx-border);
+  box-shadow: var(--lx-shadow-sm);
   margin-bottom: 14px;
   display: flex;
   gap: 14px;
@@ -575,14 +707,15 @@ button, input, select, textarea {
 }
 
 .lx-footer-cta-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  background: var(--lx-primary);
-  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: var(--lx-selected-green);
+  color: #0f172a;
   display: grid;
   place-items: center;
   flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(204, 255, 0, 0.3);
 }
 
 .lx-footer-cta-card strong {
@@ -597,28 +730,29 @@ button, input, select, textarea {
 
 .lx-footer-button {
   width: 100%;
-  min-height: 46px;
+  min-height: 48px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: var(--lx-primary);
-  color: #fff;
+  background: var(--lx-selected-green);
+  color: #0f172a;
   border-radius: var(--lx-radius-pill);
-  font-weight: 700;
+  font-weight: 800;
   font-size: 14px;
   transition: var(--lx-transition);
-  box-shadow: 0 4px 14px var(--lx-primary-glow);
+  box-shadow: 0 6px 20px rgba(204, 255, 0, 0.3);
 }
 
 .lx-footer-button:hover {
-  background: var(--lx-primary-hover);
   transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(204, 255, 0, 0.4);
 }
 
 .lx-footer-bottom {
   border-top: 1px solid var(--lx-border);
   padding-block: 22px;
+  background: var(--lx-bg-subtle);
 }
 
 .lx-footer-bottom-inner {
@@ -635,7 +769,7 @@ button, input, select, textarea {
 }
 
 .lx-footer-bottom-links a:hover {
-  color: var(--lx-primary);
+  color: var(--lx-selected-green);
 }
 
 /* ------------------------------------------------------------
@@ -656,46 +790,46 @@ button, input, select, textarea {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 14px 20px;
+  padding: 16px 22px;
   border-radius: var(--lx-radius-md);
   background: var(--lx-surface);
   border: 1px solid var(--lx-border);
   box-shadow: var(--lx-shadow-xl);
   color: var(--lx-text);
-  font-size: 14px;
-  font-weight: 600;
-  animation: lxToastIn 0.4s var(--lx-ease) forwards;
+  font-size: 14.5px;
+  font-weight: 700;
+  animation: lxToastIn 0.6s var(--lx-ease) forwards;
 }
 
 .lx-toast.is-leaving {
-  animation: lxToastOut 0.3s ease forwards;
+  animation: lxToastOut 0.4s ease forwards;
 }
 
 .lx-toast-icon {
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: rgba(var(--lx-primary-rgb), 0.15);
-  color: var(--lx-primary);
+  background: rgba(204, 255, 0, 0.3);
+  color: #0f172a;
   flex-shrink: 0;
 }
 
 @keyframes lxToastIn {
-  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  from { opacity: 0; transform: translateY(20px) scale(0.92); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 @keyframes lxToastOut {
-  to { opacity: 0; transform: translateY(10px) scale(0.95); }
+  to { opacity: 0; transform: translateY(10px) scale(0.92); }
 }
 
-/* Scroll Reveals */
+/* Scroll Reveals (Slower Speed) */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s var(--lx-ease), transform 0.7s var(--lx-ease);
+  transform: translateY(35px);
+  transition: opacity 1s var(--lx-ease), transform 1s var(--lx-ease);
 }
 
 [data-reveal].is-visible {
@@ -706,8 +840,6 @@ button, input, select, textarea {
 /* ------------------------------------------------------------
    STRICT & FLAWLESS RESPONSIVE BREAKPOINTS
    ------------------------------------------------------------ */
-
-/* Desktop screens (>= 1180px): Full desktop navbar, NO HAMBURGER */
 @media (min-width: 1180px) {
   .lx-nav {
     display: flex !important;
@@ -717,7 +849,6 @@ button, input, select, textarea {
   }
 }
 
-/* Laptops, Tablets & Mobiles (< 1180px): Switch to mobile drawer cleanly */
 @media (max-width: 1179px) {
   .lx-nav {
     display: none !important;
@@ -734,10 +865,9 @@ button, input, select, textarea {
   }
 }
 
-/* Small Tablets & Mobile (<= 768px) */
 @media (max-width: 768px) {
   .lx-header-inner {
-    padding: 6px 12px;
+    padding: 6px 14px;
   }
   .lx-footer-grid {
     grid-template-columns: 1fr 1fr;
@@ -753,7 +883,6 @@ button, input, select, textarea {
   }
 }
 
-/* Narrow Mobile Screens (<= 540px) */
 @media (max-width: 540px) {
   .lx-header-actions .lx-nav-link,
   .lx-header-actions .lx-button-primary {
@@ -768,4 +897,95 @@ button, input, select, textarea {
   .lx-mobile-menu-actions {
     grid-template-columns: 1fr;
   }
+}
+
+/* Change this section in main.css */
+@media (min-width: 1321px) {
+  .lx-nav {
+    display: flex !important;
+  }
+  .lx-menu-toggle {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1320px) {
+  .lx-nav {
+    display: none !important;
+  }
+  .lx-menu-toggle {
+    display: grid !important;
+  }
+  .lx-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+  .lx-footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+.spinning{
+  animation: spin 5s ease-out infinite;
+}
+
+@keyframes spin {
+  from{
+    transform: rotateZ(0deg);
+  }
+  to{
+    transform: rotateZ(360deg);
+  }
+}
+
+/* ============================================================
+   PAGE SWITCHING & VIEW TRANSITION ANIMATIONS LAYER
+   ============================================================ */
+
+/* 1. Standard Page Transition Effects */
+@keyframes lxPageFadeIn {
+  from {
+    opacity: 0;
+    transform: perspective(1200px) translateY(24px) scale(0.98);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1200px) translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes lxPageFadeOut {
+  from {
+    opacity: 1;
+    transform: perspective(1200px) translateY(0) scale(1);
+    filter: blur(0);
+  }
+  to {
+    opacity: 0;
+    transform: perspective(1200px) translateY(-24px) scale(0.98);
+    filter: blur(8px);
+  }
+}
+
+main {
+  animation: lxPageFadeIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+body.is-transitioning main {
+  animation: lxPageFadeOut 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 2. Modern Native View Transitions API Integration (Supports Chrome, Safari, Edge) */
+@view-transition-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: 0.4s cubic-bezier(0.16, 1, 0.3, 1) both lxPageFadeOut;
+}
+
+::view-transition-new(root) {
+  animation: 0.65s cubic-bezier(0.16, 1, 0.3, 1) both lxPageFadeIn;
 }

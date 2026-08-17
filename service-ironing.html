@@ -38,9 +38,24 @@
     <link rel="stylesheet" href="assets/css/main.css" />
 
     <!-- ======================================================
-         IRONING PAGE UNIQUE STYLES (MODERN LUXE EMERALD)
+         IRONING PAGE UNIQUE STYLES WITH 3D CURVE REVEAL & CAELESTIA MOTION
     ====================================================== -->
     <style>
+      /* Smooth Slow 3D Curve Scroll Reveal Animations Setup with Reverse Out Animation */
+      [data-reveal] {
+        opacity: 0;
+        transform: perspective(1000px) translateY(60px) rotateX(12deg) scale(0.96);
+        transition:
+          opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+      }
+
+      [data-reveal].is-visible {
+        opacity: 1;
+        transform: perspective(1000px) translateY(0) rotateX(0deg) scale(1);
+      }
+
       /* Breadcrumb */
       .srv-breadcrumb-wrap {
         padding-top: clamp(100px, 12vh, 120px);
@@ -145,13 +160,15 @@
         align-items: center;
         gap: 10px;
         box-shadow: 0 10px 25px var(--lx-primary-glow);
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         white-space: nowrap;
       }
 
       .iron-primary-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 16px 36px var(--lx-primary-glow);
+        transform: translateY(-3px);
+        box-shadow: 0 18px 40px var(--lx-primary-glow);
         color: #fff;
       }
 
@@ -168,13 +185,16 @@
         align-items: center;
         gap: 10px;
         box-shadow: var(--lx-shadow-sm);
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          background-color 0.8s ease;
         white-space: nowrap;
       }
 
       .iron-secondary-btn:hover {
         background: var(--lx-bg-subtle);
-        transform: translateY(-2px);
+        transform: translateY(-3px);
         box-shadow: var(--lx-shadow-md);
       }
 
@@ -241,13 +261,15 @@
         box-shadow: var(--lx-shadow-xl);
         padding: 30px;
         transform: perspective(1000px) rotateY(-4deg) rotateX(2deg);
-        transition: transform 0.4s var(--lx-ease), box-shadow 0.4s ease;
+        transition:
+          transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 1s ease;
         z-index: 2;
       }
 
       .iron-visual:hover .iron-card {
-        transform: perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(-6px);
-        box-shadow: 0 35px 80px -15px rgba(var(--lx-primary-rgb), 0.25);
+        transform: perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(-8px);
+        box-shadow: 0 40px 90px -15px rgba(15, 23, 42, 0.3);
       }
 
       .iron-card-top {
@@ -357,7 +379,7 @@
         box-shadow: var(--lx-shadow-lg);
         font-size: 13px;
         font-weight: 700;
-        animation: floatMotion 6s ease-in-out infinite;
+        animation: floatMotion 10s ease-in-out infinite;
       }
 
       .iron-float i {
@@ -366,14 +388,14 @@
       }
 
       .iron-float-one {
-        top: 25px;
+        top: -25px;
         left: -25px;
       }
 
       .iron-float-two {
-        bottom: 25px;
+        bottom: -25px;
         right: -25px;
-        animation-delay: -3s;
+        animation-delay: -5s;
       }
 
       /* Stats Section */
@@ -393,12 +415,15 @@
         background: var(--lx-surface);
         border: 1px solid var(--lx-border);
         box-shadow: var(--lx-shadow-sm);
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s ease,
+          border-color 0.8s ease;
         text-align: center;
       }
 
       .iron-stat-box:hover {
-        transform: translateY(-4px);
+        transform: translateY(-6px);
         box-shadow: var(--lx-shadow-md);
         border-color: var(--lx-primary);
       }
@@ -462,7 +487,10 @@
         background: var(--lx-surface);
         border: 1px solid var(--lx-border);
         box-shadow: var(--lx-shadow-sm);
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s ease,
+          border-color 0.8s ease;
         position: relative;
       }
 
@@ -562,7 +590,9 @@
         background: var(--lx-surface);
         border: 1px solid var(--lx-border);
         overflow: hidden;
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s ease;
       }
 
       .iron-faq-question {
@@ -584,7 +614,7 @@
       .iron-faq-question i {
         color: var(--lx-primary);
         font-size: 14px;
-        transition: transform 0.3s var(--lx-ease);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .iron-faq-item.is-open .iron-faq-question i {
@@ -594,7 +624,7 @@
       .iron-faq-answer {
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.35s var(--lx-ease);
+        transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .iron-faq-answer p {
@@ -612,7 +642,7 @@
       .iron-cta-card {
         padding: clamp(36px, 5vw, 65px) clamp(24px, 4vw, 55px);
         border-radius: var(--lx-radius-xl);
-        background: radial-gradient(circle at 100% 0%, #059669 0%, #064e3b 100%);
+        background: radial-gradient(circle at 100% 0%, #c08fe8 0%, #80c722 100%);
         color: #fff;
         display: flex;
         align-items: center;
@@ -646,7 +676,9 @@
         gap: 10px;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
         flex-shrink: 0;
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          background-color 0.8s ease;
         text-decoration: none;
       }
 
@@ -658,7 +690,7 @@
       /* Keyframes */
       @keyframes floatMotion {
         0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-8px); }
+        50% { transform: translateY(-10px); }
       }
 
       @keyframes ironRotate {
@@ -698,6 +730,212 @@
         .iron-cta-card .lx-button-white {
           width: 100%;
           justify-content: center;
+        }
+      }
+
+      /* =========================================================
+         LAUNDRIX — CAELESTIA EXPRESSIVE MOTION LAYER
+         ========================================================= */
+      :root {
+        --cx: 50%;
+        --cy: 35%;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        isolation: isolate;
+        overflow-x: hidden;
+        perspective: 1400px;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.032;
+        mix-blend-mode: screen;
+        background: linear-gradient(
+          115deg,
+          transparent 42%,
+          rgba(255, 255, 255, 0.95) 50%,
+          transparent 58%
+        );
+        background-size: 220% 220%;
+        animation: cxSweep 15s linear infinite;
+      }
+      @keyframes cxSweep {
+        from { background-position: 180% 10%; }
+        to { background-position: -40% 90%; }
+      }
+
+      header,
+      .header,
+      .navbar,
+      .site-header {
+        animation: cxHeader 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+      @keyframes cxHeader {
+        from {
+          opacity: 0;
+          transform: translateY(-30px) scale(0.975);
+          filter: blur(10px);
+        }
+        70% {
+          opacity: 1;
+          transform: translateY(3px) scale(1.008);
+          filter: blur(0);
+        }
+        to { transform: none; }
+      }
+
+      /* Pointer-following ambient glow */
+      main,
+      .main,
+      .page,
+      .hero,
+      .section {
+        --cx-glow-x: var(--cx);
+        --cx-glow-y: var(--cy);
+      }
+      .iron-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(
+          500px circle at var(--cx-glow-x) var(--cx-glow-y),
+          rgba(255, 255, 255, 0.07),
+          transparent 62%
+        );
+        transition: background-position 0.5s ease;
+      }
+
+      /* Hero Title & Copy Animations */
+      .iron-title {
+        animation: cxTitle 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+      }
+      @keyframes cxTitle {
+        0% {
+          opacity: 0;
+          transform: translateY(34px) scale(0.94);
+          filter: blur(12px);
+          letter-spacing: -0.05em;
+        }
+        65% {
+          opacity: 1;
+          transform: translateY(-4px) scale(1.012);
+          filter: blur(0);
+        }
+        100% {
+          transform: none;
+          letter-spacing: normal;
+        }
+      }
+      .iron-description {
+        animation: cxCopy 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both;
+      }
+      @keyframes cxCopy {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+          filter: blur(5px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+          filter: blur(0);
+        }
+      }
+
+      /* Buttons: expressive light sweep + lift */
+      .iron-primary-btn,
+      .iron-secondary-btn,
+      .iron-cta-card .lx-button-white {
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .iron-primary-btn::before,
+      .iron-secondary-btn::before,
+      .iron-cta-card .lx-button-white::before {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 180px;
+        left: -75px;
+        top: -65px;
+        transform: rotate(24deg);
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+        transition: left 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        pointer-events: none;
+      }
+      .iron-primary-btn:hover,
+      .iron-secondary-btn:hover,
+      .iron-cta-card .lx-button-white:hover {
+        transform: translateY(-4px) scale(1.025);
+      }
+      .iron-primary-btn:hover::before,
+      .iron-secondary-btn:hover::before,
+      .iron-cta-card .lx-button-white:hover::before {
+        left: 125%;
+      }
+
+      /* Universal card depth */
+      .iron-stat-box,
+      .iron-process-card,
+      .iron-faq-item {
+        transition:
+          transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+          border-color 0.4s ease;
+      }
+      .iron-stat-box:hover,
+      .iron-process-card:hover,
+      .iron-faq-item:hover {
+        transform: translateY(-8px) scale(1.012);
+        box-shadow: 0 30px 75px rgba(0, 0, 0, 0.14);
+      }
+
+      /* Ripple Effect */
+      .cx-ripple {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 10001;
+        background: rgba(16, 185, 129, 0.18);
+        border: 1px solid rgba(16, 185, 129, 0.65);
+        transform: translate(-50%, -50%);
+        animation: cxRipple 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      @keyframes cxRipple {
+        to {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(16);
+        }
+      }
+
+      @media (max-width: 700px) {
+        body::after { opacity: 0.02; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        body::after,
+        header,
+        .iron-title,
+        .iron-description,
+        .iron-float {
+          animation: none !important;
+        }
+        [data-reveal] {
+          transition: none !important;
+          transform: none !important;
+          filter: none !important;
         }
       }
     </style>
@@ -859,7 +1097,7 @@
       </div>
 
       <!-- HERO SECTION -->
-      <section class="iron-hero">
+      <section class="iron-hero lx-steam-effect">
         <div class="lx-container">
           <div class="iron-hero-grid">
             <div data-reveal>
@@ -868,7 +1106,7 @@
                 Crisp. Polished. Perfect.
               </div>
 
-              <h1 class="iron-title">
+              <h1 class="iron-title lx-steam-effect">
                 Wrinkle-free.
                 <br />
                 <span>Always ready to wear.</span>
@@ -878,14 +1116,14 @@
                 Our multi-point industrial steam press eliminates deep creases, sharpens collars and cuffs, and leaves fabrics smooth without scorching or adding unnatural shine.
               </p>
 
-              <div class="iron-actions">
+              <div class="iron-actions lx-steam-effect">
                 <a href="register.html" class="iron-primary-btn">
                   <span>Schedule Pressing</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </a>
                 <a href="pricing.html" class="iron-secondary-btn">
                   <span>View Pricing</span>
-                  <i class="fa-solid fa-tag"></i>
+                  <i class="fa-solid fa-tag lx-steam-effect"></i>
                 </a>
               </div>
 
@@ -914,7 +1152,7 @@
                 Same-Day Available
               </div>
 
-              <div class="iron-float iron-float-two">
+              <div class="iron-float iron-float-two lx-steam-effect">
                 <i class="fa-solid fa-leaf"></i>
                 Zero Scorching
               </div>
@@ -1272,7 +1510,7 @@
     ====================================================== -->
     <script src="assets/js/main.js"></script>
 
-    <!-- Page Specific Script: FAQ Accordion & 3D Interactive Card Tilt -->
+    <!-- Page Specific Script: FAQ Accordion & Bidirectional 3D Curve Scroll Reveal -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         // FAQ Accordion click toggles
@@ -1285,32 +1523,76 @@
           });
         });
 
-        // 3D Pointer Dynamic Tilt
-        const visual = document.querySelector(".iron-visual");
-        const card = document.querySelector(".iron-card");
-
-        if (visual && card && window.matchMedia("(pointer:fine)").matches) {
-          let rafId = null;
-
-          visual.addEventListener("mousemove", (event) => {
-            if (rafId) cancelAnimationFrame(rafId);
-
-            rafId = requestAnimationFrame(() => {
-              const rect = visual.getBoundingClientRect();
-              const x = (event.clientX - rect.left) / rect.width;
-              const y = (event.clientY - rect.top) / rect.height;
-              const rotateY = (x - 0.5) * 14;
-              const rotateX = (y - 0.5) * -14;
-              card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+        // Smooth slow 3D curve scroll reveal observer with bidirectional/reverse animation support
+        const revealElements = document.querySelectorAll("[data-reveal]");
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+              } else {
+                entry.target.classList.remove("is-visible");
+              }
             });
-          });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -40px 0px",
+          },
+        );
 
-          visual.addEventListener("mouseleave", () => {
-            if (rafId) cancelAnimationFrame(rafId);
-            card.style.transform = "perspective(1000px) rotateY(-4deg) rotateX(2deg)";
-          });
-        }
+        revealElements.forEach((el) => revealObserver.observe(el));
       });
+    </script>
+
+    <script>
+      /* Caelestia-style pointer ambience & interactions */
+      let cxFrame = null,
+        cxX = innerWidth * 0.5,
+        cxY = innerHeight * 0.35;
+      window.addEventListener(
+        "pointermove",
+        (e) => {
+          cxX = e.clientX;
+          cxY = e.clientY;
+          if (cxFrame) return;
+          cxFrame = requestAnimationFrame(() => {
+            document.documentElement.style.setProperty("--cx", cxX + "px");
+            document.documentElement.style.setProperty("--cy", cxY + "px");
+            cxFrame = null;
+          });
+        },
+        { passive: true },
+      );
+
+      const ironCard = document.querySelector(".iron-card");
+      const ironVisual = document.querySelector(".iron-visual");
+      ironVisual?.addEventListener("pointermove", (e) => {
+        if (matchMedia("(prefers-reduced-motion: reduce)").matches || !ironCard) return;
+        const r = ironVisual.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5,
+          py = (e.clientY - r.top) / r.height - 0.5;
+        ironCard.style.transform = `perspective(1200px) rotateX(${(-py * 2.5).toFixed(2)}deg) rotateY(${(px * 3.5).toFixed(2)}deg) translateY(-3px)`;
+      });
+      ironVisual?.addEventListener("pointerleave", () => {
+        if (ironCard) ironCard.style.transform = "";
+      });
+
+      document.addEventListener(
+        "pointerdown",
+        (e) => {
+          if (matchMedia("(prefers-reduced-motion: reduce)").matches || !e.isPrimary) return;
+          const target = e.target.closest(".iron-primary-btn,.iron-secondary-btn,.iron-cta-card .lx-button-white");
+          if (!target) return;
+          const r = document.createElement("span");
+          r.className = "cx-ripple";
+          r.style.left = e.clientX + "px";
+          r.style.top = e.clientY + "px";
+          document.body.appendChild(r);
+          r.addEventListener("animationend", () => r.remove(), { once: true });
+        },
+        { passive: true },
+      );
     </script>
   </body>
 </html>

@@ -2,24 +2,16 @@
    LAUNDRIX
    MAIN.JS
    ------------------------------------------------------------
-   Shared JavaScript engine.
-
-   Includes:
-   - Theme persistence
-   - Dark / light mode
+   Shared JavaScript engine with dynamic laundry atmospheric effects:
+   - Floating soap bubbles generator
+   - Steam/heat evaporation particles on hover
+   - Water ripple feedback on buttons
+   - Theme persistence & dark/light mode
    - RTL persistence
-   - Home dropdown
-   - Mobile navigation
-   - Mobile Home submenu
-   - Header scroll state
-   - Scroll reveal
-   - Toast notifications
-   - Modal engine
-   - Form validation
-   - Password visibility
-   - Active navigation
-   - Back-to-top
-   - Smooth internal links
+   - Home dropdown & mobile navigation
+   - Header scroll & scroll reveal
+   - Toast notifications & modal engine
+   - Form validation & password visibility
    ============================================================ */
 
 'use strict';
@@ -40,7 +32,145 @@ document.addEventListener('DOMContentLoaded', () => {
   initModal();
   initBackToTop();
   initSmoothLinks();
+  initLaundryAtmosphericEffects(); // <-- Added dynamic laundry effects
 });
+
+/* ============================================================
+   LAUNDRY ATMOSPHERIC EFFECTS (BUBBLES, STEAM & WATER RIPPLES)
+   ============================================================ */
+
+function initLaundryAtmosphericEffects() {
+  const body = document.body;
+  if (!body) return;
+
+  // 1. Create floating soap bubbles container
+  const bubbleContainer = document.createElement('div');
+  bubbleContainer.className = 'lx-ambient-bubbles';
+  bubbleContainer.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1; overflow:hidden;';
+  body.appendChild(bubbleContainer);
+
+  // Generate random floating bubbles periodically
+  setInterval(() => {
+    if (document.querySelectorAll('.lx-floating-bubble').length < 15) {
+      const bubble = document.createElement('div');
+      bubble.className = 'lx-floating-bubble';
+      const size = Math.floor(Math.random() * 24) + 10; // 10px to 34px
+      const posX = Math.random() * window.innerWidth;
+      const duration = Math.random() * 4 + 3; // 3s to 7s
+
+      bubble.style.cssText = `
+        position: absolute;
+        bottom: -40px;
+        left: ${posX}px;
+        width: ${size}px;
+        height: ${size}px;
+        border: 2px solid var(--lx-border);
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(0,180,216,0.3));
+        box-shadow: inset -2px -2px 0px rgba(0,0,0,0.1), 2px 2px 0px var(--lx-border);
+        animation: ambientBubbleUp ${duration}s ease-in-out forwards;
+      `;
+
+      bubbleContainer.appendChild(bubble);
+      setTimeout(() => bubble.remove(), duration * 1000);
+    }
+  }, 900);
+
+  // Inject keyframe animations for bubbles and heat/steam into head
+  if (!document.getElementById('lx-effects-style')) {
+    const style = document.createElement('style');
+    style.id = 'lx-effects-style';
+    style.innerHTML = `
+      @keyframes ambientBubbleUp {
+        0% { transform: translateY(0) translateX(0) scale(0.5); opacity: 0; }
+        30% { opacity: 0.8; }
+        100% { transform: translateY(-105vh) translateX(${Math.random() * 60 - 30}px) scale(1.2); opacity: 0; }
+      }
+      
+      @keyframes ambientSteamRise {
+        0% { transform: translateY(0) scaleX(0.8) rotate(0deg); opacity: 0; }
+        40% { opacity: 0.5; }
+        100% { transform: translateY(-70px) scaleX(1.4) rotate(15deg); opacity: 0; }
+      }
+
+      .lx-steam-particle {
+        position: absolute;
+        pointer-events: none;
+        background: radial-gradient(circle, rgba(255,255,255,0.85) 0%, rgba(0,180,216,0.2) 70%, transparent 100%);
+        border-radius: 50%;
+        animation: ambientSteamRise 2.2s ease-out forwards;
+        z-index: 2;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  // 2. Add Steam / Heat Evaporation effect on mouse hover over interactive cards and buttons
+  document.addEventListener('mousemove', (e) => {
+    if (Math.random() < 0.06) {
+      const target = e.target.closest('.home-service-card, .dash-metric-card, .auth-card, .lx-button, button');
+      if (target) {
+        const rect = target.getBoundingClientRect();
+        const steam = document.createElement('div');
+        steam.className = 'lx-steam-particle';
+        const pSize = Math.floor(Math.random() * 18) + 12;
+        
+        steam.style.cssText = `
+          top: ${e.clientY - rect.top}px;
+          left: ${e.clientX - rect.left}px;
+          width: ${pSize}px;
+          height: ${pSize}px;
+        `;
+        target.style.position = 'relative';
+        target.appendChild(steam);
+        setTimeout(() => steam.remove(), 2200);
+      }
+    }
+  });
+
+  // 3. Water Ripple Effect on all clickable buttons and action items
+  document.querySelectorAll('button, .lx-button, .home-primary-button, .home-secondary-button, .dash-btn, .auth-submit-btn').forEach(btn => {
+    btn.style.position = 'relative';
+    btn.style.overflow = 'hidden';
+
+    btn.addEventListener('click', function(e) {
+      const circle = document.createElement('span');
+      const diameter = Math.max(this.clientWidth, this.clientHeight);
+      const radius = diameter / 2;
+
+      circle.style.cssText = `
+        position: absolute;
+        width: ${diameter}px;
+        height: ${diameter}px;
+        left: ${e.clientX - this.getBoundingClientRect().left - radius}px;
+        top: ${e.clientY - this.getBoundingClientRect().top - radius}px;
+        border-radius: 50%;
+        background: rgba(0, 180, 216, 0.35);
+        transform: scale(0);
+        animation: waterRippleEffect 0.6s linear;
+        pointer-events: none;
+      `;
+
+      const existingRipple = this.querySelector('.lx-ripple-effect');
+      if (existingRipple) existingRipple.remove();
+
+      circle.className = 'lx-ripple-effect';
+      this.appendChild(circle);
+      setTimeout(() => circle.remove(), 600);
+    });
+  });
+
+  if (!document.getElementById('lx-ripple-style')) {
+    const rippleStyle = document.createElement('style');
+    rippleStyle.id = 'lx-ripple-style';
+    rippleStyle.innerHTML = `
+      @keyframes waterRippleEffect {
+        to { transform: scale(4); opacity: 0; }
+      }
+    `;
+    document.head.appendChild(rippleStyle);
+  }
+}
 
 /* ============================================================
    02. THEME ENGINE
@@ -48,51 +178,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initTheme() {
   const root = document.documentElement;
-
   const themeButtons = document.querySelectorAll('[data-theme-toggle]');
-
-  /*
-   * Determine saved theme.
-   */
-
   const savedTheme = localStorage.getItem('laundrix-theme');
-
-  /*
-   * Respect system preference
-   * if no saved preference exists.
-   */
-
   const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-
   const initialTheme = savedTheme || (systemDark ? 'dark' : 'light');
 
   applyTheme(initialTheme, false);
 
-  /*
-   * Toggle.
-   */
-
   themeButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const current = root.classList.contains('dark') ? 'dark' : 'light';
-
       const next = current === 'dark' ? 'light' : 'dark';
-
       applyTheme(next, true);
     });
   });
 
-  /*
-   * Listen for system theme changes
-   * only when user has not manually selected one.
-   */
-
   if (window.matchMedia) {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
-      if (localStorage.getItem('laundrix-theme')) {
-        return;
-      }
-
+      if (localStorage.getItem('laundrix-theme')) return;
       applyTheme(event.matches ? 'dark' : 'light', false);
     });
   }
@@ -104,44 +207,27 @@ function initTheme() {
 
 function applyTheme(theme, save = true) {
   const root = document.documentElement;
-
   const isDark = theme === 'dark';
 
   root.classList.toggle('dark', isDark);
-
   root.dataset.theme = isDark ? 'dark' : 'light';
 
   if (save) {
     localStorage.setItem('laundrix-theme', theme);
   }
 
-  /*
-   * Update all theme button icons.
-   */
-
   document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
     const icon = button.querySelector('i');
-
-    if (!icon) {
-      return;
-    }
+    if (!icon) return;
 
     icon.classList.toggle('fa-moon', !isDark);
-
     icon.classList.toggle('fa-sun', isDark);
-
     button.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
   });
 
-  /*
-   * Notify other scripts.
-   */
-
   document.dispatchEvent(
     new CustomEvent('laundrix:themechange', {
-      detail: {
-        theme,
-      },
+      detail: { theme },
     })
   );
 }
@@ -152,9 +238,7 @@ function applyTheme(theme, save = true) {
 
 function initRTL() {
   const root = document.documentElement;
-
   const buttons = document.querySelectorAll('[data-rtl-toggle]');
-
   const saved = localStorage.getItem('laundrix-direction');
 
   if (saved === 'rtl') {
@@ -166,7 +250,6 @@ function initRTL() {
   buttons.forEach((button) => {
     button.addEventListener('click', () => {
       const next = root.dir === 'rtl' ? 'ltr' : 'rtl';
-
       applyDirection(next, true);
     });
   });
@@ -178,9 +261,7 @@ function initRTL() {
 
 function applyDirection(direction, save = true) {
   const root = document.documentElement;
-
   root.dir = direction;
-
   root.dataset.direction = direction;
 
   if (save) {
@@ -193,9 +274,7 @@ function applyDirection(direction, save = true) {
 
   document.dispatchEvent(
     new CustomEvent('laundrix:directionchange', {
-      detail: {
-        direction,
-      },
+      detail: { direction },
     })
   );
 }
@@ -206,67 +285,32 @@ function applyDirection(direction, save = true) {
 
 function initHomeDropdown() {
   const trigger = document.querySelector('[data-home-dropdown]');
-
   const wrapper = trigger?.closest('.lx-nav-dropdown');
 
-  if (!trigger || !wrapper) {
-    return;
-  }
+  if (!trigger || !wrapper) return;
 
   trigger.addEventListener('click', (event) => {
     event.preventDefault();
-
     event.stopPropagation();
-
     const currentlyOpen = wrapper.classList.contains('is-open');
-
     closeAllHomeDropdowns();
 
     if (!currentlyOpen) {
       wrapper.classList.add('is-open');
-
       trigger.setAttribute('aria-expanded', 'true');
     }
   });
 
-  /*
-   * Prevent dropdown from closing when
-   * clicking inside it.
-   */
-
-  wrapper.addEventListener('click', (event) => {
-    event.stopPropagation();
-  });
-
-  /*
-   * Global outside click.
-   */
-
-  document.addEventListener('click', () => {
-    closeAllHomeDropdowns();
-  });
-
-  /*
-   * Escape key.
-   */
-
+  wrapper.addEventListener('click', (event) => event.stopPropagation());
+  document.addEventListener('click', () => closeAllHomeDropdowns());
   document.addEventListener('keydown', (event) => {
-    if (event.key !== 'Escape') {
-      return;
-    }
-
-    closeAllHomeDropdowns();
+    if (event.key === 'Escape') closeAllHomeDropdowns();
   });
 }
-
-/* ============================================================
-   CLOSE HOME DROPDOWNS
-   ============================================================ */
 
 function closeAllHomeDropdowns() {
   document.querySelectorAll('.lx-nav-dropdown.is-open').forEach((dropdown) => {
     dropdown.classList.remove('is-open');
-
     dropdown.querySelector('[data-home-dropdown]')?.setAttribute('aria-expanded', 'false');
   });
 }
@@ -277,45 +321,20 @@ function closeAllHomeDropdowns() {
 
 function initMobileNavigation() {
   const toggle = document.querySelector('[data-menu-toggle]');
-
   const menu = document.querySelector('[data-mobile-menu]');
 
-  if (!toggle || !menu) {
-    return;
-  }
+  if (!toggle || !menu) return;
 
   toggle.addEventListener('click', (event) => {
     event.preventDefault();
-
     event.stopPropagation();
-
-    const isOpen = menu.classList.contains('is-open');
-
-    setMobileMenuState(!isOpen);
+    setMobileMenuState(!menu.classList.contains('is-open'));
   });
 
-  /*
-   * Do not close the menu when clicking
-   * inside its card.
-   */
-
-  menu.addEventListener('click', (event) => {
-    event.stopPropagation();
-  });
-
-  /*
-   * Close after navigation.
-   */
-
+  menu.addEventListener('click', (event) => event.stopPropagation());
   menu.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      setMobileMenuState(false);
-    });
+    link.addEventListener('click', () => setMobileMenuState(false));
   });
-
-  /*
-   * Close outside.
-   */
 
   document.addEventListener('click', (event) => {
     if (!menu.contains(event.target) && !toggle.contains(event.target)) {
@@ -323,48 +342,24 @@ function initMobileNavigation() {
     }
   });
 
-  /*
-   * Escape.
-   */
-
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      setMobileMenuState(false);
-    }
+    if (event.key === 'Escape') setMobileMenuState(false);
   });
 
-  /*
-   * Reset when switching to desktop.
-   */
-
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 900) {
-      setMobileMenuState(false);
-    }
+    if (window.innerWidth > 900) setMobileMenuState(false);
   });
 }
 
-/* ============================================================
-   SET MOBILE MENU STATE
-   ============================================================ */
-
 function setMobileMenuState(open) {
   const toggle = document.querySelector('[data-menu-toggle]');
-
   const menu = document.querySelector('[data-mobile-menu]');
-
-  if (!toggle || !menu) {
-    return;
-  }
+  if (!toggle || !menu) return;
 
   menu.classList.toggle('is-open', open);
-
   toggle.classList.toggle('is-open', open);
-
   toggle.setAttribute('aria-expanded', String(open));
-
   toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-
   document.body.classList.toggle('lx-menu-open', open);
 }
 
@@ -374,22 +369,14 @@ function setMobileMenuState(open) {
 
 document.addEventListener('DOMContentLoaded', () => {
   const wrapper = document.querySelector('.lx-mobile-home');
-
   const trigger = document.querySelector('[data-mobile-home-toggle]');
-
-  if (!wrapper || !trigger) {
-    return;
-  }
+  if (!wrapper || !trigger) return;
 
   trigger.addEventListener('click', (event) => {
     event.preventDefault();
-
     event.stopPropagation();
-
     const open = wrapper.classList.contains('is-open');
-
     wrapper.classList.toggle('is-open', !open);
-
     trigger.setAttribute('aria-expanded', String(!open));
   });
 });
@@ -400,20 +387,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initHeaderScroll() {
   const header = document.querySelector('.lx-header');
+  if (!header) return;
 
-  if (!header) {
-    return;
-  }
-
-  const update = () => {
-    header.classList.toggle('is-scrolled', window.scrollY > 10);
-  };
-
+  const update = () => header.classList.toggle('is-scrolled', window.scrollY > 10);
   update();
-
-  window.addEventListener('scroll', update, {
-    passive: true,
-  });
+  window.addEventListener('scroll', update, { passive: true });
 }
 
 /* ============================================================
@@ -422,58 +400,30 @@ function initHeaderScroll() {
 
 function initScrollReveal() {
   const elements = document.querySelectorAll('[data-reveal]');
-
-  if (!elements.length) {
-    return;
-  }
-
-  /*
-   * Reduced motion users should see
-   * everything immediately.
-   */
+  if (!elements.length) return;
 
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    elements.forEach((element) => {
-      element.classList.add('is-visible');
-    });
-
+    elements.forEach((element) => element.classList.add('is-visible'));
     return;
   }
 
-  /*
-   * IntersectionObserver.
-   */
-
   if (!('IntersectionObserver' in window)) {
-    elements.forEach((element) => {
-      element.classList.add('is-visible');
-    });
-
+    elements.forEach((element) => element.classList.add('is-visible'));
     return;
   }
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          return;
-        }
-
+        if (!entry.isIntersecting) return;
         entry.target.classList.add('is-visible');
-
         observer.unobserve(entry.target);
       });
     },
-    {
-      threshold: 0.12,
-
-      rootMargin: '0px 0px -50px 0px',
-    }
+    { threshold: 0.12, rootMargin: '0px 0px -50px 0px' }
   );
 
-  elements.forEach((element) => {
-    observer.observe(element);
-  });
+  elements.forEach((element) => observer.observe(element));
 }
 
 /* ============================================================
@@ -482,77 +432,50 @@ function initScrollReveal() {
 
 function showToast(message, options = {}) {
   const { type = 'success', duration = 3500 } = options;
-
   let container = document.querySelector('.lx-toast-container');
 
   if (!container) {
     container = document.createElement('div');
-
     container.className = 'lx-toast-container';
-
     document.body.appendChild(container);
   }
 
   const toast = document.createElement('div');
-
   toast.className = 'lx-toast';
 
   const icon = document.createElement('span');
-
   icon.className = 'lx-toast-icon';
-
   const iconElement = document.createElement('i');
-
   iconElement.className = getToastIcon(type);
-
   icon.appendChild(iconElement);
 
   const text = document.createElement('span');
-
   text.className = 'lx-toast-message';
-
   text.textContent = message;
 
   toast.appendChild(icon);
-
   toast.appendChild(text);
-
   container.appendChild(toast);
 
   const timeout = window.setTimeout(() => {
     toast.classList.add('is-leaving');
-
-    window.setTimeout(() => {
-      toast.remove();
-    }, 300);
+    window.setTimeout(() => toast.remove(), 300);
   }, duration);
 
   toast.addEventListener('click', () => {
     clearTimeout(timeout);
-
     toast.remove();
   });
 
   return toast;
 }
 
-/* ============================================================
-   TOAST ICON
-   ============================================================ */
-
 function getToastIcon(type) {
   switch (type) {
-    case 'error':
-      return 'fa-solid fa-circle-exclamation';
-
-    case 'warning':
-      return 'fa-solid fa-triangle-exclamation';
-
-    case 'info':
-      return 'fa-solid fa-circle-info';
-
-    default:
-      return 'fa-solid fa-circle-check';
+    case 'error': return 'fa-solid fa-circle-exclamation';
+    case 'warning': return 'fa-solid fa-triangle-exclamation';
+    case 'info': return 'fa-solid fa-circle-info';
+    default: return 'fa-solid fa-circle-check';
   }
 }
 
@@ -562,126 +485,51 @@ function getToastIcon(type) {
 
 function initForms() {
   const forms = document.querySelectorAll('form[data-validate]');
-
   forms.forEach((form) => {
     form.addEventListener('submit', (event) => {
       const valid = validateForm(form);
-
       if (!valid) {
         event.preventDefault();
-
-        showToast('Please check the highlighted fields.', {
-          type: 'error',
-        });
-
+        showToast('Please check the highlighted fields.', { type: 'error' });
         return;
       }
-
-      /*
-       * For template/demo forms,
-       * don't actually submit.
-       */
-
       if (form.dataset.demo === 'true') {
         event.preventDefault();
-
-        showToast(form.dataset.success || 'Your request has been submitted successfully.', {
-          type: 'success',
-        });
+        showToast(form.dataset.success || 'Your request has been submitted successfully.', { type: 'success' });
       }
     });
 
-    /*
-     * Real-time validation.
-     */
-
     form.querySelectorAll('input, textarea, select').forEach((field) => {
-      field.addEventListener('blur', () => {
-        validateField(field);
-      });
-
+      field.addEventListener('blur', () => validateField(field));
       field.addEventListener('input', () => {
-        if (field.classList.contains('is-invalid')) {
-          validateField(field);
-        }
+        if (field.classList.contains('is-invalid')) validateField(field);
       });
     });
   });
 }
-
-/* ============================================================
-   VALIDATE FORM
-   ============================================================ */
 
 function validateForm(form) {
   let valid = true;
-
-  const fields = form.querySelectorAll('input, textarea, select');
-
-  fields.forEach((field) => {
-    if (!validateField(field)) {
-      valid = false;
-    }
+  form.querySelectorAll('input, textarea, select').forEach((field) => {
+    if (!validateField(field)) valid = false;
   });
-
   return valid;
 }
 
-/* ============================================================
-   VALIDATE FIELD
-   ============================================================ */
-
 function validateField(field) {
-  if (field.disabled || field.type === 'hidden') {
-    return true;
-  }
-
+  if (field.disabled || field.type === 'hidden') return true;
   const value = field.value.trim();
-
   let valid = true;
 
-  /*
-   * Required.
-   */
-
-  if (field.hasAttribute('required') && !value) {
-    valid = false;
-  }
-
-  /*
-   * Email.
-   */
-
-  if (valid && field.type === 'email' && value) {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailPattern.test(value)) {
-      valid = false;
-    }
-  }
-
-  /*
-   * Minimum length.
-   */
-
-  if (valid && field.minLength > 0 && value.length < field.minLength) {
-    valid = false;
-  }
-
-  /*
-   * Password confirmation.
-   */
-
+  if (field.hasAttribute('required') && !value) valid = false;
+  if (valid && field.type === 'email' && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) valid = false;
+  if (valid && field.minLength > 0 && value.length < field.minLength) valid = false;
   if (valid && field.matches('[data-password-confirm]')) {
     const password = document.querySelector(field.dataset.passwordConfirm);
-
-    if (password && field.value !== password.value) {
-      valid = false;
-    }
+    if (password && field.value !== password.value) valid = false;
   }
 
   field.classList.toggle('is-invalid', !valid);
-
   return valid;
 }
 
@@ -690,29 +538,17 @@ function validateField(field) {
    ============================================================ */
 
 function initPasswordToggles() {
-  const buttons = document.querySelectorAll('[data-password-toggle]');
-
-  buttons.forEach((button) => {
+  document.querySelectorAll('[data-password-toggle]').forEach((button) => {
     button.addEventListener('click', () => {
       const selector = button.dataset.passwordToggle;
-
-      const input = selector
-        ? document.querySelector(selector)
-        : button.closest('.lx-password-field')?.querySelector('input');
-
-      if (!input) {
-        return;
-      }
+      const input = selector ? document.querySelector(selector) : button.closest('.lx-password-field')?.querySelector('input');
+      if (!input) return;
 
       const visible = input.type === 'text';
-
       input.type = visible ? 'password' : 'text';
-
       const icon = button.querySelector('i');
-
       if (icon) {
         icon.classList.toggle('fa-eye', visible);
-
         icon.classList.toggle('fa-eye-slash', !visible);
       }
     });
@@ -724,82 +560,43 @@ function initPasswordToggles() {
    ============================================================ */
 
 function initModal() {
-  const openButtons = document.querySelectorAll('[data-modal-open]');
-
-  const closeButtons = document.querySelectorAll('[data-modal-close]');
-
-  openButtons.forEach((button) => {
+  document.querySelectorAll('[data-modal-open]').forEach((button) => {
     button.addEventListener('click', (event) => {
       event.preventDefault();
-
-      const selector = button.dataset.modalOpen;
-
-      const modal = document.querySelector(selector);
-
-      if (modal) {
-        openModal(modal);
-      }
+      const modal = document.querySelector(button.dataset.modalOpen);
+      if (modal) openModal(modal);
     });
   });
 
-  closeButtons.forEach((button) => {
+  document.querySelectorAll('[data-modal-close]').forEach((button) => {
     button.addEventListener('click', () => {
       const modal = button.closest('.lx-modal');
-
-      if (modal) {
-        closeModal(modal);
-      }
+      if (modal) closeModal(modal);
     });
   });
-
-  /*
-   * Close by clicking overlay.
-   */
 
   document.querySelectorAll('.lx-modal').forEach((modal) => {
     modal.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        closeModal(modal);
-      }
+      if (event.target === modal) closeModal(modal);
     });
   });
-
-  /*
-   * Escape.
-   */
 
   document.addEventListener('keydown', (event) => {
-    if (event.key !== 'Escape') {
-      return;
+    if (event.key === 'Escape') {
+      document.querySelectorAll('.lx-modal.is-open').forEach((modal) => closeModal(modal));
     }
-
-    document.querySelectorAll('.lx-modal.is-open').forEach((modal) => {
-      closeModal(modal);
-    });
   });
 }
-
-/* ============================================================
-   OPEN MODAL
-   ============================================================ */
 
 function openModal(modal) {
   modal.classList.add('is-open');
-
   document.body.style.overflow = 'hidden';
-
   modal.setAttribute('aria-hidden', 'false');
 }
 
-/* ============================================================
-   CLOSE MODAL
-   ============================================================ */
-
 function closeModal(modal) {
   modal.classList.remove('is-open');
-
   document.body.style.overflow = '';
-
   modal.setAttribute('aria-hidden', 'true');
 }
 
@@ -809,27 +606,12 @@ function closeModal(modal) {
 
 function initBackToTop() {
   const button = document.querySelector('[data-back-to-top]');
+  if (!button) return;
 
-  if (!button) {
-    return;
-  }
-
-  const update = () => {
-    button.classList.toggle('is-visible', window.scrollY > 500);
-  };
-
+  const update = () => button.classList.toggle('is-visible', window.scrollY > 500);
   update();
-
-  window.addEventListener('scroll', update, {
-    passive: true,
-  });
-
-  button.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  });
+  window.addEventListener('scroll', update, { passive: true });
+  button.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
 /* ============================================================
@@ -840,23 +622,12 @@ function initSmoothLinks() {
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener('click', (event) => {
       const href = link.getAttribute('href');
-
-      if (!href || href === '#') {
-        return;
-      }
-
+      if (!href || href === '#') return;
       const target = document.querySelector(href);
-
-      if (!target) {
-        return;
-      }
+      if (!target) return;
 
       event.preventDefault();
-
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 }
@@ -867,23 +638,13 @@ function initSmoothLinks() {
 
 function initActiveNavigation() {
   const currentPage = window.location.pathname.split('/').pop().toLowerCase();
-
-  if (!currentPage) {
-    return;
-  }
+  if (!currentPage) return;
 
   document.querySelectorAll('.lx-nav a[href], .lx-mobile-menu a[href]').forEach((link) => {
     const href = link.getAttribute('href')?.split('/').pop().toLowerCase();
-
-    if (href && href === currentPage) {
-      link.classList.add('active');
-    }
+    if (href && href === currentPage) link.classList.add('active');
   });
 }
-
-/*
- * Run after DOM is available.
- */
 
 initActiveNavigation();
 
@@ -892,19 +653,10 @@ initActiveNavigation();
    ============================================================ */
 
 document.addEventListener('keydown', (event) => {
-  /*
-   * "/" focuses a page search field.
-   */
-
-  if (
-    event.key === '/' &&
-    !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)
-  ) {
+  if (event.key === '/' && !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) {
     const search = document.querySelector('[data-site-search]');
-
     if (search) {
       event.preventDefault();
-
       search.focus();
     }
   }
@@ -916,18 +668,11 @@ document.addEventListener('keydown', (event) => {
 
 window.LaundriX = {
   showToast,
-
   openModal,
-
   closeModal,
-
   applyTheme,
-
   applyDirection,
-
   setMobileMenuState,
-
   validateForm,
-
   validateField,
 };

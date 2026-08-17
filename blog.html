@@ -38,9 +38,24 @@
     <link rel="stylesheet" href="assets/css/main.css" />
 
     <!-- ======================================================
-         BLOG PAGE UNIQUE STYLES (MODERN LUXE EMERALD)
+         BLOG PAGE UNIQUE STYLES WITH 3D CURVE REVEAL & MOTION
     ====================================================== -->
     <style>
+      /* Smooth Slow 3D Curve Scroll Reveal Animations Setup with Reverse Out Animation */
+      [data-reveal] {
+        opacity: 0;
+        transform: perspective(1000px) translateY(60px) rotateX(12deg) scale(0.96);
+        transition:
+          opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+      }
+
+      [data-reveal].is-visible {
+        opacity: 1;
+        transform: perspective(1000px) translateY(0) rotateX(0deg) scale(1);
+      }
+
       /* Blog Hero */
       .blog-hero {
         position: relative;
@@ -100,12 +115,15 @@
         background: var(--lx-surface);
         border: 1px solid var(--lx-border);
         box-shadow: var(--lx-shadow-md);
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          border-color 0.8s ease;
       }
 
       .blog-featured-card:hover {
-        transform: translateY(-6px);
-        box-shadow: var(--lx-shadow-xl);
+        transform: translateY(-8px) scale(1.012);
+        box-shadow: 0 30px 75px rgba(0, 0, 0, 0.14);
         border-color: rgba(var(--lx-primary-rgb), 0.4);
       }
 
@@ -119,11 +137,11 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.6s var(--lx-ease);
+        transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .blog-featured-card:hover .blog-featured-image img {
-        transform: scale(1.05);
+        transform: scale(1.06);
       }
 
       .blog-featured-image .featured-badge {
@@ -175,7 +193,7 @@
 
       .blog-featured-content h2 a {
         color: var(--lx-text);
-        transition: color 0.2s ease;
+        transition: color 0.3s ease;
       }
 
       .blog-featured-content h2 a:hover {
@@ -196,7 +214,7 @@
         color: var(--lx-primary);
         font-weight: 800;
         font-size: 14.5px;
-        transition: gap 0.25s ease;
+        transition: gap 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .blog-read-more:hover {
@@ -242,7 +260,10 @@
         font-size: 14.5px;
         font-weight: 600;
         outline: none;
-        transition: var(--lx-transition);
+        transition:
+          border-color 0.6s ease,
+          background-color 0.6s ease,
+          box-shadow 0.6s ease;
       }
 
       .blog-search input:focus {
@@ -265,13 +286,18 @@
         font-size: 13px;
         font-weight: 700;
         cursor: pointer;
-        transition: var(--lx-transition);
+        transition:
+          transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+          background-color 0.4s ease,
+          color 0.4s ease,
+          border-color 0.4s ease;
         white-space: nowrap;
       }
 
       .blog-categories .cat-btn:hover {
         border-color: var(--lx-primary);
         color: var(--lx-primary);
+        transform: translateY(-2px);
       }
 
       .blog-categories .cat-btn.active {
@@ -300,12 +326,15 @@
         box-shadow: var(--lx-shadow-sm);
         display: flex;
         flex-direction: column;
-        transition: var(--lx-transition);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          border-color 0.8s ease;
       }
 
       .blog-post-card:hover {
-        transform: translateY(-8px);
-        box-shadow: var(--lx-shadow-xl);
+        transform: translateY(-8px) scale(1.012);
+        box-shadow: 0 30px 75px rgba(0, 0, 0, 0.14);
         border-color: rgba(var(--lx-primary-rgb), 0.4);
       }
 
@@ -319,7 +348,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.6s var(--lx-ease);
+        transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .blog-post-card:hover .post-image img {
@@ -373,7 +402,7 @@
 
       .blog-post-card h3 a {
         color: var(--lx-text);
-        transition: color 0.2s ease;
+        transition: color 0.3s ease;
       }
 
       .blog-post-card h3 a:hover {
@@ -395,11 +424,11 @@
         color: var(--lx-primary);
         font-weight: 800;
         font-size: 13.5px;
-        transition: gap 0.2s ease;
+        transition: gap 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .blog-post-card .read-link:hover {
-        gap: 10px;
+        gap: 12px;
       }
 
       /* Empty Search Fallback */
@@ -482,6 +511,14 @@
         background: var(--lx-surface);
         border: 1px solid var(--lx-border);
         box-shadow: var(--lx-shadow-sm);
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s ease;
+      }
+
+      .blog-widget:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--lx-shadow-md);
       }
 
       .blog-widget h4 {
@@ -513,6 +550,7 @@
         color: var(--lx-text-soft);
         font-weight: 600;
         font-size: 14.5px;
+        transition: transform 0.3s ease, color 0.3s ease;
       }
 
       .blog-widget ul li a:hover {
@@ -549,6 +587,11 @@
         border-radius: var(--lx-radius-md);
         object-fit: cover;
         flex-shrink: 0;
+        transition: transform 0.4s ease;
+      }
+
+      .blog-widget .recent-post:hover img {
+        transform: scale(1.05);
       }
 
       .blog-widget .recent-post .info h5 {
@@ -559,6 +602,7 @@
 
       .blog-widget .recent-post .info h5 a {
         color: var(--lx-text);
+        transition: color 0.3s ease;
       }
 
       .blog-widget .recent-post .info h5 a:hover {
@@ -578,13 +622,15 @@
       .blog-cta-card {
         padding: clamp(36px, 5vw, 65px) clamp(24px, 4vw, 55px);
         border-radius: var(--lx-radius-xl);
-        background: radial-gradient(circle at 100% 0%, #059669 0%, #064e3b 100%);
+        background: radial-gradient(circle at 100% 0%, #c08fe8 0%, #80c722 100%);
         color: #fff;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 32px;
         box-shadow: 0 20px 50px -10px rgba(6, 78, 59, 0.35);
+        position: relative;
+        overflow: hidden;
       }
 
       .blog-cta-card h2 {
@@ -611,13 +657,171 @@
         gap: 10px;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
         flex-shrink: 0;
-        transition: var(--lx-transition);
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          background-color 0.8s ease;
         text-decoration: none;
+      }
+
+      .blog-cta-card .lx-button-white::before {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 180px;
+        left: -75px;
+        top: -65px;
+        transform: rotate(24deg);
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+        transition: left 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        pointer-events: none;
+      }
+
+      .blog-cta-card .lx-button-white:hover::before {
+        left: 125%;
       }
 
       .blog-cta-card .lx-button-white:hover {
         background: var(--lx-primary-light);
         transform: translateY(-2px);
+      }
+
+      /* =========================================================
+         LAUNDRIX — CAELESTIA EXPRESSIVE MOTION LAYER
+         ========================================================= */
+      :root {
+        --cx: 50%;
+        --cy: 35%;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        isolation: isolate;
+        overflow-x: hidden;
+        perspective: 1400px;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.032;
+        mix-blend-mode: screen;
+        background: linear-gradient(
+          115deg,
+          transparent 42%,
+          rgba(255, 255, 255, 0.95) 50%,
+          transparent 58%
+        );
+        background-size: 220% 220%;
+        animation: cxSweep 15s linear infinite;
+      }
+      @keyframes cxSweep {
+        from { background-position: 180% 10%; }
+        to { background-position: -40% 90%; }
+      }
+
+      header,
+      .header,
+      .navbar,
+      .site-header {
+        animation: cxHeader 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+      @keyframes cxHeader {
+        from {
+          opacity: 0;
+          transform: translateY(-30px) scale(0.975);
+          filter: blur(10px);
+        }
+        70% {
+          opacity: 1;
+          transform: translateY(3px) scale(1.008);
+          filter: blur(0);
+        }
+        to { transform: none; }
+      }
+
+      /* Pointer-following ambient glow */
+      main,
+      .main,
+      .page,
+      .hero,
+      .section {
+        --cx-glow-x: var(--cx);
+        --cx-glow-y: var(--cy);
+      }
+      .blog-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(
+          500px circle at var(--cx-glow-x) var(--cx-glow-y),
+          rgba(255, 255, 255, 0.07),
+          transparent 62%
+        );
+        transition: background-position 0.5s ease;
+      }
+
+      /* Hero Title & Copy Animations */
+      .blog-hero h1 {
+        animation: cxTitle 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+      }
+      @keyframes cxTitle {
+        0% {
+          opacity: 0;
+          transform: translateY(34px) scale(0.94);
+          filter: blur(12px);
+          letter-spacing: -0.05em;
+        }
+        65% {
+          opacity: 1;
+          transform: translateY(-4px) scale(1.012);
+          filter: blur(0);
+        }
+        100% {
+          transform: none;
+          letter-spacing: normal;
+        }
+      }
+      .blog-hero p {
+        animation: cxCopy 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both;
+      }
+      @keyframes cxCopy {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+          filter: blur(5px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+          filter: blur(0);
+        }
+      }
+
+      /* Ripple Effect */
+      .cx-ripple {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 10001;
+        background: rgba(16, 185, 129, 0.18);
+        border: 1px solid rgba(16, 185, 129, 0.65);
+        transform: translate(-50%, -50%);
+        animation: cxRipple 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      @keyframes cxRipple {
+        to {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(16);
+        }
       }
 
       @media (max-width: 980px) {
@@ -646,6 +850,19 @@
         .blog-cta-card .lx-button-white {
           width: 100%;
           justify-content: center;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        body::after,
+        header,
+        .blog-hero h1,
+        .blog-hero p {
+          animation: none !important;
+        }
+        [data-reveal] {
+          transition: none !important;
+          transform: none !important;
+          filter: none !important;
         }
       }
     </style>
@@ -816,7 +1033,7 @@
           <div class="blog-featured-card" data-reveal>
             <div class="blog-featured-image">
               <img
-                src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=1000&q=85"
+                src="https://www.thespruce.com/thmb/Y08I9Uh83rVPkpcAXmjMzY47MPY=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/sarah-dorweiler-7tFlUFGa7Dk-unsplash-c0869a6bc71a470da75c0f5ae60b3118.jpg"
                 alt="Featured blog post - Laundry hacks"
               />
               <span class="featured-badge">Featured Story</span>
@@ -885,7 +1102,7 @@
             <article class="blog-post-card" data-category="tips" data-reveal>
               <div class="post-image">
                 <img
-                  src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=600&q=80"
+                  src="https://www.marthastewart.com/thmb/KN70HGzk6LQRI2ge7fwXlk_tKs4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/ms-laundry-getty-d31dbc215c034d3c9930254fd7c60b4b.jpg"
                   alt="Sorting laundry like a pro"
                   loading="lazy"
                 />
@@ -897,9 +1114,9 @@
                   <span class="dot"></span>
                   <span>4 min read</span>
                 </div>
-                <h3><a href="blog-post-1.html">How to Sort Laundry Like an Industry Pro</a></h3>
+                <h3><a href="">How to Sort Laundry Like an Industry Pro</a></h3>
                 <p>Master the art of sorting laundry with our simple guide to fabric types, colors, and care labels.</p>
-                <a href="blog-post-1.html" class="read-link">
+                <a href="blog-post-7.html" class="read-link">
                   <span>Read more</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </a>
@@ -1035,8 +1252,7 @@
           <!-- PAGINATION -->
           <div class="blog-pagination" aria-label="Blog articles pagination">
             <button class="page-btn active">1</button>
-          
-            </div>
+          </div>
         </div>
       </section>
 
@@ -1219,7 +1435,7 @@
     ====================================================== -->
     <script src="assets/js/main.js"></script>
 
-    <!-- Page Specific Script: Real-time Combined Search & Category Filters -->
+    <!-- Page Specific Script: Real-time Combined Search & Category Filters with Scroll Reveal -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const searchInput = document.getElementById("blogSearch");
@@ -1272,7 +1488,7 @@
             searchQuery = this.value.toLowerCase().trim();
             applyBlogFilters();
           });
-        }
+        });
 
         // Sidebar Quick Category Deep Links
         document.querySelectorAll("[data-filter-target]").forEach((link) => {
@@ -1310,7 +1526,64 @@
 
         prevBtn?.addEventListener("click", () => setPage(currentPage - 1));
         nextBtn?.addEventListener("click", () => setPage(currentPage + 1));
+
+        // Smooth slow 3D curve scroll reveal observer with bidirectional/reverse animation support
+        const revealElements = document.querySelectorAll("[data-reveal]");
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+              } else {
+                entry.target.classList.remove("is-visible");
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -40px 0px",
+          },
+        );
+
+        revealElements.forEach((el) => revealObserver.observe(el));
       });
+    </script>
+
+    <script>
+      /* Caelestia-style pointer ambience & interactions */
+      let cxFrame = null,
+        cxX = innerWidth * 0.5,
+        cxY = innerHeight * 0.35;
+      window.addEventListener(
+        "pointermove",
+        (e) => {
+          cxX = e.clientX;
+          cxY = e.clientY;
+          if (cxFrame) return;
+          cxFrame = requestAnimationFrame(() => {
+            document.documentElement.style.setProperty("--cx", cxX + "px");
+            document.documentElement.style.setProperty("--cy", cxY + "px");
+            cxFrame = null;
+          });
+        },
+        { passive: true },
+      );
+
+      document.addEventListener(
+        "pointerdown",
+        (e) => {
+          if (matchMedia("(prefers-reduced-motion: reduce)").matches || !e.isPrimary) return;
+          const target = e.target.closest(".blog-cta-card .lx-button-white,.blog-read-more,.blog-post-card .read-link");
+          if (!target) return;
+          const r = document.createElement("span");
+          r.className = "cx-ripple";
+          r.style.left = e.clientX + "px";
+          r.style.top = e.clientY + "px";
+          document.body.appendChild(r);
+          r.addEventListener("animationend", () => r.remove(), { once: true });
+        },
+        { passive: true },
+      );
     </script>
   </body>
 </html>

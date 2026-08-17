@@ -1237,11 +1237,12 @@
           </a>
 
           <!-- DESKTOP NAVBAR -->
-          <nav class="lx-nav" aria-label="Main navigation">
+        <nav class="lx-nav" aria-label="Main navigation">
             <div class="lx-nav-dropdown">
+              <!-- REMOVED 'is-active' from the Home button below -->
               <button
                 type="button"
-                class="lx-nav-link lx-nav-dropdown-trigger is-active lx-water-ripple"
+                class="lx-nav-link lx-nav-dropdown-trigger lx-water-ripple"
                 data-home-dropdown
                 aria-expanded="false"
                 aria-haspopup="true"
@@ -1253,7 +1254,7 @@
               </button>
 
               <div class="lx-nav-dropdown-menu" aria-label="Home pages">
-                <a href="index.html" class="lx-nav-dropdown-item is-current">
+                <a href="index.html" class="lx-nav-dropdown-item">
                   <div class="lx-dropdown-icon">
                     <span class="material-symbols-rounded"> home </span>
                   </div>
@@ -1274,7 +1275,8 @@
               </div>
             </div>
 
-            <a href="services.html" class="lx-nav-link"> Services </a>
+            <!-- Keep 'is-current' (or 'is-active') ONLY on Services -->
+            <a href="services.html" class="lx-nav-link is-current"> Services </a>
             <a href="about.html" class="lx-nav-link"> About </a>
             <a href="pricing.html" class="lx-nav-link"> Pricing </a>
             <a href="how-it-works.html" class="lx-nav-link"> How it works </a>
@@ -1339,7 +1341,7 @@
               </button>
 
               <div class="lx-mobile-home-links">
-                <a href="index.html" class="is-current"> Home 1 (Signature) </a>
+                <a href="index.html" class=""> Home 1 (Signature) </a>
                 <a href="home-2.html"> Home 2 (Expressive) </a>
               </div>
             </div>

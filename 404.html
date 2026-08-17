@@ -7,9 +7,9 @@
       name="description"
       content="404 Error — The page you are looking for has been washed away or doesn't exist on LaundriX."
     />
-    <meta name="theme-color" content="#059669" />
+    <meta name="theme-color" content="#8b5cf6" />
     <title>Page Not Found (404) | LaundriX — Premium Doorstep Laundry</title>
-<link rel="icon" type="image/png" href="./site-logo.png">
+
     <!-- ======================================================
          GOOGLE FONTS (MANROPE & PLUS JAKARTA SANS)
     ====================================================== -->
@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="assets/css/main.css" />
 
     <!-- ======================================================
-         404 PAGE UNIQUE STYLES (STUNNING ANIMATIONS & EMERALD LUXE)
+         404 PAGE CUSTOM STYLES (ALIGNED WITH MAIN.CSS)
     ====================================================== -->
     <style>
       .err-page-wrapper {
@@ -47,7 +47,7 @@
         flex-direction: column;
         justify-content: space-between;
         background: radial-gradient(circle at 50% 15%, rgba(var(--lx-primary-rgb), 0.08) 0%, transparent 65%),
-                    radial-gradient(circle at 85% 85%, rgba(79, 70, 229, 0.04) 0%, transparent 50%);
+                    radial-gradient(circle at 85% 85%, rgba(139, 92, 246, 0.04) 0%, transparent 50%);
         position: relative;
         overflow: hidden;
       }
@@ -71,6 +71,16 @@
         text-align: center;
         position: relative;
         z-index: 2;
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s ease,
+          border-color 0.8s ease;
+      }
+
+      .err-card:hover {
+        transform: translateY(-6px) scale(1.01);
+        box-shadow: var(--lx-shadow-xl);
+        border-color: rgba(var(--lx-primary-rgb), 0.4);
       }
 
       /* Top Right Corner Toggles */
@@ -96,7 +106,7 @@
         display: grid;
         place-items: center;
         background: var(--lx-bg-subtle);
-        border: 1px solid var(--lx-border-subtle);
+        border: 1px solid var(--lx-border);
         color: var(--lx-text-soft);
         cursor: pointer;
         transition: var(--lx-transition);
@@ -104,8 +114,8 @@
 
       .err-corner-btn:hover {
         background: var(--lx-surface);
-        color: var(--lx-primary);
-        border-color: var(--lx-primary);
+        color: var(--lx-text);
+        border-color: var(--lx-selected-green);
         transform: translateY(-2px);
       }
 
@@ -147,21 +157,10 @@
         100% { transform: rotate(360deg); }
       }
 
-      .err-drum i {
-        font-size: 38px;
-        color: var(--lx-primary);
-        animation: errItemCounterRotate 6s linear infinite;
-      }
-
-      @keyframes errItemCounterRotate {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(-360deg); }
-      }
-
       .err-bubble {
         position: absolute;
         border-radius: 50%;
-        background: rgba(var(--lx-primary-rgb), 0.3);
+        background: rgba(var(--lx-selected-green), 0.4);
         animation: errBubbleUp 3s ease-in-out infinite;
       }
 
@@ -200,11 +199,16 @@
         width: 38px;
         height: 38px;
         border-radius: 12px;
-        background: linear-gradient(135deg, var(--lx-primary), #047857);
+        background: var(--lx-selected-green);
         display: grid;
         place-items: center;
-        color: #fff;
-        box-shadow: 0 4px 12px var(--lx-primary-glow);
+        color: #0f172a;
+        box-shadow: 0 4px 12px rgba(204, 255, 0, 0.35);
+        transition: transform 0.5s var(--lx-ease);
+      }
+
+      .err-brand:hover .err-brand-mark {
+        transform: rotate(-6deg) scale(1.05);
       }
 
       .err-brand-name {
@@ -225,7 +229,7 @@
         font-weight: 900;
         line-height: 1;
         letter-spacing: -0.05em;
-        background: linear-gradient(135deg, var(--lx-primary), #047857);
+        background: linear-gradient(135deg, var(--lx-primary), var(--lx-selected-green));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         margin-bottom: 10px;
@@ -256,23 +260,21 @@
         min-height: 50px;
         padding: 0 28px;
         border-radius: var(--lx-radius-pill);
-        background: linear-gradient(135deg, var(--lx-primary), #047857);
-        color: #fff;
+        background: var(--lx-selected-green);
+        color: #0f172a;
         font-size: 14.5px;
         font-weight: 800;
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        box-shadow: 0 4px 16px var(--lx-primary-glow);
+        box-shadow: 0 6px 20px rgba(204, 255, 0, 0.4);
         transition: var(--lx-transition);
         text-decoration: none;
       }
 
       .err-home-btn:hover {
-        background: linear-gradient(135deg, #047857, #065f46);
         transform: translateY(-2px);
-        box-shadow: 0 8px 24px var(--lx-primary-glow);
-        color: #fff;
+        box-shadow: 0 10px 25px rgba(204, 255, 0, 0.5);
       }
 
       .err-back-btn {
@@ -293,15 +295,16 @@
       }
 
       .err-back-btn:hover {
-        background: var(--lx-bg-subtle);
+        background: rgba(204, 255, 0, 0.25);
+        color: #0f172a;
+        border-color: var(--lx-selected-green);
         transform: translateY(-2px);
-        box-shadow: var(--lx-shadow-md);
       }
 
       /* Simple Minimalist Footer */
       .err-simple-footer {
         padding: 20px 16px;
-        border-top: 1px solid var(--lx-border-subtle);
+        border-top: 1px solid var(--lx-border);
         background: var(--lx-surface);
         text-align: center;
       }
@@ -331,7 +334,7 @@
       }
 
       .err-simple-footer-links a:hover {
-        color: var(--lx-primary);
+        color: var(--lx-selected-green);
       }
 
       @media (max-width: 640px) {
@@ -377,13 +380,17 @@
             <!-- RTL Toggle -->
             <button
               type="button"
-              class="err-corner-btn"
+              class="lx-direction-toggle"
               data-rtl-toggle
               aria-label="Toggle LTR / RTL"
               aria-pressed="false"
               title="Toggle LTR / RTL"
             >
-              <span class="material-symbols-rounded" style="font-size:18px;"> sync_alt </span>
+              <span class="lx-direction-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
             </button>
           </div>
 

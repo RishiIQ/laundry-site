@@ -7,9 +7,9 @@
       name="description"
       content="LaundriX is currently undergoing scheduled maintenance to upgrade our booking and tracking systems. We will be back online shortly."
     />
-    <meta name="theme-color" content="#059669" />
+    <meta name="theme-color" content="#8b5cf6" />
     <title>Scheduled Maintenance | LaundriX — Premium Doorstep Laundry</title>
-<link rel="icon" type="image/png" href="./site-logo.png">
+
     <!-- ======================================================
          GOOGLE FONTS (MANROPE & PLUS JAKARTA SANS)
     ====================================================== -->
@@ -38,9 +38,24 @@
     <link rel="stylesheet" href="assets/css/main.css" />
 
     <!-- ======================================================
-         MAINTENANCE PAGE UNIQUE STYLES (MODERN LUXE EMERALD)
+         MAINTENANCE PAGE UNIQUE STYLES WITH 3D CURVE REVEAL & MOTION
     ====================================================== -->
     <style>
+      /* Smooth Slow 3D Curve Scroll Reveal Animations Setup with Reverse Out Animation */
+      [data-reveal] {
+        opacity: 0;
+        transform: perspective(1000px) translateY(60px) rotateX(12deg) scale(0.96);
+        transition:
+          opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+      }
+
+      [data-reveal].is-visible {
+        opacity: 1;
+        transform: perspective(1000px) translateY(0) rotateX(0deg) scale(1);
+      }
+
       .maint-page-wrapper {
         min-height: 100dvh;
         display: flex;
@@ -71,6 +86,16 @@
         text-align: center;
         position: relative;
         z-index: 2;
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.8s ease,
+          border-color 0.8s ease;
+      }
+
+      .maint-card:hover {
+        transform: translateY(-6px) scale(1.01);
+        box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
+        border-color: rgba(var(--lx-primary-rgb), 0.4);
       }
 
       /* Top Right Corner Toggles */
@@ -99,7 +124,11 @@
         border: 1px solid var(--lx-border-subtle);
         color: var(--lx-text-soft);
         cursor: pointer;
-        transition: var(--lx-transition);
+        transition:
+          transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+          background-color 0.4s ease,
+          color 0.4s ease,
+          border-color 0.4s ease;
       }
 
       .maint-corner-btn:hover {
@@ -121,6 +150,11 @@
         font-size: 38px;
         box-shadow: 0 10px 25px var(--lx-primary-glow);
         animation: maintGearSpin 12s linear infinite;
+        transition: transform 0.5s ease;
+      }
+
+      .maint-icon-wrap:hover {
+        transform: scale(1.1);
       }
 
       @keyframes maintGearSpin {
@@ -140,11 +174,16 @@
         width: 38px;
         height: 38px;
         border-radius: 12px;
-        background: linear-gradient(135deg, var(--lx-primary), #047857);
+        background: var(--lx-selected-green);
         display: grid;
         place-items: center;
-        color: #fff;
-        box-shadow: 0 4px 12px var(--lx-primary-glow);
+        color: #0f172a;
+        box-shadow: 0 4px 12px rgba(204, 255, 0, 0.35);
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .maint-brand:hover .maint-brand-mark {
+        transform: rotate(-6deg) scale(1.05);
       }
 
       .maint-brand-name {
@@ -217,7 +256,10 @@
         font-weight: 600;
         color: var(--lx-text);
         outline: none;
-        transition: var(--lx-transition);
+        transition:
+          border-color 0.6s ease,
+          background-color 0.6s ease,
+          box-shadow 0.6s ease;
         font-family: inherit;
       }
 
@@ -230,20 +272,42 @@
       .maint-submit-btn {
         padding: 0 24px;
         border-radius: var(--lx-radius-pill);
-        background: linear-gradient(135deg, var(--lx-primary), #047857);
-        color: #fff;
+        background: linear-gradient(135deg, var(--lx-primary), #deffb8);
+        color: #2e0654;
         font-size: 14px;
         font-weight: 800;
         border: none;
         cursor: pointer;
-        transition: var(--lx-transition);
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+          background 0.8s ease;
         box-shadow: 0 4px 14px var(--lx-primary-glow);
         white-space: nowrap;
       }
 
+      .maint-submit-btn::before {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 180px;
+        left: -75px;
+        top: -65px;
+        transform: rotate(24deg);
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+        transition: left 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        pointer-events: none;
+      }
+
+      .maint-submit-btn:hover::before {
+        left: 125%;
+      }
+
       .maint-submit-btn:hover {
-        background: linear-gradient(135deg, #047857, #065f46);
-        transform: translateY(-2px);
+        background: linear-gradient(135deg,#cff5b1 ,  #974fe9);
+        transform: translateY(-4px) scale(1.025);
         box-shadow: 0 8px 20px var(--lx-primary-glow);
       }
 
@@ -255,10 +319,12 @@
       .maint-help a {
         color: var(--lx-primary);
         font-weight: 700;
+        transition: color 0.3s ease;
       }
 
       .maint-help a:hover {
         text-decoration: underline;
+        color: var(--lx-primary-hover);
       }
 
       /* Simple Minimalist Footer */
@@ -290,11 +356,89 @@
       .maint-simple-footer-links a {
         color: var(--lx-text-soft);
         text-decoration: none;
-        transition: color 0.2s ease;
+        transition: color 0.3s ease, transform 0.3s ease;
       }
 
       .maint-simple-footer-links a:hover {
         color: var(--lx-primary);
+        transform: translateY(-1px);
+      }
+
+      /* =========================================================
+         LAUNDRIX — CAELESTIA EXPRESSIVE MOTION LAYER
+         ========================================================= */
+      :root {
+        --cx: 50%;
+        --cy: 35%;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        isolation: isolate;
+        overflow-x: hidden;
+        perspective: 1400px;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.032;
+        mix-blend-mode: screen;
+        background: linear-gradient(
+          115deg,
+          transparent 42%,
+          rgba(255, 255, 255, 0.95) 50%,
+          transparent 58%
+        );
+        background-size: 220% 220%;
+        animation: cxSweep 15s linear infinite;
+      }
+      @keyframes cxSweep {
+        from { background-position: 180% 10%; }
+        to { background-position: -40% 90%; }
+      }
+
+      /* Pointer-following ambient glow */
+      .maint-page-wrapper {
+        --cx-glow-x: var(--cx);
+        --cx-glow-y: var(--cy);
+      }
+      .maint-page-wrapper::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(
+          500px circle at var(--cx-glow-x) var(--cx-glow-y),
+          rgba(255, 255, 255, 0.07),
+          transparent 62%
+        );
+        transition: background-position 0.5s ease;
+        z-index: 1;
+      }
+
+      /* Ripple Effect */
+      .cx-ripple {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 10001;
+        background: rgba(16, 185, 129, 0.18);
+        border: 1px solid rgba(16, 185, 129, 0.65);
+        transform: translate(-50%, -50%);
+        animation: cxRipple 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      @keyframes cxRipple {
+        to {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(16);
+        }
       }
 
       @media (max-width: 640px) {
@@ -312,6 +456,17 @@
         }
         .maint-simple-footer-links {
           justify-content: center;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        body::after,
+        .maint-icon-wrap {
+          animation: none !important;
+        }
+        [data-reveal] {
+          transition: none !important;
+          transform: none !important;
+          filter: none !important;
         }
       }
     </style>
@@ -340,13 +495,17 @@
             <!-- RTL Toggle -->
             <button
               type="button"
-              class="maint-corner-btn"
+              class="lx-direction-toggle"
               data-rtl-toggle
               aria-label="Toggle LTR / RTL"
               aria-pressed="false"
               title="Toggle LTR / RTL"
             >
-              <span class="material-symbols-rounded" style="font-size:18px;"> sync_alt </span>
+              <span class="lx-direction-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
             </button>
           </div>
 
@@ -407,5 +566,65 @@
          SHARED GLOBAL JAVASCRIPT
     ====================================================== -->
     <script src="assets/js/main.js"></script>
+
+    <!-- Page Specific Script: Scroll Reveal & Pointer Ambience -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const revealElements = document.querySelectorAll("[data-reveal]");
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+              } else {
+                entry.target.classList.remove("is-visible");
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -40px 0px",
+          },
+        );
+
+        revealElements.forEach((el) => revealObserver.observe(el));
+      });
+    </script>
+
+    <script>
+      let cxFrame = null,
+        cxX = innerWidth * 0.5,
+        cxY = innerHeight * 0.35;
+      window.addEventListener(
+        "pointermove",
+        (e) => {
+          cxX = e.clientX;
+          cxY = e.clientY;
+          if (cxFrame) return;
+          cxFrame = requestAnimationFrame(() => {
+            document.documentElement.style.setProperty("--cx", cxX + "px");
+            document.documentElement.style.setProperty("--cy", cxY + "px");
+            cxFrame = null;
+          });
+        },
+        { passive: true },
+      );
+
+      document.addEventListener(
+        "pointerdown",
+        (e) => {
+          if (matchMedia("(prefers-reduced-motion: reduce)").matches || !e.isPrimary) return;
+          const target = e.target.closest(".maint-submit-btn,.maint-corner-btn");
+          if (!target) return;
+          const r = document.createElement("span");
+          r.className = "cx-ripple";
+          r.style.left = e.clientX + "px";
+          r.style.top = e.clientY + "px";
+          document.body.appendChild(r);
+          r.addEventListener("animationend", () => r.remove(), { once: true });
+        },
+        { passive: true },
+      );
+    </script>
   </body>
 </html>

@@ -10,45 +10,70 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/main.css">
-<link rel="icon" type="image/png" href="./site-logo.png">
+  <link rel="icon" type="image/png" href="./site-logo.png">
   <style>
     /* =========================================================
        LAUNDRIX — CAELESTIA / QUICKSHELL INSPIRED DASHBOARD
        Floating surfaces • pill navigation • expressive motion
        ========================================================= */
-    :root{
-      --c-bg:#090b0f;
-      --c-bg-2:#0f1218;
-      --c-surface:#141820;
-      --c-surface-2:#1a1f29;
-      --c-surface-3:#202632;
-      --c-text:#f5f7fb;
-      --c-muted:#969dab;
-      --c-line:rgba(255,255,255,.085);
-      --c-accent:#d7ff43;
-      --c-accent-2:#b7e82d;
-      --c-purple:#a78bfa;
-      --c-blue:#72b8ff;
-      --c-red:#ff7180;
-      --c-shadow:0 24px 70px rgba(0,0,0,.34);
-      --ease:cubic-bezier(.2,.85,.25,1);
-      --spring:cubic-bezier(.16,1,.3,1);
-      --radius-xl:30px;
-      --radius-lg:24px;
-      --radius-md:18px;
+    
+    /* Use the same theme variables as main.css */
+    :root {
+      --lx-primary: #8b5cf6;
+      --lx-selected-green: #ccff00;
+      --lx-bg: #f3f0fa;
+      --lx-surface: #ffffff;
+      --lx-surface-2: #f8faf8;
+      --lx-surface-3: #edf1ef;
+      --lx-text: #0f172a;
+      --lx-text-soft: #334155;
+      --lx-text-muted: #64748b;
+      --lx-border: #e2e8f0;
+      --lx-shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+      
+      /* Dashboard specific */
+      --c-bg: #f3f0fa;
+      --c-bg-2: #eae5f5;
+      --c-surface: #ffffff;
+      --c-surface-2: #f8faf8;
+      --c-surface-3: #edf1ef;
+      --c-text: #0f172a;
+      --c-muted: #64748b;
+      --c-line: #e2e8f0;
+      --c-accent: #ccff00;
+      --c-accent-2: #b7e82d;
+      --c-purple: #8b5cf6;
+      --c-blue: #3b82f6;
+      --c-red: #ef4444;
+      --c-shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+      --ease: cubic-bezier(.2,.85,.25,1);
+      --spring: cubic-bezier(.16,1,.3,1);
+      --radius-xl: 30px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
     }
 
-    [data-theme="light"]{
-      --c-bg:#eef1f0;
-      --c-bg-2:#e6eae8;
-      --c-surface:#f8faf8;
-      --c-surface-2:#ffffff;
-      --c-surface-3:#edf1ef;
-      --c-text:#15181b;
-      --c-muted:#667078;
-      --c-line:rgba(20,30,25,.09);
-      --c-shadow:0 24px 60px rgba(34,48,41,.13);
+    /* Dark theme - matches main.css dark class */
+    html.dark {
+      --lx-bg: #120e1f;
+      --lx-surface: #221b3b;
+      --lx-surface-2: #2a2447;
+      --lx-surface-3: #1a142e;
+      --lx-text: #ffffff;
+      --lx-text-soft: #c4b5fd;
+      --lx-text-muted: #9ca3af;
+      --lx-border: rgba(139, 92, 246, 0.3);
+      --lx-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
+      
+      --c-bg: #120e1f;
+      --c-bg-2: #1a142e;
+      --c-surface: #221b3b;
+      --c-surface-2: #2a2447;
+      --c-surface-3: #1a142e;
+      --c-text: #ffffff;
+      --c-muted: #9ca3af;
+      --c-line: rgba(139, 92, 246, 0.3);
+      --c-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
     }
 
     *{box-sizing:border-box}
@@ -60,6 +85,7 @@
       color:var(--c-text);
       font-family:"Plus Jakarta Sans",system-ui,sans-serif;
       overflow-x:hidden;
+      transition: background-color 0.6s ease, color 0.6s ease;
     }
     button,input,select{font:inherit}
 
@@ -70,11 +96,18 @@
       pointer-events:none;
       z-index:-2;
       background:
-        radial-gradient(circle at 14% 18%, rgba(167,139,250,.15), transparent 25%),
-        radial-gradient(circle at 84% 15%, rgba(215,255,67,.09), transparent 22%),
-        radial-gradient(circle at 72% 84%, rgba(114,184,255,.08), transparent 24%);
+        radial-gradient(circle at 14% 18%, rgba(139, 92, 246, 0.12), transparent 25%),
+        radial-gradient(circle at 84% 15%, rgba(204, 255, 0, 0.08), transparent 22%),
+        radial-gradient(circle at 72% 84%, rgba(59, 130, 246, 0.06), transparent 24%);
       filter:blur(24px);
       animation:ambient 16s ease-in-out infinite alternate;
+      transition: opacity 0.6s ease;
+    }
+    html.dark body::before {
+      background:
+        radial-gradient(circle at 14% 18%, rgba(139, 92, 246, 0.15), transparent 25%),
+        radial-gradient(circle at 84% 15%, rgba(204, 255, 0, 0.06), transparent 22%),
+        radial-gradient(circle at 72% 84%, rgba(59, 130, 246, 0.05), transparent 24%);
     }
     body::after{
       content:"";
@@ -86,6 +119,9 @@
       background-image:radial-gradient(rgba(255,255,255,.35) .7px,transparent .7px);
       background-size:5px 5px;
       mask-image:linear-gradient(to bottom,transparent,black 18%,black 80%,transparent);
+    }
+    html.dark body::after {
+      opacity: .08;
     }
 
     @keyframes ambient{
@@ -101,8 +137,8 @@
       to{opacity:1;transform:none}
     }
     @keyframes pulse{
-      0%,100%{box-shadow:0 0 0 0 rgba(215,255,67,0)}
-      50%{box-shadow:0 0 0 8px rgba(215,255,67,.08)}
+      0%,100%{box-shadow:0 0 0 0 rgba(204, 255, 0, 0)}
+      50%{box-shadow:0 0 0 8px rgba(204, 255, 0, .08)}
     }
 
     .shell{
@@ -135,13 +171,14 @@
       padding:15px 11px;
       z-index:20;
       animation:slideIn .7s var(--spring) both;
+      transition: background-color 0.6s ease, border-color 0.6s ease, box-shadow 0.6s ease;
     }
     .dock-logo{
       width:56px;height:56px;border-radius:20px;
       display:grid;place-items:center;
       color:#11150b;
       background:var(--c-accent);
-      box-shadow:0 10px 30px rgba(215,255,67,.2);
+      box-shadow:0 10px 30px rgba(204, 255, 0, .2);
       margin-bottom:24px;
       transition:.35s var(--spring);
       flex:none;
@@ -212,7 +249,7 @@
     .dock-item:hover{color:var(--c-text);transform:translateY(-4px) scale(1.03);background:var(--c-surface-3)}
     .dock-item.active{
       color:#11150b;background:var(--c-accent);
-      box-shadow:0 10px 26px rgba(215,255,67,.18);
+      box-shadow:0 10px 26px rgba(204, 255, 0, .18);
     }
     .dock-item.active::after{
       content:"";position:absolute;right:-12px;width:4px;height:20px;
@@ -273,7 +310,7 @@
       display:flex;align-items:center;justify-content:space-between;
       gap:18px;padding:12px 14px 12px 22px;
       position:sticky;top:18px;z-index:15;
-      transition:transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+      transition:transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, background-color 0.6s ease, border-color 0.6s ease;
     }
     .top-shell:hover{
       box-shadow: 0 30px 80px rgba(0,0,0,.45);
@@ -292,11 +329,11 @@
       min-height:48px;border:1px solid var(--c-line);border-radius:18px;
       background:var(--c-surface-2);display:flex;align-items:center;gap:10px;
       padding:7px 13px;color:var(--c-text);
-      transition:transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+      transition:transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background-color 0.6s ease;
     }
     .profile-pill:hover{
       transform: translateY(-2px);
-      border-color: rgba(215,255,67,.4);
+      border-color: rgba(204, 255, 0, .4);
     }
     .status-dot{width:9px;height:9px;border-radius:50%;background:var(--c-accent);animation:pulse 2s infinite}
     .status-pill span:last-child{font-size:12px;font-weight:700;color:var(--c-muted)}
@@ -313,14 +350,14 @@
       border:1px solid var(--c-line);
       border-radius:34px;
       background:
-        radial-gradient(circle at 86% 20%,rgba(215,255,67,.2),transparent 23%),
-        radial-gradient(circle at 66% 100%,rgba(167,139,250,.17),transparent 28%),
+        radial-gradient(circle at 86% 20%,rgba(204, 255, 0, .2),transparent 23%),
+        radial-gradient(circle at 66% 100%,rgba(139, 92, 246, .12),transparent 28%),
         var(--c-surface);
       box-shadow:var(--c-shadow);
       display:flex;align-items:flex-end;justify-content:space-between;
       gap:30px;
       animation:pop .7s var(--spring) .12s both;
-      transition:transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+      transition:transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease, background-color 0.6s ease, border-color 0.6s ease;
     }
     .hero:hover{
       transform: translateY(-4px);
@@ -329,13 +366,13 @@
     .hero::before{
       content:"";
       position:absolute;width:300px;height:300px;border-radius:50%;
-      right:-90px;top:-120px;border:1px solid rgba(215,255,67,.18);
-      box-shadow:0 0 0 30px rgba(215,255,67,.025),0 0 0 60px rgba(215,255,67,.02);
+      right:-90px;top:-120px;border:1px solid rgba(204, 255, 0, .18);
+      box-shadow:0 0 0 30px rgba(204, 255, 0, .025),0 0 0 60px rgba(204, 255, 0, .02);
     }
     .hero-copy{position:relative;z-index:1;max-width:700px}
     .hero-kicker{
       display:inline-flex;align-items:center;gap:7px;
-      padding:7px 11px;border-radius:999px;background:rgba(215,255,67,.1);
+      padding:7px 11px;border-radius:999px;background:rgba(204, 255, 0, .1);
       color:var(--c-accent);font-size:11px;font-weight:800;letter-spacing:.08em;
       text-transform:uppercase;margin-bottom:15px;
     }
@@ -348,7 +385,7 @@
     .hero-orb{
       width:130px;height:130px;flex:none;border-radius:42% 58% 60% 40%;
       background:var(--c-accent);display:grid;place-items:center;color:#11150b;
-      transform:rotate(8deg);box-shadow:0 30px 70px rgba(215,255,67,.17);
+      transform:rotate(8deg);box-shadow:0 30px 70px rgba(204, 255, 0, .17);
       animation:orb 7s ease-in-out infinite;
       transition:transform 0.5s ease;
     }
@@ -375,11 +412,11 @@
       position:relative;overflow:hidden;
       border:1px solid var(--c-line);border-radius:25px;
       background:var(--c-surface);padding:21px;
-      min-height:160px;transition:all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      min-height:160px;transition:all 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.6s ease, border-color 0.6s ease;
       animation:pop .6s var(--spring) both;
     }
     .metric:nth-child(2){animation-delay:.05s}.metric:nth-child(3){animation-delay:.1s}.metric:nth-child(4){animation-delay:.15s}
-    .metric:hover{transform:translateY(-8px) scale(1.02);border-color:rgba(215,255,67,.4);box-shadow:0 30px 70px rgba(0,0,0,.4)}
+    .metric:hover{transform:translateY(-8px) scale(1.02);border-color:rgba(204, 255, 0, .4);box-shadow:0 30px 70px rgba(0,0,0,.4)}
     .metric::after{
       content:"";position:absolute;width:100px;height:100px;border-radius:50%;
       right:-42px;bottom:-45px;background:var(--metric-color,var(--c-accent));opacity:.09;
@@ -402,7 +439,7 @@
       border:1px solid var(--c-line);border-radius:28px;background:var(--c-surface);
       padding:24px;box-shadow:0 18px 45px rgba(0,0,0,.14);margin-top:16px;
       overflow:hidden;
-      transition:transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+      transition:transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease, background-color 0.6s ease, border-color 0.6s ease;
     }
     .card:hover{
       transform: translateY(-3px);
@@ -416,7 +453,7 @@
       min-height:42px;padding:0 17px;border:0;border-radius:999px;
       background:var(--c-accent);color:#10140a;font-weight:800;font-size:12px;
       cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px;
-      transition:all 0.4s cubic-bezier(0.16, 1, 0.3, 1);box-shadow:0 9px 24px rgba(215,255,67,.13);
+      transition:all 0.4s cubic-bezier(0.16, 1, 0.3, 1);box-shadow:0 9px 24px rgba(204, 255, 0, .13);
       position: relative;
       overflow: hidden;
     }
@@ -435,14 +472,14 @@
     .btn:hover::before {
       left: 125%;
     }
-    .btn:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 16px 35px rgba(215,255,67,.25)}
+    .btn:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 16px 35px rgba(204, 255, 0, .25)}
     .btn.ghost{background:var(--c-surface-3);color:var(--c-text);box-shadow:none}
     .btn.ghost:hover{background:var(--c-surface-2);transform: translateY(-3px) scale(1.02)}
 
-    .table-wrap{overflow:auto;border:1px solid var(--c-line);border-radius:20px}
+    .table-wrap{overflow:auto;border:1px solid var(--c-line);border-radius:20px;transition: border-color 0.6s ease;}
     table{width:100%;border-collapse:collapse;min-width:680px}
-    th,td{padding:15px 17px;text-align:left;border-bottom:1px solid var(--c-line);font-size:12px}
-    th{color:var(--c-muted);background:var(--c-surface-3);font-size:10px;text-transform:uppercase;letter-spacing:.09em}
+    th,td{padding:15px 17px;text-align:left;border-bottom:1px solid var(--c-line);font-size:12px;transition: border-color 0.6s ease;}
+    th{color:var(--c-muted);background:var(--c-surface-3);font-size:10px;text-transform:uppercase;letter-spacing:.09em;transition: background-color 0.6s ease;}
     td{color:var(--c-text)}
     tr:last-child td{border-bottom:0}
     tbody tr{transition:background-color 0.3s ease, transform 0.3s ease}
@@ -461,9 +498,9 @@
     input,select{
       width:100%;height:48px;border:1px solid var(--c-line);border-radius:16px;
       background:var(--c-surface-3);color:var(--c-text);padding:0 15px;outline:0;
-      transition:all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      transition:all 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.6s ease, border-color 0.6s ease;
     }
-    input:focus,select:focus{border-color:rgba(215,255,67,.55);box-shadow:0 0 0 4px rgba(215,255,67,.08);transform: translateY(-1px)}
+    input:focus,select:focus{border-color:rgba(204, 255, 0, .55);box-shadow:0 0 0 4px rgba(204, 255, 0, .08);transform: translateY(-1px)}
     .form-actions{margin-top:8px}
 
     .wallet{
@@ -488,14 +525,189 @@
 
     .empty-note{padding:40px;text-align:center;color:var(--c-muted);font-size:13px}
 
+    /* Mobile Dock */
     .mobile-dock{
-      display:none;position:fixed;left:14px;right:14px;bottom:14px;z-index:50;
-      border:1px solid var(--c-line);border-radius:25px;padding:8px;
-      background:color-mix(in srgb,var(--c-surface) 90%,transparent);
-      backdrop-filter:blur(25px);box-shadow:var(--c-shadow)
+      display:none;
+      position:fixed;
+      left:14px;
+      right:14px;
+      bottom:14px;
+      z-index:50;
+      border:1px solid var(--c-line);
+      border-radius:25px;
+      padding:8px 12px;
+      background:color-mix(in srgb,var(--c-surface) 92%,transparent);
+      backdrop-filter:blur(25px);
+      box-shadow:var(--c-shadow);
+      gap:8px;
+      align-items:center;
+      transition: background-color 0.6s ease, border-color 0.6s ease;
     }
-    .mobile-dock .dock-item{flex:1;width:auto;height:48px}
-    .mobile-dock nav{display:flex}
+
+    .mobile-dock .dock-nav-mobile {
+      display:flex;
+      flex:1;
+      gap:4px;
+      overflow-x:auto;
+      justify-content:center;
+    }
+
+    .mobile-dock .dock-item-mobile {
+      flex:0 0 auto;
+      width:44px;
+      height:44px;
+      border:0;
+      background:transparent;
+      color:var(--c-muted);
+      border-radius:14px;
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      transition:all .35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-dock .dock-item-mobile.active {
+      color:#11150b;
+      background:var(--c-accent);
+      box-shadow:0 8px 20px rgba(204, 255, 0, .18);
+    }
+
+    .mobile-dock .dock-item-mobile:hover {
+      background:var(--c-surface-3);
+      color:var(--c-text);
+    }
+
+    .mobile-dock .dock-actions {
+      display:flex;
+      gap:4px;
+      flex:0 0 auto;
+    }
+
+    .mobile-dock .dock-action-btn {
+      width:38px;
+      height:38px;
+      border:0;
+      border-radius:12px;
+      background:transparent;
+      color:var(--c-muted);
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      transition:all .35s cubic-bezier(0.16, 1, 0.3, 1);
+      font-size:18px;
+    }
+
+    .mobile-dock .dock-action-btn:hover {
+      background:var(--c-surface-3);
+      color:var(--c-text);
+      transform:scale(1.08);
+    }
+
+    .mobile-dock .dock-action-btn.logout {
+      color:var(--c-red);
+    }
+
+    .mobile-dock .dock-action-btn.logout:hover {
+      background:rgba(239,68,68,.15);
+      color:var(--c-red);
+    }
+
+    /* ============================================================
+       RTL TOGGLE BUTTON - Matches about page style
+       ============================================================ */
+    .lx-direction-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 46px;
+      border: 0;
+      border-radius: 16px;
+      background: transparent;
+      color: var(--c-muted);
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      flex-shrink: 0;
+    }
+
+    .lx-direction-toggle:hover {
+      background: var(--c-surface-3);
+      color: var(--c-text);
+      transform: scale(1.08) translateY(-2px);
+    }
+
+    .lx-direction-icon {
+      width: 16px;
+      height: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .lx-direction-icon span {
+      display: block;
+      height: 2px;
+      background: currentColor;
+      border-radius: 2px;
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .lx-direction-icon span:nth-child(1) { width: 100%; }
+    .lx-direction-icon span:nth-child(2) { width: 65%; margin-inline-start: auto; }
+    .lx-direction-icon span:nth-child(3) { width: 85%; }
+
+    /* RTL state - mirror the icon */
+    html[dir="rtl"] .lx-direction-icon {
+      transform: scaleX(-1);
+    }
+
+    /* Mobile RTL toggle icon */
+    .lx-direction-icon-mobile {
+      width: 14px;
+      height: 11px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .lx-direction-icon-mobile span {
+      display: block;
+      height: 2px;
+      background: currentColor;
+      border-radius: 2px;
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .lx-direction-icon-mobile span:nth-child(1) { width: 100%; }
+    .lx-direction-icon-mobile span:nth-child(2) { width: 65%; margin-inline-start: auto; }
+    .lx-direction-icon-mobile span:nth-child(3) { width: 85%; }
+
+    html[dir="rtl"] .lx-direction-icon-mobile {
+      transform: scaleX(-1);
+    }
+
+    /* Make dock-small consistent with direction toggle */
+    .dock-small {
+      width: 48px;
+      height: 46px;
+      border: 0;
+      border-radius: 16px;
+      background: transparent;
+      color: var(--c-muted);
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dock-small:hover {
+      background: var(--c-surface-3);
+      color: var(--c-text);
+      transform: scale(1.08) translateY(-2px);
+    }
 
     @media(max-width:1050px){
       .metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -504,7 +716,7 @@
     @media(max-width:780px){
       .shell{display:block;padding:10px 10px 88px}
       .dock{display:none}
-      .mobile-dock{display:block}
+      .mobile-dock{display:flex}
       .top-shell{top:10px;border-radius:23px;padding:10px 11px 10px 16px}
       .status-pill{display:none}
       .content{padding:18px 0}
@@ -527,6 +739,9 @@
       .metric-label{font-size:9px}
       .metric-value{font-size:21px}
       .section-head{margin-top:23px}
+      .mobile-dock{padding:6px 8px;gap:4px;left:8px;right:8px;bottom:8px;border-radius:20px}
+      .mobile-dock .dock-item-mobile{width:38px;height:38px;border-radius:11px}
+      .mobile-dock .dock-action-btn{width:34px;height:34px;border-radius:10px}
     }
 
     @media(prefers-reduced-motion:reduce){
@@ -550,7 +765,7 @@
           <span class="material-symbols-rounded">local_mall</span><span class="dock-label">My Orders</span>
         </button>
         <button class="dock-item" data-tab="schedule" title="Schedule Pickup">
-          <span class="material-symbols-rounded">event_add</span><span class="dock-label">Schedule Pickup</span>
+          <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="18px" fill="#1f1f1f"><path d="M216-96q-29 0-50.5-21.5T144-168v-528q0-29.7 21.5-50.85Q187-768 216-768h72v-96h72v96h240v-96h72v96h72q29 0 50.5 21.15T816-696v244l-72 72v-148H216v360h226l72 72H216Zm0-504h528v-96H216v96Zm0 0v-96 96ZM640-72 504-208l51-51 85 85 170-170 51 51L640-72Z"/></svg><span class="dock-label">Schedule Pickup</span>
         </button>
         <button class="dock-item" data-tab="wallet" title="Wallet & Rewards">
           <span class="material-symbols-rounded">account_balance_wallet</span><span class="dock-label">Wallet & Rewards</span>
@@ -565,10 +780,24 @@
           <span class="material-symbols-rounded toggle-icon">keyboard_double_arrow_right</span>
           <span class="nav-toggle-label">Expand sidebar</span>
         </button>
-        <button class="dock-small" data-theme-toggle title="Toggle theme">
-          <span class="material-symbols-rounded">dark_mode</span>
+        <button
+          type="button"
+          class="lx-direction-toggle"
+          data-rtl-toggle
+          aria-label="Toggle LTR / RTL"
+          aria-pressed="false"
+          title="Toggle LTR / RTL"
+        >
+          <span class="lx-direction-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
         </button>
-        <a href="index.html" class="dock-small" style="display:grid;place-items:center;color:var(--c-red)" title="Log out">
+        <button class="dock-small" data-theme-toggle title="Toggle theme">
+          <span class="material-symbols-rounded" id="desktopThemeIcon">dark_mode</span>
+        </button>
+        <a href="index.html" class="dock-small" style="display:inline-flex;align-items:center;justify-content:center;color:var(--c-red);text-decoration:none;" title="Log out">
           <span class="material-symbols-rounded">logout</span>
         </a>
       </div>
@@ -605,19 +834,19 @@
           </div>
 
           <div class="metrics">
-            <article class="metric" style="--metric-color:#d7ff43">
+            <article class="metric" style="--metric-color:#ccff00">
               <div class="metric-top"><div class="metric-icon"><span class="material-symbols-rounded">package_2</span></div><span class="metric-tag">LIVE</span></div>
               <div class="metric-label">Active Orders</div><div class="metric-value" id="statActive">1</div>
             </article>
-            <article class="metric" style="--metric-color:#a78bfa">
+            <article class="metric" style="--metric-color:#8b5cf6">
               <div class="metric-top"><div class="metric-icon"><span class="material-symbols-rounded">checkroom</span></div><span class="metric-tag">TOTAL</span></div>
               <div class="metric-label">Total Processed</div><div class="metric-value" id="statProcessed">142 pcs</div>
             </article>
-            <article class="metric" style="--metric-color:#72b8ff">
+            <article class="metric" style="--metric-color:#3b82f6">
               <div class="metric-top"><div class="metric-icon"><span class="material-symbols-rounded">wallet</span></div><span class="metric-tag">CREDIT</span></div>
               <div class="metric-label">Wallet Balance</div><div class="metric-value" id="statWallet">₹450</div>
             </article>
-            <article class="metric" style="--metric-color:#ffb95c">
+            <article class="metric" style="--metric-color:#f59e0b">
               <div class="metric-top"><div class="metric-icon"><span class="material-symbols-rounded">military_tech</span></div><span class="metric-tag">REWARDS</span></div>
               <div class="metric-label">Loyalty Points</div><div class="metric-value" id="statPoints">380 pts</div>
             </article>
@@ -730,18 +959,143 @@
     </main>
   </div>
 
+  <!-- ============================================================
+       MOBILE DOCK WITH THEME TOGGLE, RTL, AND LOGOUT
+       ============================================================ -->
   <div class="mobile-dock">
-    <nav>
-      <button class="dock-item active" data-tab="overview"><span class="material-symbols-rounded">home</span></button>
-      <button class="dock-item" data-tab="orders"><span class="material-symbols-rounded">local_mall</span></button>
-      <button class="dock-item" data-tab="schedule"><span class="material-symbols-rounded">event_add</span></button>
-      <button class="dock-item" data-tab="wallet"><span class="material-symbols-rounded">account_balance_wallet</span></button>
-      <button class="dock-item" data-tab="settings"><span class="material-symbols-rounded">settings</span></button>
+    <nav class="dock-nav-mobile">
+      <button class="dock-item-mobile active" data-tab="overview" aria-label="Overview">
+        <span class="material-symbols-rounded" style="font-size:20px;">home</span>
+      </button>
+      <button class="dock-item-mobile" data-tab="orders" aria-label="My Orders">
+        <span class="material-symbols-rounded" style="font-size:20px;">local_mall</span>
+      </button>
+      <button class="dock-item-mobile" data-tab="schedule" aria-label="Schedule Pickup">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#1f1f1f"><path d="M216-96q-29 0-50.5-21.5T144-168v-528q0-29.7 21.5-50.85Q187-768 216-768h72v-96h72v96h240v-96h72v96h72q29 0 50.5 21.15T816-696v244l-72 72v-148H216v360h226l72 72H216Zm0-504h528v-96H216v96Zm0 0v-96 96ZM640-72 504-208l51-51 85 85 170-170 51 51L640-72Z"/></svg>
+      </button>
+      <button class="dock-item-mobile" data-tab="wallet" aria-label="Wallet & Rewards">
+        <span class="material-symbols-rounded" style="font-size:20px;">account_balance_wallet</span>
+      </button>
+      <button class="dock-item-mobile" data-tab="settings" aria-label="Account Settings">
+        <span class="material-symbols-rounded" style="font-size:20px;">settings</span>
+      </button>
     </nav>
+
+    <div class="dock-actions">
+      <!-- Theme Toggle -->
+      <button class="dock-action-btn" data-theme-toggle-mobile aria-label="Toggle theme" title="Toggle theme">
+        <span class="material-symbols-rounded" id="mobileThemeIcon" style="font-size:18px;">dark_mode</span>
+      </button>
+
+      <!-- RTL Toggle (matches about page style) -->
+      <button class="dock-action-btn" data-rtl-toggle-mobile aria-label="Toggle LTR / RTL" aria-pressed="false" title="Toggle LTR / RTL">
+        <span class="lx-direction-icon-mobile">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
+      <!-- Logout -->
+      <a href="index.html" class="dock-action-btn logout" aria-label="Log out" title="Log out">
+        <span class="material-symbols-rounded" style="font-size:18px;">logout</span>
+      </a>
+    </div>
   </div>
 
-  <script src="assets/js/main.js"></script>
   <script>
+    // ============================================================
+    // THEME ENGINE - Uses the same system as login/register pages
+    // ============================================================
+    function applyTheme(theme) {
+      const isDark = theme === 'dark';
+      const root = document.documentElement;
+      
+      // Use the same class-based theme system as main.css
+      root.classList.toggle('dark', isDark);
+      
+      // Also set data-theme for backward compatibility
+      root.dataset.theme = isDark ? 'dark' : 'light';
+      
+      localStorage.setItem('laundrix-theme', theme);
+
+      // Update desktop theme icon
+      const desktopIcon = document.getElementById('desktopThemeIcon');
+      if (desktopIcon) {
+        desktopIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
+      }
+
+      // Update mobile theme icon
+      const mobileIcon = document.getElementById('mobileThemeIcon');
+      if (mobileIcon) {
+        mobileIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
+      }
+
+      // Update all theme toggle buttons
+      document.querySelectorAll('[data-theme-toggle], [data-theme-toggle-mobile]').forEach(btn => {
+        btn.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+        btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      });
+    }
+
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.contains('dark');
+      const newTheme = isDark ? 'light' : 'dark';
+      applyTheme(newTheme);
+    }
+
+    // Desktop theme toggle
+    document.querySelector('[data-theme-toggle]')?.addEventListener('click', toggleTheme);
+
+    // Mobile theme toggle
+    document.querySelector('[data-theme-toggle-mobile]')?.addEventListener('click', toggleTheme);
+
+    // Initialize theme from localStorage
+    const savedTheme = localStorage.getItem('laundrix-theme');
+    const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = savedTheme || (systemDark ? 'dark' : 'light');
+    applyTheme(initialTheme);
+
+    // Listen for system theme changes
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+        if (localStorage.getItem('laundrix-theme')) return;
+        applyTheme(event.matches ? 'dark' : 'light');
+      });
+    }
+
+    // ============================================================
+    // RTL ENGINE - Matches about page behavior
+    // ============================================================
+    function applyDirection(direction) {
+      document.documentElement.dir = direction;
+      localStorage.setItem('laundrix-direction', direction);
+
+      const isRtl = direction === 'rtl';
+      document.querySelectorAll('[data-rtl-toggle], [data-rtl-toggle-mobile]').forEach(btn => {
+        btn.setAttribute('aria-pressed', isRtl ? 'true' : 'false');
+      });
+    }
+
+    function toggleRTL() {
+      const currentDir = document.documentElement.dir || 'ltr';
+      const newDir = currentDir === 'rtl' ? 'ltr' : 'rtl';
+      applyDirection(newDir);
+    }
+
+    // Desktop RTL toggle
+    document.querySelector('[data-rtl-toggle]')?.addEventListener('click', toggleRTL);
+
+    // Mobile RTL toggle
+    document.querySelector('[data-rtl-toggle-mobile]')?.addEventListener('click', toggleRTL);
+
+    // Initialize RTL
+    const storedDirection = localStorage.getItem('laundrix-direction') || 'ltr';
+    applyDirection(storedDirection);
+
+    // ============================================================
+    // SIDEBAR EXPAND/COLLAPSE
+    // ============================================================
     const shell = document.querySelector(".shell");
     const navToggle = document.getElementById("navToggle");
     const navStateKey = "laundrix-sidebar-expanded";
@@ -772,6 +1126,9 @@
       }
     });
 
+    // ============================================================
+    // TAB SWITCHING
+    // ============================================================
     const titles = {
       overview: "Dashboard Overview",
       orders: "My Order History",
@@ -782,12 +1139,12 @@
 
     function switchTab(tabId) {
       document.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("active"));
-      document.querySelectorAll(".dock-item[data-tab]").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(".dock-item[data-tab], .dock-item-mobile[data-tab]").forEach(b => b.classList.remove("active"));
 
       const pane = document.getElementById("tab-" + tabId);
       if (pane) pane.classList.add("active");
 
-      document.querySelectorAll('.dock-item[data-tab="' + tabId + '"]').forEach(b => b.classList.add("active"));
+      document.querySelectorAll('.dock-item[data-tab="' + tabId + '"], .dock-item-mobile[data-tab="' + tabId + '"]').forEach(b => b.classList.add("active"));
 
       const title = document.getElementById("pageTitle");
       if (title) title.textContent = titles[tabId] || "Dashboard";
@@ -795,12 +1152,15 @@
       window.scrollTo({top: 0, behavior: "smooth"});
     }
 
-    document.querySelectorAll(".dock-item[data-tab]").forEach(btn => {
+    document.querySelectorAll(".dock-item[data-tab], .dock-item-mobile[data-tab]").forEach(btn => {
       btn.addEventListener("click", () => switchTab(btn.dataset.tab));
     });
 
     document.querySelector(".profile-pill")?.addEventListener("click", () => switchTab("settings"));
 
+    // ============================================================
+    // DOM CONTENT LOADED SETUP
+    // ============================================================
     document.addEventListener("DOMContentLoaded", () => {
       const dateInput = document.getElementById("dashDate");
       if (dateInput) {
@@ -810,14 +1170,11 @@
         dateInput.min = value;
         dateInput.value = value;
       }
-
-      // Respect the shared LaundriX theme system when available.
-      const storedTheme = localStorage.getItem("lx-theme");
-      if (storedTheme === "light" || storedTheme === "dark") {
-        document.documentElement.dataset.theme = storedTheme;
-      }
     });
 
+    // ============================================================
+    // SCHEDULE FORM
+    // ============================================================
     document.getElementById("dashboardScheduleForm")?.addEventListener("submit", e => {
       e.preventDefault();
 
@@ -844,6 +1201,9 @@
       switchTab("orders");
     });
 
+    // ============================================================
+    // SETTINGS FORM
+    // ============================================================
     document.getElementById("settingsForm")?.addEventListener("submit", e => {
       e.preventDefault();
 
@@ -861,7 +1221,9 @@
       alert("Account settings updated successfully!");
     });
 
-    // Functional wallet balance.
+    // ============================================================
+    // WALLET
+    // ============================================================
     let walletBalance = Number(localStorage.getItem("laundrix-wallet") || 450);
     const walletDisplay = document.getElementById("walletBalanceDisplay");
     const walletStat = document.getElementById("statWallet");
@@ -901,7 +1263,9 @@
 
     renderWallet();
 
-    // Small pointer glow for the expressive shell feel.
+    // ============================================================
+    // POINTER GLOW
+    // ============================================================
     window.addEventListener("pointermove", e => {
       const x = (e.clientX / innerWidth) * 100;
       const y = (e.clientY / innerHeight) * 100;

@@ -1,0 +1,1202 @@
+/* ============================================================
+   LAUNDRIX — COMIC STYLE UI (VIOLET BG & LIME/YELLOW HIGHLIGHTS)
+   ============================================================ */
+
+:root {
+  --lx-container: min(1280px, 100% - clamp(20px, 4vw, 64px));
+  --lx-header-height: 76px;
+
+  /* Reference-Inspired Palette: Soft Violet Background, Lime/Yellow Highlights, Solid Colors */
+  --lx-primary: #8b5cf6;
+  --lx-primary-rgb: 139, 92, 246;
+  --lx-primary-hover: #7c3aed;
+  --lx-primary-dark: #5b21b6;
+  --lx-primary-light: #ede9fe;
+  --lx-primary-glow: rgba(139, 92, 246, 0.3);
+
+  --lx-selected-green: #ccff00; /* Lime-Yellow Highlight from Reference */
+  --lx-secondary: #8b5cf6;
+  --lx-accent: #06b6d4;
+  --lx-gold: #f59e0b;
+
+  /* Comic Font Stacks */
+  --lx-font-display: "Comic Neue", "Comic Sans MS", "Chalkboard SE", cursive, sans-serif;
+  --lx-font-body: "Comic Neue", "Comic Sans MS", "Chalkboard SE", cursive, sans-serif;
+  --lx-font-comic: "Comic Neue", "Comic Sans MS", "Chalkboard SE", cursive, sans-serif;
+
+  /* Surfaces: Soft Violet Tinted Canvas Background */
+  --lx-bg: #f3f0fa;
+  --lx-bg-subtle: #eae5f5;
+  --lx-surface: #ffffff;
+  --lx-surface-glass: #ffffff;
+  --lx-surface-card: #ffffff;
+
+  /* 100% Readable Dark Inked Text Colors */
+  --lx-text: #0f172a;
+  --lx-text-soft: #334155;
+  --lx-text-muted: #64748b;
+  --lx-text-inverse: #ffffff;
+
+  /* Comic-style Bold Borders */
+  --lx-border: #2d1b69;
+  --lx-border-subtle: #5b3c8a;
+  --lx-border-comic: 3px solid #2d1b69;
+
+  /* Solid Clean Depth Shadows */
+  --lx-shadow-sm: 6px 6px 0px rgba(45, 27, 105, 0.15);
+  --lx-shadow-md: 8px 8px 0px rgba(45, 27, 105, 0.18);
+  --lx-shadow-lg: 10px 10px 0px rgba(45, 27, 105, 0.2);
+  --lx-shadow-xl: 12px 12px 0px rgba(45, 27, 105, 0.25);
+
+  /* Rounded Radii */
+  --lx-radius-xs: 4px;
+  --lx-radius-sm: 8px;
+  --lx-radius-md: 12px;
+  --lx-radius-lg: 16px;
+  --lx-radius-xl: 24px;
+  --lx-radius-pill: 9999px;
+
+  /* Comic Animation Speed */
+  --lx-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --lx-transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Dark Theme Compatibility */
+html.dark {
+  --lx-bg: #120e1f;
+  --lx-bg-subtle: #1a142e;
+  --lx-surface: #221b3b;
+  --lx-surface-glass: #221b3b;
+  --lx-surface-card: #221b3b;
+
+  --lx-text: #ffffff;
+  --lx-text-soft: #c4b5fd;
+  --lx-text-muted: #9ca3af;
+  --lx-text-inverse: #120e1f;
+
+  --lx-border: #7c3aed;
+  --lx-border-subtle: rgba(139, 92, 246, 0.4);
+
+  --lx-shadow-sm: 6px 6px 0px rgba(0, 0, 0, 0.4);
+  --lx-shadow-md: 8px 8px 0px rgba(0, 0, 0, 0.5);
+  --lx-shadow-lg: 10px 10px 0px rgba(0, 0, 0, 0.6);
+  --lx-shadow-xl: 12px 12px 0px rgba(0, 0, 0, 0.7);
+}
+
+/* ------------------------------------------------------------
+   GLOBAL RESETS
+   ------------------------------------------------------------ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--lx-bg);
+  color: var(--lx-text);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--lx-font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  background-color: var(--lx-bg);
+  color: var(--lx-text);
+  overflow-x: hidden;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  position: relative;
+}
+
+body.lx-menu-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
+/* Comic Style Headings - BOOM! POW! */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--lx-font-display);
+  font-weight: 900;
+  color: var(--lx-text);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-shadow: 3px 3px 0px rgba(204, 255, 0, 0.3);
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: -0.03em;
+}
+
+h1 .highlight {
+  display: inline-block;
+  background: var(--lx-selected-green);
+  color: #0f172a;
+  padding: 0.05em 0.2em;
+  transform: rotate(-1deg);
+  box-shadow: 4px 4px 0px #2d1b69;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  position: relative;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 6px;
+  background: var(--lx-selected-green);
+  border-radius: 2px;
+  box-shadow: 4px 4px 0px #2d1b69;
+}
+
+p, span, a, li, label, strong, small {
+  text-shadow: none !important;
+}
+
+/* Comic Text Effects - POW! */
+.lx-comic-text {
+  font-family: var(--lx-font-comic);
+  font-weight: 700;
+  display: inline-block;
+  padding: 0.1em 0.3em;
+  background: var(--lx-selected-green);
+  color: #0f172a;
+  transform: rotate(-1deg);
+  box-shadow: 4px 4px 0px #2d1b69;
+}
+
+.lx-comic-badge {
+  display: inline-block;
+  padding: 4px 16px;
+  font-family: var(--lx-font-comic);
+  font-weight: 900;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  background: var(--lx-selected-green);
+  color: #0f172a;
+  transform: rotate(2deg);
+  box-shadow: 3px 3px 0px #2d1b69;
+  border-radius: 4px;
+}
+
+/* Comic Links */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--lx-transition);
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+
+a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: var(--lx-selected-green);
+  transition: width 0.3s var(--lx-ease);
+  border-radius: 2px;
+  box-shadow: 2px 2px 0px #2d1b69;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+img, svg, picture {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--lx-radius-md);
+  border: 3px solid #2d1b69;
+  box-shadow: 8px 8px 0px rgba(45, 27, 105, 0.2);
+  transition: transform 0.4s var(--lx-ease), box-shadow 0.4s var(--lx-ease);
+}
+
+img:hover {
+  transform: translateY(-4px) scale(1.02) rotate(1deg);
+  box-shadow: 10px 10px 0px rgba(45, 27, 105, 0.25);
+}
+
+/* ------------------------------------------------------------
+   COMIC POP ANIMATIONS (BOUNCE & WOBBLE)
+   ------------------------------------------------------------ */
+@keyframes comicPop {
+  0% { transform: scale(0.8) rotate(-3deg); opacity: 0; }
+  60% { transform: scale(1.05) rotate(1deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes comicWobble {
+  0%, 100% { transform: rotate(-2deg) scale(1); }
+  50% { transform: rotate(2deg) scale(1.02); }
+}
+
+@keyframes comicFloat {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+.home-visual, .home-image-card, .home-floating-card {
+  animation: comicFloat 6s ease-in-out infinite;
+}
+
+/* Comic Button Styles - KAPOW! */
+button, .lx-button, .home-primary-button, .home-secondary-button, 
+.home-booking-submit, .dash-btn, .auth-submit-btn, .auth-social-btn, 
+.lx-icon-button, .lx-direction-toggle {
+  transition: transform 0.2s var(--lx-ease), box-shadow 0.2s var(--lx-ease), background-color 0.2s ease !important;
+  font-family: var(--lx-font-comic);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 3px solid #2d1b69 !important;
+  border-radius: var(--lx-radius-sm) !important;
+}
+
+button:hover, .lx-button:hover, .home-primary-button:hover, 
+.home-secondary-button:hover, .home-booking-submit:hover, 
+.dash-btn:hover, .auth-submit-btn:hover, .auth-social-btn:hover {
+  transform: translateY(-4px) rotate(-1deg) !important;
+  box-shadow: 8px 8px 0px rgba(45, 27, 105, 0.25) !important;
+}
+
+button:active, .lx-button:active, .home-primary-button:active, 
+.home-secondary-button:active, .home-booking-submit:active, 
+.dash-btn:active, .auth-submit-btn:active, .auth-social-btn:active, 
+.lx-icon-button:active, .lx-direction-toggle:active {
+  transform: scale(0.95) translateY(2px) !important;
+  box-shadow: 4px 4px 0px rgba(45, 27, 105, 0.15) !important;
+}
+
+.lx-container {
+  width: var(--lx-container);
+  margin-inline: auto;
+}
+
+/* ------------------------------------------------------------
+   COMIC ATMOSPHERIC EFFECTS: ACTION WORDS & POP!
+   ------------------------------------------------------------ */
+
+/* 1. Comic Action Word Effects - BAM! */
+.lx-comic-effect {
+  position: relative;
+  overflow: visible;
+}
+
+.lx-comic-effect::before {
+  content: "✦ BAM! ✦";
+  position: absolute;
+  top: -30px;
+  right: -20px;
+  font-family: var(--lx-font-comic);
+  font-weight: 900;
+  font-size: 18px;
+  color: var(--lx-selected-green);
+  transform: rotate(15deg) scale(0);
+  opacity: 0;
+  transition: all 0.6s var(--lx-ease);
+  text-shadow: 3px 3px 0px #2d1b69;
+  pointer-events: none;
+}
+
+.lx-comic-effect:hover::before {
+  transform: rotate(15deg) scale(1);
+  opacity: 1;
+}
+
+/* 2. POW! Flash Effect */
+.lx-comic-flash {
+  position: relative;
+}
+
+.lx-comic-flash::after {
+  content: "⚡";
+  position: absolute;
+  top: -15px;
+  right: -10px;
+  font-size: 32px;
+  animation: comicFlash 1.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes comicFlash {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+  50% { transform: scale(1.4) rotate(20deg); opacity: 1; }
+}
+
+/* 3. Comic Speech Bubble Effect */
+.lx-speech-bubble {
+  position: relative;
+  background: var(--lx-surface);
+  border: 3px solid #2d1b69;
+  border-radius: var(--lx-radius-md);
+  padding: 20px 24px;
+  box-shadow: 8px 8px 0px rgba(45, 27, 105, 0.15);
+}
+
+.lx-speech-bubble::before {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 30px;
+  width: 20px;
+  height: 20px;
+  background: var(--lx-surface);
+  border-right: 3px solid #2d1b69;
+  border-bottom: 3px solid #2d1b69;
+  transform: rotate(45deg);
+  box-shadow: 8px 8px 0px rgba(45, 27, 105, 0.15);
+}
+
+/* ------------------------------------------------------------
+   HEADER & NAVIGATION (COMIC STYLE)
+   ------------------------------------------------------------ */
+.lx-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding-block: 16px;
+  transition: padding 0.4s ease;
+}
+
+.lx-header.is-scrolled {
+  padding-block: 8px;
+}
+
+.lx-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 18px 10px 22px;
+  border-radius: var(--lx-radius-md);
+  background: var(--lx-surface);
+  border: 3px solid #2d1b69;
+  box-shadow: 8px 8px 0px rgba(45, 27, 105, 0.15);
+  transition: var(--lx-transition);
+}
+
+.lx-header.is-scrolled .lx-header-inner {
+  box-shadow: 10px 10px 0px rgba(45, 27, 105, 0.2);
+  border-color: var(--lx-selected-green);
+}
+
+/* Brand - Comic Style */
+.lx-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.lx-brand-mark {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--lx-radius-sm);
+  background: var(--lx-selected-green);
+  display: grid;
+  place-items: center;
+  color: #0f172a;
+  border: 3px solid #2d1b69;
+  box-shadow: 4px 4px 0px rgba(45, 27, 105, 0.2);
+  transition: transform 0.4s var(--lx-ease);
+  font-size: 20px;
+  font-weight: 900;
+  transform: rotate(-2deg);
+}
+
+.lx-brand:hover .lx-brand-mark {
+  transform: rotate(4deg) scale(1.08);
+}
+
+.lx-brand-name {
+  font-family: var(--lx-font-display);
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--lx-text);
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0px rgba(204, 255, 0, 0.3);
+}
+
+.lx-brand-name span {
+  color: var(--lx-primary);
+  background: var(--lx-selected-green);
+  padding: 0.05em 0.2em;
+  transform: rotate(-2deg);
+  display: inline-block;
+}
+
+/* Desktop Navbar */
+.lx-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: nowrap;
+}
+
+.lx-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--lx-text-soft);
+  border-radius: var(--lx-radius-sm);
+  border: 2px solid transparent;
+  transition: var(--lx-transition);
+  white-space: nowrap;
+  font-family: var(--lx-font-comic);
+}
+
+.lx-nav-link:hover {
+  color: var(--lx-text);
+  background: rgba(204, 255, 0, 0.2);
+  border-color: var(--lx-selected-green);
+  transform: translateY(-2px) rotate(-1deg);
+}
+
+/* Selected Items / Active Links */
+.lx-nav-link.is-active,
+.lx-nav-link.active,
+.lx-nav-dropdown-item.is-current {
+  color: #0f172a !important;
+  background: var(--lx-selected-green) !important;
+  border-color: #2d1b69 !important;
+  box-shadow: 4px 4px 0px rgba(45, 27, 105, 0.2);
+  transform: rotate(-1deg);
+}
+
+/* Home Dropdown */
+.lx-nav-dropdown {
+  position: relative;
+}
+
+.lx-nav-dropdown-trigger {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.lx-nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%) translateY(12px);
+  min-width: 250px;
+  padding: 10px;
+  border-radius: var(--lx-radius-md);
+  background: var(--lx-surface);
+  border: 3px solid #2d1b69;
+  box-shadow: 8px 8px 0px rgba(45, 27, 105, 0.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.4s var(--lx-ease), transform 0.4s var(--lx-ease), visibility 0.4s var(--lx-ease);
+  z-index: 1050;
+}
+
+.lx-nav-dropdown.is-open .lx-nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.lx-nav-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: var(--lx-radius-sm);
+  color: var(--lx-text);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: var(--lx-font-comic);
+  transition: var(--lx-transition);
+  border: 2px solid transparent;
+}
+
+.lx-nav-dropdown-item:hover {
+  background: rgba(204, 255, 0, 0.2);
+  color: #0f172a;
+  transform: translateX(6px) rotate(1deg);
+  border-color: var(--lx-selected-green);
+}
+
+.lx-dropdown-icon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--lx-radius-sm);
+  background: var(--lx-selected-green);
+  color: #0f172a;
+  flex-shrink: 0;
+  border: 2px solid #2d1b69;
+  box-shadow: 3px 3px 0px rgba(45, 27, 105, 0.15);
+}
+
+.lx-dropdown-content strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.lx-dropdown-content small {
+  display: block;
+  font-size: 11px;
+  color: var(--lx-text-muted);
+}
+
+/* Header Actions */
+.lx-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.lx-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: var(--lx-radius-sm);
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  border: 3px solid #2d1b69 !important;
+  transition: var(--lx-transition);
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-family: var(--lx-font-comic);
+}
+
+.lx-button-primary {
+  background: var(--lx-selected-green);
+  color: #0f172a;
+  box-shadow: 6px 6px 0px rgba(45, 27, 105, 0.2);
+}
+
+.lx-button-primary:hover {
+  transform: translateY(-4px) rotate(-1deg);
+  box-shadow: 8px 8px 0px rgba(45, 27, 105, 0.25);
+}
+
+.lx-icon-button, .lx-direction-toggle {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--lx-radius-sm);
+  display: grid;
+  place-items: center;
+  background: var(--lx-surface);
+  border: 3px solid #2d1b69 !important;
+  color: var(--lx-text-soft);
+  cursor: pointer;
+  flex-shrink: 0;
+  box-shadow: 4px 4px 0px rgba(45, 27, 105, 0.12);
+  transition: var(--lx-transition);
+  font-size: 18px;
+}
+
+.lx-icon-button:hover, .lx-direction-toggle:hover {
+  background: rgba(204, 255, 0, 0.2);
+  color: #0f172a;
+  border-color: var(--lx-selected-green);
+  transform: translateY(-3px) rotate(-2deg);
+  box-shadow: 6px 6px 0px rgba(45, 27, 105, 0.2);
+}
+
+.lx-direction-icon {
+  width: 16px;
+  height: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.lx-direction-icon span {
+  display: block;
+  height: 3px;
+  background: currentColor;
+  border-radius: 2px;
+}
+
+.lx-direction-icon span:nth-child(1) { width: 100%; }
+.lx-direction-icon span:nth-child(2) { width: 65%; margin-inline-start: auto; }
+.lx-direction-icon span:nth-child(3) { width: 85%; }
+
+/* Mobile Slide-Down Menu */
+.lx-mobile-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right: 0;
+  margin-inline: 16px;
+  border-radius: var(--lx-radius-md);
+  background: var(--lx-surface);
+  border: 3px solid #2d1b69;
+  box-shadow: 10px 10px 0px rgba(45, 27, 105, 0.2);
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-15px) rotate(-1deg);
+  transition: var(--lx-transition);
+  z-index: 1040;
+  max-height: calc(85dvh - var(--lx-header-height));
+  overflow-y: auto;
+}
+
+.lx-mobile-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) rotate(0deg);
+}
+
+.lx-mobile-menu-inner > a {
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  font-size: 15px;
+  font-weight: 900;
+  text-transform: uppercase;
+  border-radius: var(--lx-radius-sm);
+  color: var(--lx-text-soft);
+  font-family: var(--lx-font-comic);
+  border: 2px solid transparent;
+}
+
+.lx-mobile-menu-inner > a:hover,
+.lx-mobile-menu-inner > a.is-current {
+  background: rgba(204, 255, 0, 0.2);
+  color: #0f172a;
+  border-color: var(--lx-selected-green);
+}
+
+.lx-mobile-home-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-radius: var(--lx-radius-sm);
+  background: transparent;
+  border: 2px solid transparent;
+  font-size: 15px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--lx-text-soft);
+  cursor: pointer;
+  font-family: var(--lx-font-comic);
+}
+
+.lx-mobile-home-links {
+  display: none;
+  padding-left: 16px;
+}
+
+.lx-mobile-home.is-open .lx-mobile-home-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.lx-mobile-home-links a {
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--lx-text-soft);
+  border: 2px solid transparent;
+}
+
+.lx-mobile-home-links a:hover {
+  background: rgba(204, 255, 0, 0.2);
+  border-color: var(--lx-selected-green);
+}
+
+.lx-mobile-menu-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 3px solid #2d1b69;
+}
+
+/* ------------------------------------------------------------
+   FOOTER - COMIC STYLE
+   ------------------------------------------------------------ */
+.lx-footer {
+  background: var(--lx-surface);
+  border-top: 4px solid #2d1b69;
+  position: relative;
+  overflow: hidden;
+  margin-top: clamp(60px, 10vw, 120px);
+  box-shadow: 0 -12px 0px rgba(45, 27, 105, 0.1);
+}
+
+.lx-footer-main {
+  padding-block: 70px 50px;
+}
+
+.lx-footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, 1fr) 1.2fr;
+  gap: clamp(24px, 4vw, 48px);
+}
+
+.lx-footer-description {
+  margin: 16px 0 22px;
+  color: var(--lx-text-soft);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.lx-footer-socials {
+  display: flex;
+  gap: 10px;
+}
+
+.lx-social {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--lx-radius-sm);
+  display: grid;
+  place-items: center;
+  background: var(--lx-bg-subtle);
+  border: 3px solid #2d1b69;
+  color: var(--lx-text-soft);
+  box-shadow: 4px 4px 0px rgba(45, 27, 105, 0.12);
+  transition: var(--lx-transition);
+  font-size: 18px;
+}
+
+.lx-social:hover {
+  background: var(--lx-selected-green);
+  color: #0f172a;
+  border-color: var(--lx-selected-green);
+  transform: translateY(-4px) rotate(-3deg);
+  box-shadow: 6px 6px 0px rgba(45, 27, 105, 0.2);
+}
+
+.lx-footer-column h3 {
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 18px;
+  color: var(--lx-text);
+  font-family: var(--lx-font-comic);
+}
+
+.lx-footer-column a {
+  display: block;
+  font-size: 14px;
+  color: var(--lx-text-soft);
+  margin-bottom: 10px;
+  transition: var(--lx-transition);
+  font-weight: 600;
+  padding: 2px 0;
+}
+
+.lx-footer-column a:hover {
+  color: var(--lx-selected-green);
+  transform: translateX(6px);
+}
+
+.lx-footer-cta-card {
+  padding: 18px 20px;
+  border-radius: var(--lx-radius-md);
+  background: var(--lx-bg-subtle);
+  border: 3px solid #2d1b69;
+  box-shadow: 6px 6px 0px rgba(45, 27, 105, 0.12);
+  margin-bottom: 14px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.lx-footer-cta-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--lx-radius-sm);
+  background: var(--lx-selected-green);
+  color: #0f172a;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border: 3px solid #2d1b69;
+  box-shadow: 4px 4px 0px rgba(45, 27, 105, 0.15);
+  font-size: 20px;
+}
+
+.lx-footer-cta-card strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.lx-footer-cta-card p {
+  font-size: 12px;
+  color: var(--lx-text-soft);
+}
+
+.lx-footer-button {
+  width: 100%;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--lx-selected-green);
+  color: #0f172a;
+  border-radius: var(--lx-radius-sm);
+  font-weight: 900;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: var(--lx-font-comic);
+  transition: var(--lx-transition);
+  border: 3px solid #2d1b69;
+  box-shadow: 6px 6px 0px rgba(45, 27, 105, 0.15);
+}
+
+.lx-footer-button:hover {
+  transform: translateY(-4px) rotate(-1deg);
+  box-shadow: 8px 8px 0px rgba(45, 27, 105, 0.2);
+}
+
+.lx-footer-bottom {
+  border-top: 3px solid #2d1b69;
+  padding-block: 22px;
+  background: var(--lx-bg-subtle);
+}
+
+.lx-footer-bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--lx-text-muted);
+  font-weight: 600;
+}
+
+.lx-footer-bottom-links {
+  display: flex;
+  gap: 20px;
+}
+
+.lx-footer-bottom-links a {
+  font-weight: 700;
+}
+
+.lx-footer-bottom-links a:hover {
+  color: var(--lx-selected-green);
+}
+
+/* ------------------------------------------------------------
+   TOAST NOTIFICATIONS - COMIC STYLE
+   ------------------------------------------------------------ */
+.lx-toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: calc(100vw - 32px);
+}
+
+.lx-toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-radius: var(--lx-radius-md);
+  background: var(--lx-surface);
+  border: 3px solid #2d1b69;
+  box-shadow: 8px 8px 0px rgba(45, 27, 105, 0.15);
+  color: var(--lx-text);
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-family: var(--lx-font-comic);
+  animation: comicPop 0.6s var(--lx-ease) forwards;
+}
+
+.lx-toast.is-leaving {
+  animation: lxToastOut 0.4s ease forwards;
+}
+
+.lx-toast-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--lx-radius-sm);
+  display: grid;
+  place-items: center;
+  background: var(--lx-selected-green);
+  color: #0f172a;
+  flex-shrink: 0;
+  border: 2px solid #2d1b69;
+  box-shadow: 3px 3px 0px rgba(45, 27, 105, 0.12);
+}
+
+@keyframes lxToastIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.8) rotate(-3deg); }
+  to { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+}
+
+@keyframes lxToastOut {
+  to { opacity: 0; transform: translateY(10px) scale(0.9) rotate(2deg); }
+}
+
+/* Scroll Reveals - Comic Style */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(35px) rotate(-1deg);
+  transition: opacity 0.6s var(--lx-ease), transform 0.6s var(--lx-ease);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg);
+}
+
+/* ------------------------------------------------------------
+   STRICT & FLAWLESS RESPONSIVE BREAKPOINTS
+   ------------------------------------------------------------ */
+@media (min-width: 1180px) {
+  .lx-nav {
+    display: flex !important;
+  }
+  .lx-menu-toggle {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1179px) {
+  .lx-nav {
+    display: none !important;
+  }
+  .lx-menu-toggle {
+    display: grid !important;
+  }
+  .lx-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+  .lx-footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .lx-header-inner {
+    padding: 6px 12px;
+  }
+  .lx-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  .lx-footer-cta {
+    grid-column: 1 / -1;
+  }
+  .lx-footer-bottom-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 540px) {
+  .lx-header-actions .lx-nav-link,
+  .lx-header-actions .lx-button-primary {
+    display: none !important;
+  }
+  .lx-direction-toggle {
+    display: none !important;
+  }
+  .lx-footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .lx-mobile-menu-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 1321px) {
+  .lx-nav {
+    display: flex !important;
+  }
+  .lx-menu-toggle {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1320px) {
+  .lx-nav {
+    display: none !important;
+  }
+  .lx-menu-toggle {
+    display: grid !important;
+  }
+  .lx-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+  .lx-footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+.spinning{
+  animation: spin 5s ease-out infinite;
+}
+
+@keyframes spin {
+  from{
+    transform: rotateZ(0deg);
+  }
+  to{
+    transform: rotateZ(360deg);
+  }
+}
+
+/* ============================================================
+   PAGE SWITCHING & VIEW TRANSITION ANIMATIONS - COMIC STYLE
+   ============================================================ */
+
+/* 1. Standard Page Transition Effects - KAPOW! */
+@keyframes lxPageFadeIn {
+  from {
+    opacity: 0;
+    transform: perspective(800px) translateY(30px) scale(0.95) rotate(-2deg);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(800px) translateY(0) scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+}
+
+@keyframes lxPageFadeOut {
+  from {
+    opacity: 1;
+    transform: perspective(800px) translateY(0) scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+  to {
+    opacity: 0;
+    transform: perspective(800px) translateY(-30px) scale(0.95) rotate(2deg);
+    filter: blur(4px);
+  }
+}
+
+main {
+  animation: lxPageFadeIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+body.is-transitioning main {
+  animation: lxPageFadeOut 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* 2. Modern Native View Transitions API Integration */
+@view-transition-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both lxPageFadeOut;
+}
+
+::view-transition-new(root) {
+  animation: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both lxPageFadeIn;
+}
+
+/* ============================================================
+   COMIC EXTRA: BONUS EFFECTS
+   ============================================================ */
+
+/* BOOM! Border Pulse */
+.lx-comic-pulse {
+  animation: comicPulse 2s ease-in-out infinite;
+}
+
+@keyframes comicPulse {
+  0%, 100% { box-shadow: 6px 6px 0px rgba(45, 27, 105, 0.15); }
+  50% { box-shadow: 10px 10px 0px rgba(204, 255, 0, 0.3), 6px 6px 0px rgba(45, 27, 105, 0.15); }
+}
+
+/* Comic Strip Divider */
+.lx-comic-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 30px 0;
+}
+
+.lx-comic-divider::before,
+.lx-comic-divider::after {
+  content: "";
+  flex: 1;
+  height: 4px;
+  background: #2d1b69;
+  border-radius: 2px;
+}
+
+.lx-comic-divider span {
+  font-family: var(--lx-font-comic);
+  font-weight: 900;
+  font-size: 20px;
+  color: var(--lx-selected-green);
+  text-shadow: 2px 2px 0px #2d1b69;
+}
+
+/* Comic Corner Decoration */
+.lx-comic-corner {
+  position: relative;
+}
+
+.lx-comic-corner::before {
+  content: "✦";
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  font-size: 24px;
+  color: var(--lx-selected-green);
+  text-shadow: 2px 2px 0px #2d1b69;
+  animation: comicFlash 2s ease-in-out infinite;
+}
+
+.lx-comic-corner::after {
+  content: "✦";
+  position: absolute;
+  bottom: -12px;
+  right: -12px;
+  font-size: 24px;
+  color: var(--lx-selected-green);
+  text-shadow: 2px 2px 0px #2d1b69;
+  animation: comicFlash 2s ease-in-out infinite 0.5s;
+}

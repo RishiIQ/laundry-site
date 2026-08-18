@@ -9,10 +9,9 @@
     />
     <meta name="theme-color" content="#8b5cf6" />
     <title>Login | LaundriX — Premium Doorstep Laundry</title>
-<link rel="icon" type="image/png" href="./site-logo.png">
-    <!-- ======================================================
-         GOOGLE FONTS (MANROPE & PLUS JAKARTA SANS)
-    ====================================================== -->
+    <link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23ccff00'/%3E%3Ctext x='20' y='72' font-family='Arial' font-size='64' font-weight='bold' fill='%230f172a'%3ELX%3C/text%3E%3C/svg%3E" />
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,9 +19,7 @@
       rel="stylesheet"
     />
 
-    <!-- ======================================================
-         ICONS (MATERIAL SYMBOLS & FONT AWESOME)
-    ====================================================== -->
+    <!-- Material Symbols & Font Awesome -->
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200"
       rel="stylesheet"
@@ -32,15 +29,161 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
 
-    <!-- ======================================================
-         SHARED GLOBAL CSS
-    ====================================================== -->
-    <link rel="stylesheet" href="assets/css/main.css" />
-
-    <!-- ======================================================
-         AUTH UNIQUE STYLES (MATCHING LATEST THEME & ANIMATIONS)
-    ====================================================== -->
     <style>
+      /* ============================================================
+         LAUNDRIX — 3D LIGHT THEME (VIOLET BG & LIME/YELLOW HIGHLIGHTS)
+         ============================================================ */
+      :root {
+        --lx-container: min(1280px, 100% - clamp(20px, 4vw, 64px));
+        --lx-header-height: 76px;
+
+        --lx-primary: #8b5cf6;
+        --lx-primary-rgb: 139, 92, 246;
+        --lx-primary-hover: #7c3aed;
+        --lx-primary-dark: #5b21b6;
+        --lx-primary-light: #ede9fe;
+        --lx-primary-glow: rgba(139, 92, 246, 0.3);
+
+        --lx-selected-green: #ccff00;
+        --lx-secondary: #8b5cf6;
+        --lx-accent: #06b6d4;
+        --lx-gold: #f59e0b;
+
+        --lx-font-display: "Manrope", sans-serif;
+        --lx-font-body: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+
+        --lx-bg: #f3f0fa;
+        --lx-bg-subtle: #eae5f5;
+        --lx-surface: #ffffff;
+        --lx-surface-glass: #ffffff;
+        --lx-surface-card: #ffffff;
+
+        --lx-text: #0f172a;
+        --lx-text-soft: #334155;
+        --lx-text-muted: #64748b;
+        --lx-text-inverse: #ffffff;
+
+        --lx-border: #e2e8f0;
+        --lx-border-subtle: #f1f5f9;
+
+        --lx-shadow-sm: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+        --lx-shadow-md: 0 12px 35px -5px rgba(139, 92, 246, 0.12);
+        --lx-shadow-lg: 0 20px 50px -10px rgba(15, 23, 42, 0.1);
+        --lx-shadow-xl: 0 30px 70px -15px rgba(139, 92, 246, 0.2);
+
+        --lx-radius-xs: 8px;
+        --lx-radius-sm: 12px;
+        --lx-radius-md: 18px;
+        --lx-radius-lg: 24px;
+        --lx-radius-xl: 32px;
+        --lx-radius-pill: 9999px;
+
+        --lx-ease: cubic-bezier(0.16, 1, 0.3, 1);
+        --lx-transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      html.dark {
+        --lx-bg: #120e1f;
+        --lx-bg-subtle: #1a142e;
+        --lx-surface: #221b3b;
+        --lx-surface-glass: #221b3b;
+        --lx-surface-card: #221b3b;
+
+        --lx-text: #ffffff;
+        --lx-text-soft: #c4b5fd;
+        --lx-text-muted: #9ca3af;
+        --lx-text-inverse: #120e1f;
+
+        --lx-border: rgba(139, 92, 246, 0.3);
+        --lx-border-subtle: rgba(255, 255, 255, 0.08);
+
+        --lx-shadow-sm: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+        --lx-shadow-md: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+        --lx-shadow-lg: 0 20px 50px -10px rgba(0, 0, 0, 0.6);
+        --lx-shadow-xl: 0 30px 70px -15px rgba(0, 0, 0, 0.7);
+      }
+
+      /* ---------- GLOBAL RESETS ---------- */
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; font-size: 16px; background-color: var(--lx-bg); color: var(--lx-text); -webkit-text-size-adjust: 100%; }
+      body {
+        font-family: var(--lx-font-body); font-size: 1rem; line-height: 1.6;
+        background-color: var(--lx-bg); color: var(--lx-text);
+        overflow-x: hidden; min-height: 100dvh;
+        -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+        transition: background-color 0.6s ease, color 0.6s ease;
+        position: relative;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: var(--lx-font-display); font-weight: 800;
+        color: var(--lx-text); letter-spacing: -0.03em; line-height: 1.2;
+        text-shadow: none !important;
+      }
+      p, span, a, li, label, strong, small { text-shadow: none !important; }
+      a { text-decoration: none; color: inherit; transition: var(--lx-transition); -webkit-tap-highlight-color: transparent; }
+      img, svg, picture { display: block; max-width: 100%; height: auto; border-radius: var(--lx-radius-lg); box-shadow: var(--lx-shadow-md); transition: transform 0.8s var(--lx-ease), box-shadow 0.8s var(--lx-ease); }
+      img:hover { transform: translateY(-4px) scale(1.01); box-shadow: var(--lx-shadow-lg); }
+      button, input, select, textarea { font-family: inherit; font-size: inherit; color: inherit; -webkit-tap-highlight-color: transparent; }
+
+      /* ---------- FLOATING BUBBLES ---------- */
+      @keyframes lxFloatBubble {
+        0% { transform: translateY(0) scale(0.4) translateX(0); opacity: 0; }
+        30% { opacity: 0.8; }
+        100% { transform: translateY(-160px) scale(1.2) translateX(15px); opacity: 0; }
+      }
+      .lx-bubble-effect { position: relative; overflow: hidden; }
+      .lx-bubble-effect::after {
+        content: ""; position: absolute; width: 22px; height: 22px;
+        border: 1px solid rgba(204, 255, 0, 0.6); border-radius: 50%;
+        background: var(--lx-surface); box-shadow: 0 0 15px rgba(204, 255, 0, 0.4);
+        bottom: -30px; left: 20%;
+        animation: lxFloatBubble 8s ease-in-out infinite;
+        pointer-events: none; z-index: 5;
+      }
+
+      /* ---------- WATER RIPPLE ---------- */
+      .lx-water-ripple { position: relative; overflow: hidden; }
+      .lx-water-ripple::before {
+        content: ""; position: absolute; top: 50%; left: 50%;
+        width: 0; height: 0; border-radius: 50%;
+        background: rgba(204, 255, 0, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.8s ease-out, height 0.8s ease-out, opacity 0.8s ease-out;
+        pointer-events: none;
+      }
+      .lx-water-ripple:active::before { width: 400px; height: 400px; opacity: 0; }
+
+      /* ---------- TOAST ---------- */
+      .lx-toast-container {
+        position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+        display: flex; flex-direction: column; gap: 10px; max-width: calc(100vw - 32px);
+      }
+      .lx-toast {
+        display: flex; align-items: center; gap: 12px;
+        padding: 16px 22px; border-radius: var(--lx-radius-md);
+        background: var(--lx-surface); border: 1px solid var(--lx-border);
+        box-shadow: var(--lx-shadow-xl); color: var(--lx-text);
+        font-size: 14.5px; font-weight: 700;
+        animation: lxToastIn 0.6s var(--lx-ease) forwards;
+      }
+      .lx-toast.is-leaving { animation: lxToastOut 0.4s ease forwards; }
+      @keyframes lxToastIn { from { opacity: 0; transform: translateY(20px) scale(0.92); } to { opacity: 1; transform: translateY(0) scale(1); } }
+      @keyframes lxToastOut { to { opacity: 0; transform: translateY(10px) scale(0.92); } }
+
+      /* ---------- REVEAL ---------- */
+      [data-reveal] { opacity: 0; transform: translateY(35px); transition: opacity 1s var(--lx-ease), transform 1s var(--lx-ease); }
+      [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+
+      /* ---------- PAGE TRANSITIONS ---------- */
+      @keyframes lxPageFadeIn {
+        from { opacity: 0; transform: perspective(1200px) translateY(24px) scale(0.98); filter: blur(8px); }
+        to { opacity: 1; transform: perspective(1200px) translateY(0) scale(1); filter: blur(0); }
+      }
+      main { animation: lxPageFadeIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+      /* ============================================================
+         AUTH SPECIFIC STYLES
+         ============================================================ */
       .auth-page-wrapper {
         min-height: 100dvh;
         display: flex;
@@ -49,8 +192,6 @@
         position: relative;
         overflow: hidden;
       }
-
-      /* Main Centered Container */
       .auth-main {
         flex: 1;
         display: flex;
@@ -58,8 +199,6 @@
         justify-content: center;
         padding: clamp(24px, 4vw, 48px) 16px;
       }
-
-      /* Login Card with Corner Toggles */
       .auth-card {
         width: 100%;
         max-width: 460px;
@@ -71,8 +210,6 @@
         position: relative;
         z-index: 2;
       }
-
-      /* Top Right Corner Toggles */
       .auth-corner-toggles {
         position: absolute;
         top: 20px;
@@ -82,371 +219,200 @@
         gap: 6px;
         z-index: 5;
       }
-
-      html[dir="rtl"] .auth-corner-toggles {
-        right: auto;
-        left: 20px;
-      }
-
+      html[dir="rtl"] .auth-corner-toggles { right: auto; left: 20px; }
       .auth-corner-btn {
-        width: 36px;
-        height: 36px;
-        border-radius: var(--lx-radius-pill);
-        display: grid;
-        place-items: center;
-        background: var(--lx-bg-subtle);
-        border: 1px solid var(--lx-border);
-        color: var(--lx-text-soft);
-        cursor: pointer;
+        width: 36px; height: 36px; border-radius: var(--lx-radius-pill);
+        display: grid; place-items: center;
+        background: var(--lx-bg-subtle); border: 1px solid var(--lx-border);
+        color: var(--lx-text-soft); cursor: pointer;
         transition: var(--lx-transition);
       }
-
       .auth-corner-btn:hover {
-        background: var(--lx-surface);
-        color: var(--lx-primary);
-        border-color: var(--lx-selected-green);
-        transform: translateY(-2px);
+        background: var(--lx-surface); color: var(--lx-primary);
+        border-color: var(--lx-selected-green); transform: translateY(-2px);
       }
-
-      /* Header inside Card */
-      .auth-header {
-        text-align: center;
-        margin-bottom: 26px;
-        padding-top: 6px;
-      }
-
+      .auth-header { text-align: center; margin-bottom: 26px; padding-top: 6px; }
       .auth-brand {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 16px;
-        text-decoration: none;
+        display: inline-flex; align-items: center; gap: 10px;
+        margin-bottom: 16px; text-decoration: none;
       }
-
       .auth-brand-mark {
-        width: 42px;
-        height: 42px;
-        border-radius: 12px;
+        width: 42px; height: 42px; border-radius: 12px;
         background: var(--lx-selected-green);
-        display: grid;
-        place-items: center;
-        color: #0f172a;
+        display: grid; place-items: center; color: #0f172a;
         box-shadow: 0 4px 12px rgba(204, 255, 0, 0.3);
         transition: transform 0.5s var(--lx-ease);
       }
-
-      .auth-brand:hover .auth-brand-mark {
-        transform: rotate(-6deg) scale(1.05);
-      }
-
+      .auth-brand:hover .auth-brand-mark { transform: rotate(-6deg) scale(1.05); }
       .auth-brand-name {
-        font-family: var(--lx-font-display);
-        font-size: 20px;
-        font-weight: 900;
-        letter-spacing: -0.04em;
-        color: var(--lx-text);
+        font-family: var(--lx-font-display); font-size: 20px; font-weight: 900;
+        letter-spacing: -0.04em; color: var(--lx-text);
       }
+      .auth-brand-name span { color: var(--lx-primary); }
+      .auth-header h1 { font-size: clamp(24px, 3vw, 30px); margin-bottom: 6px; }
+      .auth-header p { color: var(--lx-text-soft); font-size: 13.5px; }
 
-      .auth-brand-name span {
-        color: var(--lx-primary);
-      }
-
-      .auth-header h1 {
-        font-size: clamp(24px, 3vw, 30px);
-        margin-bottom: 6px;
-      }
-
-      .auth-header p {
-        color: var(--lx-text-soft);
-        font-size: 13.5px;
-      }
-
-      /* Form Fields */
-      .auth-form {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-
-      .auth-group {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
-
-      .auth-group label {
-        font-size: 13px;
-        font-weight: 700;
-        color: var(--lx-text);
-      }
-
-      .auth-input-wrap {
-        position: relative;
-        display: flex;
-        align-items: center;
-      }
-
+      .auth-form { display: flex; flex-direction: column; gap: 16px; }
+      .auth-group { display: flex; flex-direction: column; gap: 6px; }
+      .auth-group label { font-size: 13px; font-weight: 700; color: var(--lx-text); }
+      .auth-input-wrap { position: relative; display: block; width: 100%; }
       .auth-input-wrap i.input-icon {
-        position: absolute;
-        left: 16px;
-        color: var(--lx-primary);
-        font-size: 15px;
-        pointer-events: none;
+        position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
+        color: var(--lx-primary); font-size: 15px; pointer-events: none; z-index: 2;
       }
-
-      html[dir="rtl"] .auth-input-wrap i.input-icon {
-        left: auto;
-        right: 16px;
-      }
-
+      html[dir="rtl"] .auth-input-wrap i.input-icon { left: auto; right: 16px; }
       .auth-input {
-        width: 100%;
-        padding: 12px 48px 12px 42px;
-        border-radius: var(--lx-radius-md);
-        background: var(--lx-bg-subtle);
-        border: 1px solid var(--lx-border);
-        font-size: 14px;
-        font-weight: 600;
-        color: var(--lx-text);
-        outline: none;
-        transition: var(--lx-transition);
-        font-family: inherit;
+        width: 100%; padding: 12px 48px 12px 42px;
+        border-radius: var(--lx-radius-md); background: var(--lx-bg-subtle);
+        border: 1px solid var(--lx-border); font-size: 14px; font-weight: 600;
+        color: var(--lx-text); outline: none;
+        transition: var(--lx-transition); font-family: inherit; box-sizing: border-box;
       }
-
-      html[dir="rtl"] .auth-input {
-        padding: 12px 42px 12px 48px;
-      }
-
+      html[dir="rtl"] .auth-input { padding: 12px 42px 12px 48px; }
       .auth-input:focus {
         border-color: var(--lx-selected-green);
         background: var(--lx-surface);
         box-shadow: 0 0 0 3px rgba(204, 255, 0, 0.25);
       }
+      .auth-input.is-error { border-color: #ef4444; box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15); }
+      .auth-error-msg { font-size: 11.5px; color: #ef4444; font-weight: 700; display: none; margin-top: 2px; }
 
-      .auth-input.is-error {
-        border-color: #ef4444;
-        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
-      }
-
-      .auth-error-msg {
-        font-size: 11.5px;
-        color: #ef4444;
-        font-weight: 700;
-        display: none;
-        margin-top: 2px;
-      }
-
-      /* Unique Material UI-like Animated Visibility Toggle Button */
+      .lx-password-field { position: relative; width: 100%; min-width: 0; }
+      .lx-password-field .auth-input { padding-right: 58px; }
+      html[dir="rtl"] .lx-password-field .auth-input { padding-right: 42px; padding-left: 58px; }
       .auth-password-toggle {
-        position: absolute;
-        right: 12px;
-        background: transparent;
-        border: none;
-        color: var(--lx-text-muted);
-        cursor: pointer;
-        display: grid;
-        place-items: center;
-        width: 34px;
-        height: 34px;
-        border-radius: 50%;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: absolute; right: 7px; top: 50%; width: 36px; height: 36px;
+        margin: 0; padding: 0; transform: translateY(-50%);
+        display: grid; place-items: center; box-sizing: border-box;
+        background: transparent; border: 0; border-radius: 50%;
+        color: var(--lx-text-muted); cursor: pointer; z-index: 4;
+        flex: 0 0 36px;
+        transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
-
-      html[dir="rtl"] .auth-password-toggle {
-        right: auto;
-        left: 12px;
-      }
-
+      html[dir="rtl"] .auth-password-toggle { right: auto; left: 7px; }
       .auth-password-toggle:hover {
         background: rgba(139, 92, 246, 0.1);
         color: var(--lx-primary);
-        transform: scale(1.1);
+        transform: translateY(-50%) scale(1.1);
       }
-
-      .auth-password-toggle:active {
-        transform: scale(0.9);
-      }
-
-      .auth-password-toggle .material-symbols-rounded {
-        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
-      }
-
-      .auth-password-toggle:hover .material-symbols-rounded {
-        transform: rotate(15deg);
-      }
+      .auth-password-toggle:active { transform: translateY(-50%) scale(0.9); }
+      .auth-password-toggle .material-symbols-rounded { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease; }
+      .auth-password-toggle:hover .material-symbols-rounded { transform: rotate(15deg); }
 
       .auth-options {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-size: 13px;
-        margin-top: 2px;
+        display: flex; align-items: center; justify-content: space-between;
+        font-size: 13px; margin-top: 2px;
       }
-
       .auth-remember {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        cursor: pointer;
-        color: var(--lx-text-soft);
-        font-weight: 600;
+        display: inline-flex; align-items: center; gap: 8px;
+        cursor: pointer; color: var(--lx-text-soft); font-weight: 600;
       }
-
-      .auth-remember input {
-        accent-color: var(--lx-selected-green);
-        width: 15px;
-        height: 15px;
-        cursor: pointer;
-      }
-
-      .auth-forgot {
-        color: var(--lx-primary);
-        font-weight: 700;
-        text-decoration: none;
-      }
-
-      .auth-forgot:hover {
-        color: var(--lx-primary-hover);
-        text-decoration: underline;
-      }
+      .auth-remember input { accent-color: var(--lx-selected-green); width: 15px; height: 15px; cursor: pointer; }
+      .auth-forgot { color: var(--lx-primary); font-weight: 700; }
+      .auth-forgot:hover { color: var(--lx-primary-hover); text-decoration: underline; }
 
       .auth-submit-btn {
-        min-height: 48px;
-        width: 100%;
-        border-radius: var(--lx-radius-pill);
-        background: var(--lx-selected-green);
-        color: #0f172a;
-        font-size: 14.5px;
-        font-weight: 800;
-        border: none;
-        cursor: pointer;
+        min-height: 48px; width: 100%; border-radius: var(--lx-radius-pill);
+        background: var(--lx-selected-green); color: #0f172a;
+        font-size: 14.5px; font-weight: 800; border: none; cursor: pointer;
         transition: var(--lx-transition);
         box-shadow: 0 4px 14px rgba(204, 255, 0, 0.3);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
+        display: inline-flex; align-items: center; justify-content: center; gap: 10px;
         margin-top: 6px;
       }
-
-      .auth-submit-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(204, 255, 0, 0.4);
-      }
-
+      .auth-submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(204, 255, 0, 0.4); }
       .auth-divider {
-        display: flex;
-        align-items: center;
-        text-align: center;
-        color: var(--lx-text-muted);
-        font-size: 11.5px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        margin-block: 6px;
+        display: flex; align-items: center; text-align: center;
+        color: var(--lx-text-muted); font-size: 11.5px; font-weight: 700;
+        text-transform: uppercase; letter-spacing: 0.06em; margin-block: 6px;
       }
-
-      .auth-divider::before,
-      .auth-divider::after {
-        content: "";
-        flex: 1;
-        border-bottom: 1px solid var(--lx-border);
+      .auth-divider::before, .auth-divider::after {
+        content: ""; flex: 1; border-bottom: 1px solid var(--lx-border);
       }
-
-      .auth-divider span {
-        padding-inline: 12px;
-      }
-
-      .auth-social-btns {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-      }
-
+      .auth-divider span { padding-inline: 12px; }
+      .auth-social-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
       .auth-social-btn {
-        min-height: 42px;
-        border-radius: var(--lx-radius-pill);
-        border: 1px solid var(--lx-border);
-        background: var(--lx-surface);
-        color: var(--lx-text);
-        font-size: 13px;
-        font-weight: 700;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        cursor: pointer;
-        transition: var(--lx-transition);
+        min-height: 42px; border-radius: var(--lx-radius-pill);
+        border: 1px solid var(--lx-border); background: var(--lx-surface);
+        color: var(--lx-text); font-size: 13px; font-weight: 700;
+        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+        cursor: pointer; transition: var(--lx-transition);
       }
-
       .auth-social-btn:hover {
         background: rgba(204, 255, 0, 0.15);
         border-color: var(--lx-selected-green);
         transform: translateY(-2px);
       }
+      .auth-card-footer { text-align: center; margin-top: 20px; font-size: 13.5px; color: var(--lx-text-soft); }
+      .auth-card-footer a { color: var(--lx-primary); font-weight: 700; }
+      .auth-card-footer a:hover { text-decoration: underline; }
 
-      .auth-card-footer {
-        text-align: center;
-        margin-top: 20px;
-        font-size: 13.5px;
-        color: var(--lx-text-soft);
-      }
-
-      .auth-card-footer a {
-        color: var(--lx-primary);
-        font-weight: 700;
-        text-decoration: none;
-      }
-
-      .auth-card-footer a:hover {
-        text-decoration: underline;
-      }
-
-      /* Simple Minimalist Footer */
       .auth-simple-footer {
-        padding: 20px 16px;
-        border-top: 1px solid var(--lx-border);
-        background: var(--lx-surface);
-        text-align: center;
+        padding: 20px 16px; border-top: 1px solid var(--lx-border);
+        background: var(--lx-surface); text-align: center;
       }
-
       .auth-simple-footer-inner {
-        width: min(var(--lx-container), 100%);
-        margin-inline: auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 12px;
-        font-size: 12.5px;
-        color: var(--lx-text-muted);
+        width: min(var(--lx-container), 100%); margin-inline: auto;
+        display: flex; align-items: center; justify-content: space-between;
+        flex-wrap: wrap; gap: 12px; font-size: 12.5px; color: var(--lx-text-muted);
       }
-
-      .auth-simple-footer-links {
-        display: flex;
-        gap: 18px;
-        flex-wrap: wrap;
-      }
-
-      .auth-simple-footer-links a {
-        color: var(--lx-text-soft);
-        text-decoration: none;
-        transition: color 0.2s ease;
-      }
-
-      .auth-simple-footer-links a:hover {
-        color: var(--lx-primary);
-      }
+      .auth-simple-footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
+      .auth-simple-footer-links a { color: var(--lx-text-soft); transition: color 0.2s ease; }
+      .auth-simple-footer-links a:hover { color: var(--lx-primary); }
 
       @media (max-width: 640px) {
-        .auth-simple-footer-inner {
-          flex-direction: column;
-          text-align: center;
-          gap: 8px;
-        }
-        .auth-simple-footer-links {
-          justify-content: center;
-        }
+        .auth-simple-footer-inner { flex-direction: column; text-align: center; gap: 8px; }
+        .auth-simple-footer-links { justify-content: center; }
+      }
+      .lx-direction-toggle {
+        width: 36px; height: 36px; border-radius: var(--lx-radius-pill);
+        display: grid; place-items: center;
+        background: var(--lx-bg-subtle); border: 1px solid var(--lx-border);
+        color: var(--lx-text-soft); cursor: pointer;
+        transition: var(--lx-transition);
+      }
+      .lx-direction-toggle:hover {
+        background: rgba(204, 255, 0, 0.25);
+        border-color: var(--lx-selected-green);
+        transform: translateY(-2px);
+      }
+      .lx-direction-icon {
+        width: 16px; height: 12px; display: flex; flex-direction: column; justify-content: space-between;
+      }
+      .lx-direction-icon span { display: block; height: 2px; background: currentColor; border-radius: 2px; }
+      .lx-direction-icon span:nth-child(1) { width: 100%; }
+      .lx-direction-icon span:nth-child(2) { width: 65%; margin-inline-start: auto; }
+      .lx-direction-icon span:nth-child(3) { width: 85%; }
+
+      /* ---------- AMBIENT BUBBLES KEYFRAMES ---------- */
+      @keyframes ambientBubbleUp {
+        0% { transform: translateY(0) translateX(0) scale(0.5); opacity: 0; }
+        30% { opacity: 0.8; }
+        100% { transform: translateY(-105vh) translateX(30px) scale(1.2); opacity: 0; }
+      }
+      @keyframes ambientSteamRise {
+        0% { transform: translateY(0) scaleX(0.8) rotate(0deg); opacity: 0; }
+        40% { opacity: 0.5; }
+        100% { transform: translateY(-70px) scaleX(1.4) rotate(15deg); opacity: 0; }
+      }
+      @keyframes waterRippleEffect {
+        to { transform: scale(4); opacity: 0; }
+      }
+      .lx-steam-particle {
+        position: absolute;
+        pointer-events: none;
+        background: radial-gradient(circle, rgba(255,255,255,0.85) 0%, rgba(0,180,216,0.2) 70%, transparent 100%);
+        border-radius: 50%;
+        animation: ambientSteamRise 2.2s ease-out forwards;
+        z-index: 2;
+      }
+      .lx-ripple-effect {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(0, 180, 216, 0.35);
+        transform: scale(0);
+        animation: waterRippleEffect 0.6s linear;
+        pointer-events: none;
       }
     </style>
   </head>
@@ -468,7 +434,7 @@
               aria-label="Toggle theme"
               title="Toggle Dark / Light Mode"
             >
-              <span class="material-symbols-rounded" style="font-size:18px;"> dark_mode </span>
+              <span class="material-symbols-rounded" style="font-size:18px;" id="themeIcon"> dark_mode </span>
             </button>
 
             <!-- RTL Toggle -->
@@ -596,91 +562,339 @@
     </div>
 
     <!-- ======================================================
-         SHARED GLOBAL JAVASCRIPT
+         SHARED GLOBAL JAVASCRIPT (Embedded for self-containment)
     ====================================================== -->
-    <script src="assets/js/main.js"></script>
-
-    <!-- Page Specific Script: Input Validations & Dashboard Redirection -->
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const loginForm = document.getElementById("loginForm");
-        const emailInput = document.getElementById("loginEmail");
-        const passwordInput = document.getElementById("loginPassword");
-        const emailError = document.getElementById("emailError");
-        const passwordError = document.getElementById("passwordError");
+      (function() {
+        'use strict';
 
-        function isValidEmail(email) {
-          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        /* ============================================================
+           TOAST SYSTEM
+           ============================================================ */
+        function showToast(message, options = {}) {
+          const type = options.type || 'info';
+          const container = document.querySelector('.lx-toast-container') || (() => {
+            const c = document.createElement('div');
+            c.className = 'lx-toast-container';
+            document.body.appendChild(c);
+            return c;
+          })();
+
+          const toast = document.createElement('div');
+          toast.className = 'lx-toast';
+          const iconMap = { success: 'check_circle', error: 'error', info: 'info' };
+          const icon = iconMap[type] || 'info';
+          toast.innerHTML = `
+            <span class="lx-toast-icon"><span class="material-symbols-rounded" style="font-size:20px;">${icon}</span></span>
+            <span>${message}</span>
+          `;
+          container.appendChild(toast);
+          setTimeout(() => {
+            toast.classList.add('is-leaving');
+            setTimeout(() => toast.remove(), 400);
+          }, 3000);
         }
 
-        if (loginForm) {
-          loginForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            let isValid = true;
+        /* ============================================================
+           THEME ENGINE (FIXED)
+           ============================================================ */
+        function initTheme() {
+          const root = document.documentElement;
+          const savedTheme = localStorage.getItem('laundrix-theme');
+          const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const initialTheme = savedTheme || (systemDark ? 'dark' : 'light');
 
-            emailInput.classList.remove("is-error");
-            passwordInput.classList.remove("is-error");
-            emailError.style.display = "none";
-            passwordError.style.display = "none";
+          applyTheme(initialTheme, false);
 
-            const emailVal = emailInput.value.trim();
-            if (!emailVal || !isValidEmail(emailVal)) {
-              emailInput.classList.add("is-error");
-              emailError.style.display = "block";
-              isValid = false;
-            }
-
-            const passwordVal = passwordInput.value;
-            if (!passwordVal || passwordVal.length < 6) {
-              passwordInput.classList.add("is-error");
-              passwordError.style.display = "block";
-              isValid = false;
-            }
-
-            if (!isValid) {
-              if (window.LaundriX && window.LaundriX.showToast) {
-                window.LaundriX.showToast("Please correct the highlighted errors.", { type: "error" });
-              }
-              return;
-            }
-
-            if (window.LaundriX && window.LaundriX.showToast) {
-              window.LaundriX.showToast("Login successful! Redirecting to dashboard...", { type: "success" });
-            }
-
-            const submitBtn = document.getElementById("loginSubmitBtn");
-            if (submitBtn) {
-              submitBtn.disabled = true;
-              submitBtn.innerHTML = `<span>Signing in...</span> <i class="fa-solid fa-spinner fa-spin"></i>`;
-            }
-
-            setTimeout(() => {
-              window.location.href = "dashboard.html";
-            }, 1000);
+          document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+            button.addEventListener('click', function() {
+              const current = root.classList.contains('dark') ? 'dark' : 'light';
+              const next = current === 'dark' ? 'light' : 'dark';
+              applyTheme(next, true);
+            });
           });
-        }
 
-        const forgotLink = document.getElementById("forgotPasswordLink");
-        if (forgotLink) {
-          forgotLink.addEventListener("click", (e) => {
-            e.preventDefault();
-            if (window.LaundriX && window.LaundriX.showToast) {
-              window.LaundriX.showToast("Password reset instructions have been sent to your email.", { type: "info" });
-            }
-          });
-        }
-
-        const socialBtns = [document.getElementById("googleLoginBtn"), document.getElementById("appleLoginBtn")];
-        socialBtns.forEach((btn) => {
-          if (btn) {
-            btn.addEventListener("click", () => {
-              if (window.LaundriX && window.LaundriX.showToast) {
-                window.LaundriX.showToast("Connecting to authentication provider...", { type: "info" });
-              }
+          if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+              if (localStorage.getItem('laundrix-theme')) return;
+              applyTheme(event.matches ? 'dark' : 'light', false);
             });
           }
+        }
+
+        function applyTheme(theme, save = true) {
+          const root = document.documentElement;
+          const isDark = theme === 'dark';
+
+          root.classList.toggle('dark', isDark);
+          root.dataset.theme = isDark ? 'dark' : 'light';
+
+          if (save) {
+            localStorage.setItem('laundrix-theme', theme);
+          }
+
+          // Update all theme toggle buttons with Material Symbols
+          document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+            const icon = button.querySelector('.material-symbols-rounded');
+            if (!icon) return;
+            icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            button.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+          });
+
+          document.dispatchEvent(
+            new CustomEvent('laundrix:themechange', {
+              detail: { theme },
+            })
+          );
+        }
+
+        /* ============================================================
+           RTL ENGINE
+           ============================================================ */
+        function initRTL() {
+          const root = document.documentElement;
+          const saved = localStorage.getItem('laundrix-direction');
+
+          if (saved === 'rtl') {
+            applyDirection('rtl', false);
+          } else {
+            applyDirection('ltr', false);
+          }
+
+          document.querySelectorAll('[data-rtl-toggle]').forEach((button) => {
+            button.addEventListener('click', function() {
+              const next = root.dir === 'rtl' ? 'ltr' : 'rtl';
+              applyDirection(next, true);
+            });
+          });
+        }
+
+        function applyDirection(direction, save = true) {
+          const root = document.documentElement;
+          root.dir = direction;
+          root.dataset.direction = direction;
+
+          if (save) {
+            localStorage.setItem('laundrix-direction', direction);
+          }
+
+          document.querySelectorAll('[data-rtl-toggle]').forEach((button) => {
+            button.setAttribute('aria-pressed', direction === 'rtl' ? 'true' : 'false');
+            button.setAttribute('aria-label', direction === 'rtl' ? 'Switch to LTR' : 'Switch to RTL');
+          });
+
+          document.dispatchEvent(
+            new CustomEvent('laundrix:directionchange', {
+              detail: { direction },
+            })
+          );
+        }
+
+        /* ============================================================
+           PASSWORD VISIBILITY TOGGLE
+           ============================================================ */
+        function initPasswordToggles() {
+          document.querySelectorAll('[data-password-toggle]').forEach((button) => {
+            button.addEventListener('click', function(e) {
+              e.preventDefault();
+              const targetSelector = this.getAttribute('data-password-toggle');
+              const input = document.querySelector(targetSelector);
+              if (!input) return;
+              const icon = this.querySelector('.material-symbols-rounded');
+              if (input.type === 'password') {
+                input.type = 'text';
+                icon.textContent = 'visibility_off';
+              } else {
+                input.type = 'password';
+                icon.textContent = 'visibility';
+              }
+            });
+          });
+        }
+
+        /* ============================================================
+           SCROLL REVEAL
+           ============================================================ */
+        function initScrollReveal() {
+          const elements = document.querySelectorAll('[data-reveal]');
+          if (!elements.length) return;
+
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              });
+            },
+            { threshold: 0.12, rootMargin: '0px 0px -50px 0px' }
+          );
+
+          elements.forEach((element) => {
+            observer.observe(element);
+            // Also check if already visible
+            if (element.getBoundingClientRect().top < window.innerHeight) {
+              element.classList.add('is-visible');
+            }
+          });
+        }
+
+        /* ============================================================
+           WATER RIPPLE EFFECT
+           ============================================================ */
+        function initWaterRipple() {
+          document.querySelectorAll('button, .lx-button, .auth-submit-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+              const circle = document.createElement('span');
+              circle.className = 'lx-ripple-effect';
+              const diameter = Math.max(this.clientWidth, this.clientHeight);
+              const radius = diameter / 2;
+              const rect = this.getBoundingClientRect();
+              
+              circle.style.cssText = `
+                width: ${diameter}px;
+                height: ${diameter}px;
+                left: ${e.clientX - rect.left - radius}px;
+                top: ${e.clientY - rect.top - radius}px;
+              `;
+              
+              const existing = this.querySelector('.lx-ripple-effect');
+              if (existing) existing.remove();
+              
+              this.appendChild(circle);
+              setTimeout(() => circle.remove(), 600);
+            });
+          });
+        }
+
+        /* ============================================================
+           AMBIENT BUBBLES
+           ============================================================ */
+        function initAmbientBubbles() {
+          const body = document.body;
+          if (!body) return;
+
+          const bubbleContainer = document.createElement('div');
+          bubbleContainer.className = 'lx-ambient-bubbles';
+          bubbleContainer.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1; overflow:hidden;';
+          body.appendChild(bubbleContainer);
+
+          setInterval(() => {
+            if (document.querySelectorAll('.lx-floating-bubble').length < 15) {
+              const bubble = document.createElement('div');
+              bubble.className = 'lx-floating-bubble';
+              const size = Math.floor(Math.random() * 24) + 10;
+              const posX = Math.random() * window.innerWidth;
+              const duration = Math.random() * 4 + 3;
+
+              bubble.style.cssText = `
+                position: absolute;
+                bottom: -40px;
+                left: ${posX}px;
+                width: ${size}px;
+                height: ${size}px;
+                border: 2px solid var(--lx-border);
+                border-radius: 50%;
+                background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(0,180,216,0.3));
+                box-shadow: inset -2px -2px 0px rgba(0,0,0,0.1), 2px 2px 0px var(--lx-border);
+                animation: ambientBubbleUp ${duration}s ease-in-out forwards;
+              `;
+
+              bubbleContainer.appendChild(bubble);
+              setTimeout(() => bubble.remove(), duration * 1000);
+            }
+          }, 900);
+        }
+
+        /* ============================================================
+           DOM READY - INIT ALL
+           ============================================================ */
+        document.addEventListener('DOMContentLoaded', function() {
+          initTheme();
+          initRTL();
+          initPasswordToggles();
+          initScrollReveal();
+          initWaterRipple();
+          initAmbientBubbles();
+
+          // ---------- LOGIN FORM HANDLING ----------
+          const loginForm = document.getElementById('loginForm');
+          const emailInput = document.getElementById('loginEmail');
+          const passwordInput = document.getElementById('loginPassword');
+          const emailError = document.getElementById('emailError');
+          const passwordError = document.getElementById('passwordError');
+
+          function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+          }
+
+          if (loginForm) {
+            loginForm.addEventListener('submit', function(e) {
+              e.preventDefault();
+              let isValid = true;
+
+              emailInput.classList.remove('is-error');
+              passwordInput.classList.remove('is-error');
+              emailError.style.display = 'none';
+              passwordError.style.display = 'none';
+
+              const emailVal = emailInput.value.trim();
+              if (!emailVal || !isValidEmail(emailVal)) {
+                emailInput.classList.add('is-error');
+                emailError.style.display = 'block';
+                isValid = false;
+              }
+
+              const passwordVal = passwordInput.value;
+              if (!passwordVal || passwordVal.length < 6) {
+                passwordInput.classList.add('is-error');
+                passwordError.style.display = 'block';
+                isValid = false;
+              }
+
+              if (!isValid) {
+                showToast('Please correct the highlighted errors.', { type: 'error' });
+                return;
+              }
+
+              showToast('Login successful! Redirecting to dashboard...', { type: 'success' });
+
+              const submitBtn = document.getElementById('loginSubmitBtn');
+              if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `<span>Signing in...</span> <i class="fa-solid fa-spinner fa-spin"></i>`;
+              }
+
+              setTimeout(() => {
+                window.location.href = 'dashboard.html';
+              }, 1000);
+            });
+          }
+
+          // Forgot password link
+          const forgotLink = document.getElementById('forgotPasswordLink');
+          if (forgotLink) {
+            forgotLink.addEventListener('click', function(e) {
+              e.preventDefault();
+              showToast('Password reset instructions have been sent to your email.', { type: 'info' });
+            });
+          }
+
+          // Social buttons
+          const socialBtns = [document.getElementById('googleLoginBtn'), document.getElementById('appleLoginBtn')];
+          socialBtns.forEach((btn) => {
+            if (btn) {
+              btn.addEventListener('click', function() {
+                showToast('Connecting to authentication provider...', { type: 'info' });
+              });
+            }
+          });
+
+          // Expose LaundriX global
+          window.LaundriX = { showToast };
         });
-      });
+
+      })();
     </script>
   </body>
 </html>

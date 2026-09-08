@@ -324,15 +324,11 @@ html.dark .lx-header {
   color: var(--lx-text-muted);
 }
 
-/* Header Buttons & Controls & Ghost Elements Cleanup */
+/* Header Buttons & Controls */
 .lx-header-actions {
   display: flex;
   align-items: center;
   gap: 8px;
-}
-
-.lx-header-actions > *:empty {
-  display: none !important;
 }
 
 .lx-button {
@@ -384,64 +380,114 @@ html.dark .lx-header {
   border-color: var(--lx-selected-green);
 }
 
-/* Responsive Control of Desktop Nav & Hamburger Menu */
-@media (min-width: 1180px) {
+/* ============================================================
+   RESPONSIVE HEADER & ROBUST HAMBURGER MENU (< 1180PX)
+   ============================================================ */
+
+.lx-menu-toggle {
+  display: none;
+}
+
+@media screen and (max-width: 1179px) {
+  .lx-nav,
+  .lx-header-actions > .lx-nav-link,
+  .lx-header-actions > .lx-button-primary {
+    display: none !important;
+  }
+
+  .lx-menu-toggle {
+    display: grid !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    margin-inline-start: auto;
+  }
+
+  .lx-mobile-menu {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 12px;
+    right: 12px;
+    margin-inline: 0 !important;
+    max-height: 82vh;
+    overflow-y: auto;
+    padding: 20px;
+    border-radius: var(--lx-radius-lg);
+    background: var(--lx-surface);
+    border: 1px solid var(--lx-border);
+    box-shadow: var(--lx-shadow-xl);
+    z-index: 1060;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: var(--lx-transition);
+  }
+
+  .lx-mobile-menu.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .lx-mobile-menu-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .lx-mobile-menu-inner a,
+  .lx-mobile-menu-inner button {
+    width: 100%;
+    text-align: left;
+    justify-content: flex-start;
+    padding: 10px 14px;
+    border-radius: var(--lx-radius-sm);
+    font-weight: 700;
+  }
+
+  .lx-mobile-home-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: var(--lx-bg-subtle);
+    border: none;
+    border-radius: var(--lx-radius-sm);
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--lx-text);
+  }
+
+  .lx-mobile-home-links {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding-left: 12px;
+    margin-top: 6px;
+  }
+
+  .lx-mobile-home.is-open .lx-mobile-home-links {
+    display: flex;
+  }
+
+  .lx-mobile-menu-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--lx-border);
+  }
+}
+
+@media screen and (min-width: 1180px) {
   .lx-nav {
     display: flex !important;
   }
   .lx-menu-toggle {
     display: none !important;
   }
-}
-
-@media (max-width: 1179px) {
-  .lx-nav {
-    display: none !important;
-  }
-  .lx-menu-toggle {
-    display: grid !important;
-  }
-}
-
-/* Mobile Slide-Down Menu */
-.lx-mobile-menu {
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 0;
-  right: 0;
-  margin-inline: 16px;
-  border-radius: var(--lx-radius-lg);
-  background: var(--lx-surface);
-  border: 1px solid var(--lx-border);
-  box-shadow: var(--lx-shadow-xl);
-  padding: 20px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-15px);
-  transition: var(--lx-transition);
-  z-index: 1040;
-}
-
-.lx-mobile-menu.is-open {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.lx-mobile-menu-inner > a {
-  display: flex;
-  align-items: center;
-  padding: 12px 16px;
-  font-size: 15px;
-  font-weight: 700;
-  border-radius: var(--lx-radius-sm);
-  color: var(--lx-text-soft);
-}
-
-.lx-mobile-menu-inner > a:hover,
-.lx-mobile-menu-inner > a.is-current {
-  background: var(--lx-selected-green) !important;
-  color: #0f172a !important;
 }
 
 /* ============================================================
@@ -642,20 +688,10 @@ html.dark .home-service-content p,
 html.dark .home-process-card p,
 html.dark .home-stat-label,
 html.dark .home-trust-text,
-html.dark .s-hero-desc,
-html.dark .s-section-desc,
-html.dark .s-feature-card p,
-html.dark .s-stat-label,
-html.dark .s-how-step p,
 html.dark .lx-footer-description,
 html.dark .lx-footer-column a,
 html.dark .lx-footer-bottom-inner {
   color: #c4b5fd !important;
-}
-
-html.dark .lx-footer-column a:hover,
-html.dark .lx-footer-bottom-links a:hover {
-  color: var(--lx-selected-green) !important;
 }
 
 html.dark .lx-footer,
@@ -664,9 +700,6 @@ html.dark .home-process-card,
 html.dark .home-stat,
 html.dark .home-booking,
 html.dark .lx-surface,
-html.dark .s-feature-card,
-html.dark .s-stat,
-html.dark .s-how-step,
 html.dark .lx-header-inner,
 html.dark .lx-nav-dropdown-menu,
 html.dark .lx-mobile-menu {
@@ -749,7 +782,6 @@ html.dark input[type="date"]::-webkit-calendar-picker-indicator {
 .lx-direction-icon span:nth-child(2) { width: 60%; margin-inline-start: auto; }
 .lx-direction-icon span:nth-child(3) { width: 85%; }
 
-/* Dark mode compatibility */
 html.dark .lx-direction-toggle {
   background-color: var(--lx-surface) !important;
   border-color: rgba(139, 92, 246, 0.3) !important;
@@ -758,5 +790,116 @@ html.dark .lx-direction-toggle {
 
 html.dark .lx-direction-toggle:hover {
   background-color: var(--lx-selected-green) !important;
+  color: #0f172a !important;
+}
+
+/* ============================================================
+   RESPONSIVE FOOTER BREAKPOINTS
+   ============================================================ */
+.lx-footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, 1fr) 1.2fr;
+  gap: clamp(24px, 4vw, 48px);
+}
+
+@media screen and (max-width: 1024px) {
+  .lx-footer-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 40px;
+  }
+  .lx-footer-brand {
+    grid-column: 1 / -1;
+  }
+  .lx-footer-cta {
+    grid-column: 1 / -1;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .lx-footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px;
+    text-align: left;
+  }
+  .lx-footer-bottom-inner {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+}
+
+/* ============================================================
+   UI/UX FIX: HIDE MOBILE MENU UNLESS OPENED
+   ============================================================ */
+.lx-mobile-menu {
+  display: none !important;
+}
+
+.lx-mobile-menu.is-open {
+  display: block !important;
+}
+
+/* ============================================================
+   MEDIA QUERY: 1024px TO 1300px (RESPONSIVE NAVBAR SCALING)
+   ============================================================ */
+
+@media screen and (min-width: 1024px) and (max-width: 1300px) {
+  .lx-header-inner {
+    padding: 6px 12px !important;
+    gap: 6px !important;
+  }
+
+  .lx-nav {
+    gap: 2px !important;
+  }
+
+  .lx-nav-link {
+    padding: 6px 10px !important;
+    font-size: 13.5px !important;
+  }
+
+  .lx-brand-name {
+    font-size: 20px !important;
+  }
+
+  .lx-brand-mark {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .lx-header-actions {
+    gap: 6px !important;
+  }
+
+  .lx-button {
+    padding: 8px 16px !important;
+    font-size: 13.5px !important;
+  }
+}
+
+/* ============================================================
+   FIX: DARK MODE MOBILE HAMBURGER MENU TEXT & ACTIVE HIGHLIGHT
+   ============================================================ */
+
+html.dark .lx-mobile-menu a,
+html.dark .lx-mobile-menu button,
+html.dark .lx-mobile-home-trigger {
+  color: #ffffff !important;
+}
+
+html.dark .lx-mobile-menu a:hover,
+html.dark .lx-mobile-menu a.is-current,
+html.dark .lx-mobile-menu a.is-active {
+  background: var(--lx-selected-green) !important;
+  color: #0f172a !important;
+}
+
+html.dark .lx-mobile-home-links a {
+  color: #c4b5fd !important;
+}
+
+html.dark .lx-mobile-home-links a:hover,
+html.dark .lx-mobile-home-links a.is-current {
+  background: var(--lx-selected-green) !important;
   color: #0f172a !important;
 }

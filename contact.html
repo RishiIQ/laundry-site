@@ -9,10 +9,9 @@
     />
     <meta name="theme-color" content="#059669" />
     <title>Contact Us &amp; Support | LaundriX — Get in Touch</title>
-<link rel="icon" type="image/png" href="./site-logo.png">
-    <!-- ======================================================
-         GOOGLE FONTS (MANROPE & PLUS JAKARTA SANS)
-    ====================================================== -->
+    <link rel="icon" type="image/png" href="./site-logo.png">
+
+    <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,9 +19,7 @@
       rel="stylesheet"
     />
 
-    <!-- ======================================================
-         ICONS (MATERIAL SYMBOLS & FONT AWESOME)
-    ====================================================== -->
+    <!-- ICONS -->
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200"
       rel="stylesheet"
@@ -32,16 +29,47 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
 
-    <!-- ======================================================
-         SHARED GLOBAL CSS
-    ====================================================== -->
+    <!-- SHARED GLOBAL CSS -->
     <link rel="stylesheet" href="assets/css/main.css" />
 
-    <!-- ======================================================
-         CONTACT PAGE UNIQUE STYLES WITH 3D CURVE REVEAL & MOTION
-    ====================================================== -->
+    <!-- CONTACT PAGE UNIQUE STYLES & HEADER / DARK MODE FIXES -->
     <style>
-      /* Smooth Slow 3D Curve Scroll Reveal Animations Setup with Reverse Out Animation */
+      /* Always Visible Fixed Header Master Override */
+      .lx-header {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        z-index: 999999 !important;
+        background: var(--lx-surface) !important;
+        backdrop-filter: blur(16px) !important;
+        -webkit-backdrop-filter: blur(16px) !important;
+        border-bottom: 1px solid var(--lx-border) !important;
+        box-shadow: 0 10px 30px rgba(139, 92, 246, 0.15) !important;
+        padding-block: 12px !important;
+      }
+
+      html.dark .lx-header {
+        background: rgba(34, 27, 59, 0.95) !important;
+        border-color: rgba(139, 92, 246, 0.4) !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+      }
+
+      body {
+        padding-top: calc(var(--lx-header-height, 76px) + 20px) !important;
+      }
+
+      /* Active & Current Navigation Highlighting */
+      .lx-nav-link.is-active,
+      .lx-nav-link.is-current,
+      .lx-nav-dropdown-item.is-current {
+        background: var(--lx-selected-green, #ccff00) !important;
+        color: #0f172a !important;
+        box-shadow: 0 4px 12px rgba(204, 255, 0, 0.35);
+      }
+
+      /* Smooth Slow 3D Curve Scroll Reveal Animations Setup */
       [data-reveal] {
         opacity: 0;
         transform: perspective(1000px) translateY(60px) rotateX(12deg) scale(0.96);
@@ -59,7 +87,7 @@
       /* Contact Hero */
       .cnt-hero {
         position: relative;
-        padding-top: clamp(130px, 15vh, 170px);
+        padding-top: clamp(80px, 10vh, 120px);
         padding-bottom: clamp(40px, 6vh, 70px);
         text-align: center;
         background: radial-gradient(circle at 50% 15%, rgba(var(--lx-primary-rgb), 0.08) 0%, transparent 60%);
@@ -88,6 +116,7 @@
         font-weight: 900;
         letter-spacing: -0.04em;
         margin-bottom: 18px;
+        color: var(--lx-text);
       }
 
       .cnt-hero h1 span {
@@ -120,10 +149,7 @@
         border: 1px solid var(--lx-border);
         box-shadow: var(--lx-shadow-sm);
         text-align: center;
-        transition:
-          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-          box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-          border-color 0.8s ease;
+        transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.8s ease;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -145,21 +171,12 @@
         place-items: center;
         font-size: 24px;
         margin-bottom: 16px;
-        transition:
-          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-          background-color 0.8s ease,
-          color 0.8s ease;
-      }
-
-      .cnt-method-card:hover .cnt-method-icon {
-        background: var(--lx-primary);
-        color: #fff;
-        transform: scale(1.08);
       }
 
       .cnt-method-card h3 {
         font-size: 18px;
         margin-bottom: 6px;
+        color: var(--lx-text);
       }
 
       .cnt-method-card p {
@@ -171,11 +188,6 @@
       .cnt-method-card a {
         color: var(--lx-primary);
         font-weight: 700;
-      }
-
-      .cnt-method-card a:hover {
-        color: var(--lx-primary-hover);
-        text-decoration: underline;
       }
 
       .cnt-method-meta {
@@ -202,14 +214,6 @@
         background: var(--lx-surface);
         border: 1px solid var(--lx-border);
         box-shadow: var(--lx-shadow-lg);
-        transition:
-          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-          box-shadow 0.8s ease;
-      }
-
-      .cnt-form-wrapper:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
       }
 
       .cnt-form-wrapper .label {
@@ -225,6 +229,7 @@
       .cnt-form-wrapper h2 {
         font-size: clamp(24px, 3vw, 34px);
         margin-bottom: 24px;
+        color: var(--lx-text);
       }
 
       .cnt-form-group {
@@ -238,10 +243,6 @@
         font-weight: 700;
         color: var(--lx-text);
         margin-bottom: 8px;
-      }
-
-      .cnt-form-group label .required {
-        color: #ef4444;
       }
 
       .cnt-form-row {
@@ -262,10 +263,6 @@
         font-weight: 600;
         color: var(--lx-text);
         outline: none;
-        transition:
-          border-color 0.6s ease,
-          background-color 0.6s ease,
-          box-shadow 0.6s ease;
         font-family: inherit;
       }
 
@@ -282,75 +279,28 @@
         box-shadow: 0 0 0 3px rgba(var(--lx-primary-rgb), 0.15);
       }
 
-      .cnt-input.is-invalid,
-      .cnt-select.is-invalid,
-      .cnt-textarea.is-invalid {
-        border-color: #ef4444;
-      }
-
-      .cnt-field-error {
-        display: none;
-        color: #ef4444;
-        font-size: 11.5px;
-        font-weight: 600;
-        margin-top: 5px;
-      }
-
-      .cnt-field-error.visible {
-        display: block;
-      }
-
       .cnt-submit-btn {
         min-height: 52px;
         width: 100%;
         border-radius: var(--lx-radius-pill);
-        background: linear-gradient(135deg, var(--lx-primary), #76f563);
+        background: linear-gradient(135deg, var(--lx-primary), #047857);
         color: #fff;
         font-size: 15px;
         font-weight: 800;
         border: none;
         cursor: pointer;
-        position: relative;
-        overflow: hidden;
-        transition:
-          transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-          box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-          background 0.8s ease;
         box-shadow: 0 4px 14px var(--lx-primary-glow);
         display: inline-flex;
         align-items: center;
         justify-content: center;
         gap: 10px;
-      }
-
-      .cnt-submit-btn::before {
-        content: "";
-        position: absolute;
-        width: 30px;
-        height: 180px;
-        left: -75px;
-        top: -65px;
-        transform: rotate(24deg);
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
-        transition: left 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-        pointer-events: none;
-      }
-
-      .cnt-submit-btn:hover::before {
-        left: 125%;
+        transition: transform 0.45s ease, background 0.8s ease;
       }
 
       .cnt-submit-btn:hover {
-        background: linear-gradient(135deg, #cdffbd, #b8a7f8);
-        color: green;
-        transform: translateY(-4px) scale(1.025);
+        background: linear-gradient(135deg, #047857, #065f46);
+        transform: translateY(-2px);
         box-shadow: 0 8px 20px var(--lx-primary-glow);
-      }
-
-      .cnt-submit-btn:disabled {
-        opacity: 0.65;
-        cursor: not-allowed;
-        transform: none !important;
       }
 
       /* Sidebar Cards */
@@ -366,16 +316,6 @@
         background: var(--lx-surface);
         border: 1px solid var(--lx-border);
         box-shadow: var(--lx-shadow-sm);
-        transition:
-          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-          box-shadow 0.8s ease,
-          border-color 0.8s ease;
-      }
-
-      .cnt-info-card:hover {
-        transform: translateY(-6px);
-        box-shadow: var(--lx-shadow-md);
-        border-color: rgba(var(--lx-primary-rgb), 0.3);
       }
 
       .cnt-info-card .info-tag {
@@ -391,6 +331,7 @@
       .cnt-info-card h3 {
         font-size: 20px;
         margin-bottom: 18px;
+        color: var(--lx-text);
       }
 
       .cnt-detail-row {
@@ -401,13 +342,6 @@
         border-bottom: 1px solid var(--lx-border-subtle);
         color: var(--lx-text);
         font-size: 14px;
-        transition: background-color 0.3s ease;
-      }
-
-      .cnt-detail-row:hover {
-        background-color: var(--lx-bg-subtle);
-        border-radius: 8px;
-        padding-inline: 6px;
       }
 
       .cnt-detail-row:last-child {
@@ -435,7 +369,7 @@
         margin-top: 18px;
       }
 
-      /* Interactive Location Showcase */
+      /* Headquarters Map Preview */
       .cnt-map-section {
         padding-block: clamp(60px, 8vw, 100px);
         background: var(--lx-bg-subtle);
@@ -450,6 +384,7 @@
       .cnt-section-head h2 {
         font-size: clamp(30px, 3.6vw, 44px);
         margin-bottom: 12px;
+        color: var(--lx-text);
       }
 
       .cnt-section-head p {
@@ -483,14 +418,6 @@
         border: 1px solid var(--lx-border);
         box-shadow: var(--lx-shadow-xl);
         z-index: 2;
-        transition:
-          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-          box-shadow 0.8s ease;
-      }
-
-      .cnt-map-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
       }
 
       .cnt-map-pin {
@@ -524,6 +451,7 @@
       .cnt-map-card h4 {
         font-size: 20px;
         margin-bottom: 6px;
+        color: var(--lx-text);
       }
 
       .cnt-map-card p {
@@ -550,14 +478,6 @@
         background: var(--lx-surface);
         border: 1px solid var(--lx-border);
         overflow: hidden;
-        transition:
-          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-          box-shadow 0.8s ease;
-      }
-
-      .cnt-faq-item:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--lx-shadow-md);
       }
 
       .cnt-faq-question {
@@ -618,8 +538,6 @@
         justify-content: space-between;
         gap: 32px;
         box-shadow: 0 20px 50px -10px rgba(6, 78, 59, 0.35);
-        position: relative;
-        overflow: hidden;
       }
 
       .cnt-cta-card h2 {
@@ -645,172 +563,132 @@
         align-items: center;
         gap: 10px;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-        flex-shrink: 0;
-        position: relative;
-        overflow: hidden;
-        transition:
-          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-          background-color 0.8s ease;
         text-decoration: none;
+        flex-shrink: 0;
+        border: none;
+        cursor: pointer;
       }
 
-      .cnt-cta-card .lx-button-white::before {
-        content: "";
-        position: absolute;
-        width: 30px;
-        height: 180px;
-        left: -75px;
-        top: -65px;
-        transform: rotate(24deg);
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
-        transition: left 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-        pointer-events: none;
-      }
-
-      .cnt-cta-card .lx-button-white:hover::before {
-        left: 125%;
-      }
-
-      .cnt-cta-card .lx-button-white:hover {
-        background: var(--lx-primary-light);
-        transform: translateY(-2px);
-      }
-
-      /* =========================================================
-         LAUNDRIX — CAELESTIA EXPRESSIVE MOTION LAYER
-         ========================================================= */
-      :root {
-        --cx: 50%;
-        --cy: 35%;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        isolation: isolate;
-        overflow-x: hidden;
-        perspective: 1400px;
-      }
-
-      body::after {
-        content: "";
+      /* Modal Engine */
+      .lx-modal {
         position: fixed;
         inset: 0;
-        pointer-events: none;
-        z-index: 9999;
-        opacity: 0.032;
-        mix-blend-mode: screen;
-        background: linear-gradient(
-          115deg,
-          transparent 42%,
-          rgba(255, 255, 255, 0.95) 50%,
-          transparent 58%
-        );
-        background-size: 220% 220%;
-        animation: cxSweep 15s linear infinite;
-      }
-      @keyframes cxSweep {
-        from { background-position: 180% 10%; }
-        to { background-position: -40% 90%; }
+        background: rgba(0, 0, 0, 0.65);
+        backdrop-filter: blur(6px);
+        display: grid;
+        place-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        z-index: 9999999;
       }
 
-      header,
-      .header,
-      .navbar,
-      .site-header {
-        animation: cxHeader 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-      }
-      @keyframes cxHeader {
-        from {
-          opacity: 0;
-          transform: translateY(-30px) scale(0.975);
-          filter: blur(10px);
-        }
-        70% {
-          opacity: 1;
-          transform: translateY(3px) scale(1.008);
-          filter: blur(0);
-        }
-        to { transform: none; }
+      .lx-modal.is-open {
+        opacity: 1;
+        visibility: visible;
       }
 
-      /* Pointer-following ambient glow */
-      main,
-      .main,
-      .page,
-      .hero,
-      .section {
-        --cx-glow-x: var(--cx);
-        --cx-glow-y: var(--cy);
-      }
-      .cnt-hero::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        background: radial-gradient(
-          500px circle at var(--cx-glow-x) var(--cx-glow-y),
-          rgba(255, 255, 255, 0.07),
-          transparent 62%
-        );
-        transition: background-position 0.5s ease;
+      .lx-modal-dialog {
+        transform: translateY(20px) scale(0.95);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        max-height: 90vh;
+        overflow-y: auto;
+        width: min(540px, calc(100% - 32px));
+        margin: 20px;
       }
 
-      /* Hero Title & Copy Animations */
-      .cnt-hero h1 {
-        animation: cxTitle 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
-      }
-      @keyframes cxTitle {
-        0% {
-          opacity: 0;
-          transform: translateY(34px) scale(0.94);
-          filter: blur(12px);
-          letter-spacing: -0.05em;
-        }
-        65% {
-          opacity: 1;
-          transform: translateY(-4px) scale(1.012);
-          filter: blur(0);
-        }
-        100% {
-          transform: none;
-          letter-spacing: normal;
-        }
-      }
-      .cnt-hero p {
-        animation: cxCopy 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both;
-      }
-      @keyframes cxCopy {
-        from {
-          opacity: 0;
-          transform: translateY(18px);
-          filter: blur(5px);
-        }
-        to {
-          opacity: 1;
-          transform: none;
-          filter: blur(0);
-        }
+      .lx-modal.is-open .lx-modal-dialog {
+        transform: translateY(0) scale(1);
       }
 
-      /* Ripple Effect */
-      .cx-ripple {
+      /* Toast Notifications */
+      .lx-toast-container {
         position: fixed;
-        width: 12px;
-        height: 12px;
+        bottom: 24px;
+        right: 24px;
+        z-index: 99999999;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-width: calc(100vw - 32px);
+        pointer-events: none;
+      }
+
+      .lx-toast {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 22px;
+        border-radius: var(--lx-radius-md, 18px);
+        background: var(--lx-surface, #ffffff);
+        border: 1px solid var(--lx-border, #e2e8f0);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        color: var(--lx-text, #0f172a);
+        font-size: 14.5px;
+        font-weight: 700;
+        pointer-events: auto;
+        animation: lxToastIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      .lx-toast.is-leaving {
+        animation: lxToastOut 0.35s ease forwards;
+      }
+
+      .lx-toast-icon {
+        width: 28px;
+        height: 28px;
         border-radius: 50%;
-        pointer-events: none;
-        z-index: 10001;
-        background: rgba(16, 185, 129, 0.18);
-        border: 1px solid rgba(16, 185, 129, 0.65);
-        transform: translate(-50%, -50%);
-        animation: cxRipple 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        display: grid;
+        place-items: center;
+        background: var(--lx-selected-green, #ccff00);
+        color: #0f172a;
+        flex-shrink: 0;
       }
-      @keyframes cxRipple {
-        to {
-          opacity: 0;
-          transform: translate(-50%, -50%) scale(16);
-        }
+
+      @keyframes lxToastIn {
+        from { opacity: 0; transform: translateY(20px) scale(0.92); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+
+      @keyframes lxToastOut {
+        to { opacity: 0; transform: translateY(10px) scale(0.92); }
+      }
+
+      /* Dark Mode Universal Text Visibility Overrides */
+      html.dark .cnt-method-card,
+      html.dark .cnt-form-wrapper,
+      html.dark .cnt-info-card,
+      html.dark .cnt-map-card,
+      html.dark .cnt-faq-item,
+      html.dark .cnt-eyebrow,
+      html.dark .lx-modal-dialog {
+        background-color: var(--lx-surface) !important;
+        border-color: rgba(139, 92, 246, 0.3) !important;
+        color: #ffffff !important;
+      }
+
+      html.dark .cnt-method-card h3,
+      html.dark .cnt-form-wrapper h2,
+      html.dark .cnt-info-card h3,
+      html.dark .cnt-map-card h4 {
+        color: #ffffff !important;
+      }
+
+      html.dark .cnt-hero p,
+      html.dark .cnt-method-card p,
+      html.dark .cnt-form-group label,
+      html.dark .cnt-detail-row,
+      html.dark .cnt-map-card p,
+      html.dark .cnt-faq-answer p {
+        color: #c4b5fd !important;
+      }
+
+      html.dark .cnt-input,
+      html.dark .cnt-select,
+      html.dark .cnt-textarea {
+        background-color: #1a142e !important;
+        color: #ffffff !important;
+        border-color: rgba(139, 92, 246, 0.4) !important;
       }
 
       @media (max-width: 980px) {
@@ -830,19 +708,6 @@
         .cnt-cta-card .lx-button-white {
           width: 100%;
           justify-content: center;
-        }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        body::after,
-        header,
-        .cnt-hero h1,
-        .cnt-hero p {
-          animation: none !important;
-        }
-        [data-reveal] {
-          transition: none !important;
-          transform: none !important;
-          filter: none !important;
         }
       }
     </style>
@@ -905,7 +770,7 @@
             <a href="how-it-works.html" class="lx-nav-link"> How it works </a>
             <a href="coverage.html" class="lx-nav-link"> Coverage </a>
             <a href="blog.html" class="lx-nav-link"> Blog </a>
-            <a href="contact.html" class="lx-nav-link is-active"> Contact </a>
+            <a href="contact.html" class="lx-nav-link is-current"> Contact </a>
           </nav>
 
           <!-- HEADER ACTIONS -->
@@ -935,8 +800,6 @@
             </button>
             <a href="login.html" class="lx-nav-link" style="font-weight:700;"> Login </a>
             <a href="register.html" class="lx-button lx-button-primary"> Sign up </a>
-
-            
 
             <button
               type="button"
@@ -1060,17 +923,15 @@
               <span class="label">Send an Inquiry</span>
               <h2>We'd love to hear from you.</h2>
 
-              <form id="contactForm" data-validate data-demo="true" data-success="Thank you! Your message has been sent successfully. Our team will get back to you within 24 hours." novalidate>
+              <form id="contactForm" novalidate>
                 <div class="cnt-form-row">
                   <div class="cnt-form-group">
-                    <label for="fullName">Full Name <span class="required">*</span></label>
+                    <label for="fullName">Full Name <span class="required" style="color:#ef4444;">*</span></label>
                     <input type="text" id="fullName" class="cnt-input" placeholder="e.g. Rahul Verma" required minlength="2" />
-                    <span class="cnt-field-error">Please enter your full name (at least 2 characters)</span>
                   </div>
                   <div class="cnt-form-group">
-                    <label for="email">Email Address <span class="required">*</span></label>
+                    <label for="email">Email Address <span class="required" style="color:#ef4444;">*</span></label>
                     <input type="email" id="email" class="cnt-input" placeholder="e.g. rahul@example.com" required />
-                    <span class="cnt-field-error">Please enter a valid email address</span>
                   </div>
                 </div>
 
@@ -1080,9 +941,9 @@
                 </div>
 
                 <div class="cnt-form-group">
-                  <label for="subject">Inquiry Subject <span class="required">*</span></label>
+                  <label for="subject">Inquiry Subject <span class="required" style="color:#ef4444;">*</span></label>
                   <select id="subject" class="cnt-select" required>
-                    <option value="">Select subject category...</option>
+                    <option value="" disabled selected>Select subject category...</option>
                     <option value="booking">Booking &amp; Pickup Logistics</option>
                     <option value="pricing">Pricing &amp; Subscription Inquiries</option>
                     <option value="support">Active Order Assistance &amp; Help</option>
@@ -1090,13 +951,11 @@
                     <option value="partnership">Corporate &amp; Commercial Partnerships</option>
                     <option value="other">Other Inquiries</option>
                   </select>
-                  <span class="cnt-field-error">Please select a subject category</span>
                 </div>
 
                 <div class="cnt-form-group">
-                  <label for="message">Your Message <span class="required">*</span></label>
+                  <label for="message">Your Message <span class="required" style="color:#ef4444;">*</span></label>
                   <textarea id="message" class="cnt-textarea" placeholder="Tell us how we can help you..." required minlength="10"></textarea>
-                  <span class="cnt-field-error">Please enter your message (at least 10 characters)</span>
                 </div>
 
                 <button type="submit" class="cnt-submit-btn" id="contactSubmitBtn">
@@ -1185,7 +1044,7 @@
               </div>
               <h4>LaundriX Central Facility</h4>
               <p>Indiranagar, Bengaluru, Karnataka, India</p>
-              <a href="coverage.html" class="prc-btn prc-btn-outline" style="max-width:240px; margin:0 auto;">
+              <a href="coverage.html" class="prc-btn prc-btn-outline" style="max-width:240px; margin:0 auto; display:inline-flex; align-items:center; justify-content:center; padding:10px 16px; border-radius:var(--lx-radius-pill); font-weight:800; text-decoration:none;">
                 <span>View All 12+ Hubs</span>
               </a>
             </div>
@@ -1262,14 +1121,69 @@
               <h2>Ready to Experience LaundriX?</h2>
               <p>Whether you want to book your first pickup or have questions, we're here to help.</p>
             </div>
-            <a href="register.html" class="lx-button-white">
+            <button type="button" class="lx-button-white" data-modal-open="#book-pickup-modal">
               <span>Book a Pickup</span>
               <i class="fa-solid fa-arrow-right"></i>
-            </a>
+            </button>
           </div>
         </div>
       </section>
     </main>
+
+    <!-- BOOKING PICKUP MODAL FORM DIALOG -->
+    <div class="lx-modal" id="book-pickup-modal" aria-hidden="true" role="dialog">
+      <div class="lx-modal-dialog" style="background: var(--lx-surface); padding: 40px; border-radius: var(--lx-radius-xl); border: 1px solid var(--lx-border); box-shadow: var(--lx-shadow-xl); position: relative;">
+        <button type="button" class="lx-modal-close" data-modal-close aria-label="Close modal" style="position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 20px; color: var(--lx-text-soft); cursor: pointer;">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div style="margin-bottom: 24px;">
+          <span class="cnt-eyebrow" style="margin-bottom: 8px;">Instant Booking</span>
+          <h3 style="font-size: 24px; font-weight: 800; color: var(--lx-text);">Schedule Your Pickup</h3>
+          <p style="color: var(--lx-text-soft); font-size: 14px; margin-top: 4px;">Choose your desired services, date, and pickup slot.</p>
+        </div>
+
+        <form id="pickup-modal-form">
+          <div style="margin-bottom: 16px;">
+            <label style="display: block; font-size: 13px; font-weight: 700; color: var(--lx-text); margin-bottom: 6px;">Select Laundry Service</label>
+            <select name="service_plan" required style="width: 100%; padding: 12px 16px; border-radius: var(--lx-radius-md); border: 1px solid var(--lx-border); background: var(--lx-bg); color: var(--lx-text); font-size: 14px;">
+              <option value="" disabled selected>Choose a service...</option>
+              <option value="wash-fold">Wash &amp; Fold (₹79 / kg)</option>
+              <option value="dry-cleaning">Dry Cleaning (From ₹149 / pc)</option>
+              <option value="steam-press">Steam Ironing / Press (₹25 / pc)</option>
+              <option value="luxe-care">Luxe &amp; Bridal Couture</option>
+            </select>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div>
+              <label style="display: block; font-size: 13px; font-weight: 700; color: var(--lx-text); margin-bottom: 6px;">Pickup Date</label>
+              <input type="date" id="modalPickupDate" name="pickup_date" required style="width: 100%; padding: 12px 16px; border-radius: var(--lx-radius-md); border: 1px solid var(--lx-border); background: var(--lx-bg); color: var(--lx-text); font-size: 14px;" />
+            </div>
+            <div>
+              <label style="display: block; font-size: 13px; font-weight: 700; color: var(--lx-text); margin-bottom: 6px;">Time Window</label>
+              <select name="pickup_time" required style="width: 100%; padding: 12px 16px; border-radius: var(--lx-radius-md); border: 1px solid var(--lx-border); background: var(--lx-bg); color: var(--lx-text); font-size: 14px;">
+                <option value="" disabled selected>Select slot...</option>
+                <option value="08:00-11:00">08:00 AM - 11:00 AM</option>
+                <option value="11:00-14:00">11:00 AM - 02:00 PM</option>
+                <option value="16:00-19:00">04:00 PM - 07:00 PM</option>
+                <option value="19:00-21:00">07:00 PM - 09:00 PM</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 24px;">
+            <label style="display: block; font-size: 13px; font-weight: 700; color: var(--lx-text); margin-bottom: 6px;">Doorstep Address</label>
+            <textarea name="pickup_address" rows="3" placeholder="Enter flat/apartment number, street and landmark..." required style="width: 100%; padding: 12px 16px; border-radius: var(--lx-radius-md); border: 1px solid var(--lx-border); background: var(--lx-bg); color: var(--lx-text); font-size: 14px; resize: none;"></textarea>
+          </div>
+
+          <button type="submit" class="lx-button lx-button-primary" style="width: 100%; justify-content: center; min-height: 48px; border:none; cursor:pointer;">
+            <span>Confirm &amp; Schedule Pickup</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </form>
+      </div>
+    </div>
 
     <!-- ======================================================
          GLOBAL FOOTER (5-COLUMN LUXE DESIGN)
@@ -1346,10 +1260,10 @@
                   <p>Book a pickup in seconds.</p>
                 </div>
               </div>
-              <a href="register.html" class="lx-footer-button">
+              <button type="button" class="lx-footer-button" data-modal-open="#book-pickup-modal" style="border:none; cursor:pointer;">
                 <span>Get Started</span>
                 <i class="fa-solid fa-arrow-right"></i>
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -1376,17 +1290,104 @@
     ====================================================== -->
     <script src="assets/js/main.js"></script>
 
-    <!-- Page Specific Script: Form validation helper & Chat simulator -->
+    <!-- Page Specific Script -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+        // Minimum pickup date initialization
+        const dateInput = document.getElementById("modalPickupDate");
+        if (dateInput) {
+          const tomorrow = new Date();
+          tomorrow.setDate(tomorrow.getDate() + 1);
+          dateInput.min = tomorrow.toISOString().split("T")[0];
+          dateInput.value = tomorrow.toISOString().split("T")[0];
+        }
+
+        // Modal Open / Close Logic
+        const modal = document.getElementById("book-pickup-modal");
+        document.querySelectorAll('[data-modal-open="#book-pickup-modal"]').forEach(btn => {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (modal) {
+              modal.classList.add("is-open");
+              modal.setAttribute("aria-hidden", "false");
+              document.body.style.overflow = "hidden";
+            }
+          });
+        });
+
+        document.querySelectorAll("[data-modal-close]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            if (modal) {
+              modal.classList.remove("is-open");
+              modal.setAttribute("aria-hidden", "true");
+              document.body.style.overflow = "";
+            }
+          });
+        });
+
+        if (modal) {
+          modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
+              modal.classList.remove("is-open");
+              modal.setAttribute("aria-hidden", "true");
+              document.body.style.overflow = "";
+            }
+          });
+        }
+
+        // Form submission intercept for pickup modal
+        const pickupForm = document.getElementById("pickup-modal-form");
+        if (pickupForm) {
+          pickupForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            if (modal) {
+              modal.classList.remove("is-open");
+              modal.setAttribute("aria-hidden", "true");
+            }
+            document.body.style.overflow = "";
+            pickupForm.reset();
+            showToast("Pickup slot successfully scheduled! Confirmation sent via SMS.");
+          });
+        }
+
+        // Inquiry contact form submission
+        const contactForm = document.getElementById("contactForm");
+        if (contactForm) {
+          contactForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            contactForm.reset();
+            showToast("Thank you! Your message has been sent successfully.");
+          });
+        }
+
+        function showToast(message) {
+          let container = document.querySelector(".lx-toast-container");
+          if (!container) {
+            container = document.createElement("div");
+            container.className = "lx-toast-container";
+            document.body.appendChild(container);
+          }
+
+          const toast = document.createElement("div");
+          toast.className = "lx-toast";
+          toast.innerHTML = `
+            <div class="lx-toast-icon"><i class="fa-solid fa-check"></i></div>
+            <span>${message}</span>
+          `;
+          container.appendChild(toast);
+
+          setTimeout(() => {
+            toast.classList.add("is-leaving");
+            setTimeout(() => toast.remove(), 400);
+          }, 3500);
+        }
+
         // Live Chat Button Handler
         const chatBtn = document.getElementById("openChatBtn");
         if (chatBtn) {
           chatBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            if (window.LaundriX && window.LaundriX.showToast) {
-              window.LaundriX.showToast("Connecting you with a live LaundriX support agent...", { type: "info" });
-            }
+            showToast("Connecting you with a live LaundriX support agent...");
           });
         }
 
@@ -1400,7 +1401,7 @@
           });
         });
 
-        // Smooth slow 3D curve scroll reveal observer with bidirectional/reverse animation support
+        // Smooth slow 3D curve scroll reveal observer
         const revealElements = document.querySelectorAll("[data-reveal]");
         const revealObserver = new IntersectionObserver(
           (entries) => {
@@ -1420,43 +1421,6 @@
 
         revealElements.forEach((el) => revealObserver.observe(el));
       });
-    </script>
-
-    <script>
-      /* Caelestia-style pointer ambience & interactions */
-      let cxFrame = null,
-        cxX = innerWidth * 0.5,
-        cxY = innerHeight * 0.35;
-      window.addEventListener(
-        "pointermove",
-        (e) => {
-          cxX = e.clientX;
-          cxY = e.clientY;
-          if (cxFrame) return;
-          cxFrame = requestAnimationFrame(() => {
-            document.documentElement.style.setProperty("--cx", cxX + "px");
-            document.documentElement.style.setProperty("--cy", cxY + "px");
-            cxFrame = null;
-          });
-        },
-        { passive: true },
-      );
-
-      document.addEventListener(
-        "pointerdown",
-        (e) => {
-          if (matchMedia("(prefers-reduced-motion: reduce)").matches || !e.isPrimary) return;
-          const target = e.target.closest(".cnt-submit-btn,.cnt-cta-card .lx-button-white,.cnt-method-card");
-          if (!target) return;
-          const r = document.createElement("span");
-          r.className = "cx-ripple";
-          r.style.left = e.clientX + "px";
-          r.style.top = e.clientY + "px";
-          document.body.appendChild(r);
-          r.addEventListener("animationend", () => r.remove(), { once: true });
-        },
-        { passive: true },
-      );
     </script>
   </body>
 </html>

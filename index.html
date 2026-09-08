@@ -63,8 +63,26 @@
         padding-top: clamp(120px, 14vh, 160px);
         padding-bottom: clamp(60px, 8vh, 100px);
         overflow: hidden;
-        background: radial-gradient(circle at 85% 25%, rgba(var(--lx-primary-rgb), 0.08) 0%, transparent 45%),
-                    radial-gradient(circle at 10% 85%, rgba(79, 70, 229, 0.04) 0%, transparent 40%);
+        background-image: url('https://images.unsplash.com/photo-1638949493140-edb10b7be2f3?q=80&w=1272&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        background-size: cover;
+        background-position: center;
+      }
+
+      .home-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: rgba(233, 235, 240, 0.85);
+        z-index: 1;
+      }
+
+      html.dark .home-hero::before {
+        background-color: rgba(18, 14, 31, 0.88);
+      }
+
+      .home-hero > .lx-container {
+        position: relative;
+        z-index: 2;
       }
 
       .home-hero-grid {
@@ -305,19 +323,6 @@
       .home-pickup-card {
         top: 25px;
         left: -25px;
-      }
-
-      .home-rating-card {
-        bottom: 25px;
-        right: -25px;
-        animation-delay: -5s;
-      }
-
-      .home-rating-stars {
-        color: var(--lx-gold);
-        font-size: 12px;
-        letter-spacing: 2px;
-        margin-bottom: 2px;
       }
 
       /* Quick Booking Interactive Card */
@@ -736,7 +741,6 @@
         color: #064e3b;
       }
 
-      /* Keyframes */
       @keyframes floatMotion {
         0%, 100% { transform: translateY(0px); }
         50% { transform: translateY(-10px); }
@@ -747,7 +751,6 @@
         50% { transform: scale(1.18); opacity: 0.6; }
       }
 
-      /* Responsive Query Tweaks */
       @media (max-width: 980px) {
         .home-hero-grid {
           grid-template-columns: 1fr;
@@ -794,408 +797,12 @@
           width: 100%;
         }
       }
-    
-/* =========================================================
-   LAUNDRIX INDEX — CAELESTIA EXPRESSIVE MOTION ENGINE
-   Animation-only enhancement. Existing markup/functionality
-   remains untouched.
-   ========================================================= */
-
-:root{
-  --lx-motion-x:50%;
-  --lx-motion-y:35%;
-  --lx-motion-angle:0deg;
-}
-
-html{scroll-behavior:smooth}
-body{isolation:isolate;overflow-x:hidden}
-
-body::before{
-  transition:background .45s ease-out,transform 1.2s cubic-bezier(.16,1,.3,1);
-}
-
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:999;
-  opacity:.035;
-  background:
-    linear-gradient(115deg,transparent 0%,transparent 42%,rgba(255,255,255,.9) 50%,transparent 58%);
-  background-size:220% 220%;
-  animation:lxIndexLightSweep 14s linear infinite;
-  mix-blend-mode:screen;
-}
-
-@keyframes lxIndexLightSweep{
-  0%{background-position:180% 15%}
-  100%{background-position:-40% 85%}
-}
-
-/* Header arrives like a floating shell surface */
-.lx-header{
-  animation:lxHeaderEnter 1s cubic-bezier(.16,1,.3,1) both;
-  transform-origin:50% 0;
-  will-change:transform,opacity;
-}
-
-@keyframes lxHeaderEnter{
-  0%{opacity:0;transform:translateY(-34px) scale(.97);filter:blur(12px)}
-  70%{opacity:1;transform:translateY(3px) scale(1.008);filter:blur(0)}
-  100%{transform:none}
-}
-
-/* Hero gets a staged cinematic reveal */
-.home-hero{
-  perspective:1400px;
-  transform-style:preserve-3d;
-}
-
-.home-hero::after{
-  content:"";
-  position:absolute;
-  width:65vw;
-  height:65vw;
-  max-width:900px;
-  max-height:900px;
-  left:calc(var(--lx-motion-x) - 32vw);
-  top:calc(var(--lx-motion-y) - 32vw);
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(255,255,255,.045),transparent 64%);
-  pointer-events:none;
-  mix-blend-mode:screen;
-  transition:left .8s cubic-bezier(.16,1,.3,1),top .8s cubic-bezier(.16,1,.3,1);
-}
-
-.home-hero-grid{
-  transform-style:preserve-3d;
-}
-
-/* Existing reveal elements become more expressive */
-[data-reveal]{
-  transform:perspective(1200px) translateY(65px) rotateX(14deg) rotateY(-2deg) scale(.94);
-  filter:blur(9px);
-  transition:
-    opacity 1.15s cubic-bezier(.16,1,.3,1),
-    transform 1.15s cubic-bezier(.16,1,.3,1),
-    filter 1.15s cubic-bezier(.16,1,.3,1);
-}
-
-[data-reveal].is-visible{
-  transform:perspective(1200px) translateY(0) rotateX(0) rotateY(0) scale(1);
-  filter:blur(0);
-}
-
-/* Hero title character-like energy */
-.home-title{
-  animation:lxTitleIn 1.15s cubic-bezier(.16,1,.3,1) .18s both;
-  text-shadow:0 0 0 transparent;
-}
-
-@keyframes lxTitleIn{
-  0%{opacity:0;transform:translateY(35px) scale(.96);letter-spacing:-.055em;filter:blur(12px)}
-  65%{opacity:1;transform:translateY(-4px) scale(1.012);filter:blur(0)}
-  100%{transform:none;letter-spacing:normal}
-}
-
-.home-eyebrow{
-  animation:lxEyebrowIn .8s cubic-bezier(.16,1,.3,1) .28s both;
-}
-
-@keyframes lxEyebrowIn{
-  0%{opacity:0;transform:translateX(-22px);filter:blur(6px)}
-  100%{opacity:1;transform:none;filter:blur(0)}
-}
-
-.home-eyebrow-dot{
-  animation:lxDotPulse 2.6s ease-in-out infinite;
-}
-
-@keyframes lxDotPulse{
-  0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,.35);transform:scale(1)}
-  50%{box-shadow:0 0 0 8px rgba(16,185,129,0);transform:scale(1.2)}
-}
-
-.home-description{
-  animation:lxDescriptionIn .9s cubic-bezier(.16,1,.3,1) .48s both;
-}
-
-@keyframes lxDescriptionIn{
-  from{opacity:0;transform:translateY(18px);filter:blur(5px)}
-  to{opacity:1;transform:none;filter:blur(0)}
-}
-
-.home-actions{
-  animation:lxActionsIn .85s cubic-bezier(.16,1,.3,1) .6s both;
-}
-
-@keyframes lxActionsIn{
-  0%{opacity:0;transform:translateY(22px) scale(.97)}
-  70%{opacity:1;transform:translateY(-3px) scale(1.01)}
-  100%{transform:none}
-}
-
-/* Buttons become tactile */
-.home-primary-button,
-.home-secondary-button{
-  position:relative;
-  overflow:hidden;
-  transform:translateZ(0);
-  transition:
-    transform .45s cubic-bezier(.16,1,.3,1),
-    box-shadow .45s cubic-bezier(.16,1,.3,1),
-    background .35s ease;
-}
-
-.home-primary-button::before,
-.home-secondary-button::before{
-  content:"";
-  position:absolute;
-  width:30px;
-  height:180px;
-  left:-70px;
-  top:-60px;
-  transform:rotate(24deg);
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
-  transition:left .7s cubic-bezier(.16,1,.3,1);
-  pointer-events:none;
-}
-
-.home-primary-button:hover,
-.home-secondary-button:hover{
-  transform:translateY(-4px) scale(1.025);
-}
-
-.home-primary-button:hover::before,
-.home-secondary-button:hover::before{
-  left:120%;
-}
-
-.home-primary-button:active,
-.home-secondary-button:active{
-  transform:scale(.96);
-}
-
-/* Trust block rises independently */
-.home-trust{
-  animation:lxTrustIn .9s cubic-bezier(.16,1,.3,1) .78s both;
-}
-
-@keyframes lxTrustIn{
-  from{opacity:0;transform:translateY(16px)}
-  to{opacity:1;transform:none}
-}
-
-.home-avatar{
-  transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;
-}
-
-.home-avatar:hover{
-  transform:translateY(-7px) scale(1.12);
-  z-index:4;
-  box-shadow:0 12px 30px rgba(0,0,0,.25);
-}
-
-/* 3D showcase: living object */
-.home-visual{
-  transform-style:preserve-3d;
-  animation:lxVisualIn 1.25s cubic-bezier(.16,1,.3,1) .3s both;
-}
-
-@keyframes lxVisualIn{
-  0%{opacity:0;transform:translateX(45px) rotateY(-14deg) rotateX(7deg) scale(.88);filter:blur(12px)}
-  65%{opacity:1;transform:translateX(-4px) rotateY(2deg) rotateX(-1deg) scale(1.02);filter:blur(0)}
-  100%{transform:none}
-}
-
-.home-floating-card{
-  transition:transform .55s cubic-bezier(.16,1,.3,1),box-shadow .55s cubic-bezier(.16,1,.3,1);
-}
-
-.home-floating-card:hover{
-  transform:translateY(-8px) rotate(-1deg) scale(1.025);
-  box-shadow:0 28px 70px rgba(0,0,0,.2);
-}
-
-.home-pickup-card{
-  animation:lxPickupFloat 5.5s ease-in-out 1.2s infinite;
-}
-
-@keyframes lxPickupFloat{
-  0%,100%{translate:0 0;rotate:0deg}
-  50%{translate:0 -9px;rotate:-1deg}
-}
-
-.home-rating-card{
-  animation:lxRatingFloat 6.2s ease-in-out 1.3s infinite;
-}
-
-@keyframes lxRatingFloat{
-  0%,100%{translate:0 0;rotate:0deg}
-  50%{translate:0 8px;rotate:1deg}
-}
-
-/* Service cards: stagger + magnetic hover */
-.home-service-card,
-.home-process-card,
-.home-stat,
-.home-testimonial-box,
-.home-final-cta-box{
-  transition:
-    transform .55s cubic-bezier(.16,1,.3,1),
-    box-shadow .55s cubic-bezier(.16,1,.3,1),
-    border-color .4s ease;
-}
-
-.home-service-card:hover,
-.home-process-card:hover,
-.home-stat:hover{
-  transform:translateY(-8px) scale(1.012);
-  box-shadow:0 30px 70px rgba(0,0,0,.14);
-}
-
-/* Scroll reveals get a clip + depth treatment */
-.lx-reveal{
-  opacity:0;
-  transform:perspective(1100px) translateY(55px) rotateX(12deg) scale(.96);
-  filter:blur(7px);
-  transition:
-    opacity .9s cubic-bezier(.16,1,.3,1),
-    transform .9s cubic-bezier(.16,1,.3,1),
-    filter .9s cubic-bezier(.16,1,.3,1);
-}
-
-.lx-reveal.is-visible{
-  opacity:1;
-  transform:perspective(1100px) translateY(0) rotateX(0) scale(1);
-  filter:blur(0);
-}
-
-/* Stagger grid children when the section enters */
-.lx-reveal.is-visible:nth-child(1){transition-delay:0s}
-.lx-reveal.is-visible:nth-child(2){transition-delay:.08s}
-.lx-reveal.is-visible:nth-child(3){transition-delay:.16s}
-.lx-reveal.is-visible:nth-child(4){transition-delay:.24s}
-
-/* Stats count-like pulse */
-.home-stat strong{
-  display:inline-block;
-  transition:transform .45s cubic-bezier(.16,1,.3,1);
-}
-.home-stat:hover strong{
-  transform:scale(1.08);
-}
-
-/* Final CTA has a slow aurora */
-.home-final-cta-box{
-  position:relative;
-  overflow:hidden;
-}
-
-.home-final-cta-box::before{
-  content:"";
-  position:absolute;
-  width:340px;height:340px;
-  right:-100px;top:-170px;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(255,255,255,.18),transparent 68%);
-  animation:lxCtaAura 6s ease-in-out infinite;
-  pointer-events:none;
-}
-
-@keyframes lxCtaAura{
-  0%,100%{transform:translate(0,0) scale(1);opacity:.45}
-  50%{transform:translate(-55px,35px) scale(1.2);opacity:.75}
-}
-
-/* Footer reveal */
-.lx-footer{
-  animation:lxFooterIn 1s cubic-bezier(.16,1,.3,1) both;
-}
-
-@keyframes lxFooterIn{
-  from{opacity:0;transform:translateY(25px)}
-  to{opacity:1;transform:none}
-}
-
-.home-hero {
-  position: relative;
-  overflow: hidden;
-  background-image: url('https://images.unsplash.com/photo-1638949493140-edb10b7be2f3?q=80&w=1272&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-  background-size: cover;
-  background-position: center;
-}
-
-/* Solid tone overlay for text legibility (no gradients) */
-.home-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgba(233, 235, 240, 0.85);
-  z-index: 1;
-}
-
-.home-hero > .lx-container {
-  position: relative;
-  z-index: 2;
-}
-
-/* Ripple for interactive elements */
-.lx-index-ripple{
-  position:fixed;
-  width:12px;height:12px;
-  border-radius:50%;
-  pointer-events:none;
-  z-index:10000;
-  background:rgba(16,185,129,.18);
-  border:1px solid rgba(16,185,129,.65);
-  transform:translate(-50%,-50%);
-  animation:lxIndexRipple .8s cubic-bezier(.16,1,.3,1) forwards;
-}
-
-@keyframes lxIndexRipple{
-  to{opacity:0;transform:translate(-50%,-50%) scale(16)}
-}
-
-@media(max-width:980px){
-  .home-hero::after{display:none}
-  .home-visual{animation:lxVisualIn .9s cubic-bezier(.16,1,.3,1) .3s both}
-}
-
-@media(max-width:640px){
-  body::after{opacity:.02}
-  .home-pickup-card,.home-rating-card{animation:none}
-}
-
-@media(prefers-reduced-motion:reduce){
-  body::after,
-  .lx-header,
-  .home-title,
-  .home-eyebrow,
-  .home-description,
-  .home-actions,
-  .home-trust,
-  .home-visual,
-  .home-pickup-card,
-  .home-rating-card,
-  .home-final-cta-box::before,
-  .lx-footer{
-    animation:none!important;
-  }
-  [data-reveal],.lx-reveal{
-    transition:none!important;
-    filter:none!important;
-    transform:none!important;
-  }
-}
-
-</style>
+    </style>
   </head>
 
   <body>
     <!-- ======================================================
-         GLOBAL HEADER & NAVIGATION
+         GLOBAL HEADER & NAVIGATION (ALWAYS VISIBLE FIXED)
     ====================================================== -->
     <header class="lx-header">
       <div class="lx-container">
@@ -1213,7 +820,7 @@ body::after{
             <div class="lx-nav-dropdown">
               <button
                 type="button"
-                class="lx-nav-link lx-nav-dropdown-trigger is-active lx-water-ripple"
+                class="lx-nav-link lx-nav-dropdown-trigger is-active"
                 data-home-dropdown
                 aria-expanded="false"
                 aria-haspopup="true"
@@ -1234,7 +841,7 @@ body::after{
                 </a>
                 <a href="home-2.html" class="lx-nav-dropdown-item">
                   <div class="lx-dropdown-icon">
-                    <span class="material-symbols-rounded">home_work </span>
+                    <span class="material-symbols-rounded"> dashboard </span>
                   </div>
                   <span class="lx-dropdown-content">
                     <strong> Home 2 </strong>
@@ -1265,23 +872,21 @@ body::after{
             </button>
 
             <button
-              type="button"
-              class="lx-direction-toggle"
-              data-rtl-toggle
-              aria-label="Toggle LTR / RTL"
-              aria-pressed="false"
-              title="Toggle LTR / RTL"
-            >
-              <span class="lx-direction-icon">
-                <span></span>
-                <span></span>
-                <span></span>
-              </span>
-            </button>
+  type="button"
+  class="lx-direction-toggle"
+  data-rtl-toggle
+  aria-label="Toggle LTR / RTL"
+  aria-pressed="false"
+  title="Toggle LTR / RTL"
+>
+  <span class="lx-direction-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </span>
+</button>
             <a href="login.html" class="lx-nav-link" style="font-weight:700;"> Login </a>
             <a href="register.html" class="lx-button lx-button-primary"> Sign up </a>
-
-            
 
             <button
               type="button"
@@ -1337,9 +942,9 @@ body::after{
     ====================================================== -->
     <main>
      <!-- HERO SECTION -->
-      <section class="home-hero lx-bubble-effect">
+      <section class="home-hero">
         <div class="lx-container">
-          <div class="home-hero-grid lx-bubble-effect">
+          <div class="home-hero-grid">
             <div data-reveal>
               <div class="home-eyebrow">
                 <span class="home-eyebrow-dot"></span>
@@ -1525,13 +1130,13 @@ body::after{
           <div class="home-services-grid">
             <!-- WASH & FOLD -->
             <a href="service-wash-fold.html" class="home-service-card" data-reveal>
-              <div class="home-service-image lx-bubble-effect">
+              <div class="home-service-image">
                 <img
                   src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=800&q=80"
                   alt="Freshly washed and folded clothes"
                   loading="lazy"
                 />
-                <span class="service-badge lx-bubble-effect">Wash & Fold</span>
+                <span class="service-badge">Wash & Fold</span>
               </div>
               <div class="home-service-content">
                 <div class="home-service-icon">
@@ -1802,7 +1407,6 @@ body::after{
     ====================================================== -->
     <script src="assets/js/main.js"></script>
 
-    <!-- Page Specific Script: Auto set tomorrow as default date & Smooth 3D Curve Scroll Reveal Observer with Reverse Animation -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const dateInput = document.getElementById("pickupDate");
@@ -1813,7 +1417,6 @@ body::after{
           dateInput.value = tomorrow.toISOString().split("T")[0];
         }
 
-        // Smooth slow 3D curve scroll reveal observer with bidirectional/reverse animation support
         const revealElements = document.querySelectorAll("[data-reveal]");
         const revealObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
@@ -1831,63 +1434,5 @@ body::after{
         revealElements.forEach(el => revealObserver.observe(el));
       });
     </script>
-  
-<script>
-
-/* =========================================================
-   CAELESTIA-STYLE POINTER ATMOSPHERE — VISUAL ONLY
-   ========================================================= */
-let lxIndexFrame=null,lxIndexX=innerWidth*.5,lxIndexY=innerHeight*.35;
-
-window.addEventListener("pointermove",e=>{
-  lxIndexX=e.clientX;
-  lxIndexY=e.clientY;
-  if(lxIndexFrame)return;
-
-  lxIndexFrame=requestAnimationFrame(()=>{
-    document.documentElement.style.setProperty("--lx-motion-x",lxIndexX+"px");
-    document.documentElement.style.setProperty("--lx-motion-y",lxIndexY+"px");
-    lxIndexFrame=null;
-  });
-},{passive:true});
-
-/* Gentle 3D response on the hero showcase. */
-const indexVisual=document.querySelector(".home-visual");
-
-indexVisual?.addEventListener("pointermove",e=>{
-  if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
-
-  const r=indexVisual.getBoundingClientRect();
-  const px=(e.clientX-r.left)/r.width-.5;
-  const py=(e.clientY-r.top)/r.height-.5;
-
-  indexVisual.style.transform=
-    `perspective(1200px) rotateX(${(-py*3).toFixed(2)}deg) rotateY(${(px*4).toFixed(2)}deg) translateY(-3px)`;
-});
-
-indexVisual?.addEventListener("pointerleave",()=>{
-  indexVisual.style.transform="";
-});
-
-/* Expressive click feedback — no navigation or behavior is intercepted. */
-document.addEventListener("pointerdown",e=>{
-  if(matchMedia("(prefers-reduced-motion: reduce)").matches || !e.isPrimary)return;
-
-  const target=e.target.closest(
-    ".home-primary-button,.home-secondary-button,.lx-nav-link,.lx-nav-dropdown-item,.lx-button"
-  );
-
-  if(!target)return;
-
-  const ripple=document.createElement("span");
-  ripple.className="lx-index-ripple";
-  ripple.style.left=e.clientX+"px";
-  ripple.style.top=e.clientY+"px";
-  document.body.appendChild(ripple);
-
-  ripple.addEventListener("animationend",()=>ripple.remove(),{once:true});
-},{passive:true});
-
-</script>
-</body>
+  </body>
 </html>

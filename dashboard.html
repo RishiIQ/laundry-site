@@ -16,8 +16,6 @@
        LAUNDRIX — CAELESTIA / QUICKSHELL INSPIRED DASHBOARD
        Floating surfaces • pill navigation • expressive motion
        ========================================================= */
-    
-    /* Use the same theme variables as main.css */
     :root {
       --lx-primary: #8b5cf6;
       --lx-selected-green: #ccff00;
@@ -31,7 +29,6 @@
       --lx-border: #e2e8f0;
       --lx-shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
       
-      /* Dashboard specific */
       --c-bg: #f3f0fa;
       --c-bg-2: #eae5f5;
       --c-surface: #ffffff;
@@ -53,7 +50,6 @@
       --radius-md: 18px;
     }
 
-    /* Dark theme - matches main.css dark class */
     html.dark {
       --lx-bg: #120e1f;
       --lx-surface: #221b3b;
@@ -154,7 +150,6 @@
       grid-template-columns:250px minmax(0,1fr);
     }
 
-    /* Floating left dock */
     .dock{
       position:sticky;
       top:18px;
@@ -182,6 +177,7 @@
       margin-bottom:24px;
       transition:.35s var(--spring);
       flex:none;
+      text-decoration: none;
     }
 
     .dock-brand-copy{
@@ -255,11 +251,17 @@
       content:"";position:absolute;right:-12px;width:4px;height:20px;
       border-radius:10px;background:var(--c-accent);
     }
-    .dock-bottom{display:flex;flex-direction:column;gap:8px}
+    .dock-bottom{display:flex;flex-direction:column;gap:8px;width:100%;align-items:center;}
+    
+    .nav-expanded .dock-bottom {
+      align-items: stretch;
+    }
+
     .dock-small{
       width:48px;height:46px;border:0;border-radius:16px;
       background:transparent;color:var(--c-muted);cursor:pointer;
       transition:all .4s cubic-bezier(0.16, 1, 0.3, 1);
+      display:inline-flex;align-items:center;justify-content:center;
     }
 
     .nav-toggle{
@@ -298,7 +300,6 @@
 
     .workspace{min-width:0;animation:pop .65s var(--spring) .06s both}
 
-    /* Top shell panel */
     .top-shell{
       min-height:78px;
       border:1px solid var(--c-line);
@@ -337,7 +338,7 @@
     }
     .status-dot{width:9px;height:9px;border-radius:50%;background:var(--c-accent);animation:pulse 2s infinite}
     .status-pill span:last-child{font-size:12px;font-weight:700;color:var(--c-muted)}
-    .profile-pill{padding-right:16px}
+    .profile-pill{padding-right:16px;cursor:pointer}
     .avatar{width:36px;height:36px;border-radius:14px;object-fit:cover}
     .profile-copy{line-height:1.15}
     .profile-copy strong{display:block;font-size:12px}
@@ -456,6 +457,7 @@
       transition:all 0.4s cubic-bezier(0.16, 1, 0.3, 1);box-shadow:0 9px 24px rgba(204, 255, 0, .13);
       position: relative;
       overflow: hidden;
+      text-decoration: none;
     }
     .btn::before {
       content: "";
@@ -501,6 +503,17 @@
       transition:all 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.6s ease, border-color 0.6s ease;
     }
     input:focus,select:focus{border-color:rgba(204, 255, 0, .55);box-shadow:0 0 0 4px rgba(204, 255, 0, .08);transform: translateY(-1px)}
+    input.error, select.error {
+      border-color: var(--c-red);
+      box-shadow: 0 0 0 4px rgba(239, 68, 68, .08);
+    }
+    .error-msg {
+      color: var(--c-red);
+      font-size: 10px;
+      font-weight: 700;
+      display: none;
+      margin-top: -4px;
+    }
     .form-actions{margin-top:8px}
 
     .wallet{
@@ -522,8 +535,6 @@
     .wallet h3{font-family:"Manrope";font-size:22px;margin:8px 0}
     .wallet p{max-width:550px;font-size:13px;line-height:1.6;opacity:.68}
     .wallet-balance{font-family:"Manrope";font-size:46px;font-weight:800;letter-spacing:-.07em;margin:26px 0}
-
-    .empty-note{padding:40px;text-align:center;color:var(--c-muted);font-size:13px}
 
     /* Mobile Dock */
     .mobile-dock{
@@ -657,12 +668,10 @@
     .lx-direction-icon span:nth-child(2) { width: 65%; margin-inline-start: auto; }
     .lx-direction-icon span:nth-child(3) { width: 85%; }
 
-    /* RTL state - mirror the icon */
     html[dir="rtl"] .lx-direction-icon {
       transform: scaleX(-1);
     }
 
-    /* Mobile RTL toggle icon */
     .lx-direction-icon-mobile {
       width: 14px;
       height: 11px;
@@ -688,7 +697,6 @@
       transform: scaleX(-1);
     }
 
-    /* Make dock-small consistent with direction toggle */
     .dock-small {
       width: 48px;
       height: 46px;
@@ -755,6 +763,7 @@
     <aside class="dock" aria-label="Dashboard navigation">
       <a href="index.html" class="dock-logo" aria-label="LaundriX home">
         <span class="material-symbols-rounded">local_laundry_service</span>
+        <div class="dock-brand-copy">Laundri<span>X</span></div>
       </a>
 
       <nav class="dock-nav">
@@ -765,7 +774,7 @@
           <span class="material-symbols-rounded">local_mall</span><span class="dock-label">My Orders</span>
         </button>
         <button class="dock-item" data-tab="schedule" title="Schedule Pickup">
-          <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="18px" fill="#1f1f1f"><path d="M216-96q-29 0-50.5-21.5T144-168v-528q0-29.7 21.5-50.85Q187-768 216-768h72v-96h72v96h240v-96h72v96h72q29 0 50.5 21.15T816-696v244l-72 72v-148H216v360h226l72 72H216Zm0-504h528v-96H216v96Zm0 0v-96 96ZM640-72 504-208l51-51 85 85 170-170 51 51L640-72Z"/></svg><span class="dock-label">Schedule Pickup</span>
+          <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="18px" fill="currentColor"><path d="M216-96q-29 0-50.5-21.5T144-168v-528q0-29.7 21.5-50.85Q187-768 216-768h72v-96h72v96h240v-96h72v96h72q29 0 50.5 21.15T816-696v244l-72 72v-148H216v360h226l72 72H216Zm0-504h528v-96H216v96Zm0 0v-96 96ZM640-72 504-208l51-51 85 85 170-170 51 51L640-72Z"/></svg><span class="dock-label">Schedule Pickup</span>
         </button>
         <button class="dock-item" data-tab="wallet" title="Wallet & Rewards">
           <span class="material-symbols-rounded">account_balance_wallet</span><span class="dock-label">Wallet & Rewards</span>
@@ -794,10 +803,10 @@
             <span></span>
           </span>
         </button>
-        <button class="dock-small" data-theme-toggle title="Toggle theme">
+        <button class="dock-small" data-theme-toggle title="Toggle theme" aria-label="Toggle theme">
           <span class="material-symbols-rounded" id="desktopThemeIcon">dark_mode</span>
         </button>
-        <a href="index.html" class="dock-small" style="display:inline-flex;align-items:center;justify-content:center;color:var(--c-red);text-decoration:none;" title="Log out">
+        <a href="index.html" class="dock-small" style="display:inline-flex;align-items:center;justify-content:center;color:var(--c-red);text-decoration:none;" title="Log out" aria-label="Log out">
           <span class="material-symbols-rounded">logout</span>
         </a>
       </div>
@@ -814,9 +823,9 @@
             <span class="status-dot"></span>
             <span>Service online</span>
           </div>
-          <button class="profile-pill" type="button" data-tab="settings" style="cursor:pointer">
+          <button class="profile-pill" type="button" data-tab="settings" style="cursor:pointer" aria-label="Account Settings">
             <img class="avatar" src="https://plus.unsplash.com/premium_photo-1689977871600-e755257fb5f8?q=80&w=300&auto=format&fit=crop" alt="Raj">
-            <span class="profile-copy"><strong>Raj</strong><small>Indiranagar, Bengaluru</small></span>
+            <span class="profile-copy"><strong id="headerProfileName">Raj</strong><small>Indiranagar, Bengaluru</small></span>
             <span class="material-symbols-rounded" style="font-size:18px;color:var(--c-muted)">expand_more</span>
           </button>
         </div>
@@ -826,7 +835,7 @@
         <section class="tab-pane active" id="tab-overview">
           <div class="hero">
             <div class="hero-copy">
-              <div class="hero-kicker"><span class="material-symbols-rounded" style="font-size:15px">auto_awesome</span> Good afternoon</div>
+              <div class="hero-kicker"><span class="material-symbols-rounded" style="font-size:15px">auto_awesome</span> Welcome back</div>
               <h2>Fresh clothes.<br><em>Zero friction.</em></h2>
               <p>Your laundry workspace is ready. Track your current order, schedule your next doorstep pickup, or check your LaundriX rewards.</p>
             </div>
@@ -895,24 +904,28 @@
           </div>
           <div class="card" style="max-width:850px">
             <div class="card-head"><div><h3>Pickup details</h3><p>Choose a service and a convenient date.</p></div><span class="material-symbols-rounded" style="color:var(--c-accent)">local_shipping</span></div>
-            <form id="dashboardScheduleForm">
+            <form id="dashboardScheduleForm" novalidate>
               <div class="form-grid">
                 <div class="form-group">
                   <label for="dashService">Select service</label>
                   <select id="dashService" required>
+                    <option value="" disabled selected>Choose service package...</option>
                     <option value="Wash & Fold">Wash &amp; Fold (₹99/kg)</option>
                     <option value="Dry Cleaning">Dry Cleaning (Custom per item)</option>
                     <option value="Steam Pressing">Steam Pressing (₹25/pc)</option>
                     <option value="Premium Care">Premium Care (Couture)</option>
                   </select>
+                  <span class="error-msg" id="err-dashService">Please select a valid service package.</span>
                 </div>
                 <div class="form-group">
                   <label for="dashDate">Pickup date</label>
                   <input type="date" id="dashDate" required>
+                  <span class="error-msg" id="err-dashDate">Please select a valid future date.</span>
                 </div>
                 <div class="form-group full">
                   <label for="dashAddress">Pickup address</label>
                   <input type="text" id="dashAddress" value="Flat 402, Prestige Orchid, Indiranagar, Bengaluru" required>
+                  <span class="error-msg" id="err-dashAddress">Delivery address cannot be empty.</span>
                 </div>
                 <div class="form-group full">
                   <label for="dashNotes">Special instructions</label>
@@ -945,11 +958,23 @@
           </div>
           <div class="card" style="max-width:850px">
             <div class="card-head"><div><h3>Personal information</h3><p>Keep your delivery details up to date.</p></div><span class="material-symbols-rounded" style="color:var(--c-purple)">manage_accounts</span></div>
-            <form id="settingsForm">
+            <form id="settingsForm" novalidate>
               <div class="form-grid">
-                <div class="form-group"><label for="setName">Full name</label><input type="text" id="setName" value="Rishi Murugan" required></div>
-                <div class="form-group"><label for="setEmail">Email address</label><input type="email" id="setEmail" value="rishi.murugan@example.com" required></div>
-                <div class="form-group full"><label for="setPhone">Phone number</label><input type="tel" id="setPhone" value="+91 98765 43210" required></div>
+                <div class="form-group">
+                  <label for="setName">Full name</label>
+                  <input type="text" id="setName" value="Rishi Murugan" required minlength="2">
+                  <span class="error-msg" id="err-setName">Name must be at least 2 characters.</span>
+                </div>
+                <div class="form-group">
+                  <label for="setEmail">Email address</label>
+                  <input type="email" id="setEmail" value="rishi.murugan@example.com" required>
+                  <span class="error-msg" id="err-setEmail">Please enter a valid email address.</span>
+                </div>
+                <div class="form-group full">
+                  <label for="setPhone">Phone number</label>
+                  <input type="tel" id="setPhone" value="+91 98765 43210" required>
+                  <span class="error-msg" id="err-setPhone">Please enter a valid phone number.</span>
+                </div>
                 <div class="form-group full form-actions"><button type="submit" class="btn">Save changes <span class="material-symbols-rounded" style="font-size:17px">check</span></button></div>
               </div>
             </form>
@@ -959,9 +984,6 @@
     </main>
   </div>
 
-  <!-- ============================================================
-       MOBILE DOCK WITH THEME TOGGLE, RTL, AND LOGOUT
-       ============================================================ -->
   <div class="mobile-dock">
     <nav class="dock-nav-mobile">
       <button class="dock-item-mobile active" data-tab="overview" aria-label="Overview">
@@ -971,7 +993,7 @@
         <span class="material-symbols-rounded" style="font-size:20px;">local_mall</span>
       </button>
       <button class="dock-item-mobile" data-tab="schedule" aria-label="Schedule Pickup">
-        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#1f1f1f"><path d="M216-96q-29 0-50.5-21.5T144-168v-528q0-29.7 21.5-50.85Q187-768 216-768h72v-96h72v96h240v-96h72v96h72q29 0 50.5 21.15T816-696v244l-72 72v-148H216v360h226l72 72H216Zm0-504h528v-96H216v96Zm0 0v-96 96ZM640-72 504-208l51-51 85 85 170-170 51 51L640-72Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor"><path d="M216-96q-29 0-50.5-21.5T144-168v-528q0-29.7 21.5-50.85Q187-768 216-768h72v-96h72v96h240v-96h72v96h72q29 0 50.5 21.15T816-696v244l-72 72v-148H216v360h226l72 72H216Zm0-504h528v-96H216v96Zm0 0v-96 96ZM640-72 504-208l51-51 85 85 170-170 51 51L640-72Z"/></svg>
       </button>
       <button class="dock-item-mobile" data-tab="wallet" aria-label="Wallet & Rewards">
         <span class="material-symbols-rounded" style="font-size:20px;">account_balance_wallet</span>
@@ -982,12 +1004,10 @@
     </nav>
 
     <div class="dock-actions">
-      <!-- Theme Toggle -->
       <button class="dock-action-btn" data-theme-toggle-mobile aria-label="Toggle theme" title="Toggle theme">
         <span class="material-symbols-rounded" id="mobileThemeIcon" style="font-size:18px;">dark_mode</span>
       </button>
 
-      <!-- RTL Toggle (matches about page style) -->
       <button class="dock-action-btn" data-rtl-toggle-mobile aria-label="Toggle LTR / RTL" aria-pressed="false" title="Toggle LTR / RTL">
         <span class="lx-direction-icon-mobile">
           <span></span>
@@ -996,102 +1016,63 @@
         </span>
       </button>
 
-      <!-- Logout -->
       <a href="index.html" class="dock-action-btn logout" aria-label="Log out" title="Log out">
         <span class="material-symbols-rounded" style="font-size:18px;">logout</span>
       </a>
     </div>
   </div>
 
+  <script src="assets/js/main.js"></script>
   <script>
     // ============================================================
-    // THEME ENGINE - Uses the same system as login/register pages
+    // THEME ENGINE
     // ============================================================
     function applyTheme(theme) {
       const isDark = theme === 'dark';
       const root = document.documentElement;
       
-      // Use the same class-based theme system as main.css
       root.classList.toggle('dark', isDark);
-      
-      // Also set data-theme for backward compatibility
       root.dataset.theme = isDark ? 'dark' : 'light';
-      
       localStorage.setItem('laundrix-theme', theme);
 
-      // Update desktop theme icon
       const desktopIcon = document.getElementById('desktopThemeIcon');
-      if (desktopIcon) {
-        desktopIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
-      }
+      if (desktopIcon) desktopIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
 
-      // Update mobile theme icon
       const mobileIcon = document.getElementById('mobileThemeIcon');
-      if (mobileIcon) {
-        mobileIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
-      }
-
-      // Update all theme toggle buttons
-      document.querySelectorAll('[data-theme-toggle], [data-theme-toggle-mobile]').forEach(btn => {
-        btn.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-        btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-      });
+      if (mobileIcon) mobileIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
     }
 
     function toggleTheme() {
       const isDark = document.documentElement.classList.contains('dark');
-      const newTheme = isDark ? 'light' : 'dark';
-      applyTheme(newTheme);
+      applyTheme(isDark ? 'light' : 'dark');
     }
 
-    // Desktop theme toggle
     document.querySelector('[data-theme-toggle]')?.addEventListener('click', toggleTheme);
-
-    // Mobile theme toggle
     document.querySelector('[data-theme-toggle-mobile]')?.addEventListener('click', toggleTheme);
 
-    // Initialize theme from localStorage
     const savedTheme = localStorage.getItem('laundrix-theme');
     const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialTheme = savedTheme || (systemDark ? 'dark' : 'light');
-    applyTheme(initialTheme);
-
-    // Listen for system theme changes
-    if (window.matchMedia) {
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
-        if (localStorage.getItem('laundrix-theme')) return;
-        applyTheme(event.matches ? 'dark' : 'light');
-      });
-    }
+    applyTheme(savedTheme || (systemDark ? 'dark' : 'light'));
 
     // ============================================================
-    // RTL ENGINE - Matches about page behavior
+    // RTL ENGINE
     // ============================================================
     function applyDirection(direction) {
       document.documentElement.dir = direction;
       localStorage.setItem('laundrix-direction', direction);
-
-      const isRtl = direction === 'rtl';
       document.querySelectorAll('[data-rtl-toggle], [data-rtl-toggle-mobile]').forEach(btn => {
-        btn.setAttribute('aria-pressed', isRtl ? 'true' : 'false');
+        btn.setAttribute('aria-pressed', direction === 'rtl' ? 'true' : 'false');
       });
     }
 
     function toggleRTL() {
       const currentDir = document.documentElement.dir || 'ltr';
-      const newDir = currentDir === 'rtl' ? 'ltr' : 'rtl';
-      applyDirection(newDir);
+      applyDirection(currentDir === 'rtl' ? 'ltr' : 'rtl');
     }
 
-    // Desktop RTL toggle
     document.querySelector('[data-rtl-toggle]')?.addEventListener('click', toggleRTL);
-
-    // Mobile RTL toggle
     document.querySelector('[data-rtl-toggle-mobile]')?.addEventListener('click', toggleRTL);
-
-    // Initialize RTL
-    const storedDirection = localStorage.getItem('laundrix-direction') || 'ltr';
-    applyDirection(storedDirection);
+    applyDirection(localStorage.getItem('laundrix-direction') || 'ltr');
 
     // ============================================================
     // SIDEBAR EXPAND/COLLAPSE
@@ -1116,15 +1097,7 @@
       setSidebarExpanded(!shell.classList.contains("nav-expanded"));
     });
 
-    const savedSidebarState = localStorage.getItem(navStateKey);
-    setSidebarExpanded(savedSidebarState === "1");
-
-    document.addEventListener("keydown", e => {
-      if (e.key === "b" && (e.ctrlKey || e.metaKey)) {
-        e.preventDefault();
-        setSidebarExpanded(!shell.classList.contains("nav-expanded"));
-      }
-    });
+    setSidebarExpanded(localStorage.getItem(navStateKey) === "1");
 
     // ============================================================
     // TAB SWITCHING
@@ -1159,7 +1132,7 @@
     document.querySelector(".profile-pill")?.addEventListener("click", () => switchTab("settings"));
 
     // ============================================================
-    // DOM CONTENT LOADED SETUP
+    // INITIALIZATION & DATE SETUP
     // ============================================================
     document.addEventListener("DOMContentLoaded", () => {
       const dateInput = document.getElementById("dashDate");
@@ -1173,13 +1146,48 @@
     });
 
     // ============================================================
-    // SCHEDULE FORM
+    // SCHEDULE FORM VALIDATION & SUBMISSION
     // ============================================================
     document.getElementById("dashboardScheduleForm")?.addEventListener("submit", e => {
       e.preventDefault();
 
-      const service = document.getElementById("dashService").value;
-      const date = document.getElementById("dashDate").value;
+      const serviceSelect = document.getElementById("dashService");
+      const dateInput = document.getElementById("dashDate");
+      const addressInput = document.getElementById("dashAddress");
+
+      let isValid = true;
+
+      if (!serviceSelect.value) {
+        serviceSelect.classList.add("error");
+        document.getElementById("err-dashService").style.display = "block";
+        isValid = false;
+      } else {
+        serviceSelect.classList.remove("error");
+        document.getElementById("err-dashService").style.display = "none";
+      }
+
+      if (!dateInput.value) {
+        dateInput.classList.add("error");
+        document.getElementById("err-dashDate").style.display = "block";
+        isValid = false;
+      } else {
+        dateInput.classList.remove("error");
+        document.getElementById("err-dashDate").style.display = "none";
+      }
+
+      if (!addressInput.value.trim()) {
+        addressInput.classList.add("error");
+        document.getElementById("err-dashAddress").style.display = "block";
+        isValid = false;
+      } else {
+        addressInput.classList.remove("error");
+        document.getElementById("err-dashAddress").style.display = "none";
+      }
+
+      if (!isValid) return;
+
+      const service = serviceSelect.value;
+      const date = dateInput.value;
       const randomId = "#LX-" + Math.floor(1000 + Math.random() * 9000);
 
       const row = `
@@ -1197,32 +1205,78 @@
       const active = document.getElementById("statActive");
       active.textContent = (parseInt(active.textContent, 10) || 0) + 1;
 
-      alert("Pickup successfully scheduled! Order ID: " + randomId);
+      if (window.LaundriX && window.LaundriX.showToast) {
+        window.LaundriX.showToast("Pickup scheduled successfully! Order ID: " + randomId, { type: "success" });
+      } else {
+        alert("Pickup successfully scheduled! Order ID: " + randomId);
+      }
+      
+      document.getElementById("dashboardScheduleForm").reset();
       switchTab("orders");
     });
 
     // ============================================================
-    // SETTINGS FORM
+    // SETTINGS FORM VALIDATION & SUBMISSION
     // ============================================================
     document.getElementById("settingsForm")?.addEventListener("submit", e => {
       e.preventDefault();
 
-      const name = document.getElementById("setName").value.trim();
-      const email = document.getElementById("setEmail").value.trim();
-      const phone = document.getElementById("setPhone").value.trim();
+      const nameInput = document.getElementById("setName");
+      const emailInput = document.getElementById("setEmail");
+      const phoneInput = document.getElementById("setPhone");
 
-      if (!name || !email || !phone) return;
+      let isValid = true;
+
+      if (!nameInput.value.trim() || nameInput.value.trim().length < 2) {
+        nameInput.classList.add("error");
+        document.getElementById("err-setName").style.display = "block";
+        isValid = false;
+      } else {
+        nameInput.classList.remove("error");
+        document.getElementById("err-setName").style.display = "none";
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailInput.value.trim() || !emailRegex.test(emailInput.value.trim())) {
+        emailInput.classList.add("error");
+        document.getElementById("err-setEmail").style.display = "block";
+        isValid = false;
+      } else {
+        emailInput.classList.remove("error");
+        document.getElementById("err-setEmail").style.display = "none";
+      }
+
+      if (!phoneInput.value.trim() || phoneInput.value.trim().length < 6) {
+        phoneInput.classList.add("error");
+        document.getElementById("err-setPhone").style.display = "block";
+        isValid = false;
+      } else {
+        phoneInput.classList.remove("error");
+        document.getElementById("err-setPhone").style.display = "none";
+      }
+
+      if (!isValid) return;
+
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const phone = phoneInput.value.trim();
 
       localStorage.setItem("laundrix-profile", JSON.stringify({name, email, phone}));
 
       const profileName = document.querySelector(".profile-copy strong");
+      const headerName = document.getElementById("headerProfileName");
       if (profileName) profileName.textContent = name.split(" ")[0] || name;
+      if (headerName) headerName.textContent = name.split(" ")[0] || name;
 
-      alert("Account settings updated successfully!");
+      if (window.LaundriX && window.LaundriX.showToast) {
+        window.LaundriX.showToast("Account settings updated successfully!", { type: "success" });
+      } else {
+        alert("Account settings updated successfully!");
+      }
     });
 
     // ============================================================
-    // WALLET
+    // WALLET & SYNCHRONIZATION ENGINE
     // ============================================================
     let walletBalance = Number(localStorage.getItem("laundrix-wallet") || 450);
     const walletDisplay = document.getElementById("walletBalanceDisplay");
@@ -1237,9 +1291,16 @@
       walletBalance += 500;
       localStorage.setItem("laundrix-wallet", String(walletBalance));
       renderWallet();
-      alert("₹500 added to your LaundriX wallet.");
+      if (window.LaundriX && window.LaundriX.showToast) {
+        window.LaundriX.showToast("₹500 added to your LaundriX wallet.", { type: "success" });
+      } else {
+        alert("₹500 added to your LaundriX wallet.");
+      }
     });
 
+    // ============================================================
+    // PERSISTENT PROFILE LOADER
+    // ============================================================
     const savedProfile = localStorage.getItem("laundrix-profile");
     if (savedProfile) {
       try {
@@ -1247,8 +1308,10 @@
         if (profile.name) {
           const nameInput = document.getElementById("setName");
           const profileName = document.querySelector(".profile-copy strong");
+          const headerName = document.getElementById("headerProfileName");
           if (nameInput) nameInput.value = profile.name;
           if (profileName) profileName.textContent = profile.name.split(" ")[0] || profile.name;
+          if (headerName) headerName.textContent = profile.name.split(" ")[0] || profile.name;
         }
         if (profile.email) {
           const emailInput = document.getElementById("setEmail");
@@ -1262,16 +1325,6 @@
     }
 
     renderWallet();
-
-    // ============================================================
-    // POINTER GLOW
-    // ============================================================
-    window.addEventListener("pointermove", e => {
-      const x = (e.clientX / innerWidth) * 100;
-      const y = (e.clientY / innerHeight) * 100;
-      shell?.style.setProperty("--mx", x + "%");
-      shell?.style.setProperty("--my", y + "%");
-    }, {passive:true});
   </script>
 </body>
 </html>

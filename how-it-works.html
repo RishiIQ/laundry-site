@@ -388,6 +388,57 @@
         background: var(--lx-bg-subtle);
       }
 
+      .how-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.how-step-card {
+  background: var(--lx-surface);
+  border: 1px solid var(--lx-border);
+  border-radius: var(--lx-radius-xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--lx-shadow-sm);
+  transition: var(--lx-transition);
+}
+
+.how-step-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--lx-shadow-md);
+}
+
+.how-step-image-wrap {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+
+.how-step-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.how-step-card:hover .how-step-image-wrap img {
+  transform: scale(1.05);
+}
+
+.how-step-content {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+@media (max-width: 992px) {
+  .how-steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
       .how-testimonial-box {
         padding: clamp(36px, 5vw, 65px) clamp(24px, 4vw, 55px);
         border-radius: var(--lx-radius-xl);
@@ -513,6 +564,44 @@
         transition: left 0.7s cubic-bezier(0.16, 1, 0.3, 1);
         pointer-events: none;
       }
+      .how-detailed-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  align-items: stretch; /* Ensures all cards match height */
+}
+
+.how-detailed-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  text-align: left; /* Optional: change to center if you prefer centered text inside cards */
+  padding: 36px 28px;
+  background: var(--lx-surface);
+  border: 1px solid var(--lx-border);
+  border-radius: var(--lx-radius-xl);
+  position: relative;
+  box-shadow: var(--lx-shadow-sm);
+  transition: var(--lx-transition);
+}
+
+.how-detailed-card p {
+  flex-grow: 1; /* Pushes the badge evenly to the bottom across all cards */
+  margin-bottom: 20px;
+}
+
+@media (max-width: 1050px) {
+  .how-detailed-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .how-detailed-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
       .how-cta-card .lx-button-white:hover::before {
         left: 125%;
@@ -737,7 +826,7 @@
                 </a>
                 <a href="home-2.html" class="lx-nav-dropdown-item">
                   <div class="lx-dropdown-icon">
-                    <span class="material-symbols-rounded"> auto_awesome </span>
+                    <span class="material-symbols-rounded">home_work </span>
                   </div>
                   <span class="lx-dropdown-content">
                     <strong> Home 2 </strong>
@@ -856,42 +945,59 @@
         </div>
       </section>
 
-      <!-- 3 CORE STEPS -->
+     <!-- 3 CORE STEPS WITH INDIVIDUAL IMAGES -->
       <section class="how-steps-section">
         <div class="lx-container">
           <div class="how-steps-grid">
+            
             <!-- Step 1 -->
             <article class="how-step-card" data-reveal>
-              <div class="how-step-badge">
-                1
-                <span class="how-step-icon"><i class="fa-solid fa-calendar-check"></i></span>
+              <div class="how-step-image-wrap">
+                <img src="https://imgs.search.brave.com/Y0ceoXgK8qQaEg3fZ9y4gNLZN8NCP8lXL2X9z2XTtLo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jbXMu/bm9zY3J1YnMuY29t/L2Ntc19tZWRpYS9s/YXVuZHJ5JTIwYXBw/LmpwZw" alt="Scheduling a pickup on phone" />
               </div>
-              <h3>Schedule a Pickup</h3>
-              <p>Choose your desired laundry services, pickup time, and doorstep location in less than 60 seconds.</p>
-              <span class="how-step-time"><i class="fa-solid fa-clock"></i> 1 minute</span>
+              <div class="how-step-content">
+                <div class="how-step-badge">
+                  1
+                  <span class="how-step-icon"><i class="fa-solid fa-calendar-check"></i></span>
+                </div>
+                <h3>Schedule a Pickup</h3>
+                <p>Choose your desired laundry services, pickup time, and doorstep location in less than 60 seconds.</p>
+                <span class="how-step-time"><i class="fa-solid fa-clock"></i> 1 minute</span>
+              </div>
             </article>
 
             <!-- Step 2 -->
             <article class="how-step-card" data-reveal>
-              <div class="how-step-badge">
-                2
-                <span class="how-step-icon"><i class="fa-solid fa-shirt"></i></span>
+              <div class="how-step-image-wrap">
+                <img src="https://imgs.search.brave.com/EJEbCddK7hCm7SXgae0suiCJsL_UCQ9SCorkAPrt2Qo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by95/b3VuZy1oaXNwYW5p/Yy13b21hbi1jbGVh/bmluZy13YXNoaW5n/LW1hY2hpbmUtbGF1/bmRyeS1yb29tXzgz/OTgzMy0yNzYxNC5q/cGc_c2VtdD1haXNf/aHlicmlkJnc9NzQw/JnE9ODA" alt="Professional laundry cleaning and washing" />
               </div>
-              <h3>We Clean &amp; Care</h3>
-              <p>Certified textile specialists sort, treat stains, wash, and hand-press each item using eco-safe methods.</p>
-              <span class="how-step-time"><i class="fa-solid fa-clock"></i> 24–48 hours</span>
+              <div class="how-step-content">
+                <div class="how-step-badge">
+                  2
+                  <span class="how-step-icon"><i class="fa-solid fa-shirt"></i></span>
+                </div>
+                <h3>We Clean &amp; Care</h3>
+                <p>Certified textile specialists sort, treat stains, wash, and hand-press each item using eco-safe methods.</p>
+                <span class="how-step-time"><i class="fa-solid fa-clock"></i> 24–48 hours</span>
+              </div>
             </article>
 
             <!-- Step 3 -->
             <article class="how-step-card" data-reveal>
-              <div class="how-step-badge">
-                3
-                <span class="how-step-icon"><i class="fa-solid fa-box-open"></i></span>
+              <div class="how-step-image-wrap">
+                <img src="https://imgs.search.brave.com/goZWqaAAkNF5iiLVK-UHhRbrDXYDIG-Mzmf80wNLA3A/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA3LzYwLzUyLzg5/LzM2MF9GXzc2MDUy/ODk3MV9COEVZZnY3/VUNiWjRvSFY3WlNJ/Y2V1VldnTWZWYVND/Zy5qcGc" alt="Fresh clothes delivered neatly" />
               </div>
-              <h3>Fresh Delivery</h3>
-              <p>Your garments arrive crisp, neatly folded or on custom hangers, ready to wear immediately.</p>
-              <span class="how-step-time"><i class="fa-solid fa-bolt"></i> Same-day ready</span>
+              <div class="how-step-content">
+                <div class="how-step-badge">
+                  3
+                  <span class="how-step-icon"><i class="fa-solid fa-box-open"></i></span>
+                </div>
+                <h3>Fresh Delivery</h3>
+                <p>Your garments arrive crisp, neatly folded or on custom hangers, ready to wear immediately.</p>
+                <span class="how-step-time"><i class="fa-solid fa-bolt"></i> Same-day ready</span>
+              </div>
             </article>
+
           </div>
         </div>
       </section>
@@ -910,8 +1016,10 @@
               <div class="how-detailed-icon">
                 <i class="fa-solid fa-truck-pickup"></i>
               </div>
-              <h3>1. Contactless Pickup</h3>
-              <p>Our background-checked delivery partner collects your items in waterproof, sanitized laundry bags.</p>
+              <div>
+                <h3>1. Contactless Pickup</h3>
+                <p>Our background-checked delivery partner collects your items in waterproof, sanitized laundry bags.</p>
+              </div>
               <span class="how-detailed-badge">Step 01</span>
             </div>
 
@@ -919,8 +1027,10 @@
               <div class="how-detailed-icon">
                 <i class="fa-solid fa-magnifying-glass"></i>
               </div>
-              <h3>2. Textile Inspection</h3>
-              <p>Every piece is scanned with digital barcode tags and inspected for fiber type, buttons, and stain spots.</p>
+              <div>
+                <h3>2. Textile Inspection</h3>
+                <p>Every piece is scanned with digital barcode tags and inspected for fiber type, buttons, and stain spots.</p>
+              </div>
               <span class="how-detailed-badge">Step 02</span>
             </div>
 
@@ -928,8 +1038,10 @@
               <div class="how-detailed-icon">
                 <i class="fa-solid fa-droplet"></i>
               </div>
-              <h3>3. Master Processing</h3>
-              <p>Washing, eco-hydrocarbon dry cleaning, and multi-point steam pressing tailored to manufacturer tags.</p>
+              <div>
+                <h3>3. Master Processing</h3>
+                <p>Washing, eco-hydrocarbon dry cleaning, and multi-point steam pressing tailored to manufacturer tags.</p>
+              </div>
               <span class="how-detailed-badge">Step 03</span>
             </div>
 
@@ -937,8 +1049,10 @@
               <div class="how-detailed-icon">
                 <i class="fa-solid fa-square-check"></i>
               </div>
-              <h3>4. Final Quality &amp; Return</h3>
-              <p>Dust-free breathable packaging keeps everything crisp until handed safely back to you.</p>
+              <div>
+                <h3>4. Final Quality &amp; Return</h3>
+                <p>Dust-free breathable packaging keeps everything crisp until handed safely back to you.</p>
+              </div>
               <span class="how-detailed-badge">Step 04</span>
             </div>
           </div>

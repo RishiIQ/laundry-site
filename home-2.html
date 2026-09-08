@@ -9,10 +9,9 @@
     />
     <meta name="theme-color" content="#10b981" />
     <title>LaundriX — Smart Laundry, Simplified</title>
-<link rel="icon" type="image/png" href="./site-logo.png">
-    <!-- =========================================================
-         GOOGLE FONTS
-    ========================================================== -->
+    <link rel="icon" type="image/png" href="./site-logo.png">
+    
+    <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,9 +19,7 @@
       rel="stylesheet"
     />
 
-    <!-- =========================================================
-         MATERIAL SYMBOLS & FONT AWESOME
-    ========================================================== -->
+    <!-- MATERIAL SYMBOLS & FONT AWESOME -->
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200"
       rel="stylesheet"
@@ -32,16 +29,44 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
 
-    <!-- =========================================================
-         COMMON GLOBAL CSS
-    ========================================================== -->
+    <!-- COMMON GLOBAL CSS -->
     <link rel="stylesheet" href="assets/css/main.css" />
 
-    <!-- =========================================================
-         HOME 2 PAGE SPECIFIC CSS (MODERN SAAS & GLASS AESTHETICS)
-    ========================================================== -->
+    <!-- HOME 2 PAGE SPECIFIC CSS -->
     <style>
-      /* Smooth Slow 3D Curve Scroll Reveal Animations Setup with Reverse Out Animation */
+      /* Modal Engine Fix Styles */
+      .lx-modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px);
+        display: grid;
+        place-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        z-index: 99999;
+      }
+
+      .lx-modal.is-open {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .lx-modal-dialog {
+        transform: translateY(20px) scale(0.95);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        max-height: 90vh;
+        overflow-y: auto;
+        width: 100%;
+        margin: 20px;
+      }
+
+      .lx-modal.is-open .lx-modal-dialog {
+        transform: translateY(0) scale(1);
+      }
+
+      /* Smooth Scroll Reveal */
       [data-reveal] {
         opacity: 0;
         transform: perspective(1000px) translateY(60px) rotateX(12deg) scale(0.96);
@@ -178,7 +203,6 @@
         box-shadow: var(--lx-shadow-md);
       }
 
-      /* Social Proof */
       .s-hero-social-proof {
         display: flex;
         align-items: center;
@@ -214,7 +238,6 @@
         font-size: 14px;
       }
 
-      /* Live Interactive Dashboard Mockup */
       .s-hero-visual {
         position: relative;
         display: flex;
@@ -339,7 +362,6 @@
         font-weight: 800;
       }
 
-      /* Floating Badges */
       .s-float-card {
         position: absolute;
         padding: 14px 20px;
@@ -384,13 +406,6 @@
         right: -25px;
       }
 
-      .s-float-2 {
-        bottom: -25px;
-        left: -25px;
-        animation-delay: -3s;
-      }
-
-      /* Features Grid */
       .s-features {
         padding: 100px 0 80px;
         background: var(--lx-bg);
@@ -478,7 +493,6 @@
         line-height: 1.7;
       }
 
-      /* Stats Counter Section */
       .s-stats {
         padding: 80px 0;
       }
@@ -520,7 +534,6 @@
         font-weight: 600;
       }
 
-      /* How it Works */
       .s-how {
         padding: 100px 0;
         background: var(--lx-bg-subtle);
@@ -572,7 +585,6 @@
         line-height: 1.7;
       }
 
-      /* Testimonial Box */
       .s-testimonial {
         padding: 110px 0;
       }
@@ -633,7 +645,6 @@
         color: var(--lx-text-soft);
       }
 
-      /* SaaS CTA */
       .s-cta {
         padding: 0 0 110px;
       }
@@ -689,7 +700,6 @@
         background: rgba(255, 255, 255, 0.2);
       }
 
-      /* Keyframes */
       @keyframes floatMotion {
         0%, 100% { transform: translateY(0px); }
         50% { transform: translateY(-12px); }
@@ -700,7 +710,6 @@
         50% { transform: scale(1.15); opacity: 0.7; }
       }
 
-      /* Responsive Layout */
       @media (max-width: 1050px) {
         .s-hero-grid { grid-template-columns: 1fr; text-align: center; }
         .s-hero-desc, .s-hero-actions, .s-hero-social-proof { justify-content: center; margin-inline: auto; }
@@ -718,206 +727,14 @@
         .s-testimonial-box { padding: 40px 24px; }
         .s-cta-box { padding: 40px 24px; }
       }
-    
-/* =========================================================
-   HOME 2 — CAELESTIA EXPRESSIVE MOTION LAYER
-   Animation-only enhancement. Existing functionality,
-   navigation, content and scripts are preserved.
-   ========================================================= */
-:root{--h2x:50%;--h2y:35%}
-body{isolation:isolate;overflow-x:hidden;perspective:1400px}
-
-body::after{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
-  opacity:.035;
-  background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,.95) 50%,transparent 58%);
-  background-size:220% 220%;mix-blend-mode:screen;
-  animation:h2Sweep 15s linear infinite
-}
-@keyframes h2Sweep{0%{background-position:180% 10%}100%{background-position:-40% 90%}}
-
-.lx-header{
-  animation:h2Header .9s cubic-bezier(.16,1,.3,1) both;
-  transform-origin:50% 0
-}
-@keyframes h2Header{
-  0%{opacity:0;transform:translateY(-32px) scale(.975);filter:blur(10px)}
-  70%{opacity:1;transform:translateY(3px) scale(1.008);filter:blur(0)}
-  100%{transform:none}
-}
-
-/* Main hero atmosphere follows pointer */
-.lx-hero{
-  position:relative;
-  overflow:hidden;
-  transform-style:preserve-3d
-}
-.lx-hero::before{
-  content:"";position:absolute;width:70vw;height:70vw;max-width:900px;max-height:900px;
-  left:calc(var(--h2x) - 35vw);top:calc(var(--h2y) - 35vw);
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(255,255,255,.065),transparent 65%);
-  pointer-events:none;transition:left .9s cubic-bezier(.16,1,.3,1),top .9s cubic-bezier(.16,1,.3,1)
-}
-
-/* Generic existing reveal elements */
-[data-reveal]{
-  transform:perspective(1200px) translateY(60px) rotateX(12deg) scale(.95);
-  filter:blur(8px);
-  transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1),filter 1s cubic-bezier(.16,1,.3,1)
-}
-[data-reveal].is-visible{
-  transform:perspective(1200px) translateY(0) rotateX(0) scale(1);
-  filter:blur(0)
-}
-
-/* Hero content */
-.lx-hero h1{
-  animation:h2Title 1.1s cubic-bezier(.16,1,.3,1) .18s both
-}
-@keyframes h2Title{
-  0%{opacity:0;transform:translateY(35px) scale(.94);filter:blur(12px);letter-spacing:-.05em}
-  65%{opacity:1;transform:translateY(-4px) scale(1.012);filter:blur(0)}
-  100%{transform:none;letter-spacing:normal}
-}
-
-.lx-hero .lx-hero-copy>p{
-  animation:h2Copy .8s cubic-bezier(.16,1,.3,1) .38s both
-}
-@keyframes h2Copy{
-  from{opacity:0;transform:translateY(18px);filter:blur(5px)}
-  to{opacity:1;transform:none;filter:blur(0)}
-}
-
-.lx-hero .lx-hero-actions{
-  animation:h2Actions .8s cubic-bezier(.16,1,.3,1) .52s both
-}
-@keyframes h2Actions{
-  0%{opacity:0;transform:translateY(22px) scale(.96)}
-  70%{opacity:1;transform:translateY(-3px) scale(1.015)}
-  100%{transform:none}
-}
-
-/* Hero visual gets a living 3D treatment */
-.lx-hero-visual{
-  transform-style:preserve-3d;
-  animation:h2Visual 1.2s cubic-bezier(.16,1,.3,1) .3s both
-}
-@keyframes h2Visual{
-  0%{opacity:0;transform:translateX(45px) rotateY(-15deg) rotateX(8deg) scale(.86);filter:blur(12px)}
-  65%{opacity:1;transform:translateX(-4px) rotateY(2deg) rotateX(-1deg) scale(1.025);filter:blur(0)}
-  100%{transform:none}
-}
-
-.lx-hero-visual img{
-  animation:h2ImageFloat 7s ease-in-out 1.2s infinite
-}
-@keyframes h2ImageFloat{
-  0%,100%{translate:0 0;rotate:0deg}
-  50%{translate:0 -8px;rotate:.7deg}
-}
-
-/* Cards float at different rhythms */
-.lx-hero-card{
-  animation:h2CardFloat 5s ease-in-out 1.2s infinite;
-  transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s ease
-}
-@keyframes h2CardFloat{
-  0%,100%{translate:0 0}
-  50%{translate:0 -9px}
-}
-.lx-hero-card:hover{transform:translateY(-8px) scale(1.025);box-shadow:0 28px 70px rgba(0,0,0,.2)}
-
-/* Expressive buttons */
-.lx-button,.lx-hero-button,.lx-footer-button{
-  position:relative;overflow:hidden;
-  transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s cubic-bezier(.16,1,.3,1)
-}
-.lx-button::before,.lx-hero-button::before,.lx-footer-button::before{
-  content:"";position:absolute;width:32px;height:180px;left:-75px;top:-65px;
-  transform:rotate(24deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
-  transition:left .7s cubic-bezier(.16,1,.3,1);pointer-events:none
-}
-.lx-button:hover,.lx-hero-button:hover,.lx-footer-button:hover{transform:translateY(-4px) scale(1.025)}
-.lx-button:hover::before,.lx-hero-button:hover::before,.lx-footer-button:hover::before{left:125%}
-.lx-button:active,.lx-hero-button:active,.lx-footer-button:active{transform:scale(.95)}
-
-/* Service/process cards get depth */
-.lx-card,.lx-service-card,.lx-process-card,.lx-feature-card,.lx-testimonial-card{
-  transition:transform .55s cubic-bezier(.16,1,.3,1),box-shadow .55s cubic-bezier(.16,1,.3,1),border-color .4s ease
-}
-.lx-card:hover,.lx-service-card:hover,.lx-process-card:hover,.lx-feature-card:hover,.lx-testimonial-card:hover{
-  transform:translateY(-8px) scale(1.012);
-  box-shadow:0 30px 75px rgba(0,0,0,.14)
-}
-
-/* Icons pop when cards are explored */
-.lx-card:hover .material-symbols-rounded,
-.lx-service-card:hover .material-symbols-rounded,
-.lx-process-card:hover .material-symbols-rounded{
-  animation:h2IconPop .65s cubic-bezier(.16,1,.3,1)
-}
-@keyframes h2IconPop{
-  0%{transform:scale(.7) rotate(-12deg)}
-  55%{transform:scale(1.18) rotate(5deg)}
-  100%{transform:none}
-}
-
-/* Section headings reveal */
-section:not(.lx-hero) h2{
-  animation:h2Heading .8s cubic-bezier(.16,1,.3,1) both
-}
-@keyframes h2Heading{
-  from{opacity:0;transform:translateY(20px);clip-path:inset(0 0 100% 0)}
-  to{opacity:1;transform:none;clip-path:inset(0)}
-}
-
-/* Footer CTA aura */
-.lx-footer-cta-card{
-  position:relative;
-  overflow:hidden;
-}
-.lx-footer-cta-card::before{
-  content:"";position:absolute;width:300px;height:300px;right:-90px;top:-150px;border-radius:50%;
-  background:radial-gradient(circle,rgba(255,255,255,.16),transparent 68%);
-  animation:h2Aura 6s ease-in-out infinite;pointer-events:none
-}
-@keyframes h2Aura{
-  0%,100%{transform:translate(0,0) scale(1);opacity:.4}
-  50%{transform:translate(-55px,35px) scale(1.2);opacity:.75}
-}
-
-/* Click ripple */
-.h2-ripple{
-  position:fixed;width:12px;height:12px;border-radius:50%;pointer-events:none;z-index:10001;
-  background:rgba(16,185,129,.18);border:1px solid rgba(16,185,129,.65);
-  transform:translate(-50%,-50%);animation:h2Ripple .8s cubic-bezier(.16,1,.3,1) forwards
-}
-@keyframes h2Ripple{to{opacity:0;transform:translate(-50%,-50%) scale(16)}}
-
-@media(max-width:800px){
-  body::after{opacity:.02}
-  .lx-hero-visual{animation:h2Visual .9s cubic-bezier(.16,1,.3,1) .25s both}
-  .lx-hero-visual img,.lx-hero-card{animation:none}
-}
-@media(prefers-reduced-motion:reduce){
-  body::after,.lx-header,.lx-hero h1,.lx-hero .lx-hero-copy>p,.lx-hero .lx-hero-actions,
-  .lx-hero-visual,.lx-hero-visual img,.lx-hero-card,.lx-footer-cta-card::before,
-  section:not(.lx-hero) h2{animation:none!important}
-  [data-reveal]{transition:none!important;transform:none!important;filter:none!important}
-}
-
-</style>
+    </style>
   </head>
 
   <body>
-    <!-- =========================================================
-         GLOBAL HEADER
-    ========================================================== -->
+    <!-- GLOBAL HEADER -->
     <header class="lx-header">
       <div class="lx-container">
         <div class="lx-header-inner">
-          <!-- BRAND -->
           <a href="index.html" class="lx-brand" aria-label="LaundriX Home">
             <div class="lx-brand-mark">
               <span class="material-symbols-rounded"> local_laundry_service </span>
@@ -925,7 +742,7 @@ section:not(.lx-hero) h2{
             <div class="lx-brand-name">Laundri<span>X</span></div>
           </a>
 
-          <!-- DESKTOP NAV -->
+          <!-- DESKTOP NAV WITH RESTORED HOME DROPDOWN -->
           <nav class="lx-nav" aria-label="Main navigation">
             <div class="lx-nav-dropdown">
               <button
@@ -951,7 +768,8 @@ section:not(.lx-hero) h2{
                 </a>
                 <a href="home-2.html" class="lx-nav-dropdown-item is-current">
                   <div class="lx-dropdown-icon">
-                    <span class="material-symbols-rounded"> auto_awesome </span>
+                      <span class="material-symbols-rounded">home_work </span>
+                      
                   </div>
                   <span class="lx-dropdown-content">
                     <strong> Home 2 </strong>
@@ -970,12 +788,12 @@ section:not(.lx-hero) h2{
             <a href="contact.html" class="lx-nav-link"> Contact </a>
           </nav>
 
-          <!-- HEADER ACTIONS -->
           <div class="lx-header-actions">
             <button type="button" class="lx-icon-button" data-theme-toggle aria-label="Toggle theme">
               <span class="material-symbols-rounded"> dark_mode </span>
             </button>
 
+            <!-- CONDITIONAL RTL TOGGLE BUTTON -->
             <button
               type="button"
               class="lx-direction-toggle"
@@ -990,10 +808,9 @@ section:not(.lx-hero) h2{
                 <span></span>
               </span>
             </button>
-            <a href="login.html" class="lx-nav-link" style="font-weight:700;"> Login </a>
-            <a href="register.html" class="lx-button lx-button-primary"> Sign up </a>
 
-            
+            <a href="login.html" class="lx-button lx-button-outline" style="font-weight:700;"> Login </a>
+            <a href="register.html" class="lx-button lx-button-primary"> Sign up </a>
 
             <button type="button" class="lx-icon-button lx-menu-toggle" data-menu-toggle aria-label="Open menu" aria-expanded="false">
               <span class="material-symbols-rounded"> menu </span>
@@ -1001,7 +818,7 @@ section:not(.lx-hero) h2{
           </div>
         </div>
 
-        <!-- MOBILE MENU -->
+        <!-- MOBILE MENU WITH RESTORED HOME DROPDOWN -->
         <div class="lx-mobile-menu" data-mobile-menu>
           <div class="lx-mobile-menu-inner">
             <div class="lx-mobile-home">
@@ -1026,22 +843,19 @@ section:not(.lx-hero) h2{
 
             <div class="lx-mobile-menu-actions">
               <a href="login.html" class="lx-button lx-button-outline"> Login </a>
-              <a href="register.html" class="lx-button lx-button-primary"> Sign up </a>
+             <a href="register.html" class="lx-button lx-button-primary"> Sign up </a>
             </div>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- =========================================================
-         PAGE CONTENT
-    ========================================================== -->
+    <!-- PAGE CONTENT -->
     <main>
       <!-- HERO -->
-      <section class="s-hero">
+      <section class="s-hero" style="position: relative; overflow: hidden; background-color: rgb(239, 240, 241); background-blend-mode: overlay; background-image: url('https://imgs.search.brave.com/ZWMkEiF02bwWuDUkjiJqGHXInJvFZoGMg6RPkaKSIkw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hbGxl/eXdhdGNoLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAyNi8w/NC9DZW50cy1sYXVu/ZHJ5LXRlY2gtdmVy/dGljYWwtc2Fhcy1w/YXltZW50cy1wbGF0/Zm9ybS1tYXJrZXRp/bmctLmpwZw'); background-size: cover; background-position: center;">
         <div class="lx-container">
           <div class="s-hero-grid">
-            <!-- HERO CONTENT -->
             <div data-reveal>
               <div class="s-hero-badge">
                 <span>New</span>
@@ -1060,8 +874,8 @@ section:not(.lx-hero) h2{
               </p>
 
               <div class="s-hero-actions">
-                <a href="register.html" class="s-btn-primary">
-                  Start Free Trial
+                <a href="#" class="s-btn-primary" data-modal-open="#book-slot-modal">
+                  Book a Slot
                   <i class="fa-solid fa-arrow-right"></i>
                 </a>
                 <a href="how-it-works.html" class="s-btn-secondary">
@@ -1146,7 +960,220 @@ section:not(.lx-hero) h2{
         </div>
       </section>
 
-      <!-- FEATURES -->
+      <!-- HOW THE SERVICE HELPS -->
+      <section class="s-features" id="benefits">
+        <div class="lx-container">
+          <div class="s-section-head" data-reveal>
+            <span class="s-section-tag">Why LaundriX</span>
+            <h2 class="s-section-title">How our service helps you save time</h2>
+            <p class="s-section-desc">
+              We take the chore out of laundry so you can focus on what truly matters in your day-to-day life.
+            </p>
+          </div>
+
+          <div class="s-features-grid">
+            <div class="s-feature-card" data-reveal>
+              <div class="s-feature-icon">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+              </div>
+              <h3>Save 5+ Hours Weekly</h3>
+              <p>Skip sorting, washing, folding, and ironing. We handle your wardrobe end-to-end with absolute care.</p>
+            </div>
+
+            <div class="s-feature-card" data-reveal>
+              <div class="s-feature-icon">
+                <i class="fa-solid fa-house-chimney-user"></i>
+              </div>
+              <h3>Doorstep Convenience</h3>
+              <p>Free pickup and delivery right at your door slot. No traffic, no heavy lifting, total flexibility.</p>
+            </div>
+
+            <div class="s-feature-card" data-reveal>
+              <div class="s-feature-icon">
+                <i class="fa-solid fa-shirt"></i>
+              </div>
+              <h3>Longer Garment Life</h3>
+              <p>Professional eco-friendly detergents and fabric-matched cycles keep your favorite clothes looking brand new.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AVAILABLE SERVICES -->
+      <section class="s-features" style="background: var(--lx-bg-subtle);" id="services">
+        <div class="lx-container">
+          <div class="s-section-head" data-reveal>
+            <span class="s-section-tag">Our Offerings</span>
+            <h2 class="s-section-title">Available laundry & dry-cleaning services</h2>
+            <p class="s-section-desc">
+              From everyday wear to delicate formals, explore our professional fabric treatment options.
+            </p>
+          </div>
+
+          <div class="s-features-grid">
+            <div class="s-feature-card" data-reveal>
+              <div class="s-feature-icon">
+                <i class="fa-solid fa-basket-shopping"></i>
+              </div>
+              <h3>Wash & Fold</h3>
+              <p>Daily wear washed, tumbled dry, and neatly crisp-folded. Perfect for casual clothes, bedsheets, and towels.</p>
+            </div>
+
+            <div class="s-feature-card" data-reveal>
+              <div class="s-feature-icon">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+              </div>
+              <h3>Dry Cleaning</h3>
+              <p>Specialized chemical and solvent cleaning designed for suits, blazers, silk, woolens, and premium formals.</p>
+            </div>
+
+            <div class="s-feature-card" data-reveal>
+              <div class="s-feature-icon">
+                <i class="fa-solid fa-fire-burner"></i>
+              </div>
+              <h3>Steam Press & Iron</h3>
+              <p>Professional steam ironing to remove stubborn wrinkles and give your workwear a razor-sharp finish.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW TO BOOK A SLOT -->
+      <section class="s-how" id="book-slot">
+        <div class="lx-container">
+          <div class="s-section-head" data-reveal>
+            <span class="s-section-tag">Easy Booking</span>
+            <h2 class="s-section-title">How to book a slot in seconds</h2>
+            <p class="s-section-desc">Getting started with LaundriX takes less than a minute.</p>
+          </div>
+
+          <div class="s-how-grid">
+            <div class="s-how-step" data-reveal>
+              <div class="s-how-number">1</div>
+              <h3>Select Service & Time</h3>
+              <p>Choose your laundry services and pick a convenient date and time window for doorstep pickup.</p>
+            </div>
+
+            <div class="s-how-step" data-reveal>
+              <div class="s-how-number">2</div>
+              <h3>Hand Over Bag</h3>
+              <p>Our executive arrives at your location with a secure garment bag. Hand over your laundry effortlessly.</p>
+            </div>
+
+            <div class="s-how-step" data-reveal>
+              <div class="s-how-number">3</div>
+              <h3>Receive Fresh Clothes</h3>
+              <p>Track progress live on your dashboard and receive your clean, neatly packed clothes back within 24 hours.</p>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 40px;" data-reveal>
+            <a href="#" class="s-btn-primary" data-modal-open="#book-slot-modal">
+              Book a Slot Now
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRICING SECTION -->
+      <section class="s-features" id="pricing">
+        <div class="lx-container">
+          <div class="s-section-head" data-reveal>
+            <span class="s-section-tag">Transparent Rates</span>
+            <h2 class="s-section-title">Simple & affordable pricing</h2>
+            <p class="s-section-desc">No hidden charges. Choose per-kg laundry or individual garment care.</p>
+          </div>
+
+          <div class="s-features-grid">
+            <div class="s-feature-card" data-reveal>
+              <div class="s-feature-icon">
+                <i class="fa-solid fa-weight-scale"></i>
+              </div>
+              <h3>Wash & Fold Plan</h3>
+              <p style="font-size: 24px; font-weight: 800; color: var(--lx-primary); margin: 10px 0;">$2.99 / kg</p>
+              <p>Includes wash, tumble dry, and professional folding. Minimum 3kg per order.</p>
+              <div style="margin-top: 20px;">
+                <a href="#" class="s-btn-secondary" style="width: 100%; justify-content: center;" data-modal-open="#book-slot-modal">Book a Slot</a>
+              </div>
+            </div>
+
+            <div class="s-feature-card" data-reveal style="border-color: var(--lx-primary); position: relative;">
+              <span style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--lx-primary); color: #fff; font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: var(--lx-radius-pill);">MOST POPULAR</span>
+              <div class="s-feature-icon">
+                <i class="fa-solid fa-shirt"></i>
+              </div>
+              <h3>Wash & Iron Combo</h3>
+              <p style="font-size: 24px; font-weight: 800; color: var(--lx-primary); margin: 10px 0;">$4.49 / kg</p>
+              <p>Comprehensive wash, dry, and crisp steam ironing for your daily and office wear.</p>
+              <div style="margin-top: 20px;">
+                <a href="#" class="s-btn-primary" style="width: 100%; justify-content: center;" data-modal-open="#book-slot-modal">Book a Slot</a>
+              </div>
+            </div>
+
+            <div class="s-feature-card" data-reveal>
+              <div class="s-feature-icon">
+                <i class="fa-solid fa-gem"></i>
+              </div>
+              <h3>Dry Cleaning</h3>
+              <p style="font-size: 24px; font-weight: 800; color: var(--lx-primary); margin: 10px 0;">From $5.00 / item</p>
+              <p>Expert care for suits, gowns, coats, and delicate fabrics with premium solvents.</p>
+              <div style="margin-top: 20px;">
+                <a href="#" class="s-btn-secondary" style="width: 100%; justify-content: center;" data-modal-open="#book-slot-modal">Book a Slot</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT / REACH US -->
+      <section class="s-how" style="background: var(--lx-bg);" id="contact">
+        <div class="lx-container">
+          <div class="s-section-head" data-reveal>
+            <span class="s-section-tag">Get in Touch</span>
+            <h2 class="s-section-title">How to reach & contact our service</h2>
+            <p class="s-section-desc">Have questions or special requests? Our team is available round the clock.</p>
+          </div>
+
+          <div class="s-features-grid">
+            <div class="s-feature-card" data-reveal>
+              <div class="s-feature-icon">
+                <i class="fa-solid fa-phone-volume"></i>
+              </div>
+              <h3>Call Us 24/7</h3>
+              <p>Speak directly with our support desk for instant query resolution.</p>
+              <p style="font-weight: 700; color: var(--lx-text); margin-top: 10px;">+1 (800) 555-LAUNDRY</p>
+            </div>
+
+            <div class="s-feature-card" data-reveal>
+              <div class="s-feature-icon">
+                <i class="fa-solid fa-envelope-open-text"></i>
+              </div>
+              <h3>Email Assistance</h3>
+              <p>Send your queries or partnership requests to our help center inbox.</p>
+              <p style="font-weight: 700; color: var(--lx-text); margin-top: 10px;">support@laundrix.com</p>
+            </div>
+
+            <div class="s-feature-card" data-reveal>
+              <div class="s-feature-icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <h3>Headquarters</h3>
+              <p>Visit our main service hub or check coverage across active metropolitan zones.</p>
+              <p style="font-weight: 700; color: var(--lx-text); margin-top: 10px;">100 Innovation Drive, Suite 400</p>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 40px;" data-reveal>
+            <a href="contact.html" class="s-btn-primary">
+              Contact Us Today
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- PLATFORM FEATURES -->
       <section class="s-features">
         <div class="lx-container">
           <div class="s-section-head" data-reveal>
@@ -1233,37 +1260,6 @@ section:not(.lx-hero) h2{
         </div>
       </section>
 
-      <!-- HOW IT WORKS -->
-      <section class="s-how">
-        <div class="lx-container">
-          <div class="s-section-head" data-reveal>
-            <span class="s-section-tag">How It Works</span>
-            <h2 class="s-section-title">Three steps to fresh clothes</h2>
-            <p class="s-section-desc">Simple, fast, and completely hands-free.</p>
-          </div>
-
-          <div class="s-how-grid">
-            <div class="s-how-step" data-reveal>
-              <div class="s-how-number">1</div>
-              <h3>Schedule Pickup</h3>
-              <p>Choose your desired laundry services, pickup time, and location in under 60 seconds.</p>
-            </div>
-
-            <div class="s-how-step" data-reveal>
-              <div class="s-how-number">2</div>
-              <h3>Master Cleaning</h3>
-              <p>Our specialists sort, wash, dry, and iron your garments according to textile care tags.</p>
-            </div>
-
-            <div class="s-how-step" data-reveal>
-              <div class="s-how-number">3</div>
-              <h3>Freshness Delivered</h3>
-              <p>Your clothes arrive fresh, crisply folded, and ready to wear right back to your door.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- TESTIMONIAL -->
       <section class="s-testimonial">
         <div class="lx-container">
@@ -1291,25 +1287,22 @@ section:not(.lx-hero) h2{
             <h2>Ready to simplify your laundry?</h2>
             <p>Join thousands of customers who've made laundry one less thing to think about.</p>
             <div class="s-cta-actions">
-              <a href="register.html" class="s-btn-primary">
-                Start Your Free Trial
+              <a href="#" class="s-btn-primary" data-modal-open="#book-slot-modal">
+                Book a Slot
                 <i class="fa-solid fa-arrow-right"></i>
               </a>
-              <a href="pricing.html" class="s-btn-secondary">View Pricing</a>
+              <a href="contact.html" class="s-btn-secondary">Contact Us</a>
             </div>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- =========================================================
-         GLOBAL FOOTER
-    ========================================================== -->
+    <!-- GLOBAL FOOTER -->
     <footer class="lx-footer">
       <div class="lx-footer-main">
         <div class="lx-container">
           <div class="lx-footer-grid">
-            <!-- BRAND -->
             <div class="lx-footer-brand">
               <a href="index.html" class="lx-brand">
                 <div class="lx-brand-mark">
@@ -1318,7 +1311,7 @@ section:not(.lx-hero) h2{
                 <div class="lx-brand-name">Laundri<span>X</span></div>
               </a>
               <p class="lx-footer-description">
-                The smartest way to manage your laundry. Premium fabric care, live order tracking, and reliable doorstep delivery.
+                Premium doorstep laundry and dry-cleaning service designed around your busy schedule. Freshness guaranteed.
               </p>
               <div class="lx-footer-socials">
                 <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="lx-social">
@@ -1336,7 +1329,6 @@ section:not(.lx-hero) h2{
               </div>
             </div>
 
-            <!-- COMPANY -->
             <div class="lx-footer-column">
               <h3>Company</h3>
               <a href="about.html">About Us</a>
@@ -1346,7 +1338,6 @@ section:not(.lx-hero) h2{
               <a href="coverage.html">Coverage Areas</a>
             </div>
 
-            <!-- SERVICES -->
             <div class="lx-footer-column">
               <h3>Services</h3>
               <a href="service-wash-fold.html">Wash & Fold</a>
@@ -1356,7 +1347,6 @@ section:not(.lx-hero) h2{
               <a href="faq.html">Help & FAQs</a>
             </div>
 
-            <!-- SUPPORT -->
             <div class="lx-footer-column">
               <h3>Support</h3>
               <a href="contact.html">Contact Us</a>
@@ -1366,15 +1356,14 @@ section:not(.lx-hero) h2{
               <a href="privacy.html">Privacy Policy</a>
             </div>
 
-            <!-- APP / CTA -->
             <div class="lx-footer-cta">
               <div class="lx-footer-cta-card">
                 <div class="lx-footer-cta-icon">
                   <i class="fa-solid fa-basket-shopping"></i>
                 </div>
                 <div>
-                  <strong>Ready to start?</strong>
-                  <p>Schedule your first pickup today.</p>
+                  <strong>Effortless Laundry</strong>
+                  <p>Book a pickup in seconds.</p>
                 </div>
               </div>
               <a href="register.html" class="lx-footer-button">
@@ -1386,7 +1375,6 @@ section:not(.lx-hero) h2{
         </div>
       </div>
 
-      <!-- FOOTER BOTTOM -->
       <div class="lx-footer-bottom">
         <div class="lx-container">
           <div class="lx-footer-bottom-inner">
@@ -1396,74 +1384,73 @@ section:not(.lx-hero) h2{
               <a href="privacy.html">Privacy</a>
               <a href="refund-policy.html">Refunds</a>
             </div>
-            <div>Made with precision for smarter laundry.</div>
+            <div>Made with precision for cleaner days.</div>
           </div>
         </div>
       </div>
     </footer>
 
-    <!-- =========================================================
-         GLOBAL JS
-    ========================================================== -->
+    <!-- BOOKING SLOT MODAL FORM -->
+    <div class="lx-modal" id="book-slot-modal" aria-hidden="true" role="dialog">
+      <div class="lx-modal-dialog" style="max-width: 520px; background: var(--lx-surface); padding: 40px; border-radius: var(--lx-radius-xl); border: 1px solid var(--lx-border); box-shadow: var(--lx-shadow-xl); position: relative;">
+        <button type="button" class="lx-modal-close" data-modal-close aria-label="Close modal" style="position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 20px; color: var(--lx-text-soft); cursor: pointer;">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div style="margin-bottom: 24px;">
+          <span class="s-section-tag" style="margin-bottom: 8px;">Instant Booking</span>
+          <h3 style="font-size: 24px; font-weight: 800; color: var(--lx-text);">Schedule Your Pickup Slot</h3>
+          <p style="color: var(--lx-text-soft); font-size: 14px; margin-top: 4px;">Choose your preferred service, date, and pickup timing.</p>
+        </div>
+
+        <form id="slot-booking-form" data-validate data-demo="true" data-success="Slot booked successfully! We will send a confirmation SMS shortly.">
+          <div style="margin-bottom: 16px;">
+            <label style="display: block; font-size: 13px; font-weight: 700; color: var(--lx-text); margin-bottom: 6px;">Select Service Plan</label>
+            <select name="service_plan" required style="width: 100%; padding: 12px 16px; border-radius: var(--lx-radius-md); border: 1px solid var(--lx-border); background: var(--lx-bg); color: var(--lx-text); font-size: 14px;">
+              <option value="" disabled selected>Choose a package...</option>
+              <option value="wash-fold">Wash & Fold Plan ($2.99 / kg)</option>
+              <option value="wash-iron">Wash & Iron Combo ($4.49 / kg)</option>
+              <option value="dry-cleaning">Dry Cleaning (From $5.00 / item)</option>
+            </select>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div>
+              <label style="display: block; font-size: 13px; font-weight: 700; color: var(--lx-text); margin-bottom: 6px;">Pickup Date</label>
+              <input type="date" name="pickup_date" required style="width: 100%; padding: 12px 16px; border-radius: var(--lx-radius-md); border: 1px solid var(--lx-border); background: var(--lx-bg); color: var(--lx-text); font-size: 14px;" />
+            </div>
+            <div>
+              <label style="display: block; font-size: 13px; font-weight: 700; color: var(--lx-text); margin-bottom: 6px;">Time Slot</label>
+              <select name="pickup_time" required style="width: 100%; padding: 12px 16px; border-radius: var(--lx-radius-md); border: 1px solid var(--lx-border); background: var(--lx-bg); color: var(--lx-text); font-size: 14px;">
+                <option value="" disabled selected>Select slot...</option>
+                <option value="08:00-11:00">08:00 AM - 11:00 AM</option>
+                <option value="11:00-14:00">11:00 AM - 02:00 PM</option>
+                <option value="16:00-19:00">04:00 PM - 07:00 PM</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 24px;">
+            <label style="display: block; font-size: 13px; font-weight: 700; color: var(--lx-text); margin-bottom: 6px;">Pickup Address</label>
+            <textarea name="pickup_address" rows="3" placeholder="Enter your full street address and flat/house number..." required style="width: 100%; padding: 12px 16px; border-radius: var(--lx-radius-md); border: 1px solid var(--lx-border); background: var(--lx-bg); color: var(--lx-text); font-size: 14px; resize: none;"></textarea>
+          </div>
+
+          <button type="submit" class="s-btn-primary" style="width: 100%; justify-content: center; border: none;">
+            Confirm & Book Slot
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- GLOBAL JS -->
     <script src="assets/js/main.js"></script>
-
-    <!-- Page Specific Script: Smooth Slow 3D Curve Scroll Reveal Observer with Reverse Animation -->
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const revealElements = document.querySelectorAll("[data-reveal]");
-        const revealObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-            } else {
-              entry.target.classList.remove("is-visible");
-            }
-          });
-        }, {
-          threshold: 0.1,
-          rootMargin: "0px 0px -40px 0px"
-        });
-
-        revealElements.forEach(el => revealObserver.observe(el));
+      document.addEventListener('DOMContentLoaded', () => {
+        if (typeof initModal === 'function') {
+          initModal();
+        }
       });
     </script>
-  
-<script>
-
-/* Home 2 expressive pointer ambience — visual only. */
-let h2Frame=null,h2X=innerWidth*.5,h2Y=innerHeight*.35;
-window.addEventListener("pointermove",e=>{
-  h2X=e.clientX;h2Y=e.clientY;
-  if(h2Frame)return;
-  h2Frame=requestAnimationFrame(()=>{
-    document.documentElement.style.setProperty("--h2x",h2X+"px");
-    document.documentElement.style.setProperty("--h2y",h2Y+"px");
-    h2Frame=null;
-  });
-},{passive:true});
-
-const h2Visual=document.querySelector(".lx-hero-visual");
-h2Visual?.addEventListener("pointermove",e=>{
-  if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
-  const r=h2Visual.getBoundingClientRect();
-  const px=(e.clientX-r.left)/r.width-.5;
-  const py=(e.clientY-r.top)/r.height-.5;
-  h2Visual.style.transform=`perspective(1200px) rotateX(${(-py*3).toFixed(2)}deg) rotateY(${(px*4).toFixed(2)}deg) translateY(-3px)`;
-});
-h2Visual?.addEventListener("pointerleave",()=>h2Visual.style.transform="");
-
-document.addEventListener("pointerdown",e=>{
-  if(matchMedia("(prefers-reduced-motion: reduce)").matches||!e.isPrimary)return;
-  const target=e.target.closest(".lx-button,.lx-hero-button,.lx-footer-button,.lx-nav-link");
-  if(!target)return;
-  const ripple=document.createElement("span");
-  ripple.className="h2-ripple";
-  ripple.style.left=e.clientX+"px";
-  ripple.style.top=e.clientY+"px";
-  document.body.appendChild(ripple);
-  ripple.addEventListener("animationend",()=>ripple.remove(),{once:true});
-},{passive:true});
-
-</script>
-</body>
+  </body>
 </html>

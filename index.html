@@ -1119,6 +1119,28 @@ body::after{
   to{opacity:1;transform:none}
 }
 
+.home-hero {
+  position: relative;
+  overflow: hidden;
+  background-image: url('https://images.unsplash.com/photo-1638949493140-edb10b7be2f3?q=80&w=1272&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Solid tone overlay for text legibility (no gradients) */
+.home-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(233, 235, 240, 0.85);
+  z-index: 1;
+}
+
+.home-hero > .lx-container {
+  position: relative;
+  z-index: 2;
+}
+
 /* Ripple for interactive elements */
 .lx-index-ripple{
   position:fixed;
@@ -1212,7 +1234,7 @@ body::after{
                 </a>
                 <a href="home-2.html" class="lx-nav-dropdown-item">
                   <div class="lx-dropdown-icon">
-                    <span class="material-symbols-rounded"> auto_awesome </span>
+                    <span class="material-symbols-rounded">home_work </span>
                   </div>
                   <span class="lx-dropdown-content">
                     <strong> Home 2 </strong>
@@ -1314,7 +1336,7 @@ body::after{
          PAGE MAIN CONTENT
     ====================================================== -->
     <main>
-      <!-- HERO SECTION -->
+     <!-- HERO SECTION -->
       <section class="home-hero lx-bubble-effect">
         <div class="lx-container">
           <div class="home-hero-grid lx-bubble-effect">

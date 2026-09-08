@@ -604,6 +604,29 @@
         color: var(--lx-text-soft);
         line-height: 1.75;
       }
+      /* Center Alignment Fix for Pricing Page Headings & FAQs */
+.prc-detail-section .ab-section-head,
+.prc-faq-section .ab-section-head {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.prc-detail-section .ab-section-head p,
+.prc-faq-section .ab-section-head p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.prc-faq-grid {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.prc-faq-question {
+  text-align: left; /* Keeps question text readable while the section head is centered */
+  width: 100%;
+}
 
       .prc-faq-item.is-open .prc-faq-answer {
         max-height: 250px;
@@ -894,7 +917,7 @@
                 </a>
                 <a href="home-2.html" class="lx-nav-dropdown-item">
                   <div class="lx-dropdown-icon">
-                    <span class="material-symbols-rounded"> auto_awesome </span>
+                    <span class="material-symbols-rounded">home_work </span>
                   </div>
                   <span class="lx-dropdown-content">
                     <strong> Home 2 </strong>
@@ -1023,12 +1046,12 @@
       </section>
 
       <!-- PRICING TIERS -->
-      <section class="prc-section lx-bubble-effect">
-        <div class="lx-container lx-bubble-effect">
+      <section class="prc-section lx-bubble-effect"  >
+        <div class="lx-container lx-bubble-effect" style="padding-top: 2rem;">
           <div class="prc-grid">
             <!-- 1. Wash & Fold Tier -->
-            <article class="prc-card" data-reveal>
-              <div class="prc-card-icon">
+            <article class="prc-card" data-reveal >
+              <div class="prc-card-icon" >
                 <i class="fa-solid fa-shirt"></i>
               </div>
               <h3>Wash &amp; Fold</h3>
@@ -1117,16 +1140,16 @@
         </div>
       </section>
 
-      <!-- DETAILED ITEMIZED RATES TABLE -->
+     <!-- DETAILED ITEMIZED RATES TABLE -->
       <section class="prc-detail-section">
         <div class="lx-container">
-          <div class="ab-section-head" data-reveal>
-            <div class="prc-eyebrow">Itemized Rates</div>
+          <div class="ab-section-head" data-reveal style="text-align: center; margin-left: auto; margin-right: auto;">
+            <div class="prc-eyebrow" style="margin-left: auto; margin-right: auto; display: inline-block;">Itemized Rates</div>
             <h2>Standard Item Breakdown</h2>
-            <p>Clear, fixed pricing for everyday apparel and household items.</p>
+            <p style="margin-left: auto; margin-right: auto; margin-bottom: 2rem;">Clear, fixed pricing for everyday apparel and household items.</p>
           </div>
 
-          <div class="prc-table-wrap" data-reveal>
+          <div class="prc-table-wrap " data-reveal>
             <table class="prc-table">
               <thead>
                 <tr>
@@ -1242,7 +1265,7 @@
       <!-- FAQ ACCORDION -->
       <section class="prc-faq-section">
         <div class="lx-container">
-          <div class="ab-section-head" data-reveal>
+          <div class="ab-section-head" data-reveal style="margin-bottom: 2rem;">
             <div class="prc-eyebrow">Got Questions?</div>
             <h2>Pricing FAQs</h2>
             <p>Clear answers to all your billing, payment, and refund questions.</p>

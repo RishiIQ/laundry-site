@@ -81,6 +81,64 @@ html.dark {
   --lx-shadow-xl: 0 30px 70px -15px rgba(0, 0, 0, 0.7);
 }
 
+/* ============================================================
+   DARK MODE CONTRAST & CALENDAR ICON VISIBILITY FIXES
+   ============================================================ */
+
+html.dark input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) brightness(1.2);
+  cursor: pointer;
+}
+
+html.dark .home-booking-date,
+html.dark .home-booking-select,
+html.dark .home-booking-input {
+  color: #ffffff !important;
+  background-color: transparent;
+}
+
+html.dark .home-booking-date option,
+html.dark .home-booking-select option {
+  background-color: var(--lx-surface);
+  color: #ffffff;
+}
+
+html.dark .home-booking-field {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+html.dark .home-booking-field span.label {
+  color: #c4b5fd !important;
+}
+
+html.dark .home-nav-dropdown-menu,
+html.dark .lx-nav-dropdown-menu,
+html.dark .lx-mobile-menu {
+  background: var(--lx-surface) !important;
+  border-color: rgba(139, 92, 246, 0.4) !important;
+}
+
+html.dark .lx-nav-dropdown-item,
+html.dark .lx-mobile-menu-inner a,
+html.dark .lx-mobile-home-trigger {
+  color: #c4b5fd !important;
+}
+
+html.dark .lx-nav-dropdown-item:hover,
+html.dark .lx-mobile-menu-inner a:hover {
+  color: #0f172a !important;
+  background: var(--lx-selected-green) !important;
+}
+
+html.dark .home-section-description,
+html.dark .home-process-card p,
+html.dark .home-service-card p,
+html.dark .home-stat-label,
+html.dark .home-trust-text {
+  color: #c4b5fd !important;
+}
+
 /* ------------------------------------------------------------
    GLOBAL RESETS
    ------------------------------------------------------------ */

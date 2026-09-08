@@ -272,6 +272,8 @@
         gap: 8px;
         box-shadow: 0 4px 14px var(--lx-primary-glow);
         text-decoration: none;
+        border: none;
+        cursor: pointer;
       }
 
       /* Extra Specialty Section */
@@ -425,6 +427,191 @@
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
         text-decoration: none;
         flex-shrink: 0;
+        border: none;
+        cursor: pointer;
+      }
+
+      /* Modal Overlay & Popup Styles */
+      .lx-modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.7);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        z-index: 9999999;
+        display: grid;
+        place-items: center;
+        padding: 20px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.4s ease, visibility 0.4s ease;
+      }
+
+      .lx-modal-overlay.is-active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .lx-modal-card {
+        width: 100%;
+        max-width: 480px;
+        background: var(--lx-surface);
+        border: 1px solid var(--lx-border);
+        border-radius: var(--lx-radius-xl);
+        padding: 32px;
+        box-shadow: var(--lx-shadow-xl);
+        position: relative;
+        transform: translateY(20px) scale(0.95);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .lx-modal-overlay.is-active .lx-modal-card {
+        transform: translateY(0) scale(1);
+      }
+
+      .lx-modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--lx-bg-subtle);
+        border: none;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        color: var(--lx-text);
+        transition: var(--lx-transition);
+      }
+
+      .lx-modal-close:hover {
+        background: var(--lx-primary);
+        color: #fff;
+      }
+
+      .lx-modal-title {
+        font-size: 24px;
+        font-weight: 900;
+        margin-bottom: 8px;
+        color: var(--lx-text);
+      }
+
+      .lx-modal-subtitle {
+        font-size: 14px;
+        color: var(--lx-text-soft);
+        margin-bottom: 24px;
+      }
+
+      .lx-modal-form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .lx-modal-field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .lx-modal-field label {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--lx-text-muted);
+        letter-spacing: 0.05em;
+      }
+
+      .lx-modal-field select,
+      .lx-modal-field input {
+        width: 100%;
+        padding: 12px 16px;
+        border-radius: var(--lx-radius-sm);
+        background: var(--lx-bg-subtle);
+        border: 1px solid var(--lx-border);
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--lx-text);
+        outline: none;
+        transition: border-color 0.3s ease;
+      }
+
+      .lx-modal-field select:focus,
+      .lx-modal-field input:focus {
+        border-color: var(--lx-primary);
+        background: var(--lx-surface);
+      }
+
+      .lx-modal-submit {
+        margin-top: 8px;
+        width: 100%;
+        min-height: 50px;
+        border-radius: var(--lx-radius-pill);
+        background: var(--lx-selected-green);
+        color: #0f172a;
+        font-size: 15px;
+        font-weight: 800;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 16px rgba(204, 255, 0, 0.4);
+        transition: var(--lx-transition);
+      }
+
+      .lx-modal-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 22px rgba(204, 255, 0, 0.5);
+      }
+
+      /* Success Popup Message State */
+      .lx-success-popup {
+        display: none;
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      .lx-success-popup.is-active {
+        display: block;
+      }
+
+      .lx-success-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: rgba(204, 255, 0, 0.25);
+        color: #0f172a;
+        display: grid;
+        place-items: center;
+        font-size: 32px;
+        margin: 0 auto 16px;
+      }
+
+      html.dark .lx-success-icon {
+        color: var(--lx-selected-green);
+      }
+
+      .lx-success-title {
+        font-size: 22px;
+        font-weight: 900;
+        margin-bottom: 8px;
+        color: var(--lx-text);
+      }
+
+      .lx-success-desc {
+        font-size: 14px;
+        color: var(--lx-text-soft);
+        margin-bottom: 24px;
+      }
+
+      .lx-success-done {
+        width: 100%;
+        min-height: 48px;
+        border-radius: var(--lx-radius-pill);
+        background: var(--lx-primary);
+        color: #fff;
+        font-weight: 800;
+        border: none;
+        cursor: pointer;
       }
 
       /* Dark Mode Universal Text Visibility Overrides */
@@ -627,10 +814,10 @@
                 </div>
                 <div class="srv-card-actions">
                   <span class="srv-price-hint">₹79 / kg</span>
-                  <a href="service-wash-fold.html" class="srv-action-btn">
-                    <span>Explore Service</span>
+                  <button type="button" class="srv-action-btn">
+                    <span>Book Pickup</span>
                     <i class="fa-solid fa-arrow-right"></i>
-                  </a>
+                  </button>
                 </div>
               </div>
             </article>
@@ -653,10 +840,10 @@
                 </div>
                 <div class="srv-card-actions">
                   <span class="srv-price-hint">From ₹149</span>
-                  <a href="service-dry-cleaning.html" class="srv-action-btn">
-                    <span>Explore Service</span>
+                  <button type="button" class="srv-action-btn">
+                    <span>Book Pickup</span>
                     <i class="fa-solid fa-arrow-right"></i>
-                  </a>
+                  </button>
                 </div>
               </div>
             </article>
@@ -679,10 +866,10 @@
                 </div>
                 <div class="srv-card-actions">
                   <span class="srv-price-hint">₹25 / piece</span>
-                  <a href="service-ironing.html" class="srv-action-btn">
-                    <span>Explore Service</span>
+                  <button type="button" class="srv-action-btn">
+                    <span>Book Pickup</span>
                     <i class="fa-solid fa-arrow-right"></i>
-                  </a>
+                  </button>
                 </div>
               </div>
             </article>
@@ -705,10 +892,10 @@
                 </div>
                 <div class="srv-card-actions">
                   <span class="srv-price-hint">Custom Quote</span>
-                  <a href="service-premium-care.html" class="srv-action-btn">
-                    <span>Explore Service</span>
+                  <button type="button" class="srv-action-btn">
+                    <span>Book Pickup</span>
                     <i class="fa-solid fa-arrow-right"></i>
-                  </a>
+                  </button>
                 </div>
               </div>
             </article>
@@ -792,14 +979,64 @@
               <h2>Ready to experience effortless laundry?</h2>
               <p>Schedule your first doorstep pickup today and enjoy 20% off your initial order.</p>
             </div>
-            <a href="register.html" class="lx-button-white">
+            <button type="button" class="lx-button-white srv-action-btn-cta">
               <span>Book Your First Pickup</span>
               <i class="fa-solid fa-arrow-right"></i>
-            </a>
+            </button>
           </div>
         </div>
       </section>
     </main>
+
+    <!-- BOOKING MODAL POPUP & SUCCESS MESSAGE -->
+    <div class="lx-modal-overlay" id="bookingModalOverlay">
+      <div class="lx-modal-card">
+        <button type="button" class="lx-modal-close" id="closeBookingModal" aria-label="Close modal">
+          <span class="material-symbols-rounded"> close </span>
+        </button>
+
+        <!-- BOOKING FORM STATE -->
+        <div id="modalFormContainer">
+          <h2 class="lx-modal-title">Schedule a Pickup</h2>
+          <p class="lx-modal-subtitle">Fill in your details and we'll handle the rest.</p>
+
+          <form class="lx-modal-form" id="popupBookingForm">
+            <div class="lx-modal-field">
+              <label for="modalService">Choose Service</label>
+              <select id="modalService" required>
+                <option value="">Select service...</option>
+                <option value="wash-fold">Wash & Fold</option>
+                <option value="dry-clean">Dry Cleaning</option>
+                <option value="ironing">Professional Ironing</option>
+                <option value="premium">Premium Garment Care</option>
+              </select>
+            </div>
+
+            <div class="lx-modal-field">
+              <label for="modalDate">Pickup Date</label>
+              <input type="date" id="modalDate" required />
+            </div>
+
+            <div class="lx-modal-field">
+              <label for="modalPostal">Postal Code / Area</label>
+              <input type="text" id="modalPostal" placeholder="e.g. 560001 or Indiranagar" required />
+            </div>
+
+            <button type="submit" class="lx-modal-submit">Confirm Pickup</button>
+          </form>
+        </div>
+
+        <!-- SUCCESS POPUP MESSAGE STATE -->
+        <div class="lx-success-popup" id="modalSuccessContainer">
+          <div class="lx-success-icon">
+            <span class="material-symbols-rounded"> check_circle </span>
+          </div>
+          <h3 class="lx-success-title">Pickup Scheduled!</h3>
+          <p class="lx-success-desc">Your order has been successfully placed. We'll arrive at your doorstep during your chosen slot.</p>
+          <button type="button" class="lx-success-done" id="closeSuccessModal">Done</button>
+        </div>
+      </div>
+    </div>
 
     <!-- FOOTER -->
     <footer class="lx-footer">
@@ -861,10 +1098,10 @@
                   <p>Book a pickup in seconds.</p>
                 </div>
               </div>
-              <a href="register.html" class="lx-footer-button">
+              <button type="button" class="lx-footer-button srv-action-btn-footer" style="border:none; cursor:pointer;">
                 <span>Get Started</span>
                 <i class="fa-solid fa-arrow-right"></i>
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -889,6 +1126,66 @@
     <script src="assets/js/main.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+        const modalOverlay = document.getElementById("bookingModalOverlay");
+        const triggers = document.querySelectorAll(".srv-action-btn, .srv-action-btn-cta, .srv-action-btn-footer");
+        const closeBtn = document.getElementById("closeBookingModal");
+        const doneBtn = document.getElementById("closeSuccessModal");
+        
+        const formContainer = document.getElementById("modalFormContainer");
+        const successContainer = document.getElementById("modalSuccessContainer");
+        const popupForm = document.getElementById("popupBookingForm");
+        const dateInput = document.getElementById("modalDate");
+
+        if (dateInput) {
+          const tomorrow = new Date();
+          tomorrow.setDate(tomorrow.getDate() + 1);
+          dateInput.min = tomorrow.toISOString().split("T")[0];
+          dateInput.value = tomorrow.toISOString().split("T")[0];
+        }
+
+        function openModal(e) {
+          e.preventDefault();
+          if (modalOverlay) {
+            formContainer.style.display = "block";
+            successContainer.classList.remove("is-active");
+            modalOverlay.classList.add("is-active");
+          }
+        }
+
+        function closeModal() {
+          if (modalOverlay) {
+            modalOverlay.classList.remove("is-active");
+          }
+        }
+
+        triggers.forEach(btn => {
+          btn.addEventListener("click", openModal);
+        });
+
+        if (closeBtn) closeBtn.addEventListener("click", closeModal);
+        if (doneBtn) doneBtn.addEventListener("click", closeModal);
+
+        if (modalOverlay) {
+          modalOverlay.addEventListener("click", (e) => {
+            if (e.target === modalOverlay) closeModal();
+          });
+        }
+
+        if (popupForm) {
+          popupForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const service = document.getElementById("modalService").value;
+            const date = document.getElementById("modalDate").value;
+            const postal = document.getElementById("modalPostal").value;
+
+            if (service && date && postal) {
+              formContainer.style.display = "none";
+              successContainer.classList.add("is-active");
+              popupForm.reset();
+            }
+          });
+        }
+
         const revealElements = document.querySelectorAll("[data-reveal]");
         const revealObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {

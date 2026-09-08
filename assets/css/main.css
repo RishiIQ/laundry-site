@@ -82,63 +82,122 @@ html.dark {
 }
 
 /* ============================================================
-   DARK MODE CONTRAST & CALENDAR ICON VISIBILITY FIXES
+   UNIVERSAL SITE-WIDE DARK MODE CONTRAST & VISIBILITY OVERRIDE
    ============================================================ */
+html.dark * {
+  border-color: rgba(139, 92, 246, 0.25);
+}
+
+html.dark, 
+html.dark body {
+  background-color: var(--lx-bg) !important;
+  color: #ffffff !important;
+}
+
+/* Force all text elements, headings, and descriptions to remain bright and visible */
+html.dark h1, 
+html.dark h2, 
+html.dark h3, 
+html.dark h4, 
+html.dark h5, 
+html.dark h6 {
+  color: #ffffff !important;
+}
+
+html.dark p, 
+html.dark span:not(.service-badge):not(.s-dash-badge), 
+html.dark li, 
+html.dark label, 
+html.dark strong, 
+html.dark small,
+html.dark a {
+  color: #e2d9fc !important;
+}
+
+/* Ensure secondary/muted helper texts stay legible */
+html.dark .home-description,
+html.dark .home-section-description,
+html.dark .home-service-content p,
+html.dark .home-process-card p,
+html.dark .home-stat-label,
+html.dark .home-trust-text,
+html.dark .s-hero-desc,
+html.dark .s-section-desc,
+html.dark .s-feature-card p,
+html.dark .s-stat-label,
+html.dark .s-how-step p,
+html.dark .prc-faq-answer p,
+html.dark .lx-footer-description,
+html.dark .lx-footer-column a,
+html.dark .lx-footer-bottom-inner {
+  color: #c4b5fd !important;
+}
+
+/* Ensure all cards, modals, and dropdowns have solid contrasting backgrounds */
+html.dark .home-service-card,
+html.dark .home-process-card,
+html.dark .home-stat,
+html.dark .home-booking,
+html.dark .lx-surface,
+html.dark .s-feature-card,
+html.dark .s-stat,
+html.dark .s-how-step,
+html.dark .prc-faq-item,
+html.dark .prc-table-wrap {
+  background-color: var(--lx-surface) !important;
+  color: #ffffff !important;
+}
+
+/* Form fields & inputs dark mode legibility */
+html.dark input,
+html.dark select,
+html.dark textarea {
+  color: #ffffff !important;
+  background-color: #1a142e !important;
+  border-color: rgba(139, 92, 246, 0.4) !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #9ca3af !important;
+  opacity: 1;
+}
+
+html.dark select option {
+  background-color: var(--lx-surface) !important;
+  color: #ffffff !important;
+}
 
 html.dark input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(1) brightness(1.2);
   cursor: pointer;
 }
 
-html.dark .home-booking-date,
-html.dark .home-booking-select,
-html.dark .home-booking-input {
-  color: #ffffff !important;
-  background-color: transparent;
-}
-
-html.dark .home-booking-date option,
-html.dark .home-booking-select option {
-  background-color: var(--lx-surface);
-  color: #ffffff;
-}
-
-html.dark .home-booking-field {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(139, 92, 246, 0.3);
-}
-
-html.dark .home-booking-field span.label {
-  color: #c4b5fd !important;
-}
-
-html.dark .home-nav-dropdown-menu,
-html.dark .lx-nav-dropdown-menu,
-html.dark .lx-mobile-menu {
+/* ============================================================
+   ALWAYS VISIBLE FIXED HEADER (MASTER OVERRIDE)
+   ============================================================ */
+.lx-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 999999 !important;
   background: var(--lx-surface) !important;
-  border-color: rgba(139, 92, 246, 0.4) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid var(--lx-border) !important;
+  box-shadow: var(--lx-shadow-md) !important;
+  padding-block: 12px !important;
+  transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
-html.dark .lx-nav-dropdown-item,
-html.dark .lx-mobile-menu-inner a,
-html.dark .lx-mobile-home-trigger {
-  color: #c4b5fd !important;
+/* Ensure body content doesn't slip underneath the fixed header */
+body {
+  padding-top: calc(var(--lx-header-height, 76px) + 20px) !important;
 }
-
-html.dark .lx-nav-dropdown-item:hover,
-html.dark .lx-mobile-menu-inner a:hover {
-  color: #0f172a !important;
-  background: var(--lx-selected-green) !important;
-}
-
-html.dark .home-section-description,
-html.dark .home-process-card p,
-html.dark .home-service-card p,
-html.dark .home-stat-label,
-html.dark .home-trust-text {
-  color: #c4b5fd !important;
-}
-
 /* ------------------------------------------------------------
    GLOBAL RESETS
    ------------------------------------------------------------ */
@@ -1046,4 +1105,132 @@ body.is-transitioning main {
 
 ::view-transition-new(root) {
   animation: 0.65s cubic-bezier(0.16, 1, 0.3, 1) both lxPageFadeIn;
+}
+
+/* ============================================================
+   MASTER SITE-WIDE DARK MODE TEXT VISIBILITY & CONTRAST FIXES
+   ============================================================ */
+html.dark {
+  --lx-text: #ffffff;
+  --lx-text-soft: #e2d9fc;
+  --lx-text-muted: #c4b5fd;
+}
+
+html.dark body,
+html.dark p,
+html.dark span:not(.service-badge):not(.s-dash-badge),
+html.dark li,
+html.dark label,
+html.dark strong,
+html.dark small,
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6 {
+  color: var(--lx-text);
+}
+
+html.dark .home-description,
+html.dark .home-section-description,
+html.dark .home-service-content p,
+html.dark .home-process-card p,
+html.dark .home-stat-label,
+html.dark .home-trust-text,
+html.dark .s-hero-desc,
+html.dark .s-section-desc,
+html.dark .s-feature-card p,
+html.dark .s-stat-label,
+html.dark .s-how-step p,
+html.dark .prc-faq-answer p,
+html.dark .lx-footer-description,
+html.dark .lx-footer-column a,
+html.dark .lx-footer-bottom-inner {
+  color: var(--lx-text-soft) !important;
+}
+
+html.dark input,
+html.dark select,
+html.dark textarea {
+  color: #ffffff !important;
+  background-color: var(--lx-surface) !important;
+  border-color: rgba(139, 92, 246, 0.4) !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #9ca3af !important;
+  opacity: 1;
+}
+
+html.dark select option {
+  background-color: var(--lx-surface) !important;
+  color: #ffffff !important;
+}
+
+html.dark input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) brightness(1.2);
+  cursor: pointer;
+}
+
+html.dark .home-booking {
+  background: var(--lx-surface);
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+html.dark .home-booking-field {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(139, 92, 246, 0.25);
+}
+
+html.dark .home-booking-field span.label {
+  color: #c4b5fd !important;
+}
+
+html.dark .lx-nav-dropdown-menu,
+html.dark .lx-mobile-menu {
+  background: var(--lx-surface) !important;
+  border-color: rgba(139, 92, 246, 0.4) !important;
+}
+
+html.dark .lx-nav-dropdown-item,
+html.dark .lx-mobile-menu-inner a,
+html.dark .lx-mobile-home-trigger {
+  color: #e2d9fc !important;
+}
+
+html.dark .lx-nav-dropdown-item:hover,
+html.dark .lx-mobile-menu-inner a:hover {
+  color: #0f172a !important;
+  background: var(--lx-selected-green) !important;
+}
+
+html.dark .home-stat {
+  background: var(--lx-surface);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+html.dark .home-stat-number {
+  color: var(--lx-selected-green) !important;
+}
+
+html.dark .home-services-grid .home-service-card {
+  background: var(--lx-surface);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+html.dark .home-service-arrow {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+html.dark .home-process-card {
+  background: var(--lx-surface);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+html.dark .home-testimonial-box {
+  background: linear-gradient(135deg, var(--lx-surface), var(--lx-bg-subtle));
+  border-color: rgba(139, 92, 246, 0.4);
 }

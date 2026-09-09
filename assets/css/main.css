@@ -903,3 +903,54 @@ html.dark .lx-mobile-home-links a.is-current {
   background: var(--lx-selected-green) !important;
   color: #0f172a !important;
 }
+
+
+
+
+
+.lx-direction-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--lx-surface);
+  border: 1px solid var(--lx-border);
+  cursor: pointer;
+  box-shadow: var(--lx-shadow-sm);
+  transition: var(--lx-transition);
+}
+
+.lx-direction-toggle:hover {
+  background: var(--lx-bg-subtle);
+  border-color: var(--lx-primary);
+  transform: translateY(-2px);
+}
+
+.lx-direction-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 16px;
+  height: 12px;
+}
+
+.lx-direction-icon span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: var(--lx-text);
+  border-radius: 2px;
+  transition: transform 0.3s ease, width 0.3s ease;
+}
+
+/* Optional styling to stagger or differentiate lines for text direction look */
+.lx-direction-icon span:nth-child(1) { width: 100%; }
+.lx-direction-icon span:nth-child(2) { width: 70%; }
+.lx-direction-icon span:nth-child(3) { width: 100%; }
+
+/* Flip effect when RTL mode is active */
+[dir="rtl"] .lx-direction-icon span:nth-child(2) {
+  align-self: flex-end;
+}

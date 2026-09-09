@@ -653,6 +653,75 @@
         font-size: 16px;
         max-width: 560px;
       }
+      /* Fix 1: Search box layout stability for 360px viewports */
+      .blog-search {
+        flex: 1 1 100%;
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+      }
+
+      .blog-search input {
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      /* Fix 2: Bottom CTA card container alignment and padding for ultra-narrow screens */
+      .blog-cta-section {
+        padding-inline: 16px;
+        box-sizing: border-box;
+      }
+
+      .blog-cta-card {
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0 auto;
+      }
+
+      @media (max-width: 480px) {
+        .blog-cta-card {
+          padding: 28px 20px;
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .blog-cta-card .lx-button-white {
+          width: 100%;
+          justify-content: center;
+        }
+        
+        .blog-toolbar-inner {
+          gap: 12px;
+        }
+      }
+      /* Fix for search bar and category filters toolbar on ultra-narrow viewports */
+      .blog-toolbar-inner {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .blog-categories {
+        display: flex;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        gap: 8px;
+        width: 100%;
+        max-width: 100%;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Hide scrollbar for clean look */
+      }
+
+      .blog-categories::-webkit-scrollbar {
+        display: none;
+      }
+
+      .blog-categories .cat-btn {
+        flex: 0 0 auto;
+        box-sizing: border-box;
+      }
 
       .blog-cta-card .lx-button-white {
         background: #ffffff;

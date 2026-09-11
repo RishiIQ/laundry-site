@@ -762,8 +762,8 @@
       </div>
     </div>
 
-    <!-- ======================================================
-         GLOBAL FOOTER (5-COLUMN LUXE DESIGN)
+     <!-- ======================================================
+         GLOBAL FOOTER
     ====================================================== -->
     <footer class="lx-footer">
       <div class="lx-footer-main">
@@ -787,7 +787,7 @@
                 <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" class="lx-social">
                   <i class="fa-brands fa-facebook-f"></i>
                 </a>
-                <a href="https://x.com" target="_blank" rel="noopener" aria-label="X Twitter" class="lx-social">
+                <a href="https://x.com" target="_blank" rel="noopener" aria-label="X" class="lx-social">
                   <i class="fa-brands fa-x-twitter"></i>
                 </a>
                 <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="lx-social">
@@ -809,11 +809,11 @@
             <!-- SERVICES LINKS -->
             <div class="lx-footer-column">
               <h3>Services</h3>
-              <a href="service-wash-fold.html">Wash &amp; Fold</a>
+              <a href="service-wash-fold.html">Wash & Fold</a>
               <a href="service-dry-cleaning.html">Dry Cleaning</a>
               <a href="service-ironing.html">Steam Press</a>
               <a href="service-premium-care.html">Premium Care</a>
-              <a href="faq.html" class="is-active">Help &amp; FAQs</a>
+              <a href="faq.html">Help & FAQs</a>
             </div>
 
             <!-- SUPPORT LINKS -->
@@ -834,19 +834,39 @@
                 </div>
                 <div>
                   <strong>Effortless Laundry</strong>
-                  <p>Book a pickup in seconds.</p>
+                  <p>Get tips & offers in your inbox.</p>
                 </div>
               </div>
-              <button type="button" class="lx-footer-button" data-modal-open="#book-pickup-modal" style="border:none; cursor:pointer;">
-                <span>Get Started</span>
-                <i class="fa-solid fa-arrow-right"></i>
-              </button>
+              <form id="footerNewsletterForm" style="display: flex; gap: 8px; width: 100%; margin-top: 12px;">
+                <input type="email" id="footerSubscriberEmail" placeholder="Enter your email" required style="flex: 1; padding: 10px 14px; border-radius: var(--lx-radius-pill); background: var(--lx-bg-subtle); border: 1px solid var(--lx-border); color: var(--lx-text); font-size: 13px; outline: none;" />
+                <button type="submit" class="lx-footer-button" id="openFooterSubscribeModal" style="border:none; cursor:pointer; white-space: nowrap;padding: 5px 15px;">
+                  <span >Subscribe</span>
+                  
+                </button>
+              </form>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- FOOTER BOTTOM BAR -->
+      <!-- ======================================================
+         SUBSCRIBE SUCCESS MODAL POPUP
+    ====================================================== -->
+    <div class="lx-modal-overlay" id="subscribeModalOverlay">
+      <div class="lx-modal-card" style="text-align: center; max-width: 400px;">
+        <button type="button" class="lx-modal-close" id="closeSubscribeModal" aria-label="Close modal">
+          <span class="material-symbols-rounded"> close </span>
+        </button>
+        <div class="lx-success-icon" style="margin: 0 auto 16px;">
+          <span class="material-symbols-rounded"> check_circle </span>
+        </div>
+        <h3 class="lx-success-title">Subscribed Successfully!</h3>
+        <p class="lx-success-desc">Thank you for joining the LaundriX family. Check your inbox soon for updates and offers.</p>
+        <button type="button" class="lx-success-done" id="doneSubscribeModal" style="width: 100%;">Got it!</button>
+      </div>
+    </div>
+
+      <!-- FOOTER BOTTOM HEADER -->
       <div class="lx-footer-bottom">
         <div class="lx-container">
           <div class="lx-footer-bottom-inner">

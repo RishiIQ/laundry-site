@@ -954,3 +954,115 @@ html.dark .lx-mobile-home-links a.is-current {
 [dir="rtl"] .lx-direction-icon span:nth-child(2) {
   align-self: flex-end;
 }
+
+
+/* ============================================================
+   GLOBAL SUBSCRIBE MODAL & SUCCESS POPUP STYLES
+   ============================================================ */
+.lx-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999999;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.lx-modal-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lx-modal-card {
+  width: 100%;
+  max-width: 480px;
+  background: var(--lx-surface);
+  border: 1px solid var(--lx-border);
+  border-radius: var(--lx-radius-xl);
+  padding: 32px;
+  box-shadow: var(--lx-shadow-xl);
+  position: relative;
+  transform: translateY(20px) scale(0.95);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lx-modal-overlay.is-active .lx-modal-card {
+  transform: translateY(0) scale(1);
+}
+
+.lx-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--lx-bg-subtle);
+  border: none;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: var(--lx-text);
+  transition: var(--lx-transition);
+}
+
+.lx-modal-close:hover {
+  background: var(--lx-primary);
+  color: #fff;
+}
+
+.lx-success-popup {
+  display: none;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.lx-success-popup.is-active {
+  display: block;
+}
+
+.lx-success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(204, 255, 0, 0.25);
+  color: #0f172a;
+  display: grid;
+  place-items: center;
+  font-size: 32px;
+  margin: 0 auto 16px;
+}
+
+html.dark .lx-success-icon {
+  color: var(--lx-selected-green);
+}
+
+.lx-success-title {
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 8px;
+  color: var(--lx-text);
+}
+
+.lx-success-desc {
+  font-size: 14px;
+  color: var(--lx-text-soft);
+  margin-bottom: 24px;
+}
+
+.lx-success-done {
+  width: 100%;
+  min-height: 48px;
+  border-radius: var(--lx-radius-pill);
+  background: var(--lx-primary);
+  color: #fff;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+}

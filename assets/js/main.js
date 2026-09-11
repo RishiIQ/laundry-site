@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initModal();
   initBackToTop();
   initSmoothLinks();
-  initLaundryAtmosphericEffects(); // <-- Added dynamic laundry effects
+  initLaundryAtmosphericEffects();
 });
 
 /* ============================================================
@@ -43,20 +43,18 @@ function initLaundryAtmosphericEffects() {
   const body = document.body;
   if (!body) return;
 
-  // 1. Create floating soap bubbles container
   const bubbleContainer = document.createElement('div');
   bubbleContainer.className = 'lx-ambient-bubbles';
   bubbleContainer.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1; overflow:hidden;';
   body.appendChild(bubbleContainer);
 
-  // Generate random floating bubbles periodically
   setInterval(() => {
     if (document.querySelectorAll('.lx-floating-bubble').length < 15) {
       const bubble = document.createElement('div');
       bubble.className = 'lx-floating-bubble';
-      const size = Math.floor(Math.random() * 24) + 10; // 10px to 34px
+      const size = Math.floor(Math.random() * 24) + 10;
       const posX = Math.random() * window.innerWidth;
-      const duration = Math.random() * 4 + 3; // 3s to 7s
+      const duration = Math.random() * 4 + 3;
 
       bubble.style.cssText = `
         position: absolute;
@@ -76,7 +74,6 @@ function initLaundryAtmosphericEffects() {
     }
   }, 900);
 
-  // Inject keyframe animations for bubbles and heat/steam into head
   if (!document.getElementById('lx-effects-style')) {
     const style = document.createElement('style');
     style.id = 'lx-effects-style';
@@ -105,7 +102,6 @@ function initLaundryAtmosphericEffects() {
     document.head.appendChild(style);
   }
 
-  // 2. Add Steam / Heat Evaporation effect on mouse hover over interactive cards and buttons
   document.addEventListener('mousemove', (e) => {
     if (Math.random() < 0.06) {
       const target = e.target.closest('.home-service-card, .dash-metric-card, .auth-card, .lx-button, button');
@@ -128,7 +124,6 @@ function initLaundryAtmosphericEffects() {
     }
   });
 
-  // 3. Water Ripple Effect on all clickable buttons and action items
   document.querySelectorAll('button, .lx-button, .home-primary-button, .home-secondary-button, .dash-btn, .auth-submit-btn').forEach(btn => {
     btn.style.position = 'relative';
     btn.style.overflow = 'hidden';
@@ -201,10 +196,6 @@ function initTheme() {
   }
 }
 
-/* ============================================================
-   APPLY THEME
-   ============================================================ */
-
 function applyTheme(theme, save = true) {
   const root = document.documentElement;
   const isDark = theme === 'dark';
@@ -216,14 +207,21 @@ function applyTheme(theme, save = true) {
     localStorage.setItem('laundrix-theme', theme);
   }
 
+  // Update FontAwesome icons if present (Index/Blog pages)
   document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
     const icon = button.querySelector('i');
-    if (!icon) return;
-
-    icon.classList.toggle('fa-moon', !isDark);
-    icon.classList.toggle('fa-sun', isDark);
+    if (icon) {
+      icon.classList.toggle('fa-moon', !isDark);
+      icon.classList.toggle('fa-sun', isDark);
+    }
     button.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
   });
+
+  // Update Material Symbol text ids if present (Dashboard page)
+  const desktopIcon = document.getElementById('desktopThemeIcon');
+  const mobileIcon = document.getElementById('mobileThemeIcon');
+  if (desktopIcon) desktopIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
+  if (mobileIcon) mobileIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
 
   document.dispatchEvent(
     new CustomEvent('laundrix:themechange', {
@@ -233,12 +231,12 @@ function applyTheme(theme, save = true) {
 }
 
 /* ============================================================
-   03. RTL ENGINE
+   03. RTL ENGINE (Supports Desktop & Mobile Dashboard Toggles)
    ============================================================ */
 
 function initRTL() {
   const root = document.documentElement;
-  const buttons = document.querySelectorAll('[data-rtl-toggle]');
+  const buttons = document.querySelectorAll('[data-rtl-toggle], [data-rtl-toggle-mobile]');
   const saved = localStorage.getItem('laundrix-direction');
 
   if (saved === 'rtl') {
@@ -255,10 +253,6 @@ function initRTL() {
   });
 }
 
-/* ============================================================
-   APPLY DIRECTION
-   ============================================================ */
-
 function applyDirection(direction, save = true) {
   const root = document.documentElement;
   root.dir = direction;
@@ -268,7 +262,7 @@ function applyDirection(direction, save = true) {
     localStorage.setItem('laundrix-direction', direction);
   }
 
-  document.querySelectorAll('[data-rtl-toggle]').forEach((button) => {
+  document.querySelectorAll('[data-rtl-toggle], [data-rtl-toggle-mobile]').forEach((button) => {
     button.setAttribute('aria-label', direction === 'rtl' ? 'Switch to LTR' : 'Switch to RTL');
   });
 
@@ -663,7 +657,51 @@ document.addEventListener('keydown', (event) => {
 });
 
 /* ============================================================
-   17. GLOBAL LAUNDRIX API
+   17. NEWSLETTER SUBSCRIPTION POPUP HANDLER
+   ============================================================ */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const subModalOverlay = document.getElementById("subscribeModalOverlay");
+  const footerNewsletterForm = document.getElementById("footerNewsletterForm");
+  const footerSubscriberEmail = document.getElementById("footerSubscriberEmail");
+  const closeSubModalBtn = document.getElementById("closeSubscribeModal");
+  const doneSubBtn = document.getElementById("doneSubscribeModal");
+
+  function openSubModal(e) {
+    if (e) e.preventDefault();
+    if (footerSubscriberEmail && !footerSubscriberEmail.checkValidity()) {
+      footerSubscriberEmail.reportValidity();
+      return;
+    }
+    if (subModalOverlay) {
+      subModalOverlay.classList.add("is-active");
+      if (footerSubscriberEmail) {
+        footerSubscriberEmail.value = "";
+      }
+    }
+  }
+
+  function closeSubModal() {
+    if (subModalOverlay) {
+      subModalOverlay.classList.remove("is-active");
+    }
+  }
+
+  if (footerNewsletterForm) {
+    footerNewsletterForm.addEventListener("submit", openSubModal);
+  }
+  if (closeSubModalBtn) closeSubModalBtn.addEventListener("click", closeSubModal);
+  if (doneSubBtn) doneSubBtn.addEventListener("click", closeSubModal);
+
+  if (subModalOverlay) {
+    subModalOverlay.addEventListener("click", (e) => {
+      if (e.target === subModalOverlay) closeSubModal();
+    });
+  }
+});
+
+/* ============================================================
+   GLOBAL LAUNDRIX API
    ============================================================ */
 
 window.LaundriX = {

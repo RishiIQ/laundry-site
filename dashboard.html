@@ -790,19 +790,19 @@
           <span class="nav-toggle-label">Expand sidebar</span>
         </button>
         <button
-          type="button"
-          class="lx-direction-toggle"
-          data-rtl-toggle
-          aria-label="Toggle LTR / RTL"
-          aria-pressed="false"
-          title="Toggle LTR / RTL"
-        >
-          <span class="lx-direction-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-        </button>
+  type="button"
+  class="lx-direction-toggle"
+  data-rtl-toggle
+  aria-label="Toggle LTR / RTL"
+  aria-pressed="false"
+  title="Toggle LTR / RTL"
+>
+  <span class="lx-direction-icon" style="transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);">
+    <span></span>
+    <span></span>
+    <span></span>
+  </span>
+</button>
         <button class="dock-small" data-theme-toggle title="Toggle theme" aria-label="Toggle theme">
           <span class="material-symbols-rounded" id="desktopThemeIcon">dark_mode</span>
         </button>
@@ -1004,11 +1004,13 @@
     </nav>
 
     <div class="dock-actions">
-      <button class="dock-action-btn" data-theme-toggle-mobile aria-label="Toggle theme" title="Toggle theme">
+      <!-- Changed data-theme-toggle-mobile to data-theme-toggle -->
+      <button class="dock-action-btn" data-theme-toggle aria-label="Toggle theme" title="Toggle theme">
         <span class="material-symbols-rounded" id="mobileThemeIcon" style="font-size:18px;">dark_mode</span>
       </button>
 
-      <button class="dock-action-btn" data-rtl-toggle-mobile aria-label="Toggle LTR / RTL" aria-pressed="false" title="Toggle LTR / RTL">
+      <!-- Changed data-rtl-toggle-mobile to data-rtl-toggle -->
+      <button class="dock-action-btn" data-rtl-toggle aria-label="Toggle LTR / RTL" aria-pressed="false" title="Toggle LTR / RTL">
         <span class="lx-direction-icon-mobile">
           <span></span>
           <span></span>
@@ -1024,55 +1026,7 @@
 
   <script src="assets/js/main.js"></script>
   <script>
-    // ============================================================
-    // THEME ENGINE
-    // ============================================================
-    function applyTheme(theme) {
-      const isDark = theme === 'dark';
-      const root = document.documentElement;
-      
-      root.classList.toggle('dark', isDark);
-      root.dataset.theme = isDark ? 'dark' : 'light';
-      localStorage.setItem('laundrix-theme', theme);
-
-      const desktopIcon = document.getElementById('desktopThemeIcon');
-      if (desktopIcon) desktopIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
-
-      const mobileIcon = document.getElementById('mobileThemeIcon');
-      if (mobileIcon) mobileIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
-    }
-
-    function toggleTheme() {
-      const isDark = document.documentElement.classList.contains('dark');
-      applyTheme(isDark ? 'light' : 'dark');
-    }
-
-    document.querySelector('[data-theme-toggle]')?.addEventListener('click', toggleTheme);
-    document.querySelector('[data-theme-toggle-mobile]')?.addEventListener('click', toggleTheme);
-
-    const savedTheme = localStorage.getItem('laundrix-theme');
-    const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    applyTheme(savedTheme || (systemDark ? 'dark' : 'light'));
-
-    // ============================================================
-    // RTL ENGINE
-    // ============================================================
-    function applyDirection(direction) {
-      document.documentElement.dir = direction;
-      localStorage.setItem('laundrix-direction', direction);
-      document.querySelectorAll('[data-rtl-toggle], [data-rtl-toggle-mobile]').forEach(btn => {
-        btn.setAttribute('aria-pressed', direction === 'rtl' ? 'true' : 'false');
-      });
-    }
-
-    function toggleRTL() {
-      const currentDir = document.documentElement.dir || 'ltr';
-      applyDirection(currentDir === 'rtl' ? 'ltr' : 'rtl');
-    }
-
-    document.querySelector('[data-rtl-toggle]')?.addEventListener('click', toggleRTL);
-    document.querySelector('[data-rtl-toggle-mobile]')?.addEventListener('click', toggleRTL);
-    applyDirection(localStorage.getItem('laundrix-direction') || 'ltr');
+    
 
     // ============================================================
     // SIDEBAR EXPAND/COLLAPSE

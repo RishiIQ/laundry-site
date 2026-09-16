@@ -123,6 +123,32 @@
       a { text-decoration: none; color: inherit; transition: var(--lx-transition); -webkit-tap-highlight-color: transparent; }
       button, input, select, textarea { font-family: inherit; font-size: inherit; color: inherit; -webkit-tap-highlight-color: transparent; }
 
+      /* ---------- FIXED TOP-RIGHT ABSOLUTE TOGGLES BAR ---------- */
+      .auth-top-right-bar {
+        position: fixed;
+        top: 20px;
+        right: 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 99999;
+      }
+      html[dir="rtl"] .auth-top-right-bar { right: auto; left: 24px; }
+
+      .auth-corner-btn {
+        width: 40px; height: 40px; border-radius: var(--lx-radius-pill);
+        display: grid; place-items: center;
+        background: var(--lx-surface); border: 1px solid var(--lx-border);
+        color: var(--lx-text-soft); cursor: pointer;
+        box-shadow: var(--lx-shadow-sm);
+        transition: var(--lx-transition);
+      }
+      .auth-corner-btn:hover {
+        background: var(--lx-surface); color: var(--lx-primary);
+        border-color: var(--lx-selected-green); transform: translateY(-2px);
+        box-shadow: var(--lx-shadow-md);
+      }
+
       /* ---------- FLOATING BUBBLES ---------- */
       @keyframes lxFloatBubble {
         0% { transform: translateY(0) scale(0.4) translateX(0); opacity: 0; }
@@ -207,27 +233,6 @@
         box-shadow: var(--lx-shadow-xl);
         position: relative;
         z-index: 2;
-      }
-      .auth-corner-toggles {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        z-index: 5;
-      }
-      html[dir="rtl"] .auth-corner-toggles { right: auto; left: 20px; }
-      .auth-corner-btn {
-        width: 36px; height: 36px; border-radius: var(--lx-radius-pill);
-        display: grid; place-items: center;
-        background: var(--lx-bg-subtle); border: 1px solid var(--lx-border);
-        color: var(--lx-text-soft); cursor: pointer;
-        transition: var(--lx-transition);
-      }
-      .auth-corner-btn:hover {
-        background: var(--lx-surface); color: var(--lx-primary);
-        border-color: var(--lx-selected-green); transform: translateY(-2px);
       }
 
       .auth-header { text-align: center; margin-bottom: 24px; padding-top: 6px; }
@@ -369,36 +374,18 @@
       .auth-card-footer a { color: var(--lx-primary); font-weight: 700; }
       .auth-card-footer a:hover { text-decoration: underline; }
 
-      .auth-simple-footer {
-        padding: 20px 16px; border-top: 1px solid var(--lx-border);
-        background: var(--lx-surface); text-align: center;
-      }
-      .auth-simple-footer-inner {
-        width: min(var(--lx-container), 100%); margin-inline: auto;
-        display: flex; align-items: center; justify-content: space-between;
-        flex-wrap: wrap; gap: 12px; font-size: 12.5px; color: var(--lx-text-muted);
-      }
-      .auth-simple-footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
-      .auth-simple-footer-links a { color: var(--lx-text-soft); transition: color 0.2s ease; }
-      .auth-simple-footer-links a:hover { color: var(--lx-primary); }
-
-      @media (max-width: 640px) {
-        .auth-row { grid-template-columns: 1fr; }
-        .auth-simple-footer-inner { flex-direction: column; text-align: center; gap: 8px; }
-        .auth-simple-footer-links { justify-content: center; }
-      }
-
       .lx-direction-toggle {
-        width: 36px; height: 36px; border-radius: var(--lx-radius-pill);
+        width: 40px; height: 40px; border-radius: var(--lx-radius-pill);
         display: grid; place-items: center;
-        background: var(--lx-bg-subtle); border: 1px solid var(--lx-border);
+        background: var(--lx-surface); border: 1px solid var(--lx-border);
         color: var(--lx-text-soft); cursor: pointer;
+        box-shadow: var(--lx-shadow-sm);
         transition: var(--lx-transition);
       }
       .lx-direction-toggle:hover {
-        background: rgba(204, 255, 0, 0.25);
-        border-color: var(--lx-selected-green);
-        transform: translateY(-2px);
+        background: var(--lx-surface); color: var(--lx-primary);
+        border-color: var(--lx-selected-green); transform: translateY(-2px);
+        box-shadow: var(--lx-shadow-md);
       }
       .lx-direction-icon {
         width: 16px; height: 12px; display: flex; flex-direction: column; justify-content: space-between;
@@ -408,76 +395,49 @@
       .lx-direction-icon span:nth-child(2) { width: 65%; margin-inline-start: auto; }
       .lx-direction-icon span:nth-child(3) { width: 85%; }
 
-      /* ---------- AMBIENT BUBBLES KEYFRAMES ---------- */
-      @keyframes ambientBubbleUp {
-        0% { transform: translateY(0) translateX(0) scale(0.5); opacity: 0; }
-        30% { opacity: 0.8; }
-        100% { transform: translateY(-105vh) translateX(30px) scale(1.2); opacity: 0; }
-      }
-      @keyframes ambientSteamRise {
-        0% { transform: translateY(0) scaleX(0.8) rotate(0deg); opacity: 0; }
-        40% { opacity: 0.5; }
-        100% { transform: translateY(-70px) scaleX(1.4) rotate(15deg); opacity: 0; }
-      }
-      @keyframes waterRippleEffect {
-        to { transform: scale(4); opacity: 0; }
-      }
-      .lx-steam-particle {
-        position: absolute;
-        pointer-events: none;
-        background: radial-gradient(circle, rgba(255,255,255,0.85) 0%, rgba(0,180,216,0.2) 70%, transparent 100%);
-        border-radius: 50%;
-        animation: ambientSteamRise 2.2s ease-out forwards;
-        z-index: 2;
-      }
-      .lx-ripple-effect {
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(0, 180, 216, 0.35);
-        transform: scale(0);
-        animation: waterRippleEffect 0.6s linear;
-        pointer-events: none;
+      @media (max-width: 640px) {
+        .auth-row { grid-template-columns: 1fr; }
       }
     </style>
   </head>
 
   <body>
     <div class="auth-page-wrapper lx-bubble-effect">
+      <!-- FIXED TOP-RIGHT CORNER TOGGLES BAR -->
+      <div class="auth-top-right-bar" >
+        <!-- Theme Toggle -->
+        <button
+          type="button"
+          class="auth-corner-btn"
+          data-theme-toggle
+          aria-label="Toggle theme"
+          title="Toggle Dark / Light Mode"
+        >
+          <span class="material-symbols-rounded" style="font-size:18px;" id="themeIcon"> dark_mode </span>
+        </button>
+
+        <!-- RTL Toggle -->
+        <button
+          type="button"
+          class="lx-direction-toggle"
+          data-rtl-toggle
+          aria-label="Toggle LTR / RTL"
+          aria-pressed="false"
+          title="Toggle LTR / RTL"
+        >
+          <span class="lx-direction-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+      </div>
+
       <!-- ======================================================
            MAIN AUTH CONTAINER
       ====================================================== -->
       <main class="auth-main">
         <div class="auth-card" data-reveal>
-          <!-- TOP-RIGHT CORNER TOGGLES -->
-          <div class="auth-corner-toggles">
-            <!-- Theme Toggle -->
-            <button
-              type="button"
-              class="auth-corner-btn"
-              data-theme-toggle
-              aria-label="Toggle theme"
-              title="Toggle Dark / Light Mode"
-            >
-              <span class="material-symbols-rounded" style="font-size:18px;" id="themeIcon"> dark_mode </span>
-            </button>
-
-            <!-- RTL Toggle matching exact requested structure -->
-            <button
-              type="button"
-              class="lx-direction-toggle"
-              data-rtl-toggle
-              aria-label="Toggle LTR / RTL"
-              aria-pressed="false"
-              title="Toggle LTR / RTL"
-            >
-              <span class="lx-direction-icon">
-                <span></span>
-                <span></span>
-                <span></span>
-              </span>
-            </button>
-          </div>
-
           <!-- HEADER -->
           <div class="auth-header">
             <a href="index.html" class="auth-brand" aria-label="Return to LaundriX Home">
@@ -541,7 +501,7 @@
               <span class="auth-error-msg" id="regEmailError">Please enter a valid email address.</span>
             </div>
 
-            <!-- Password with unique Material-UI animated visibility toggle button inside -->
+            <!-- Password -->
             <div class="auth-group">
               <label for="regPassword">Create Password</label>
               <div class="auth-input-wrap">
@@ -597,19 +557,15 @@
           </div>
         </div>
       </main>
-
     </div>
 
     <!-- ======================================================
-         SHARED GLOBAL JAVASCRIPT (Embedded for self-containment)
+         SHARED GLOBAL JAVASCRIPT
     ====================================================== -->
     <script>
       (function() {
         'use strict';
 
-        /* ============================================================
-           TOAST SYSTEM
-           ============================================================ */
         function showToast(message, options = {}) {
           const type = options.type || 'info';
           const container = document.querySelector('.lx-toast-container') || (() => {
@@ -634,9 +590,6 @@
           }, 3000);
         }
 
-        /* ============================================================
-           THEME ENGINE (FIXED)
-           ============================================================ */
         function initTheme() {
           const root = document.documentElement;
           const savedTheme = localStorage.getItem('laundrix-theme');
@@ -652,13 +605,6 @@
               applyTheme(next, true);
             });
           });
-
-          if (window.matchMedia) {
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
-              if (localStorage.getItem('laundrix-theme')) return;
-              applyTheme(event.matches ? 'dark' : 'light', false);
-            });
-          }
         }
 
         function applyTheme(theme, save = true) {
@@ -669,27 +615,18 @@
           root.dataset.theme = isDark ? 'dark' : 'light';
 
           if (save) {
+            localStorage.getItem('laundrix-theme', theme);
             localStorage.setItem('laundrix-theme', theme);
           }
 
-          // Update all theme toggle buttons with Material Symbols
           document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
             const icon = button.querySelector('.material-symbols-rounded');
             if (!icon) return;
             icon.textContent = isDark ? 'light_mode' : 'dark_mode';
             button.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
           });
-
-          document.dispatchEvent(
-            new CustomEvent('laundrix:themechange', {
-              detail: { theme },
-            })
-          );
         }
 
-        /* ============================================================
-           RTL ENGINE
-           ============================================================ */
         function initRTL() {
           const root = document.documentElement;
           const saved = localStorage.getItem('laundrix-direction');
@@ -721,17 +658,8 @@
             button.setAttribute('aria-pressed', direction === 'rtl' ? 'true' : 'false');
             button.setAttribute('aria-label', direction === 'rtl' ? 'Switch to LTR' : 'Switch to RTL');
           });
-
-          document.dispatchEvent(
-            new CustomEvent('laundrix:directionchange', {
-              detail: { direction },
-            })
-          );
         }
 
-        /* ============================================================
-           PASSWORD VISIBILITY TOGGLE
-           ============================================================ */
         function initPasswordToggles() {
           document.querySelectorAll('[data-password-toggle]').forEach((button) => {
             button.addEventListener('click', function(e) {
@@ -751,9 +679,6 @@
           });
         }
 
-        /* ============================================================
-           SCROLL REVEAL
-           ============================================================ */
         function initScrollReveal() {
           const elements = document.querySelectorAll('[data-reveal]');
           if (!elements.length) return;
@@ -777,85 +702,12 @@
           });
         }
 
-        /* ============================================================
-           WATER RIPPLE EFFECT
-           ============================================================ */
-        function initWaterRipple() {
-          document.querySelectorAll('button, .lx-button, .auth-submit-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-              const circle = document.createElement('span');
-              circle.className = 'lx-ripple-effect';
-              const diameter = Math.max(this.clientWidth, this.clientHeight);
-              const radius = diameter / 2;
-              const rect = this.getBoundingClientRect();
-              
-              circle.style.cssText = `
-                width: ${diameter}px;
-                height: ${diameter}px;
-                left: ${e.clientX - rect.left - radius}px;
-                top: ${e.clientY - rect.top - radius}px;
-              `;
-              
-              const existing = this.querySelector('.lx-ripple-effect');
-              if (existing) existing.remove();
-              
-              this.appendChild(circle);
-              setTimeout(() => circle.remove(), 600);
-            });
-          });
-        }
-
-        /* ============================================================
-           AMBIENT BUBBLES
-           ============================================================ */
-        function initAmbientBubbles() {
-          const body = document.body;
-          if (!body) return;
-
-          const bubbleContainer = document.createElement('div');
-          bubbleContainer.className = 'lx-ambient-bubbles';
-          bubbleContainer.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1; overflow:hidden;';
-          body.appendChild(bubbleContainer);
-
-          setInterval(() => {
-            if (document.querySelectorAll('.lx-floating-bubble').length < 15) {
-              const bubble = document.createElement('div');
-              bubble.className = 'lx-floating-bubble';
-              const size = Math.floor(Math.random() * 24) + 10;
-              const posX = Math.random() * window.innerWidth;
-              const duration = Math.random() * 4 + 3;
-
-              bubble.style.cssText = `
-                position: absolute;
-                bottom: -40px;
-                left: ${posX}px;
-                width: ${size}px;
-                height: ${size}px;
-                border: 2px solid var(--lx-border);
-                border-radius: 50%;
-                background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(0,180,216,0.3));
-                box-shadow: inset -2px -2px 0px rgba(0,0,0,0.1), 2px 2px 0px var(--lx-border);
-                animation: ambientBubbleUp ${duration}s ease-in-out forwards;
-              `;
-
-              bubbleContainer.appendChild(bubble);
-              setTimeout(() => bubble.remove(), duration * 1000);
-            }
-          }, 900);
-        }
-
-        /* ============================================================
-           DOM READY - INIT ALL
-           ============================================================ */
         document.addEventListener('DOMContentLoaded', function() {
           initTheme();
           initRTL();
           initPasswordToggles();
           initScrollReveal();
-          initWaterRipple();
-          initAmbientBubbles();
 
-          // ---------- REGISTER FORM HANDLING ----------
           const registerForm = document.getElementById('registerForm');
           const nameInput = document.getElementById('regName');
           const phoneInput = document.getElementById('regPhone');
@@ -928,21 +780,7 @@
               }, 1000);
             });
           }
-
-          // Social buttons
-          const socialBtns = [document.getElementById('googleSignUpBtn'), document.getElementById('appleSignUpBtn')];
-          socialBtns.forEach((btn) => {
-            if (btn) {
-              btn.addEventListener('click', function() {
-                showToast('Connecting to authentication provider...', { type: 'info' });
-              });
-            }
-          });
-
-          // Expose LaundriX global
-          window.LaundriX = { showToast };
         });
-
       })();
     </script>
   </body>

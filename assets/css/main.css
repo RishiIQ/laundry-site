@@ -650,7 +650,7 @@ html.dark .lx-header {
 html.dark, 
 html.dark body {
   background-color: var(--lx-bg) !important;
-  color: #ffffff !important;
+  color: #170f0f !important;
 }
 
 html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6 {
@@ -692,6 +692,22 @@ html.dark .lx-footer-description,
 html.dark .lx-footer-column a,
 html.dark .lx-footer-bottom-inner {
   color: #c4b5fd !important;
+}
+
+/* ============================================================
+   GLOBAL DARK MODE DROPDOWN HOVER CONTRAST FIX
+   ============================================================ */
+html.dark .lx-nav-dropdown-item:hover,
+html.dark .lx-nav-dropdown-item.is-current {
+  background: var(--lx-selected-green, #ccff00) !important;
+  color: #0f172a !important;
+}
+
+html.dark .lx-nav-dropdown-item:hover strong,
+html.dark .lx-nav-dropdown-item:hover small,
+html.dark .lx-nav-dropdown-item.is-current strong,
+html.dark .lx-nav-dropdown-item.is-current small {
+  color: #0f172a !important;
 }
 
 html.dark .lx-footer,

@@ -724,9 +724,8 @@ window.LaundriX = {
 
 
 
-
 // ============================================================
-// DYNAMIC MOBILE TOGGLE INJECTOR (Zero HTML Changes Needed)
+// DYNAMIC MOBILE TOGGLE INJECTOR (<= 340px)
 // ============================================================
 const handleMobileToggles = () => {
   const mobileMenuInner = document.querySelector(".lx-mobile-menu-inner");
@@ -735,15 +734,14 @@ const handleMobileToggles = () => {
   if (!mobileMenuInner || !headerActions) return;
 
   let wrapper = document.querySelector(".lx-mobile-toggles");
-  const themeToggle = document.querySelector("[data-theme-toggle]") || headerActions.querySelector(".lx-icon-button");
-  const rtlToggle = document.querySelector("[data-rtl-toggle]") || headerActions.querySelector(".lx-direction-toggle");
+  const themeToggle = document.querySelector("[data-theme-toggle]");
+  const rtlToggle = document.querySelector("[data-rtl-toggle]") || document.querySelector(".lx-direction-toggle");
 
   if (window.innerWidth <= 340) {
     if (!wrapper) {
       wrapper = document.createElement("div");
       wrapper.className = "lx-mobile-toggles";
       
-      // Insert right before the Login/Sign up buttons block (.lx-mobile-menu-actions)
       const mobileActions = mobileMenuInner.querySelector(".lx-mobile-menu-actions");
       if (mobileActions) {
         mobileMenuInner.insertBefore(wrapper, mobileActions);
@@ -757,10 +755,8 @@ const handleMobileToggles = () => {
   } else {
     if (wrapper) {
       const menuToggle = headerActions.querySelector(".lx-menu-toggle");
-      
       if (themeToggle) headerActions.insertBefore(themeToggle, menuToggle);
       if (rtlToggle) headerActions.insertBefore(rtlToggle, menuToggle);
-      
       wrapper.remove();
     }
   }

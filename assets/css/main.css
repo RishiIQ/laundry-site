@@ -1086,72 +1086,67 @@ html.dark .lx-success-icon {
 
 
 
-
-
 /* ============================================================
-   ROBUST MOBILE TOGGLES FIX (<= 340px)
+   DYNAMIC MOBILE TOGGLES CONTAINER STYLING (<= 340px)
    ============================================================ */
 .lx-mobile-toggles {
-  display: none;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto 16px auto !important;
+  gap: 16px !important;
+  padding: 12px 18px !important;
+  background: var(--lx-bg-subtle) !important;
+  border: 1px solid var(--lx-border) !important;
+  border-radius: var(--lx-radius-md) !important;
+  width: 100% !important;
+  max-width: 180px !important;
+  box-sizing: border-box !important;
+}
+
+.lx-mobile-toggles button,
+.lx-mobile-toggles .lx-direction-toggle,
+.lx-mobile-toggles [data-theme-toggle] {
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+  border-radius: 50% !important;
+  background: var(--lx-surface) !important;
+  border: 1px solid var(--lx-border) !important;
+  color: var(--lx-text) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  box-shadow: var(--lx-shadow-sm) !important;
+  padding: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+.lx-mobile-toggles .material-symbols-rounded,
+.lx-mobile-toggles i {
+  color: var(--lx-text) !important;
+  font-size: 16px !important;
+  line-height: 1 !important;
+}
+
+.lx-mobile-toggles button:hover {
+  background: var(--lx-primary) !important;
+  color: #fff !important;
+  border-color: var(--lx-primary) !important;
 }
 
 @media (max-width: 340px) {
-  .lx-header-actions [data-theme-toggle],
-  .lx-header-actions [data-rtl-toggle],
-  .lx-header-actions .lx-direction-toggle {
-    display: none !important;
+  .lx-header-inner {
+    padding-inline: 4px !important;
+    gap: 4px !important;
   }
-
-  .lx-mobile-toggles {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    margin: 0 auto 16px auto !important;
-    gap: 16px !important;
-    padding: 12px 18px !important;
-    background: var(--lx-bg-subtle) !important;
-    border: 1px solid var(--lx-border) !important;
-    border-radius: var(--lx-radius-md) !important;
-    width: 100% !important;
-    max-width: 180px !important;
-    box-sizing: border-box !important;
+  .lx-brand-name {
+    font-size: 15px !important;
   }
-
-  .lx-mobile-toggles button,
-  .lx-mobile-toggles .lx-direction-toggle,
-  .lx-mobile-toggles [data-theme-toggle] {
-    width: 40px !important;
-    height: 40px !important;
-    min-width: 40px !important;
-    min-height: 40px !important;
-    border-radius: 50% !important;
-    background: var(--lx-surface) !important;
-    border: 1px solid var(--lx-border) !important;
-    color: var(--lx-text) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    cursor: pointer !important;
-    box-shadow: var(--lx-shadow-sm) !important;
-    padding: 0 !important;
-    flex-shrink: 0 !important;
-  }
-
-  /* Force icon color visibility inside mobile toggles */
-  .lx-mobile-toggles .material-symbols-rounded,
-  .lx-mobile-toggles i {
-    color: var(--lx-text) !important;
-    font-size: 16px !important;
-    line-height: 1 !important;
-  }
-
-  .lx-mobile-toggles button:hover {
-    background: var(--lx-primary) !important;
-    color: #fff !important;
-    border-color: var(--lx-primary) !important;
-  }
-  .lx-mobile-toggles button:hover i,
-  .lx-mobile-toggles button:hover span {
-    color: #fff !important;
+  .lx-brand-mark {
+    width: 34px !important;
+    height: 34px !important;
   }
 }

@@ -722,26 +722,28 @@ window.LaundriX = {
 
 
 
+
+
+
 // ============================================================
-// BULLETPROOF DYNAMIC MOBILE TOGGLE INJECTOR
+// DYNAMIC MOBILE TOGGLE INJECTOR (Zero HTML Changes Needed)
 // ============================================================
-const handleUltraNarrowToggles = () => {
+const handleMobileToggles = () => {
   const mobileMenuInner = document.querySelector(".lx-mobile-menu-inner");
   const headerActions = document.querySelector(".lx-header-actions");
   
   if (!mobileMenuInner || !headerActions) return;
 
   let wrapper = document.querySelector(".lx-mobile-toggles");
-  
-  // Robust selector fallback to catch elements even if attributes are shifted
   const themeToggle = document.querySelector("[data-theme-toggle]") || headerActions.querySelector(".lx-icon-button");
-  const rtlToggle = document.querySelector("[data-rtl-toggle]") || document.querySelector(".lx-direction-toggle");
+  const rtlToggle = document.querySelector("[data-rtl-toggle]") || headerActions.querySelector(".lx-direction-toggle");
 
   if (window.innerWidth <= 340) {
     if (!wrapper) {
       wrapper = document.createElement("div");
       wrapper.className = "lx-mobile-toggles";
       
+      // Insert right before the Login/Sign up buttons block (.lx-mobile-menu-actions)
       const mobileActions = mobileMenuInner.querySelector(".lx-mobile-menu-actions");
       if (mobileActions) {
         mobileMenuInner.insertBefore(wrapper, mobileActions);
@@ -765,13 +767,13 @@ const handleUltraNarrowToggles = () => {
 };
 
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", handleUltraNarrowToggles);
+  document.addEventListener("DOMContentLoaded", handleMobileToggles);
 } else {
-  handleUltraNarrowToggles();
+  handleMobileToggles();
 }
 
 let resizeTimer;
 window.addEventListener("resize", () => {
   clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(handleUltraNarrowToggles, 100);
+  resizeTimer = setTimeout(handleMobileToggles, 100);
 });

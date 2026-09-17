@@ -721,8 +721,9 @@ window.LaundriX = {
 };
 
 
+
 // ============================================================
-// DYNAMIC MOBILE TOGGLE INJECTOR (Bulletproof Production Fix)
+// BULLETPROOF DYNAMIC MOBILE TOGGLE INJECTOR
 // ============================================================
 const handleUltraNarrowToggles = () => {
   const mobileMenuInner = document.querySelector(".lx-mobile-menu-inner");
@@ -731,7 +732,9 @@ const handleUltraNarrowToggles = () => {
   if (!mobileMenuInner || !headerActions) return;
 
   let wrapper = document.querySelector(".lx-mobile-toggles");
-  const themeToggle = document.querySelector("[data-theme-toggle]");
+  
+  // Robust selector fallback to catch elements even if attributes are shifted
+  const themeToggle = document.querySelector("[data-theme-toggle]") || headerActions.querySelector(".lx-icon-button");
   const rtlToggle = document.querySelector("[data-rtl-toggle]") || document.querySelector(".lx-direction-toggle");
 
   if (window.innerWidth <= 340) {
@@ -739,7 +742,6 @@ const handleUltraNarrowToggles = () => {
       wrapper = document.createElement("div");
       wrapper.className = "lx-mobile-toggles";
       
-      // Place right before the login/signup action buttons block
       const mobileActions = mobileMenuInner.querySelector(".lx-mobile-menu-actions");
       if (mobileActions) {
         mobileMenuInner.insertBefore(wrapper, mobileActions);
@@ -762,7 +764,6 @@ const handleUltraNarrowToggles = () => {
   }
 };
 
-// Execute immediately if DOM is ready, otherwise wait for DOMContentLoaded
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", handleUltraNarrowToggles);
 } else {

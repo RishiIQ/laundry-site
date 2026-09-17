@@ -1082,46 +1082,26 @@ html.dark .lx-success-icon {
   cursor: pointer;
 }
 
+
+
+
+
+
+
 /* ============================================================
-   ULTRA-NARROW VIEWPORT & MOBILE TOGGLES FIX (<= 340px)
+   ROBUST MOBILE TOGGLES FIX (<= 340px)
    ============================================================ */
+.lx-mobile-toggles {
+  display: none;
+}
 
 @media (max-width: 340px) {
-  /* 1. Hide secondary action buttons from the main header bar to prevent overflow */
   .lx-header-actions [data-theme-toggle],
   .lx-header-actions [data-rtl-toggle],
   .lx-header-actions .lx-direction-toggle {
     display: none !important;
   }
 
-  /* 2. Compact header inner spacing for ultra-compact viewports */
-  .lx-header-inner {
-    padding-inline: 4px !important;
-    gap: 4px !important;
-  }
-
-  .lx-brand-name {
-    font-size: 15px !important;
-  }
-
-  .lx-brand-mark {
-    width: 34px !important;
-    height: 34px !important;
-    font-size: 16px !important;
-  }
-
-  .lx-header-actions .lx-menu-toggle {
-    width: 34px !important;
-    height: 34px !important;
-  }
-}
-
-/* 3. Mobile Toggles Container Styling & Centering inside Mobile Menu */
-.lx-mobile-toggles {
-  display: none; /* Hidden on desktop/tablet */
-}
-
-@media (max-width: 440px) {
   .lx-mobile-toggles {
     display: flex !important;
     align-items: center !important;
@@ -1133,26 +1113,45 @@ html.dark .lx-success-icon {
     border: 1px solid var(--lx-border) !important;
     border-radius: var(--lx-radius-md) !important;
     width: 100% !important;
-    max-width: 200px !important;
+    max-width: 180px !important;
     box-sizing: border-box !important;
   }
 
-  .lx-mobile-toggles button {
+  .lx-mobile-toggles button,
+  .lx-mobile-toggles .lx-direction-toggle,
+  .lx-mobile-toggles [data-theme-toggle] {
     width: 40px !important;
     height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
     border-radius: 50% !important;
     background: var(--lx-surface) !important;
     border: 1px solid var(--lx-border) !important;
     color: var(--lx-text) !important;
-    display: grid !important;
-    place-items: center !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     cursor: pointer !important;
     box-shadow: var(--lx-shadow-sm) !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Force icon color visibility inside mobile toggles */
+  .lx-mobile-toggles .material-symbols-rounded,
+  .lx-mobile-toggles i {
+    color: var(--lx-text) !important;
+    font-size: 16px !important;
+    line-height: 1 !important;
   }
 
   .lx-mobile-toggles button:hover {
-    background: var(--lx-selected-green) !important;
-    color: #0f172a !important;
-    border-color: var(--lx-selected-green) !important;
+    background: var(--lx-primary) !important;
+    color: #fff !important;
+    border-color: var(--lx-primary) !important;
+  }
+  .lx-mobile-toggles button:hover i,
+  .lx-mobile-toggles button:hover span {
+    color: #fff !important;
   }
 }

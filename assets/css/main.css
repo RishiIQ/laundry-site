@@ -1121,7 +1121,7 @@ html.dark .lx-success-icon {
   display: none; /* Hidden on desktop/tablet */
 }
 
-@media (max-width: 340px) {
+@media (max-width: 440px) {
   .lx-mobile-toggles {
     display: flex !important;
     align-items: center !important;

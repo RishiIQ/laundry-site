@@ -737,7 +737,7 @@ const handleMobileToggles = () => {
   const themeToggle = document.querySelector("[data-theme-toggle]");
   const rtlToggle = document.querySelector("[data-rtl-toggle]") || document.querySelector(".lx-direction-toggle");
 
-  if (window.innerWidth <= 340) {
+  if (window.innerWidth <= 440) {
     if (!wrapper) {
       wrapper = document.createElement("div");
       wrapper.className = "lx-mobile-toggles";

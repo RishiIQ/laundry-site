@@ -1092,7 +1092,7 @@ html.dark .lx-success-icon {
   display: none;
 }
 
-@media (max-width: 340px) {
+@media (max-width: 440px) {
   .lx-header-actions [data-theme-toggle],
   .lx-header-actions [data-rtl-toggle],
   .lx-header-actions .lx-direction-toggle {
